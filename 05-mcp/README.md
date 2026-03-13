@@ -833,6 +833,60 @@ Code execution introduces its own complexity. Running agent-generated code requi
 
 The benefits — reduced token costs, lower latency, improved tool composition — should be weighed against these implementation costs. For agents with only a few MCP servers, direct tool calls may be simpler. For agents at scale (dozens of servers, hundreds of tools), code execution is a significant improvement.
 
+### MCPorter: A Runtime for MCP Tool Composition
+
+[MCPorter](https://github.com/steipete/mcporter) is a TypeScript runtime and CLI toolkit that makes calling MCP servers practical without boilerplate — and helps reduce context bloat through selective tool exposure and typed wrappers.
+
+**What it solves:** Instead of loading all tool definitions from all MCP servers upfront, MCPorter lets you discover, inspect, and call specific tools on demand — keeping your context lean.
+
+**Key features:**
+
+| Feature | Description |
+|---------|-------------|
+| **Zero-config discovery** | Auto-discovers MCP servers from Cursor, Claude, Codex, or local configs |
+| **Typed tool clients** | `mcporter emit-ts` generates `.d.ts` interfaces and ready-to-run wrappers |
+| **Composable API** | `createServerProxy()` exposes tools as camelCase methods with `.text()`, `.json()`, `.markdown()` helpers |
+| **CLI generation** | `mcporter generate-cli` converts any MCP server into a standalone CLI with `--include-tools` / `--exclude-tools` filtering |
+| **Parameter hiding** | Optional parameters stay hidden by default, reducing schema verbosity |
+
+**Installation:**
+
+```bash
+npx mcporter list          # No install required — discover servers instantly
+pnpm add mcporter          # Add to a project
+brew install steipete/tap/mcporter  # macOS via Homebrew
+```
+
+**Example — composing tools in TypeScript:**
+
+```typescript
+import { createRuntime, createServerProxy } from "mcporter";
+
+const runtime = await createRuntime();
+const gdrive = createServerProxy(runtime, "google-drive");
+const salesforce = createServerProxy(runtime, "salesforce");
+
+// Data flows between tools without passing through the model context
+const doc = await gdrive.getDocument({ documentId: "abc123" });
+await salesforce.updateRecord({
+  objectType: "SalesMeeting",
+  recordId: "00Q5f000001abcXYZ",
+  data: { Notes: doc.text() }
+});
+```
+
+**Example — CLI tool call:**
+
+```bash
+# Call a specific tool directly
+npx mcporter call linear.create_comment issueId:ENG-123 body:'Looks good!'
+
+# List available servers and tools
+npx mcporter list
+```
+
+MCPorter complements the code-execution approach described above by providing the runtime infrastructure for calling MCP tools as typed APIs — making it straightforward to keep intermediate data out of the model context.
+
 ## Best Practices
 
 ### Security Considerations
@@ -1002,5 +1056,7 @@ export GITHUB_TOKEN="your_token"
 - [MCP Protocol Specification](https://modelcontextprotocol.io/specification)
 - [MCP GitHub Repository](https://github.com/modelcontextprotocol/servers)
 - [Available MCP Servers](https://github.com/modelcontextprotocol/servers)
+- [MCPorter](https://github.com/steipete/mcporter) — TypeScript runtime & CLI for calling MCP servers without boilerplate
+- [Code Execution with MCP](https://www.anthropic.com/engineering/code-execution-with-mcp) — Anthropic's engineering blog on solving context bloat
 - [Claude Code CLI Reference](https://code.claude.com/docs/en/cli-reference)
 - [Claude API Documentation](https://docs.anthropic.com)
