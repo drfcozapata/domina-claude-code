@@ -1,18 +1,18 @@
 #!/bin/bash
-# Log all bash commands
+# Registrar todos los comandos bash
 # Hook: PostToolUse:Bash
 
 COMMAND="$1"
 TIMESTAMP=$(date "+%Y-%m-%d %H:%M:%S")
 LOGFILE="$HOME/.claude/bash-commands.log"
 
-# Create log directory if it doesn't exist
+# Crear directorio de log si no existe
 mkdir -p "$(dirname "$LOGFILE")"
 
-# Log the command
+# Registrar el comando
 echo "[$TIMESTAMP] $COMMAND" >> "$LOGFILE"
 
-# Optional: Log to system log as well
+# Opcional: Registrar también en el log del sistema
 # logger -t "claude-bash" "$COMMAND"
 
 exit 0

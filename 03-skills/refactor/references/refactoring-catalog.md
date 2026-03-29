@@ -1,40 +1,40 @@
-# Refactoring Catalog
+# Catálogo de Refactoring
 
-A curated catalog of refactoring techniques from Martin Fowler's *Refactoring* (2nd Edition). Each refactoring includes motivation, step-by-step mechanics, and examples.
+Un catálogo curado de técnicas de refactoring de *Refactoring* (2da Edición) de Martin Fowler. Cada refactoring incluye motivación, mecánicas paso a paso, y ejemplos.
 
-> "A refactoring is defined by its mechanics—the precise sequence of steps that you follow to carry out the change." — Martin Fowler
-
----
-
-## How to Use This Catalog
-
-1. **Identify the smell** using the code smells reference
-2. **Find the matching refactoring** in this catalog
-3. **Follow the mechanics** step by step
-4. **Test after each step** to ensure behavior is preserved
-
-**Golden Rule**: If any step takes more than 10 minutes, break it into smaller steps.
+> "Un refactoring se define por sus mecánicas—la secuencia precisa de pasos que sigues para llevar a cabo el cambio." — Martin Fowler
 
 ---
 
-## Most Common Refactorings
+## Cómo Usar Este Catálogo
+
+1. **Identifica el smell** usando la referencia de code smells
+2. **Encuentra el refactoring coincidente** en este catálogo
+3. **Sigue las mecánicas** paso a paso
+4. **Testea después de cada paso** para asegurar que el comportamiento se preserva
+
+**Regla de Oro**: Si algún paso toma más de 10 minutos, divídelo en pasos más pequeños.
+
+---
+
+## Refactorings Más Comunes
 
 ### Extract Method
 
-**When to use**: Long method, duplicate code, need to name a concept
+**Cuándo usar**: Método largo, código duplicado, necesidad de nombrar un concepto
 
-**Motivation**: Turn a code fragment into a method whose name explains the purpose.
+**Motivación**: Convierte un fragmento de código en un método cuyo nombre explica el propósito.
 
-**Mechanics**:
-1. Create a new method named for what it does (not how)
-2. Copy the code fragment into the new method
-3. Scan for local variables used in the fragment
-4. Pass local variables as parameters (or declare in method)
-5. Handle return values appropriately
-6. Replace the original fragment with a call to the new method
-7. Test
+**Mecánicas**:
+1. Crea un nuevo método nombrado por lo que hace (no cómo)
+2. Copia el fragmento de código en el nuevo método
+3. Escanea variables locales usadas en el fragmento
+4. Pasa variables locales como parámetros (o declara en el método)
+5. Maneja valores de retorno apropiadamente
+6. Reemplaza el fragmento original con una llamada al nuevo método
+7. Testea
 
-**Before**:
+**Antes**:
 ```javascript
 function printOwing(invoice) {
   let outstanding = 0;
@@ -43,18 +43,18 @@ function printOwing(invoice) {
   console.log("**** Customer Owes ****");
   console.log("***********************");
 
-  // Calculate outstanding
+  // Calcular pendiente
   for (const order of invoice.orders) {
     outstanding += order.amount;
   }
 
-  // Print details
+  // Imprimir detalles
   console.log(`name: ${invoice.customer}`);
   console.log(`amount: ${outstanding}`);
 }
 ```
 
-**After**:
+**Después**:
 ```javascript
 function printOwing(invoice) {
   printBanner();
@@ -82,18 +82,18 @@ function printDetails(invoice, outstanding) {
 
 ### Inline Method
 
-**When to use**: Method body is as clear as its name, excessive delegation
+**Cuándo usar**: El cuerpo del método es tan claro como su nombre, delegación excesiva
 
-**Motivation**: Remove needless indirection when the method doesn't add value.
+**Motivación**: Elimina indirección innecesaria cuando el método no añade valor.
 
-**Mechanics**:
-1. Check that the method isn't polymorphic
-2. Find all calls to the method
-3. Replace each call with the method body
-4. Test after each replacement
-5. Remove the method definition
+**Mecánicas**:
+1. Verifica que el método no sea polimórfico
+2. Encuentra todas las llamadas al método
+3. Reemplaza cada llamada con el cuerpo del método
+4. Testea después de cada reemplazo
+5. Elimina la definición del método
 
-**Before**:
+**Antes**:
 ```javascript
 function getRating(driver) {
   return moreThanFiveLateDeliveries(driver) ? 2 : 1;
@@ -104,7 +104,7 @@ function moreThanFiveLateDeliveries(driver) {
 }
 ```
 
-**After**:
+**Después**:
 ```javascript
 function getRating(driver) {
   return driver.numberOfLateDeliveries > 5 ? 2 : 1;
@@ -115,25 +115,25 @@ function getRating(driver) {
 
 ### Extract Variable
 
-**When to use**: Complex expression that is hard to understand
+**Cuándo usar**: Expresión compleja difícil de entender
 
-**Motivation**: Give a name to a piece of a complex expression.
+**Motivación**: Da un nombre a una pieza de una expresión compleja.
 
-**Mechanics**:
-1. Ensure the expression has no side effects
-2. Declare an immutable variable
-3. Set it to the result of the expression (or part)
-4. Replace the original expression with the variable
-5. Test
+**Mecánicas**:
+1. Asegura que la expresión no tenga efectos secundarios
+2. Declara una variable inmutable
+3. Establécela al resultado de la expresión (o parte)
+4. Reemplaza la expresión original con la variable
+5. Testea
 
-**Before**:
+**Antes**:
 ```javascript
 return order.quantity * order.itemPrice -
   Math.max(0, order.quantity - 500) * order.itemPrice * 0.05 +
   Math.min(order.quantity * order.itemPrice * 0.1, 100);
 ```
 
-**After**:
+**Después**:
 ```javascript
 const basePrice = order.quantity * order.itemPrice;
 const quantityDiscount = Math.max(0, order.quantity - 500) * order.itemPrice * 0.05;
@@ -145,44 +145,44 @@ return basePrice - quantityDiscount + shipping;
 
 ### Inline Variable
 
-**When to use**: Variable name doesn't communicate more than the expression
+**Cuándo usar**: El nombre de la variable no comunica más que la expresión
 
-**Motivation**: Remove unnecessary indirection.
+**Motivación**: Elimina indirección innecesaria.
 
-**Mechanics**:
-1. Check that the right-hand side has no side effects
-2. If variable isn't immutable, make it so and test
-3. Find the first reference and replace with the expression
-4. Test
-5. Repeat for all references
-6. Remove the declaration and assignment
-7. Test
+**Mecánicas**:
+1. Verifica que el lado derecho no tenga efectos secundarios
+2. Si la variable no es inmutable, hazla inmutable y testea
+3. Encuentra la primera referencia y reemplaza con la expresión
+4. Testea
+5. Repite para todas las referencias
+6. Elimina la declaración y asignación
+7. Testea
 
 ---
 
 ### Rename Variable
 
-**When to use**: Name doesn't clearly communicate purpose
+**Cuándo usar**: El nombre no comunica claramente el propósito
 
-**Motivation**: Good names are crucial for clean code.
+**Motivación**: Buenos nombres son cruciales para código limpio.
 
-**Mechanics**:
-1. If variable is widely used, consider encapsulating
-2. Find all references
-3. Change each reference
-4. Test
+**Mecánicas**:
+1. Si la variable es ampliamente usada, considera encapsular
+2. Encuentra todas las referencias
+3. Cambia cada referencia
+4. Testea
 
-**Tips**:
-- Use intention-revealing names
-- Avoid abbreviations
-- Use domain terminology
+**Consejos**:
+- Usa nombres que revelen intención
+- Evita abreviaciones
+- Usa terminología de dominio
 
 ```javascript
-// Bad
+// Malo
 const d = 30;
 const x = users.filter(u => u.a);
 
-// Good
+// Bueno
 const daysSinceLastLogin = 30;
 const activeUsers = users.filter(user => user.isActive);
 ```
@@ -191,33 +191,33 @@ const activeUsers = users.filter(user => user.isActive);
 
 ### Change Function Declaration
 
-**When to use**: Function name doesn't explain purpose, parameters need change
+**Cuándo usar**: El nombre de la función no explica el propósito, los parámetros necesitan cambio
 
-**Motivation**: Good function names make code self-documenting.
+**Motivación**: Buenos nombres de funciones hacen el código auto-documentado.
 
-**Mechanics (Simple)**:
-1. Remove parameters not needed
-2. Change the name
-3. Add parameters needed
-4. Test
+**Mecánicas (Simple)**:
+1. Elimina parámetros no necesarios
+2. Cambia el nombre
+3. Añade parámetros necesarios
+4. Testea
 
-**Mechanics (Migration - for complex changes)**:
-1. If removing parameter, make sure it's not used
-2. Create new function with desired declaration
-3. Have old function call new function
-4. Test
-5. Change callers to use new function
-6. Test after each
-7. Remove old function
+**Mecánicas (Migración - para cambios complejos)**:
+1. Si eliminas parámetro, asegúrate de que no se usa
+2. Crea nueva función con la declaración deseada
+3. Haz que la función vieja llame a la nueva función
+4. Testea
+5. Cambia los llamadores para usar la nueva función
+6. Testea después de cada uno
+7. Elimina la función vieja
 
-**Before**:
+**Antes**:
 ```javascript
 function circum(radius) {
   return 2 * Math.PI * radius;
 }
 ```
 
-**After**:
+**Después**:
 ```javascript
 function circumference(radius) {
   return 2 * Math.PI * radius;
@@ -228,27 +228,27 @@ function circumference(radius) {
 
 ### Encapsulate Variable
 
-**When to use**: Direct access to data from multiple places
+**Cuándo usar**: Acceso directo a datos desde múltiples lugares
 
-**Motivation**: Provide a clear access point for data manipulation.
+**Motivación**: Proporciona un punto de acceso claro para manipulación de datos.
 
-**Mechanics**:
-1. Create getter and setter functions
-2. Find all references
-3. Replace reads with getter
-4. Replace writes with setter
-5. Test after each change
-6. Restrict visibility of the variable
+**Mecánicas**:
+1. Crea funciones getter y setter
+2. Encuentra todas las referencias
+3. Reemplaza lecturas con getter
+4. Reemplaza escrituras con setter
+5. Testea después de cada cambio
+6. Restringe visibilidad de la variable
 
-**Before**:
+**Antes**:
 ```javascript
 let defaultOwner = { firstName: "Martin", lastName: "Fowler" };
 
-// Used in many places
+// Usado en muchos lugares
 spaceship.owner = defaultOwner;
 ```
 
-**After**:
+**Después**:
 ```javascript
 let defaultOwnerData = { firstName: "Martin", lastName: "Fowler" };
 
@@ -262,26 +262,26 @@ spaceship.owner = defaultOwner();
 
 ### Introduce Parameter Object
 
-**When to use**: Several parameters that frequently go together
+**Cuándo usar**: Varios parámetros que frecuentemente van juntos
 
-**Motivation**: Group data that naturally belongs together.
+**Motivación**: Agrupa datos que naturalmente pertenecen juntos.
 
-**Mechanics**:
-1. Create a new class/structure for the grouped parameters
-2. Test
-3. Use Change Function Declaration to add the new object
-4. Test
-5. For each parameter in the group, remove it from the function and use the new object
-6. Test after each
+**Mecánicas**:
+1. Crea una nueva clase/estructura para los parámetros agrupados
+2. Testea
+3. Usa Change Function Declaration para añadir el nuevo objeto
+4. Testea
+5. Para cada parámetro en el grupo, elimínalo de la función y usa el nuevo objeto
+6. Testea después de cada uno
 
-**Before**:
+**Antes**:
 ```javascript
 function amountInvoiced(startDate, endDate) { ... }
 function amountReceived(startDate, endDate) { ... }
 function amountOverdue(startDate, endDate) { ... }
 ```
 
-**After**:
+**Después**:
 ```javascript
 class DateRange {
   constructor(start, end) {
@@ -299,24 +299,24 @@ function amountOverdue(dateRange) { ... }
 
 ### Combine Functions into Class
 
-**When to use**: Several functions operate on the same data
+**Cuándo usar**: Varias funciones operan sobre los mismos datos
 
-**Motivation**: Group functions with the data they operate on.
+**Motivación**: Agrupa funciones con los datos sobre los que operan.
 
-**Mechanics**:
-1. Apply Encapsulate Record to the common data
-2. Move each function into the class
-3. Test after each move
-4. Replace data arguments with uses of class fields
+**Mecánicas**:
+1. Aplica Encapsulate Record a los datos comunes
+2. Mueve cada función a la clase
+3. Testea después de cada movimiento
+4. Reemplaza argumentos de datos con usos de campos de clase
 
-**Before**:
+**Antes**:
 ```javascript
 function base(reading) { ... }
 function taxableCharge(reading) { ... }
 function calculateBaseCharge(reading) { ... }
 ```
 
-**After**:
+**Después**:
 ```javascript
 class Reading {
   constructor(data) { this._data = data; }
@@ -331,19 +331,19 @@ class Reading {
 
 ### Split Phase
 
-**When to use**: Code deals with two different things
+**Cuándo usar**: El código trata con dos cosas diferentes
 
-**Motivation**: Separate code into distinct phases with clear boundaries.
+**Motivación**: Separa el código en fases distintas con límites claros.
 
-**Mechanics**:
-1. Create a second function for the second phase
-2. Test
-3. Introduce an intermediate data structure between phases
-4. Test
-5. Extract first phase into its own function
-6. Test
+**Mecánicas**:
+1. Crea una segunda función para la segunda fase
+2. Testea
+3. Introduce una estructura de datos intermedia entre fases
+4. Testea
+5. Extrae la primera fase en su propia función
+6. Testea
 
-**Before**:
+**Antes**:
 ```javascript
 function priceOrder(product, quantity, shippingMethod) {
   const basePrice = product.basePrice * quantity;
@@ -356,7 +356,7 @@ function priceOrder(product, quantity, shippingMethod) {
 }
 ```
 
-**After**:
+**Después**:
 ```javascript
 function priceOrder(product, quantity, shippingMethod) {
   const priceData = calculatePricingData(product, quantity);
@@ -380,87 +380,87 @@ function applyShipping(priceData, shippingMethod) {
 
 ---
 
-## Moving Features
+## Moviendo Características
 
 ### Move Method
 
-**When to use**: Method uses more features of another class than its own
+**Cuándo usar**: El método usa más características de otra clase que las suyas
 
-**Motivation**: Put functions with the data they use most.
+**Motivación**: Pon funciones con los datos que más usan.
 
-**Mechanics**:
-1. Examine all program elements used by method in its class
-2. Check if method is polymorphic
-3. Copy method to target class
-4. Adjust for new context
-5. Make original method delegate to target
-6. Test
-7. Consider removing original method
+**Mecánicas**:
+1. Examina todos los elementos de programa usados por el método en su clase
+2. Verifica si el método es polimórfico
+3. Copia el método a la clase objetivo
+4. Ajusta para el nuevo contexto
+5. Haz que el método original delegue al objetivo
+6. Testea
+7. Considera eliminar el método original
 
 ---
 
 ### Move Field
 
-**When to use**: Field is used more by another class
+**Cuándo usar**: El campo es usado más por otra clase
 
-**Motivation**: Keep data with the functions that use it.
+**Motivación**: Mantén datos con las funciones que los usan.
 
-**Mechanics**:
-1. Encapsulate the field if not already
-2. Test
-3. Create field in target
-4. Update references to use target field
-5. Test
-6. Remove original field
+**Mecánicas**:
+1. Encapsula el campo si no lo está ya
+2. Testea
+3. Crea campo en el objetivo
+4. Actualiza referencias para usar el campo objetivo
+5. Testea
+6. Elimina el campo original
 
 ---
 
 ### Move Statements into Function
 
-**When to use**: Same code always appears with a function call
+**Cuándo usar**: El mismo código siempre aparece con una llamada a función
 
-**Motivation**: Remove duplication by moving repeated code into the function.
+**Motivación**: Elimina duplicación moviendo código repetido a la función.
 
-**Mechanics**:
-1. Extract the repeated code into a function if not already
-2. Move statements into that function
-3. Test
-4. If callers no longer need standalone statements, remove them
+**Mecánicas**:
+1. Extrae el código repetido en una función si no lo está ya
+2. Mueve statements a esa función
+3. Testea
+4. Si los llamadores ya no necesitan statements independientes, elimínalos
 
 ---
 
 ### Move Statements to Callers
 
-**When to use**: Common behavior varies between callers
+**Cuándo usar**: Comportamiento común varía entre llamadores
 
-**Motivation**: When behavior needs to differ, move it out of the function.
+**Motivación**: Cuando el comportamiento necesita diferir, muévelo fuera de la función.
 
-**Mechanics**:
-1. Use Extract Method on the code to move
-2. Use Inline Method on the original function
-3. Remove the now-inlined call
-4. Move extracted code to each caller
-5. Test
+**Mecánicas**:
+1. Usa Extract Method en el código a mover
+2. Usa Inline Method en la función original
+3. Elimina la llamada ahora-inlineada
+4. Mueve código extraído a cada llamador
+5. Testea
 
 ---
 
-## Organizing Data
+## Organizando Datos
 
 ### Replace Primitive with Object
 
-**When to use**: Data item needs more behavior than simple value
+**Cuándo usar**: Ítem de datos necesita más comportamiento que un valor simple
 
-**Motivation**: Encapsulate data with its behavior.
+**Motivación**: Encapsula datos con su comportamiento.
 
-**Mechanics**:
-1. Apply Encapsulate Variable
-2. Create a simple value class
-3. Change the setter to create a new instance
-4. Change the getter to return the value
-5. Test
-6. Add richer behavior to the new class
+**Mecánicas**:
+1. Aplica Encapsulate Variable
+2. Crea una clase de valor simple
+3. Cambia el setter para crear una nueva instancia
+4. Cambia el getter para retornar el valor
+5. Testea
+6. Añade comportamiento más rico a la nueva clase
 
-**Before**:
+**Antes**:
 ```javascript
 class Order {
   constructor(data) {
@@ -468,11 +468,11 @@ class Order {
   }
 }
 
-// Usage
+// Uso
 if (order.priority === "high" || order.priority === "rush") { ... }
 ```
 
-**After**:
+**Después**:
 ```javascript
 class Priority {
   constructor(value) {
@@ -490,7 +490,7 @@ class Priority {
   }
 }
 
-// Usage
+// Uso
 if (order.priority.higherThan(new Priority("normal"))) { ... }
 ```
 
@@ -498,18 +498,18 @@ if (order.priority.higherThan(new Priority("normal"))) { ... }
 
 ### Replace Temp with Query
 
-**When to use**: Temporary variable holds result of an expression
+**Cuándo usar**: Variable temporal tiene resultado de una expresión
 
-**Motivation**: Make the code clearer by extracting the expression into a function.
+**Motivación**: Haz el código más claro extrayendo la expresión en una función.
 
-**Mechanics**:
-1. Check that the variable is assigned only once
-2. Extract the assignment's right-hand side into a method
-3. Replace references to the temp with the method call
-4. Test
-5. Remove the temp declaration and assignment
+**Mecánicas**:
+1. Verifica que la variable se asigne solo una vez
+2. Extrae el lado derecho de la asignación en un método
+3. Reemplaza referencias a la temp con la llamada al método
+4. Testea
+5. Elimina la declaración y asignación de la temp
 
-**Before**:
+**Antes**:
 ```javascript
 const basePrice = this._quantity * this._itemPrice;
 if (basePrice > 1000) {
@@ -519,13 +519,13 @@ if (basePrice > 1000) {
 }
 ```
 
-**After**:
+**Después**:
 ```javascript
 get basePrice() {
   return this._quantity * this._itemPrice;
 }
 
-// In the method
+// En el método
 if (this.basePrice > 1000) {
   return this.basePrice * 0.95;
 } else {
@@ -535,20 +535,20 @@ if (this.basePrice > 1000) {
 
 ---
 
-## Simplifying Conditional Logic
+## Simplificando Lógica Condicional
 
 ### Decompose Conditional
 
-**When to use**: Complex conditional (if-then-else) statement
+**Cuándo usar**: Statement condicional complejo (if-then-else)
 
-**Motivation**: Make the intention clear by extracting conditions and actions.
+**Motivación**: Haz clara la intención extrayendo condiciones y acciones.
 
-**Mechanics**:
-1. Apply Extract Method on the condition
-2. Apply Extract Method on the then-branch
-3. Apply Extract Method on the else-branch (if present)
+**Mecánicas**:
+1. Aplica Extract Method en la condición
+2. Aplica Extract Method en la rama then
+3. Aplica Extract Method en la rama else (si está presente)
 
-**Before**:
+**Antes**:
 ```javascript
 if (!aDate.isBefore(plan.summerStart) && !aDate.isAfter(plan.summerEnd)) {
   charge = quantity * plan.summerRate;
@@ -557,7 +557,7 @@ if (!aDate.isBefore(plan.summerStart) && !aDate.isAfter(plan.summerEnd)) {
 }
 ```
 
-**After**:
+**Después**:
 ```javascript
 if (isSummer(aDate, plan)) {
   charge = summerCharge(quantity, plan);
@@ -582,23 +582,23 @@ function regularCharge(quantity, plan) {
 
 ### Consolidate Conditional Expression
 
-**When to use**: Multiple conditions with the same result
+**Cuándo usar**: Múltiples condiciones con el mismo resultado
 
-**Motivation**: Make it clear that conditions are a single check.
+**Motivación**: Haz claro que las condiciones son un solo check.
 
-**Mechanics**:
-1. Verify no side effects in conditions
-2. Combine conditions using `and` or `or`
-3. Consider Extract Method on the combined condition
+**Mecánicas**:
+1. Verifica sin efectos secundarios en condiciones
+2. Combina condiciones usando `and` u `or`
+3. Considera Extract Method en la condición combinada
 
-**Before**:
+**Antes**:
 ```javascript
 if (employee.seniority < 2) return 0;
 if (employee.monthsDisabled > 12) return 0;
 if (employee.isPartTime) return 0;
 ```
 
-**After**:
+**Después**:
 ```javascript
 if (isNotEligibleForDisability(employee)) return 0;
 
@@ -613,16 +613,16 @@ function isNotEligibleForDisability(employee) {
 
 ### Replace Nested Conditional with Guard Clauses
 
-**When to use**: Deeply nested conditionals making flow hard to follow
+**Cuándo usar**: Condicionales anidados profundamente haciendo el flujo difícil de seguir
 
-**Motivation**: Use guard clauses for special cases, keeping normal flow clear.
+**Motivación**: Usa guard clauses para casos especiales, manteniendo el flujo normal claro.
 
-**Mechanics**:
-1. Find the special case conditions
-2. Replace them with guard clauses that return early
-3. Test after each change
+**Mecánicas**:
+1. Encuentra las condiciones de caso especial
+2. Reemplázalas con guard clauses que retornan temprano
+3. Testea después de cada cambio
 
-**Before**:
+**Antes**:
 ```javascript
 function payAmount(employee) {
   let result;
@@ -639,7 +639,7 @@ function payAmount(employee) {
 }
 ```
 
-**After**:
+**Después**:
 ```javascript
 function payAmount(employee) {
   if (employee.isSeparated) return { amount: 0, reasonCode: "SEP" };
@@ -652,18 +652,18 @@ function payAmount(employee) {
 
 ### Replace Conditional with Polymorphism
 
-**When to use**: Switch/case based on type, conditional logic varying by type
+**Cuándo usar**: Switch/case basado en tipo, lógica condicional variando por tipo
 
-**Motivation**: Let objects handle their own behavior.
+**Motivación**: Deja que los objetos manejen su propio comportamiento.
 
-**Mechanics**:
-1. Create class hierarchy (if not exists)
-2. Use Factory Function for object creation
-3. Move conditional logic into superclass method
-4. Create subclass method for each case
-5. Remove original conditional
+**Mecánicas**:
+1. Crea jerarquía de clases (si no existe)
+2. Usa Factory Function para creación de objetos
+3. Mueve lógica condicional al método de superclase
+4. Crea método de subclase para cada caso
+5. Elimina el condicional original
 
-**Before**:
+**Antes**:
 ```javascript
 function plumages(birds) {
   return birds.map(b => plumage(b));
@@ -683,7 +683,7 @@ function plumage(bird) {
 }
 ```
 
-**After**:
+**Después**:
 ```javascript
 class Bird {
   get plumage() { return "unknown"; }
@@ -719,21 +719,21 @@ function createBird(data) {
 
 ### Introduce Special Case (Null Object)
 
-**When to use**: Repeated null checks for special cases
+**Cuándo usar**: Checks de null repetidos para casos especiales
 
-**Motivation**: Return a special object that handles the special case.
+**Motivación**: Retorna un objeto especial que maneja el caso especial.
 
-**Mechanics**:
-1. Create special case class with expected interface
-2. Add isSpecialCase check
-3. Introduce factory method
-4. Replace null checks with special case object usage
-5. Test
+**Mecánicas**:
+1. Crea clase de caso especial con la interfaz esperada
+2. Añade check isSpecialCase
+3. Introduce método factory
+4. Reemplaza checks de null con uso de objeto de caso especial
+5. Testea
 
-**Before**:
+**Antes**:
 ```javascript
 const customer = site.customer;
-// ... many places checking
+// ... muchos lugares verificando
 if (customer === "unknown") {
   customerName = "occupant";
 } else {
@@ -741,42 +741,42 @@ if (customer === "unknown") {
 }
 ```
 
-**After**:
+**Después**:
 ```javascript
 class UnknownCustomer {
   get name() { return "occupant"; }
   get billingPlan() { return registry.defaultPlan; }
 }
 
-// Factory method
+// Método factory
 function customer(site) {
   return site.customer === "unknown"
     ? new UnknownCustomer()
     : site.customer;
 }
 
-// Usage - no null checks needed
+// Uso - sin checks de null necesarios
 const customerName = customer.name;
 ```
 
 ---
 
-## Refactoring APIs
+## Refactorizando APIs
 
 ### Separate Query from Modifier
 
-**When to use**: Function both returns a value and has side effects
+**Cuándo usar**: Función tanto retorna un valor como tiene efectos secundarios
 
-**Motivation**: Make it clear which operations have side effects.
+**Motivación**: Haz claro qué operaciones tienen efectos secundarios.
 
-**Mechanics**:
-1. Create a new query function
-2. Copy original function's return logic
-3. Modify original to return void
-4. Replace calls that use return value
-5. Test
+**Mecánicas**:
+1. Crea una nueva función de consulta
+2. Copia lógica de retorno de la función original
+3. Modifica la original para retornar void
+4. Reemplaza llamadas que usan valor de retorno
+5. Testea
 
-**Before**:
+**Antes**:
 ```javascript
 function alertForMiscreant(people) {
   for (const p of people) {
@@ -793,7 +793,7 @@ function alertForMiscreant(people) {
 }
 ```
 
-**After**:
+**Después**:
 ```javascript
 function findMiscreant(people) {
   for (const p of people) {
@@ -812,19 +812,19 @@ function alertForMiscreant(people) {
 
 ### Parameterize Function
 
-**When to use**: Several functions doing similar things with different values
+**Cuándo usar**: Varias funciones haciendo cosas similares con diferentes valores
 
-**Motivation**: Remove duplication by adding a parameter.
+**Motivación**: Elimina duplicación añadiendo un parámetro.
 
-**Mechanics**:
-1. Select one function
-2. Add parameter for the varying literal
-3. Change body to use the parameter
-4. Test
-5. Change callers to use the parameterized version
-6. Remove now-unused functions
+**Mecánicas**:
+1. Selecciona una función
+2. Añade parámetro para el literal variable
+3. Cambia el cuerpo para usar el parámetro
+4. Testea
+5. Cambia llamadores para usar la versión parametrizada
+6. Elimina funciones ahora no usadas
 
-**Before**:
+**Antes**:
 ```javascript
 function tenPercentRaise(person) {
   person.salary = person.salary * 1.10;
@@ -835,13 +835,13 @@ function fivePercentRaise(person) {
 }
 ```
 
-**After**:
+**Después**:
 ```javascript
 function raise(person, factor) {
   person.salary = person.salary * (1 + factor);
 }
 
-// Usage
+// Uso
 raise(person, 0.10);
 raise(person, 0.05);
 ```
@@ -850,23 +850,23 @@ raise(person, 0.05);
 
 ### Remove Flag Argument
 
-**When to use**: Boolean parameter that changes function behavior
+**Cuándo usar**: Parámetro booleano que cambia el comportamiento de la función
 
-**Motivation**: Make the behavior explicit through separate functions.
+**Motivación**: Haz el comportamiento explícito a través de funciones separadas.
 
-**Mechanics**:
-1. Create explicit function for each flag value
-2. Replace each call with appropriate new function
-3. Test after each change
-4. Remove original function
+**Mecánicas**:
+1. Crea función explícita para cada valor de bandera
+2. Reemplaza cada llamada con la nueva función apropiada
+3. Testea después de cada cambio
+4. Elimina función original
 
-**Before**:
+**Antes**:
 ```javascript
 function bookConcert(customer, isPremium) {
   if (isPremium) {
-    // premium booking logic
+    // lógica de reserva premium
   } else {
-    // regular booking logic
+    // lógica de reserva regular
   }
 }
 
@@ -874,14 +874,14 @@ bookConcert(customer, true);
 bookConcert(customer, false);
 ```
 
-**After**:
+**Después**:
 ```javascript
 function bookPremiumConcert(customer) {
-  // premium booking logic
+  // lógica de reserva premium
 }
 
 function bookRegularConcert(customer) {
-  // regular booking logic
+  // lógica de reserva regular
 }
 
 bookPremiumConcert(customer);
@@ -890,72 +890,72 @@ bookRegularConcert(customer);
 
 ---
 
-## Dealing with Inheritance
+## Tratando con Herencia
 
 ### Pull Up Method
 
-**When to use**: Same method in multiple subclasses
+**Cuándo usar**: Mismo método en múltiples subclases
 
-**Motivation**: Remove duplication in class hierarchy.
+**Motivación**: Elimina duplicación en jerarquía de clases.
 
-**Mechanics**:
-1. Inspect methods to ensure they are identical
-2. Check signatures are the same
-3. Create new method in superclass
-4. Copy body from one subclass
-5. Delete one subclass method, test
-6. Delete other subclass methods, test each
+**Mecánicas**:
+1. Inspecciona métodos para asegurar que son idénticos
+2. Verifica que las firmas son las mismas
+3. Crea nuevo método en superclase
+4. Copia cuerpo de una subclase
+5. Elimina un método de subclase, testea
+6. Elimina otros métodos de subclase, testea cada uno
 
 ---
 
 ### Push Down Method
 
-**When to use**: Behavior relevant only to a subset of subclasses
+**Cuándo usar**: Comportamiento relevante solo para un subconjunto de subclases
 
-**Motivation**: Put method where it's used.
+**Motivación**: Pon el método donde se usa.
 
-**Mechanics**:
-1. Copy method to each subclass that needs it
-2. Remove method from superclass
-3. Test
-4. Remove from subclasses that don't need it
-5. Test
+**Mecánicas**:
+1. Copia método a cada subclase que lo necesita
+2. Elimina método de la superclase
+3. Testea
+4. Elimina de subclases que no lo necesitan
+5. Testea
 
 ---
 
 ### Replace Subclass with Delegate
 
-**When to use**: Inheritance is being used incorrectly, need more flexibility
+**Cuándo usar**: Herencia está siendo usada incorrectamente, necesitas más flexibilidad
 
-**Motivation**: Prefer composition over inheritance when appropriate.
+**Motivación**: Prefiere composición sobre herencia cuando sea apropiado.
 
-**Mechanics**:
-1. Create empty class for delegate
-2. Add field to host class holding delegate
-3. Create constructor for delegate, called from host
-4. Move features to delegate
-5. Test after each move
-6. Replace inheritance with delegation
+**Mecánicas**:
+1. Crea clase vacía para delegate
+2. Añade campo en clase host manteniendo delegate
+3. Crea constructor para delegate, llamado desde host
+4. Mueve características a delegate
+5. Testea después de cada movimiento
+6. Reemplaza herencia con delegación
 
 ---
 
 ## Extract Class
 
-**When to use**: Large class with multiple responsibilities
+**Cuándo usar**: Clase grande con múltiples responsabilidades
 
-**Motivation**: Split class to maintain single responsibility.
+**Motivación**: Divide clase para mantener responsabilidad única.
 
-**Mechanics**:
-1. Decide how to split responsibilities
-2. Create new class
-3. Move field from original to new class
-4. Test
-5. Move methods from original to new class
-6. Test after each move
-7. Review and rename both classes
-8. Decide how to expose new class
+**Mecánicas**:
+1. Decide cómo dividir responsabilidades
+2. Crea nueva clase
+3. Mueve campo de original a nueva clase
+4. Testea
+5. Mueve métodos de original a nueva clase
+6. Testea después de cada movimiento
+7. Revisa y renombra ambas clases
+8. Decide cómo exponer nueva clase
 
-**Before**:
+**Antes**:
 ```javascript
 class Person {
   get name() { return this._name; }
@@ -971,7 +971,7 @@ class Person {
 }
 ```
 
-**After**:
+**Después**:
 ```javascript
 class Person {
   constructor() {
@@ -995,9 +995,9 @@ class TelephoneNumber {
 
 ---
 
-## Quick Reference: Smell to Refactoring
+## Referencia Rápida: Smell a Refactoring
 
-| Code Smell | Primary Refactoring | Alternative |
+| Code Smell | Refactoring Primario | Alternativo |
 |------------|-------------------|-------------|
 | Long Method | Extract Method | Replace Temp with Query |
 | Duplicate Code | Extract Method | Pull Up Method |
@@ -1017,7 +1017,7 @@ class TelephoneNumber {
 
 ---
 
-## Further Reading
+## Lectura Adicional
 
-- Fowler, M. (2018). *Refactoring: Improving the Design of Existing Code* (2nd ed.)
-- Online catalog: https://refactoring.com/catalog/
+- Fowler, M. (2018). *Refactoring: Improving the Design of Existing Code* (2da ed.)
+- Catálogo online: https://refactoring.com/catalog/

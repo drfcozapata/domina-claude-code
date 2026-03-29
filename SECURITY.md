@@ -1,334 +1,334 @@
-# Security Policy
+# Política de Seguridad
 
-## Overview
+## Resumen
 
-The security of the Claude How To project is important to us. This document outlines our security practices and describes how to report security vulnerabilities responsibly.
+La seguridad del proyecto Claude How To es importante para nosotros. Este documento describe nuestras prácticas de seguridad y explica cómo reportar vulnerabilidades de seguridad de manera responsable.
 
-## Supported Versions
+## Versiones Soportadas
 
-We provide security updates for the following versions:
+Proporcionamos actualizaciones de seguridad para las siguientes versiones:
 
-| Version | Status | Support Until |
+| Versión | Estado | Soporte Hasta |
 |---------|--------|---------------|
-| Latest (main) | ✅ Active | Current + 6 months |
-| 1.x releases | ✅ Active | Until next major version |
+| Latest (main) | ✅ Activa | Actual + 6 meses |
+| Versiones 1.x | ✅ Activa | Hasta la próxima versión mayor |
 
-**Note**: As an educational guide project, we focus on maintaining current best practices and documentation security rather than traditional version support. Updates are applied directly to the main branch.
+**Nota**: Como proyecto de guía educativa, nos enfocamos en mantener las mejores prácticas actuales y la seguridad de la documentación en lugar del soporte tradicional de versiones. Las actualizaciones se aplican directamente a la rama main.
 
-## Security Practices
+## Prácticas de Seguridad
 
-### Code Security
+### Seguridad del Código
 
-1. **Dependency Management**
-   - All Python dependencies are pinned in `requirements.txt`
-   - Regular updates via dependabot and manual review
-   - Security scanning with Bandit on every commit
-   - Pre-commit hooks for security checks
+1. **Gestión de Dependencias**
+   - Todas las dependencias de Python están fijadas en `requirements.txt`
+   - Actualizaciones regulares vía dependabot y revisión manual
+   - Escaneo de seguridad con Bandit en cada commit
+   - Hooks de pre-commit para verificaciones de seguridad
 
-2. **Code Quality**
-   - Linting with Ruff catches common issues
-   - Type checking with mypy prevents type-related vulnerabilities
-   - Pre-commit hooks enforce standards
-   - All changes reviewed before merging
+2. **Calidad del Código**
+   - Linting con Ruff detecta problemas comunes
+   - Type checking con mypy previene vulnerabilidades relacionadas con tipos
+   - Hooks de pre-commit aplican estándares
+   - Todos los cambios son revisados antes de merge
 
-3. **Access Control**
-   - Branch protection on `main` branch
-   - Required reviews before merge
-   - Status checks must pass before merge
-   - Limited write access to repository
+3. **Control de Acceso**
+   - Branch protection en la rama `main`
+   - Reviews requeridas antes de merge
+   - Status checks deben pasar antes de merge
+   - Acceso de escritura limitado al repositorio
 
-### Documentation Security
+### Seguridad de la Documentación
 
-1. **No Secrets in Examples**
-   - All API keys in examples are placeholders
-   - Credentials are never hardcoded
-   - `.env.example` files show required variables
-   - Clear warnings about secret management
+1. **Sin Secrets en Ejemplos**
+   - Todas las API keys en ejemplos son placeholders
+   - Las credenciales nunca están hardcodeadas
+   - Los archivos `.env.example` muestran las variables requeridas
+   - Advertencias claras sobre gestión de secrets
 
-2. **Security Best Practices**
-   - Examples demonstrate secure patterns
-   - Security warnings highlighted in documentation
-   - Links to official security guides
-   - Credential handling discussed in relevant sections
+2. **Mejores Prácticas de Seguridad**
+   - Los ejemplos demuestran patrones seguros
+   - Advertencias de seguridad destacadas en la documentación
+   - Enlaces a guías oficiales de seguridad
+   - Manejo de credenciales discutido en secciones relevantes
 
-3. **Content Review**
-   - All documentation reviewed for security issues
-   - Security considerations in contributing guidelines
-   - Validation of external links and references
+3. **Revisión de Contenido**
+   - Toda la documentación es revisada por problemas de seguridad
+   - Consideraciones de seguridad en las guías de contribución
+   - Validación de enlaces externos y referencias
 
-### Dependency Security
+### Seguridad de Dependencias
 
-1. **Scanning**
-   - Bandit scans all Python code for vulnerabilities
-   - Dependency vulnerability checks via GitHub security alerts
-   - Regular manual security audits
+1. **Escaneo**
+   - Bandit escanea todo el código Python en busca de vulnerabilidades
+   - Verificaciones de vulnerabilidades de dependencias vía GitHub security alerts
+   - Auditorías de seguridad manuales regulares
 
-2. **Updates**
-   - Security patches applied promptly
-   - Major versions evaluated carefully
-   - Changelog includes security-related updates
+2. **Actualizaciones**
+   - Parches de seguridad aplicados rápidamente
+   - Versiones mayores evaluadas cuidadosamente
+   - Changelog incluye actualizaciones relacionadas con seguridad
 
-3. **Transparency**
-   - Security updates documented in commits
-   - Vulnerability disclosures handled responsibly
-   - Public security advisories when appropriate
+3. **Transparencia**
+   - Actualizaciones de seguridad documentadas en commits
+   - Divulgaciones de vulnerabilidades manejadas responsablemente
+   - Security advisories públicos cuando es apropiado
 
-## Reporting a Vulnerability
+## Reportar una Vulnerabilidad
 
-### Security Issues We Care About
+### Problemas de Seguridad que Nos Importan
 
-We appreciate reports on:
-- **Code vulnerabilities** in scripts or examples
-- **Dependency vulnerabilities** in Python packages
-- **Cryptography issues** in any code examples
-- **Authentication/Authorization flaws** in documentation
-- **Data exposure risks** in configuration examples
-- **Injection vulnerabilities** (SQL, command, etc.)
-- **SSRF/XXE/Path traversal** issues
+Apreciamos los reportes sobre:
+- **Vulnerabilidades de código** en scripts o ejemplos
+- **Vulnerabilidades de dependencias** en paquetes de Python
+- **Problemas de criptografía** en cualquier ejemplo de código
+- **Fallas de autenticación/autorización** en documentación
+- **Riesgos de exposición de datos** en ejemplos de configuración
+- **Vulnerabilidades de inyección** (SQL, command, etc.)
+- **Problemas de SSRF/XXE/Path traversal**
 
-### Security Issues Out of Scope
+### Problemas de Seguridad Fuera de Alcance
 
-These are outside the scope of this project:
-- Vulnerabilities in Claude Code itself (report to Anthropic)
-- Issues with external services or libraries (report to upstream)
-- Social engineering or user education (not applicable to this guide)
-- Theoretical vulnerabilities without proof of concept
-- Vulnerabilities in dependencies reported through official channels
+Estos están fuera del alcance de este proyecto:
+- Vulnerabilidades en Claude Code mismo (reportar a Anthropic)
+- Problemas con servicios o librerías externas (reportar al upstream)
+- Ingeniería social o educación del usuario (no aplicable a esta guía)
+- Vulnerabilidades teóricas sin proof of concept
+- Vulnerabilidades en dependencias reportadas a través de canales oficiales
 
-## How to Report
+## Cómo Reportar
 
-### Private Reporting (Preferred)
+### Reporte Privado (Preferido)
 
-**For sensitive security issues, please use GitHub's private vulnerability reporting:**
+**Para problemas de seguridad sensibles, por favor use el reporte privado de vulnerabilidades de GitHub:**
 
-1. Visit: https://github.com/luongnv89/claude-howto/security/advisories
-2. Click "Report a vulnerability"
-3. Fill in the vulnerability details
-4. Include:
-   - Clear description of the vulnerability
-   - Affected component (file, section, example)
-   - Potential impact
-   - Steps to reproduce (if applicable)
-   - Suggested fix (if you have one)
+1. Visite: https://github.com/luongnv89/claude-howto/security/advisories
+2. Haga clic en "Report a vulnerability"
+3. Complete los detalles de la vulnerabilidad
+4. Incluya:
+   - Descripción clara de la vulnerabilidad
+   - Componente afectado (archivo, sección, ejemplo)
+   - Impacto potencial
+   - Pasos para reproducir (si aplica)
+   - Sugerencia de fix (si tiene una)
 
-**What happens next:**
-- We'll acknowledge receipt within 48 hours
-- We'll investigate and assess severity
-- We'll work with you to develop a fix
-- We'll coordinate disclosure timeline
-- We'll credit you in the security advisory (unless you prefer anonymity)
+**Qué sucede después:**
+- Reconoceremos la recepción dentro de 48 horas
+- Investigaremos y evaluaremos la severidad
+- Trabajaremos con usted para desarrollar un fix
+- Coordinaremos el timeline de divulgación
+- Le daremos crédito en el security advisory (a menos que prefiera anonimato)
 
-### Public Reporting
+### Reporte Público
 
-For non-sensitive issues or those already public:
+Para problemas no sensibles o aquellos que ya son públicos:
 
-1. **Open a GitHub Issue** with label `security`
-2. Include:
-   - Title: `[SECURITY]` followed by brief description
-   - Detailed description
-   - Affected file or section
-   - Potential impact
-   - Suggested fix
+1. **Abra un GitHub Issue** con la etiqueta `security`
+2. Incluya:
+   - Título: `[SECURITY]` seguido de una descripción breve
+   - Descripción detallada
+   - Archivo o sección afectada
+   - Impacto potencial
+   - Sugerencia de fix
 
-## Vulnerability Response Process
+## Proceso de Respuesta a Vulnerabilidades
 
-### Assessment (24 hours)
+### Evaluación (24 horas)
 
-1. We acknowledge receipt of the report
-2. We assess severity using [CVSS v3.1](https://www.first.org/cvss/v3.1/specification-document)
-3. We determine if it's in scope
-4. We contact you with initial assessment
+1. Reconocemos la recepción del reporte
+2. Evaluamos la severidad usando [CVSS v3.1](https://www.first.org/cvss/v3.1/specification-document)
+3. Determinamos si está dentro del alcance
+4. Lo contactamos con la evaluación inicial
 
-### Development (1-7 days)
+### Desarrollo (1-7 días)
 
-1. We develop a fix
-2. We review and test the fix
-3. We create a security advisory
-4. We prepare release notes
+1. Desarrollamos un fix
+2. Revisamos y testeamos el fix
+3. Creamos un security advisory
+4. Preparamos las release notes
 
-### Disclosure (varies by severity)
+### Divulgación (varía según severidad)
 
-**Critical (CVSS 9.0-10.0)**
-- Fix released immediately
-- Public advisory issued
-- 24-hour advance notice to reporters
+**Crítica (CVSS 9.0-10.0)**
+- Fix liberado inmediatamente
+- Advisory público emitido
+- Aviso anticipado de 24 horas a los reporteros
 
-**High (CVSS 7.0-8.9)**
-- Fix released within 48-72 hours
-- 5-day advance notice to reporters
-- Public advisory on release
+**Alta (CVSS 7.0-8.9)**
+- Fix liberado dentro de 48-72 horas
+- Aviso anticipado de 5 días a los reporteros
+- Advisory público en el release
 
-**Medium (CVSS 4.0-6.9)**
-- Fix released in next regular update
-- Public advisory on release
+**Media (CVSS 4.0-6.9)**
+- Fix liberado en la próxima actualización regular
+- Advisory público en el release
 
-**Low (CVSS 0.1-3.9)**
-- Fix included in next regular update
-- Advisory on release
+**Baja (CVSS 0.1-3.9)**
+- Fix incluido en la próxima actualización regular
+- Advisory en el release
 
-### Publication
+### Publicación
 
-We publish security advisories that include:
-- Description of the vulnerability
-- Affected components
-- Severity assessment (CVSS score)
-- Fix version
-- Workarounds (if applicable)
-- Credit to reporter (with permission)
+Publicamos security advisories que incluyen:
+- Descripción de la vulnerabilidad
+- Componentes afectados
+- Evaluación de severidad (CVSS score)
+- Versión del fix
+- Workarounds (si aplica)
+- Crédito al reportero (con permiso)
 
-## Best Practices for Reporters
+## Mejores Prácticas para Reporteros
 
-### Before Reporting
+### Antes de Reportar
 
-- **Verify the issue**: Can you reproduce it consistently?
-- **Search existing issues**: Is it already reported?
-- **Check documentation**: Is there guidance on secure usage?
-- **Test the fix**: Does your suggested fix work?
+- **Verifique el problema**: ¿Puede reproducirlo consistentemente?
+- **Busque issues existentes**: ¿Ya está reportado?
+- **Revise la documentación**: ¿Hay guía sobre uso seguro?
+- **Testee el fix**: ¿Su sugerencia de fix funciona?
 
-### When Reporting
+### Al Reportar
 
-- **Be specific**: Provide exact file paths and line numbers
-- **Include context**: Why is this a security issue?
-- **Show impact**: What could an attacker do?
-- **Provide steps**: How can we reproduce it?
-- **Suggest fixes**: How would you fix it?
+- **Sea específico**: Proporcione rutas de archivo exactas y números de línea
+- **Incluya contexto**: ¿Por qué esto es un problema de seguridad?
+- **Muestre impacto**: ¿Qué podría hacer un atacante?
+- **Proporcione pasos**: ¿Cómo podemos reproducirlo?
+- **Sugiera fixes**: ¿Cómo lo fixaría usted?
 
-### After Reporting
+### Después de Reportar
 
-- **Be patient**: We have limited resources
-- **Be responsive**: Answer follow-up questions quickly
-- **Keep it confidential**: Don't publicly disclose before fix
-- **Respect coordination**: Follow our timeline for disclosure
+- **Sea paciente**: Tenemos recursos limitados
+- **Sea responsivo**: Responda preguntas de seguimiento rápidamente
+- **Manténgalo confidencial**: No divulgue públicamente antes del fix
+- **Respete la coordinación**: Siga nuestro timeline para divulgación
 
-## Security Headers and Configuration
+## Security Headers y Configuración
 
-### Repository Security
+### Seguridad del Repositorio
 
-- **Branch protection**: Main branch requires 2 approvals for changes
-- **Status checks**: All CI/CD checks must pass
-- **CODEOWNERS**: Designated reviewers for key files
-- **Signed commits**: Recommended for contributors
+- **Branch protection**: La rama main requiere 2 approvals para cambios
+- **Status checks**: Todos los checks de CI/CD deben pasar
+- **CODEOWNERS**: Reviewers designados para archivos clave
+- **Signed commits**: Recomendado para contribuidores
 
-### Development Security
+### Seguridad de Desarrollo
 
 ```bash
-# Install pre-commit hooks
+# Instalar hooks de pre-commit
 pre-commit install
 
-# Run security scans locally
+# Ejecutar security scans localmente
 bandit -c pyproject.toml -r scripts/
 mypy scripts/ --ignore-missing-imports
 ruff check scripts/
 ```
 
-### Dependency Security
+### Seguridad de Dependencias
 
 ```bash
-# Check for known vulnerabilities
+# Verificar vulnerabilidades conocidas
 pip install safety
 safety check
 
-# Or use pip-audit
+# O usar pip-audit
 pip install pip-audit
 pip-audit
 ```
 
-## Security Guidelines for Contributors
+## Guías de Seguridad para Contribuidores
 
-### When Writing Examples
+### Al Escribir Ejemplos
 
-1. **Never hardcode secrets**
+1. **Nunca hardcodee secrets**
    ```python
-   # ❌ Bad
+   # ❌ Mal
    api_key = "sk-1234567890"
 
-   # ✅ Good
+   # ✅ Bien
    api_key = os.getenv("API_KEY")
    ```
 
-2. **Warn about security implications**
+2. **Advierta sobre implicaciones de seguridad**
    ```markdown
-   ⚠️ **Security Note**: Never commit `.env` files to git.
-   Add to `.gitignore` immediately.
+   ⚠️ **Nota de Seguridad**: Nunca haga commit de archivos `.env` a git.
+   Agréguelos a `.gitignore` inmediatamente.
    ```
 
-3. **Use secure defaults**
-   - Enable authentication by default
-   - Use HTTPS where applicable
-   - Validate and sanitize inputs
-   - Use parameterized queries
+3. **Use defaults seguros**
+   - Habilitar autenticación por defecto
+   - Usar HTTPS donde aplique
+   - Validar y sanitizar inputs
+   - Usar parameterized queries
 
-4. **Document security considerations**
-   - Explain why security matters
-   - Show secure vs. insecure patterns
-   - Link to authoritative sources
-   - Include warnings prominently
+4. **Documente consideraciones de seguridad**
+   - Explique por qué la seguridad importa
+   - Muestre patrones seguros vs. inseguros
+   - Enlace a fuentes autoritativas
+   - Incluya advertencias prominentemente
 
-### When Reviewing Contributions
+### Al Revisar Contribuciones
 
-1. **Check for exposed secrets**
-   - Scan for common patterns (api_key=, password=)
-   - Review configuration files
-   - Check environment variables
+1. **Verifique secrets expuestos**
+   - Escanee patrones comunes (api_key=, password=)
+   - Revise archivos de configuración
+   - Verifique variables de entorno
 
-2. **Verify secure coding practices**
-   - No hardcoded credentials
-   - Proper input validation
-   - Secure authentication/authorization
-   - Safe file handling
+2. **Verifique prácticas de coding seguro**
+   - Sin credenciales hardcodeadas
+   - Validación apropiada de inputs
+   - Autenticación/autorización segura
+   - Manejo seguro de archivos
 
-3. **Test security implications**
-   - Can this be misused?
-   - What's the worst case?
-   - Are there edge cases?
+3. **Testee implicaciones de seguridad**
+   - ¿Esto puede ser mal utilizado?
+   - ¿Cuál es el peor caso?
+   - ¿Hay edge cases?
 
-## Security Resources
+## Recursos de Seguridad
 
-### Official Standards
+### Estándares Oficiales
 - [OWASP Top 10](https://owasp.org/www-project-top-ten/)
 - [CWE Top 25](https://cwe.mitre.org/top25/)
 - [CVSS Calculator](https://www.first.org/cvss/calculator/3.1)
 
-### Python Security
+### Seguridad de Python
 - [Python Security Advisories](https://www.python.org/dev/security/)
 - [PyPI Security](https://pypi.org/help/#security)
 - [Bandit Documentation](https://bandit.readthedocs.io/)
 
-### Dependency Management
+### Gestión de Dependencias
 - [OWASP Dependency Check](https://owasp.org/www-project-dependency-check/)
 - [GitHub Security Alerts](https://docs.github.com/en/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)
 
-### General Security
+### Seguridad General
 - [Anthropic Security](https://www.anthropic.com/)
 - [GitHub Security Best Practices](https://docs.github.com/en/code-security)
 
-## Security Advisories Archive
+## Archivo de Security Advisories
 
-Past security advisories are available in the [GitHub Security Advisories](https://github.com/luongnv89/claude-howto/security/advisories) tab.
+Los security advisories pasados están disponibles en la pestaña [GitHub Security Advisories](https://github.com/luongnv89/claude-howto/security/advisories).
 
-## Contact
+## Contacto
 
-For security-related questions or to discuss security practices:
+Para preguntas relacionadas con seguridad o para discutir prácticas de seguridad:
 
-1. **Private Security Report**: Use GitHub's private vulnerability reporting
-2. **General Security Questions**: Open a discussion with `[SECURITY]` tag
-3. **Security Policy Feedback**: Create an issue with `security` label
+1. **Reporte de Seguridad Privado**: Use el reporte privado de vulnerabilidades de GitHub
+2. **Preguntas Generales de Seguridad**: Abra una discusión con la etiqueta `[SECURITY]`
+3. **Feedback de Política de Seguridad**: Cree un issue con la etiqueta `security`
 
-## Acknowledgments
+## Agradecimientos
 
-We appreciate the security researchers and community members who help keep this project secure. Contributors who report vulnerabilities responsibly will be acknowledged in our security advisories (unless they prefer anonymity).
+Apreciamos a los investigadores de seguridad y miembros de la comunidad que ayudan a mantener este proyecto seguro. Los contribuidores que reportan vulnerabilidades responsablemente serán reconocidos en nuestros security advisories (a menos que prefieran anonimato).
 
-## Policy Updates
+## Actualizaciones de la Política
 
-This security policy is reviewed and updated:
-- When new vulnerabilities are discovered
-- When security best practices evolve
-- When the project scope changes
-- Annually as a minimum
+Esta política de seguridad es revisada y actualizada:
+- Cuando se descubren nuevas vulnerabilidades
+- Cuando las mejores prácticas de seguridad evolucionan
+- Cuando el alcance del proyecto cambia
+- Anualmente como mínimo
 
-**Last Updated**: January 2026
-**Next Review**: January 2027
+**Última Actualización**: Enero 2026
+**Próxima Revisión**: Enero 2027
 
 ---
 
-Thank you for helping keep Claude How To secure! 🔒
+¡Gracias por ayudar a mantener Claude How To seguro! 🔒

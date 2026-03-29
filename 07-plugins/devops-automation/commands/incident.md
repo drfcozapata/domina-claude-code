@@ -1,16 +1,16 @@
 ---
 name: Incident Response
-description: Handle production incidents with structured response
+description: Manejar incidentes de producción con respuesta estructurada
 ---
 
-# Incident Response
+# Respuesta a Incidentes
 
-Structured incident response workflow:
+Flujo de trabajo de respuesta a incidentes estructurado:
 
-1. Create incident record
-2. Assess severity and impact
-3. Notify on-call team
-4. Gather diagnostic information
-5. Coordinate response efforts
-6. Document resolution
-7. Schedule post-mortem
+1. Crear registro de incidente
+2. Evaluar severidad e impacto
+3. Notificar al equipo on-call
+4. Recopilar información de diagnóstico
+5. Coordinar esfuerzos de respuesta
+6. Documentar resolución
+7. Programar post-mortem

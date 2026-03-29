@@ -1,16 +1,16 @@
-# Quick Start - Brand Assets
+# Inicio Rápido - Activos de Marca
 
-## Copy Assets to Your Project
+## Copiar Activos a Tu Proyecto
 
 ```bash
-# Copy all resources to your web project
+# Copiar todos los recursos a tu proyecto web
 cp -r resources/ /path/to/your/website/
 
-# Or just the favicons for web
+# O solo los favicons para web
 cp resources/favicons/* /path/to/your/website/public/
 ```
 
-## Add to HTML (Copy & Paste)
+## Agregar a HTML (Copiar y Pegar)
 
 ```html
 <!-- Favicons -->
@@ -21,31 +21,31 @@ cp resources/favicons/* /path/to/your/website/public/
 <meta name="theme-color" content="#000000">
 ```
 
-## Use in Markdown/Documentation
+## Usar en Markdown/Documentación
 
 ```markdown
 # Claude How To
 
-![Claude How To Logo](resources/logos/claude-howto-logo.svg)
+![Logotipo de Claude How To](resources/logos/claude-howto-logo.svg)
 
-![Icon](resources/icons/claude-howto-icon.svg)
+![Icono](resources/icons/claude-howto-icon.svg)
 ```
 
-## Recommended Sizes
+## Tamaños Recomendados
 
-| Purpose | Size | File |
+| Propósito | Tamaño | Archivo |
 |---------|------|------|
-| Website header | 520×120 | `logos/claude-howto-logo.svg` |
-| App icon | 256×256 | `icons/claude-howto-icon.svg` |
-| Browser tab | 32×32 | `favicons/favicon-32.svg` |
-| Mobile home screen | 128×128 | `favicons/favicon-128.svg` |
-| Desktop app | 256×256 | `favicons/favicon-256.svg` |
-| Small avatar | 64×64 | `favicons/favicon-64.svg` |
+| Encabezado de sitio web | 520×120 | `logos/claude-howto-logo.svg` |
+| Icono de app | 256×256 | `icons/claude-howto-icon.svg` |
+| Pestaña de navegador | 32×32 | `favicons/favicon-32.svg` |
+| Pantalla de inicio móvil | 128×128 | `favicons/favicon-128.svg` |
+| App de escritorio | 256×256 | `favicons/favicon-256.svg` |
+| Avatar pequeño | 64×64 | `favicons/favicon-64.svg` |
 
-## Color Values
+## Valores de Color
 
 ```css
-/* Use these in your CSS */
+/* Usar estos en tu CSS */
 --color-primary: #000000;
 --color-secondary: #6B7280;
 --color-accent: #22C55E;
@@ -53,37 +53,37 @@ cp resources/favicons/* /path/to/your/website/public/
 --color-bg-dark: #0A0A0A;
 ```
 
-## Icon Design Meaning
+## Significado del Diseño del Icono
 
-**Compass with Code Bracket**:
-- Compass ring = Navigation, structured learning path
-- Green north needle = Direction, progress, guidance
-- Black south needle = Grounding, solid foundation
-- `>` bracket = Terminal prompt, code, CLI context
-- Tick marks = Precision, structured steps
+**Brújula con Corchete de Código**:
+- Anillo de brújula = Navegación, ruta de aprendizaje estructurada
+- Aguja norte verde = Dirección, progreso, guía
+- Aguja sur negra = Fundamento, base sólida
+- Corchete `>` = Prompt de terminal, código, contexto CLI
+- Marcas de tick = Precisión, pasos estructurados
 
-This symbolizes "finding your way through code with clear guidance."
+Esto simboliza "encontrar tu camino a través del código con guía clara."
 
-## What to Use Where
+## Qué Usar y Dónde
 
-### Website
-- **Header**: Logo (`logos/claude-howto-logo.svg`)
+### Sitio Web
+- **Encabezado**: Logotipo (`logos/claude-howto-logo.svg`)
 - **Favicon**: 32px (`favicons/favicon-32.svg`)
-- **Social preview**: Icon (`icons/claude-howto-icon.svg`)
+- **Vista previa social**: Icono (`icons/claude-howto-icon.svg`)
 
 ### GitHub
-- **README badge**: Icon (`icons/claude-howto-icon.svg`) at 64-128px
-- **Repository avatar**: Icon (`icons/claude-howto-icon.svg`)
+- **Badge de README**: Icono (`icons/claude-howto-icon.svg`) a 64-128px
+- **Avatar de repositorio**: Icono (`icons/claude-howto-icon.svg`)
 
-### Social Media
-- **Profile picture**: Icon (`icons/claude-howto-icon.svg`)
-- **Banner**: Logo (`logos/claude-howto-logo.svg`)
-- **Thumbnail**: Icon at 256×256px
+### Redes Sociales
+- **Imagen de perfil**: Icono (`icons/claude-howto-icon.svg`)
+- **Banner**: Logotipo (`logos/claude-howto-logo.svg`)
+- **Miniatura**: Icono a 256×256px
 
-### Documentation
-- **Chapter headers**: Logo or icon (scaled to fit)
-- **Navigation icons**: Favicon (32-64px)
+### Documentación
+- **Encabezados de capítulo**: Logotipo o icono (escalado para ajustar)
+- **Iconos de navegación**: Favicon (32-64px)
 
 ---
 
-See [README.md](README.md) for complete documentation.
+Ver [README.md](README.md) para documentación completa.

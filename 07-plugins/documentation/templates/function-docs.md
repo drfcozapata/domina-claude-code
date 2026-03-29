@@ -1,38 +1,38 @@
-# Function: `functionName`
+# Función: `functionName`
 
-## Description
-Brief description of what the function does.
+## Descripción
+Breve descripción de lo que hace la función.
 
-## Signature
+## Firma
 ```typescript
 function functionName(param1: Type1, param2: Type2): ReturnType
 ```
 
-## Parameters
+## Parámetros
 
-| Parameter | Type | Required | Description |
+| Parámetro | Tipo | Requerido | Descripción |
 |-----------|------|----------|-------------|
-| param1 | Type1 | Yes | Description of param1 |
-| param2 | Type2 | No | Description of param2 |
+| param1 | Type1 | Sí | Descripción de param1 |
+| param2 | Type2 | No | Descripción de param2 |
 
-## Returns
-**Type**: `ReturnType`
+## Retorna
+**Tipo**: `ReturnType`
 
-Description of what is returned.
+Descripción de lo que se retorna.
 
-## Throws
-- `Error`: When invalid input is provided
-- `TypeError`: When wrong type is passed
+## Lanza
+- `Error`: Cuando se proporciona entrada inválida
+- `TypeError`: Cuando se pasa tipo incorrecto
 
-## Examples
+## Ejemplos
 
-### Basic Usage
+### Uso Básico
 ```typescript
 const result = functionName('value1', 'value2');
 console.log(result);
 ```
 
-### Advanced Usage
+### Uso Avanzado
 ```typescript
 const result = functionName(
   complexParam1,
@@ -40,11 +40,11 @@ const result = functionName(
 );
 ```
 
-## Notes
-- Additional notes or warnings
-- Performance considerations
-- Best practices
+## Notas
+- Notas adicionales o advertencias
+- Consideraciones de rendimiento
+- Mejores prácticas
 
-## See Also
-- [Related Function](#)
-- [API Documentation](#)
+## Ver También
+- [Función Relacionada](#)
+- [Documentación de API](#)

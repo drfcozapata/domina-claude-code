@@ -1,13 +1,13 @@
-# Brand Voice Tone Examples
+# Ejemplos de Tono de Brand Voice
 
-## Exciting Announcement
-"Save 8 hours per week on code reviews. Claude reviews your PRs automatically."
+## Anuncio Emocionante
+"Ahorra 8 horas por semana en code reviews. Claude revisa tus PRs automáticamente."
 
-## Empathetic Support
-"We know deployments can be stressful. Claude handles testing so you don't have to worry."
+## Soporte Empático
+"Sabemos que los deployments pueden ser estresantes. Claude maneja el testing para que no tengas que preocuparte."
 
-## Confident Product Feature
-"Claude doesn't just suggest code. It understands your architecture and maintains consistency."
+## Característica de Producto Confidente
+"Claude no solo sugiere código. Entiende tu arquitectura y mantiene consistencia."
 
-## Educational Blog Post
-"Let's explore how agents improve code review workflows. Here's what we learned..."
+## Post Educativo de Blog
+"Exploremos cómo los agentes mejoran los flujos de trabajo de code review. Esto es lo que aprendimos..."

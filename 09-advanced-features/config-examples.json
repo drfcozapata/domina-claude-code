@@ -1,10 +1,10 @@
 {
-  "description": "Example Claude Code configurations for different use cases",
+  "description": "Ejemplos de configuración de Claude Code para diferentes casos de uso",
 
   "examples": {
     "development": {
-      "name": "Development Environment",
-      "description": "Configuration for active development work",
+      "name": "Entorno de Desarrollo",
+      "description": "Configuración para trabajo activo de desarrollo",
       "config": {
         "general": {
           "model": "claude-sonnet-4-5",
@@ -31,8 +31,8 @@
     },
 
     "code_review": {
-      "name": "Code Review Mode",
-      "description": "Configuration for reviewing code without modifications",
+      "name": "Modo de Revisión de Código",
+      "description": "Configuración para revisar código sin modificaciones",
       "config": {
         "general": {
           "model": "claude-sonnet-4-5",
@@ -52,8 +52,8 @@
     },
 
     "learning": {
-      "name": "Learning Mode",
-      "description": "Configuration for learning and experimentation",
+      "name": "Modo de Aprendizaje",
+      "description": "Configuración para aprendizaje y experimentación",
       "config": {
         "general": {
           "model": "claude-sonnet-4-5",
@@ -78,8 +78,8 @@
     },
 
     "production": {
-      "name": "Production Deployment",
-      "description": "Configuration for production operations with safety checks",
+      "name": "Despliegue en Producción",
+      "description": "Configuración para operaciones en producción con verificaciones de seguridad",
       "config": {
         "general": {
           "model": "claude-opus-4",
@@ -105,8 +105,8 @@
     },
 
     "ci_cd": {
-      "name": "CI/CD Pipeline",
-      "description": "Configuration for automated CI/CD operations",
+      "name": "Pipeline CI/CD",
+      "description": "Configuración para operaciones automatizadas de CI/CD",
       "config": {
         "general": {
           "model": "claude-sonnet-4-5",
@@ -132,8 +132,8 @@
     },
 
     "security_audit": {
-      "name": "Security Audit",
-      "description": "Configuration for security-focused code analysis",
+      "name": "Auditoría de Seguridad",
+      "description": "Configuración para análisis de código enfocado en seguridad",
       "config": {
         "general": {
           "model": "claude-opus-4",
@@ -154,8 +154,8 @@
     },
 
     "performance_optimization": {
-      "name": "Performance Optimization",
-      "description": "Configuration for performance analysis and optimization",
+      "name": "Optimización de Rendimiento",
+      "description": "Configuración para análisis y optimización de rendimiento",
       "config": {
         "general": {
           "model": "claude-sonnet-4-5",
@@ -177,7 +177,7 @@
 
     "pair_programming": {
       "name": "Pair Programming",
-      "description": "Configuration for collaborative development",
+      "description": "Configuración para desarrollo colaborativo",
       "config": {
         "general": {
           "model": "claude-sonnet-4-5",
@@ -203,8 +203,8 @@
     },
 
     "refactoring": {
-      "name": "Large Refactoring",
-      "description": "Configuration for major refactoring work",
+      "name": "Refactorización Grande",
+      "description": "Configuración para trabajo importante de refactorización",
       "config": {
         "general": {
           "model": "claude-opus-4",
@@ -229,8 +229,8 @@
     },
 
     "autonomous": {
-      "name": "Autonomous Development",
-      "description": "Configuration for autonomous work with auto mode safety checks",
+      "name": "Desarrollo Autónomo",
+      "description": "Configuración para trabajo autónomo con verificaciones de seguridad de Auto Mode",
       "config": {
         "general": {
           "model": "claude-sonnet-4-6",
@@ -251,8 +251,8 @@
     },
 
     "documentation": {
-      "name": "Documentation Writing",
-      "description": "Configuration for writing documentation",
+      "name": "Escritura de Documentación",
+      "description": "Configuración para escribir documentación",
       "config": {
         "general": {
           "model": "claude-sonnet-4-5",

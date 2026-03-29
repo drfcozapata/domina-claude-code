@@ -1,15 +1,15 @@
-# Checkpoint Examples
+# Ejemplos de Checkpoint
 
-Real-world examples of using checkpoints effectively in Claude Code.
+Ejemplos del mundo real de uso efectivo de checkpoints en Claude Code.
 
-Note: Checkpoints are created automatically with every user prompt. You do not need to manually save them. To rewind, press `Esc` twice (`Esc+Esc`) or use `/rewind` to open the checkpoint browser.
+Nota: Los checkpoints se crean automáticamente con cada prompt del usuario. No necesitas guardarlos manualmente. Para retroceder, presiona `Esc` dos veces (`Esc+Esc`) o usa `/rewind` para abrir el navegador de checkpoints.
 
-## Example 1: Database Migration
+## Ejemplo 1: Migración de Base de Datos
 
-### Scenario
-You need to migrate from MySQL to PostgreSQL but want to explore both a direct migration and a gradual dual-write approach.
+### Escenario
+Necesitas migrar de MySQL a PostgreSQL pero quieres explorar tanto una migración directa como un enfoque gradual de doble escritura.
 
-### Workflow
+### Flujo de Trabajo
 
 ```
 User: Let's implement a direct migration from MySQL to PostgreSQL
@@ -40,12 +40,12 @@ Claude: Running tests...
 User: The dual-write approach is clearly safer. Let's commit this.
 ```
 
-## Example 2: Performance Optimization
+## Ejemplo 2: Optimización de Rendimiento
 
-### Scenario
-Multiple performance optimization strategies to try.
+### Escenario
+Múltiples estrategias de optimización de rendimiento para probar.
 
-### Workflow
+### Flujo de Trabajo
 
 ```
 User: Let's optimize the API response time. Current: 450ms
@@ -96,12 +96,12 @@ Claude: Results: 95ms average response time (79% improvement) 🎉
 User: Perfect! This is the winner. Let's commit this.
 ```
 
-## Example 3: UI/UX Iteration
+## Ejemplo 3: Iteración de UI/UX
 
-### Scenario
-Trying different layouts for a dashboard.
+### Escenario
+Probando diferentes diseños para un dashboard.
 
-### Workflow
+### Flujo de Trabajo
 
 ```
 User: Let's redesign the dashboard with a sidebar layout
@@ -145,12 +145,12 @@ Claude: [Adds top navigation to card grid]
 User: Perfect! This is the final design.
 ```
 
-## Example 4: Debugging Session
+## Ejemplo 4: Sesión de Depuración
 
-### Scenario
-Hunting down a tricky bug with multiple hypotheses.
+### Escenario
+Buscando un bug complicado con múltiples hipótesis.
 
-### Workflow
+### Flujo de Trabajo
 
 ```
 User: There's a memory leak in the application
@@ -192,12 +192,12 @@ Claude: ✅ Memory leak fixed! The circular references in the caching layer were
 User: Excellent! Let's commit this fix.
 ```
 
-## Example 5: API Design Evolution
+## Ejemplo 5: Evolución de Diseño de API
 
-### Scenario
-Designing a REST API with multiple iterations.
+### Escenario
+Diseñando una API REST con múltiples iteraciones.
 
-### Workflow
+### Flujo de Trabajo
 
 ```
 User: Create a REST API for our blog platform
@@ -226,12 +226,12 @@ User: I think REST is better for our use case.
 User: Let's finalize the REST approach.
 ```
 
-## Example 6: Configuration Management
+## Ejemplo 6: Gestión de Configuración
 
-### Scenario
-Testing different configuration approaches.
+### Escenario
+Probando diferentes enfoques de configuración.
 
-### Workflow
+### Flujo de Trabajo
 
 ```
 User: Move configuration to environment variables
@@ -265,12 +265,12 @@ Claude: ✅ All environments working correctly
 User: Perfect! This is production-ready.
 ```
 
-## Example 7: Test Strategy
+## Ejemplo 7: Estrategia de Pruebas
 
-### Scenario
-Implementing comprehensive testing.
+### Escenario
+Implementando pruebas integrales.
 
-### Workflow
+### Flujo de Trabajo
 
 ```
 User: Add unit tests for the auth module
@@ -309,12 +309,12 @@ Claude: 112 tests passing, 94% coverage, 2 minutes
 User: Perfect balance of coverage and speed!
 ```
 
-## Example 8: Using Summarize from Checkpoint
+## Ejemplo 8: Usando Summarize from Checkpoint
 
-### Scenario
-After a long debugging session, you want to condense the conversation while preserving context.
+### Escenario
+Después de una larga sesión de depuración, quieres condensar la conversación manteniendo el contexto.
 
-### Workflow
+### Flujo de Trabajo
 
 ```
 User: [After 20+ messages of debugging and exploration]
@@ -329,11 +329,11 @@ Claude: [Generates a summary of the conversation from that point forward]
 User: Now let's continue with the approach that worked.
 ```
 
-## Key Takeaways
+## Puntos Clave
 
-1. **Checkpoints are automatic**: Every user prompt creates a checkpoint -- no manual saving needed
-2. **Use Esc+Esc or /rewind**: These are the two ways to access the checkpoint browser
-3. **Choose the right restore option**: Restore code, conversation, both, or summarize depending on your needs
-4. **Don't fear experimentation**: Checkpoints make it safe to try radical changes
-5. **Combine with git**: Use checkpoints for exploration, git for finalized work
-6. **Summarize long sessions**: Use "Summarize from here" to keep conversations manageable
+1. **Los checkpoints son automáticos**: Cada prompt del usuario crea un checkpoint -- no se necesita guardado manual
+2. **Usa Esc+Esc o /rewind**: Estas son las dos formas de acceder al navegador de checkpoints
+3. **Elige la opción de restauración correcta**: Restore code, conversation, ambos, o summarize dependiendo de tus necesidades
+4. **No temas experimentar**: Los checkpoints hacen seguro probar cambios radicales
+5. **Combina con git**: Usa checkpoints para exploración, git para trabajo finalizado
+6. **Resume sesiones largas**: Usa "Summarize from here" para mantener las conversaciones manejables

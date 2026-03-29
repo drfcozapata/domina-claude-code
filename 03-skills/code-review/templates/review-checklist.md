@@ -1,47 +1,47 @@
-# Code Review Checklist
+# Checklist de Code Review
 
-## Security Checklist
-- [ ] No hardcoded credentials or secrets
-- [ ] Input validation on all user inputs
-- [ ] SQL injection prevention (parameterized queries)
-- [ ] CSRF protection on state-changing operations
-- [ ] XSS prevention with proper escaping
-- [ ] Authentication checks on protected endpoints
-- [ ] Authorization checks on resources
-- [ ] Secure password hashing (bcrypt, argon2)
-- [ ] No sensitive data in logs
-- [ ] HTTPS enforced
+## Checklist de Seguridad
+- [ ] Sin credenciales o secretos hardcodeados
+- [ ] Validación de input en todos los inputs de usuario
+- [ ] Prevención de inyección SQL (queries parametrizadas)
+- [ ] Protección CSRF en operaciones que cambian estado
+- [ ] Prevención de XSS con escaping apropiado
+- [ ] Checks de autenticación en endpoints protegidos
+- [ ] Checks de autorización en recursos
+- [ ] Hashing seguro de passwords (bcrypt, argon2)
+- [ ] Sin datos sensibles en logs
+- [ ] HTTPS forzado
 
-## Performance Checklist
-- [ ] No N+1 queries
-- [ ] Appropriate use of indexes
-- [ ] Caching implemented where beneficial
-- [ ] No blocking operations on main thread
-- [ ] Async/await used correctly
-- [ ] Large datasets paginated
-- [ ] Database connections pooled
-- [ ] Regular expressions optimized
-- [ ] No unnecessary object creation
-- [ ] Memory leaks prevented
+## Checklist de Rendimiento
+- [ ] Sin queries N+1
+- [ ] Uso apropiado de índices
+- [ ] Caching implementado donde sea beneficioso
+- [ ] Sin operaciones bloqueantes en el hilo principal
+- [ ] Async/await usado correctamente
+- [ ] Datasets grandes paginados
+- [ ] Conexiones de base de datos pooled
+- [ ] Expresiones regulares optimizadas
+- [ ] Sin creación de objetos innecesaria
+- [ ] Memory leaks prevenidos
 
-## Quality Checklist
-- [ ] Functions < 50 lines
-- [ ] Clear variable naming
-- [ ] No duplicate code
-- [ ] Proper error handling
-- [ ] Comments explain WHY, not WHAT
-- [ ] No console.logs in production
+## Checklist de Calidad
+- [ ] Funciones < 50 líneas
+- [ ] Nombres de variables claros
+- [ ] Sin código duplicado
+- [ ] Manejo de errores apropiado
+- [ ] Comentarios explican POR QUÉ, no QUÉ
+- [ ] Sin console.logs en producción
 - [ ] Type checking (TypeScript/JSDoc)
-- [ ] SOLID principles followed
-- [ ] Design patterns applied correctly
-- [ ] Self-documenting code
+- [ ] Principios SOLID seguidos
+- [ ] Patrones de diseño aplicados correctamente
+- [ ] Código auto-documentado
 
-## Testing Checklist
-- [ ] Unit tests written
-- [ ] Edge cases covered
-- [ ] Error scenarios tested
-- [ ] Integration tests present
-- [ ] Coverage > 80%
-- [ ] No flaky tests
-- [ ] Mock external dependencies
-- [ ] Clear test names
+## Checklist de Testing
+- [ ] Tests unitarios escritos
+- [ ] Casos edge cubiertos
+- [ ] Escenarios de error testeados
+- [ ] Tests de integración presentes
+- [ ] Cobertura > 80%
+- [ ] Sin tests flaky
+- [ ] Mock de dependencias externas
+- [ ] Nombres de tests claros

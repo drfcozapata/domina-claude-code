@@ -1,224 +1,224 @@
-# Claude How To - Design System
+# Claude How To - Sistema de Diseño
 
-## Visual Identity
+## Identidad Visual
 
-### Icon Design Concept: Compass with Code Bracket
+### Concepto de Diseño de Icono: Brújula con Corchete de Código
 
-The Claude How To icon uses a **compass with a `>` code bracket** to represent guided navigation through code:
+El icono de Claude How To usa una **brújula con un corchete de código `>`** para representar navegación guiada a través del código:
 
 ```
-     N (green)
+     N (verde)
      ▲
      │
-W ───>─── E     Compass = Guidance/Direction
-     │          > Bracket = Code/Terminal/CLI
+W ───>─── E     Brújula = Guía/Dirección
+     │          Corchete > = Código/Terminal/CLI
      ▼
-     S (black)
+     S (negro)
 ```
 
-This creates:
-- **Visual Clarity**: Immediately communicates "code navigation guide"
-- **Symbolic Meaning**: Compass = finding your way; `>` = code/terminal
-- **Scalability**: Works at any size from 16px to 512px
-- **Brand Alignment**: Matches the developer tool aesthetic with minimal palette
+Esto crea:
+- **Claridad Visual**: Comunica inmediatamente "guía de navegación de código"
+- **Significado Simbólico**: Brújula = encontrar tu camino; `>` = código/terminal
+- **Escalabilidad**: Funciona a cualquier tamaño desde 16px hasta 512px
+- **Alineación de Marca**: Coincide con la estética de herramientas de desarrollador con paleta mínima
 
 ---
 
-## Color System
+## Sistema de Color
 
-### Palette
+### Paleta
 
-| Color | Hex | RGB | Usage |
+| Color | Hex | RGB | Uso |
 |-------|-----|-----|-------|
-| Black (Primary) | `#000000` | 0, 0, 0 | Main strokes, text, south needle |
-| White (Background) | `#FFFFFF` | 255, 255, 255 | Light backgrounds |
-| Gray (Secondary) | `#6B7280` | 107, 114, 128 | Minor tick marks, secondary text |
-| Bright Green (Accent) | `#22C55E` | 34, 197, 94 | North needle, center dot, accent lines |
-| Near Black (Dark BG) | `#0A0A0A` | 10, 10, 10 | Dark mode backgrounds |
+| Negro (Principal) | `#000000` | 0, 0, 0 | Trazos principales, texto, aguja sur |
+| Blanco (Fondo) | `#FFFFFF` | 255, 255, 255 | Fondos claros |
+| Gris (Secundario) | `#6B7280` | 107, 114, 128 | Marcas de tick menores, texto secundario |
+| Verde Brillante (Acento) | `#22C55E` | 34, 197, 94 | Aguja norte, punto central, líneas de acento |
+| Casi Negro (Fondo Oscuro) | `#0A0A0A` | 10, 10, 10 | Fondos de modo oscuro |
 
-### Contrast Ratios (WCAG)
+### Relaciones de Contraste (WCAG)
 
-- Black on White: **21:1** AAA
-- Gray on White: **4.6:1** AA
-- Green on White: **3.2:1** (decorative only, not for text)
-- White on Dark: **19.5:1** AAA
+- Negro sobre Blanco: **21:1** AAA
+- Gris sobre Blanco: **4.6:1** AA
+- Verde sobre Blanco: **3.2:1** (solo decorativo, no para texto)
+- Blanco sobre Oscuro: **19.5:1** AAA
 
-### Accent Color Rule
+### Regla de Color de Acento
 
-**Bright Green (#22C55E) is reserved for highlights only:**
-- Compass north needle
-- Center dot
-- Accent underlines/borders
-- Never as a background color
-- Never for body text
-
----
-
-## Typography
-
-### Logo Font
-- **Family**: Inter, SF Pro Display, -apple-system, Segoe UI, sans-serif
-- **"Claude"**: 42px, weight 700 (bold), Black
-- **"How-To"**: 32px, weight 500 (medium), Gray (#6B7280)
-- **Subtitle**: 10px, weight 500, Gray, letter-spacing 1.5px, uppercase
-
-### Interface Font
-- **Family**: Inter, SF Pro, system fonts (sans-serif)
-- **Weight**: 400-600
-- **Style**: Clean, readable
+**El Verde Brillante (#22C55E) está reservado solo para resaltados:**
+- Aguja norte de la brújula
+- Punto central
+- Subrayados/bordes de acento
+- Nunca como color de fondo
+- Nunca para texto de cuerpo
 
 ---
 
-## Icon Details
+## Tipografía
 
-### Compass Specifications
+### Fuente del Logotipo
+- **Familia**: Inter, SF Pro Display, -apple-system, Segoe UI, sans-serif
+- **"Claude"**: 42px, peso 700 (negrita), Negro
+- **"How-To"**: 32px, peso 500 (medio), Gris (#6B7280)
+- **Subtítulo**: 10px, peso 500, Gris, espaciado de letras 1.5px, mayúsculas
 
-The compass mark is built from these geometric elements:
+### Fuente de Interfaz
+- **Familia**: Inter, SF Pro, fuentes del sistema (sans-serif)
+- **Peso**: 400-600
+- **Estilo**: Limpio, legible
+
+---
+
+## Detalles del Icono
+
+### Especificaciones de la Brújula
+
+La marca de brújula está construida con estos elementos geométricos:
 
 ```
-Element             | Stroke/Fill    | Color
---------------------|----------------|------------------
-Outer ring          | 3px stroke     | Black / White (dark mode)
-North tick          | 2.5px stroke   | Black / White (dark mode)
-Other cardinal ticks| 2px stroke     | Gray / White 50% (dark mode)
-Intercardinal ticks | 1.5px stroke   | Gray / White 40% (dark mode)
-North needle        | filled polygon | #22C55E (always green)
-South needle        | filled polygon | Black / White (dark mode)
-> bracket           | 3px stroke     | Black / White (dark mode)
-Center dot          | filled circle  | #22C55E (always green)
+Elemento            | Trazo/Relleno    | Color
+--------------------|------------------|------------------
+Anillo exterior     | trazo 3px        | Negro / Blanco (modo oscuro)
+Tick norte          | trazo 2.5px      | Negro / Blanco (modo oscuro)
+Otros ticks cardinales| trazo 2px      | Gris / Blanco 50% (modo oscuro)
+Ticks intercardinales| trazo 1.5px     | Gris / Blanco 40% (modo oscuro)
+Aguja norte         | polígono relleno | #22C55E (siempre verde)
+Aguja sur           | polígono relleno | Negro / Blanco (modo oscuro)
+Corchete >          | trazo 3px        | Negro / Blanco (modo oscuro)
+Punto central       | círculo relleno  | #22C55E (siempre verde)
 ```
 
-### Size Progression
+### Progresión de Tamaño
 
 ```
-16px  → Ring + needles + chevron only (minimal)
-32px  → Adds cardinal tick marks
-64px  → Adds intercardinal tick marks
-128px → Full detail, all elements crisp
-256px → Maximum detail, thick strokes
+16px  → Solo anillo + agujas + chevrón (mínimo)
+32px  → Agrega marcas de tick cardinales
+64px  → Agrega marcas de tick intercardinales
+128px → Detalle completo, todos los elementos nítidos
+256px → Máximo detalle, trazos gruesos
 ```
 
 ---
 
-## Sizing Guidelines
+## Directrices de Tamaño
 
-### Logo Sizing
+### Tamaño de Logotipo
 
-- **Minimum**: 200px width (for web)
-- **Recommended**: 520px (native size)
-- **Maximum**: Unlimited (vector format)
-- **Aspect Ratio**: ~4.3:1 (width:height)
+- **Mínimo**: 200px de ancho (para web)
+- **Recomendado**: 520px (tamaño nativo)
+- **Máximo**: Ilimitado (formato vectorial)
+- **Relación de Aspecto**: ~4.3:1 (ancho:alto)
 
-### Icon Sizing
+### Tamaño de Icono
 
-- **Minimum**: 16px (favicon)
-- **Recommended**: 64-256px (apps, avatars)
-- **Maximum**: Unlimited (vector format)
-- **Aspect Ratio**: 1:1 (square)
+- **Mínimo**: 16px (favicon)
+- **Recomendado**: 64-256px (apps, avatares)
+- **Máximo**: Ilimitado (formato vectorial)
+- **Relación de Aspecto**: 1:1 (cuadrado)
 
 ---
 
-## Spacing & Alignment
+## Espaciado y Alineación
 
-### Logo Spacing
+### Espaciado de Logotipo
 
 ```
 ┌─────────────────────────────────────┐
 │                                     │
-│        Clear Space Minimum          │
-│         (logo height / 2)           │
+│        Espacio Libre Mínimo         │
+│         (altura del logotipo / 2)   │
 │                                     │
-│    [COMPASS]  Claude                │
+│    [BRÚJULA]  Claude                │
 │               How-To                │
 │                                     │
 └─────────────────────────────────────┘
 ```
 
-### Icon Center Point
+### Punto Central del Icono
 
-All icons center at the midpoint of their canvas:
-- 128×128 for 256px canvas
-- 64×64 for 128px canvas
-- Maintains alignment with other UI elements
-
----
-
-## Accessibility
-
-### Color Contrast
-- All text meets WCAG AA (4.5:1 minimum)
-- Green accent is decorative, not informational
-- No red-green color dependency
-
-### Scalability
-- Vector format ensures clarity at any size
-- Geometric shapes remain recognizable at 16px
-- Progressive detail based on available size
+Todos los iconos se centran en el punto medio de su lienzo:
+- 128×128 para lienzo de 256px
+- 64×64 para lienzo de 128px
+- Mantiene alineación con otros elementos de UI
 
 ---
 
-## Application Examples
+## Accesibilidad
 
-### Web Header
-- Size: 520×120px logo
-- File: `logos/claude-howto-logo.svg`
-- Background: White or dark (#0A0A0A)
-- Padding: 20px minimum
+### Contraste de Color
+- Todo el texto cumple WCAG AA (mínimo 4.5:1)
+- El acento verde es decorativo, no informativo
+- Sin dependencia de color rojo-verde
 
-### App Icon
-- Size: 256×256px
-- File: `icons/claude-howto-icon.svg`
-- Background: White or dark
-- Use: App shortcuts, avatars
-
-### Browser Favicon
-- Size: 32px (primary), 16px (fallback)
-- File: `favicons/favicon-32.svg`
-- Format: SVG for crisp display
-
-### Social Media
-- Profile: 256×256px icon
-- Banner: 520×120px logo (centered)
-
-### Documentation
-- Chapter Headers: Logo scaled to fit
-- Section Icons: 64×64px favicon
-- Inline: 32×32px favicon
+### Escalabilidad
+- El formato vectorial asegura claridad a cualquier tamaño
+- Las formas geométricas permanecen reconocibles a 16px
+- Detalle progresivo basado en el tamaño disponible
 
 ---
 
-## File Format Details
+## Ejemplos de Aplicación
 
-### SVG Structure
+### Encabezado Web
+- Tamaño: logotipo de 520×120px
+- Archivo: `logos/claude-howto-logo.svg`
+- Fondo: Blanco u oscuro (#0A0A0A)
+- Relleno: 20px mínimo
 
-All SVG files are flat design:
-- No gradients (solid colors only)
-- No filter effects (no blur, glow, or shadow)
-- Clean stroke and fill geometry
-- ViewBox for responsive scaling
-- Readable, commented code
+### Icono de App
+- Tamaño: 256×256px
+- Archivo: `icons/claude-howto-icon.svg`
+- Fondo: Blanco u oscuro
+- Uso: Accesos directos de apps, avatares
 
-### Cross-Browser Compatibility
+### Favicon de Navegador
+- Tamaño: 32px (principal), 16px (alternativa)
+- Archivo: `favicons/favicon-32.svg`
+- Formato: SVG para visualización nítida
 
-- Chrome/Edge: Full support
-- Firefox: Full support
-- Safari: Full support
-- iOS Safari: Full support
-- All modern browsers: Full support
+### Redes Sociales
+- Perfil: icono de 256×256px
+- Banner: logotipo de 520×120px (centrado)
+
+### Documentación
+- Encabezados de Capítulo: Logotipo escalado para ajustar
+- Iconos de Sección: favicon de 64×64px
+- En línea: favicon de 32×32px
 
 ---
 
-## Customization
+## Detalles de Formato de Archivo
 
-### Changing the Accent Color
+### Estructura SVG
 
-To create variants with a different accent:
+Todos los archivos SVG son de diseño plano:
+- Sin gradientes (solo colores sólidos)
+- Sin efectos de filtro (sin desenfoque, brillo o sombra)
+- Geometría limpia de trazo y relleno
+- ViewBox para escalado responsivo
+- Código legible y comentado
 
-1. Replace all instances of `#22C55E` with your accent color
-2. Ensure contrast ratio stays above 3:1 for decorative elements
-3. Keep black/white/gray structure unchanged
+### Compatibilidad entre Navegadores
 
-### Scaling
+- Chrome/Edge: Soporte completo
+- Firefox: Soporte completo
+- Safari: Soporte completo
+- iOS Safari: Soporte completo
+- Todos los navegadores modernos: Soporte completo
+
+---
+
+## Personalización
+
+### Cambiar el Color de Acento
+
+Para crear variantes con un acento diferente:
+
+1. Reemplazar todas las instancias de `#22C55E` con tu color de acento
+2. Asegurar que la relación de contraste se mantenga por encima de 3:1 para elementos decorativos
+3. Mantener la estructura negro/blanco/gris sin cambios
+
+### Escalado
 
 ```css
 svg {
@@ -227,18 +227,18 @@ svg {
 }
 ```
 
-SVGs scale automatically via viewBox — no transforms needed.
+Los SVG escalan automáticamente vía viewBox — no se necesitan transformaciones.
 
 ---
 
-## Version Control
+## Control de Versiones
 
-Track design changes in git:
-- Version SVG files normally (they're text)
-- Tag releases with design changes
-- Include DESIGN-SYSTEM.md in commits
+Seguimiento de cambios de diseño en git:
+- Versionar archivos SVG normalmente (son texto)
+- Etiquetar lanzamientos con cambios de diseño
+- Incluir DESIGN-SYSTEM.md en commits
 
 ---
 
-**Last Updated**: February 2026
-**Design System Version**: 3.0
+**Última Actualización**: Febrero 2026
+**Versión del Sistema de Diseño**: 3.0

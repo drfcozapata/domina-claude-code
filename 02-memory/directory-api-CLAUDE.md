@@ -1,61 +1,61 @@
-# API Module Standards
+# Estándares del Módulo de API
 
-This file overrides root CLAUDE.md for everything in /src/api/
+Este archivo anula el CLAUDE.md raíz para todo lo que está en /src/api/
 
-## API-Specific Standards
+## Estándares Específicos de API
 
-### Request Validation
-- Use Zod for schema validation
-- Always validate input
-- Return 400 with validation errors
-- Include field-level error details
+### Validación de Requests
+- Usar Zod para validación de esquemas
+- Siempre validar la entrada
+- Devolver 400 con errores de validación
+- Incluir detalles de errores a nivel de campo
 
-### Authentication
-- All endpoints require JWT token
-- Token in Authorization header
-- Token expires after 24 hours
-- Implement refresh token mechanism
+### Autenticación
+- Todos los endpoints requieren token JWT
+- Token en el header Authorization
+- El token expira después de 24 horas
+- Implementar mecanismo de refresh token
 
-### Response Format
+### Formato de Respuesta
 
-All responses must follow this structure:
+Todas las respuestas deben seguir esta estructura:
 
 ```json
 {
   "success": true,
-  "data": { /* actual data */ },
+  "data": { /* datos reales */ },
   "timestamp": "2025-11-06T10:30:00Z",
   "version": "1.0"
 }
 ```
 
-Error responses:
+Respuestas de error:
 ```json
 {
   "success": false,
   "error": {
     "code": "VALIDATION_ERROR",
-    "message": "User message",
-    "details": { /* field errors */ }
+    "message": "Mensaje de usuario",
+    "details": { /* errores de campo */ }
   },
   "timestamp": "2025-11-06T10:30:00Z"
 }
 ```
 
-### Pagination
-- Use cursor-based pagination (not offset)
-- Include `hasMore` boolean
-- Limit max page size to 100
-- Default page size: 20
+### Paginación
+- Usar paginación basada en cursor (no offset)
+- Incluir booleano `hasMore`
+- Limitar tamaño máximo de página a 100
+- Tamaño de página predeterminado: 20
 
 ### Rate Limiting
-- 1000 requests per hour for authenticated users
-- 100 requests per hour for public endpoints
-- Return 429 when exceeded
-- Include retry-after header
+- 1000 requests por hora para usuarios autenticados
+- 100 requests por hora para endpoints públicos
+- Devolver 429 cuando se exceda
+- Incluir header retry-after
 
 ### Caching
-- Use Redis for session caching
-- Cache duration: 5 minutes default
-- Invalidate on write operations
-- Tag cache keys with resource type
+- Usar Redis para session caching
+- Duración de caché: 5 minutos predeterminado
+- Invalidar en operaciones de escritura
+- Etiquetar cache keys con tipo de recurso

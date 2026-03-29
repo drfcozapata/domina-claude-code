@@ -1,217 +1,217 @@
-# Contributor Code of Conduct
+# Código de Conducta para Contribuyentes
 
-## Our Commitment
+## Nuestro Compromiso
 
-We are committed to providing a welcoming and inspiring community for all. We pledge that participating in our community is a harassment-free experience for everyone, regardless of age, body size, caste, disability, ethnicity, sex characteristics, gender identity and expression, level of experience, education, socioeconomic status, nationality, personal appearance, race, religion, or sexual identity and orientation.
+Nos comprometemos a proporcionar una comunidad acogedora e inspiradora para todos. Prometemos que la participación en nuestra comunidad será una experiencia libre de acoso para todos, independientemente de su edad, tamaño corporal, casta, discapacidad, etnia, características sexuales, identidad y expresión de género, nivel de experiencia, educación, estatus socioeconómico, nacionalidad, apariencia personal, raza, religión u orientación sexual e identidad.
 
-We are dedicated to providing a positive, inclusive, and safe environment where all contributors feel respected, valued, and empowered to contribute their best work.
+Estamos dedicados a proporcionar un entorno positivo, inclusivo y seguro donde todos los contribuyentes se sientan respetados, valorados y empoderados para contribuir con su mejor trabajo.
 
-## Our Standards
+## Nuestros Estándares
 
-Examples of behavior that contributes to creating a positive environment include:
+Ejemplos de comportamiento que contribuyen a crear un entorno positivo incluyen:
 
-### Be Respectful
-- Use welcoming and inclusive language
-- Be respectful of differing opinions, viewpoints, and experiences
-- Accept constructive criticism gracefully
-- Respect cultural and linguistic differences
-- Acknowledge and celebrate diverse backgrounds
+### Sé Respetuoso
+- Usa un lenguaje acogedor e inclusivo
+- Sé respetuoso con opiniones, puntos de vista y experiencias diferentes
+- Acepta la crítica constructiva con gracia
+- Respeta las diferencias culturales y lingüísticas
+- Reconoce y celebra los diversos orígenes
 
-### Be Collaborative
-- Work together to resolve conflicts
-- Give credit and recognize others' contributions
-- Help others learn and grow
-- Share knowledge and ask questions
-- Support fellow community members
+### Sé Colaborativo
+- Trabaja junto con otros para resolver conflictos
+- Da crédito y reconoce las contribuciones de otros
+- Ayuda a otros a aprender y crecer
+- Comparte conocimiento y haz preguntas
+- Apoya a los miembros de la comunidad
 
-### Be Professional
-- Keep discussions focused and productive
-- Avoid demeaning or insulting remarks
-- Stay on topic in issues and discussions
-- Use clear and respectful communication
-- Assume good intent in others' messages
+### Sé Profesional
+- Mantén las discusiones enfocadas y productivas
+- Evita comentarios degradantes o insultantes
+- Mantente en el tema en issues y discusiones
+- Usa una comunicación clara y respetuosa
+- Asume buena intención en los mensajes de otros
 
-### Be Inclusive
-- Welcome new contributors
-- Help onboard people new to the project
-- Provide constructive feedback
-- Include people with different perspectives
-- Create space for quiet voices to be heard
+### Sé Inclusivo
+- Da la bienvenida a nuevos contribuyentes
+- Ayuda a incorporar personas nuevas al proyecto
+- Proporciona retroalimentación constructiva
+- Incluye a personas con diferentes perspectivas
+- Crea espacio para que las voces más tranquilas sean escuchadas
 
-## Unacceptable Behavior
+## Comportamiento Inaceptable
 
-The following behaviors are considered harassment and are unacceptable within our community:
+Los siguientes comportamientos se consideran acoso y son inaceptables dentro de nuestra comunidad:
 
-### Harassment and Discrimination
-- Offensive comments related to gender, gender identity and expression, sexual orientation, disability, mental illness, neuro(a)typicality, physical appearance, body size, age, race, or religion
-- Unwelcome comments regarding a person's lifestyle choices and practices
-- Deliberate misgendering or use of 'dead' or rejected names
-- Gratuitous or off-topic sexual images or behavior
-- Physical contact and simulated physical contact without consent or after a request to stop
+### Acoso y Discriminación
+- Comentarios ofensivos relacionados con género, identidad y expresión de género, orientación sexual, discapacidad, enfermedad mental, neuro(at)tipicalidad, apariencia física, tamaño corporal, edad, raza o religión
+- Comentarios no deseados sobre las elecciones y prácticas de estilo de vida de una persona
+- Uso deliberado de pronombres incorrectos o uso de nombres 'muertos' o rechazados
+- Imágenes sexuales gratuitas o fuera de tema o comportamiento sexual
+- Contacto físico y contacto físico simulado sin consentimiento o después de una solicitud de detenerse
 
-### Abusive Behavior
-- Threats of violence or violent language directed against another person
-- Incitement of violence or violent language toward any individual
-- Deliberate intimidation
-- Stalking or following
-- Harassment through repeated contact
-- Any other conduct which could reasonably be considered inappropriate
+### Comportamiento Abusivo
+- Amenazas de violencia o lenguaje violento dirigido contra otra persona
+- Incitación a la violencia o lenguaje violento hacia cualquier individuo
+- Intimidación deliberada
+- Acecho o seguimiento
+- Acoso a través de contacto repetido
+- Cualquier otra conducta que razonablemente pueda considerarse inapropiada
 
-### Online Harassment
-- Sustained disruption of online discussion
-- Publishing others' private information (doxxing)
-- Unwelcome sexual attention or advances
-- Trolling or intentional disruption
-- Spam or repetitive advertising
-- Spreading misinformation or disinformation
+### Acoso en Línea
+- Interrupción sostenida de discusiones en línea
+- Publicación de información privada de otros (doxxing)
+- Atención sexual no deseada o avances sexuales
+- Trolling o interrupción intencional
+- Spam o publicidad repetitiva
+- Difusión de información errónea o desinformación
 
-### Retaliation
-- Taking retaliatory action against someone for reporting a violation
-- Treating someone unfairly because they reported unacceptable behavior
-- Threatening to report someone in retaliation
+### Represalias
+- Tomar acciones represivas contra alguien por reportar una violación
+- Tratar a alguien injustamente porque reportó un comportamiento inaceptable
+- Amenazar con reportar a alguien en represalia
 
-## Scope
+## Alcance
 
-This Code of Conduct applies to:
-- All community spaces (GitHub issues, pull requests, discussions, etc.)
-- Project repositories and documentation
-- Events and gatherings organized by or representing the project
-- Public spaces where individuals are representing the project or the community
-- Private communications when they relate to project business
+Este Código de Conducta se aplica a:
+- Todos los espacios de la comunidad (issues de GitHub, pull requests, discusiones, etc.)
+- Repositorios del proyecto y documentación
+- Eventos y reuniones organizados por o representando al proyecto
+- Espacios públicos donde los individuos representan el proyecto o la comunidad
+- Comunicaciones privadas cuando se relacionan con asuntos del proyecto
 
-The Code of Conduct applies to all project spaces, and it also applies when an individual is representing the project or community in public spaces. Examples of representing a project or community include using an official project e-mail address, posting via an official social media account, or acting as an appointed representative at an online or offline event.
+El Código de Conducta se aplica a todos los espacios del proyecto, y también se aplica cuando un individuo representa al proyecto o comunidad en espacios públicos. Ejemplos de representar un proyecto o comunidad incluyen usar una dirección de correo electrónico oficial del proyecto, publicar a través de una cuenta oficial de redes sociales, o actuar como representante designado en un evento en línea o fuera de línea.
 
-## Enforcement
+## Aplicación
 
-Community leaders are responsible for clarifying and enforcing our standards of acceptable behavior and will take appropriate and fair corrective action in response to any behavior that they deem inappropriate, threatening, offensive, or harmful.
+Los líderes de la comunidad son responsables de clarificar y hacer cumplir nuestros estándares de comportamiento aceptable y tomarán acciones correctivas apropiadas y justas en respuesta a cualquier comportamiento que consideren inapropiado, amenazante, ofensivo o dañino.
 
-### Reporting a Violation
+### Reportar una Violación
 
-If you experience or witness unacceptable behavior, or have any other concerns, please report it by:
+Si experimentas o presencias un comportamiento inaceptable, o tienes cualquier otra preocupación, por favor repórtalo mediante:
 
-1. **Email**: Contact the project maintainers at [provide contact method if available]
-2. **GitHub Issues**: Private report feature (if available in your GitHub settings)
-3. **Direct Message**: Contact a project maintainer directly
+1. **Correo electrónico**: Contacta a los mantenedores del proyecto en [proporcionar método de contacto si está disponible]
+2. **Issues de GitHub**: Función de reporte privado (si está disponible en tu configuración de GitHub)
+3. **Mensaje directo**: Contacta a un mantenedor del proyecto directamente
 
-Please provide:
-- Your contact information
-- Names of those involved (if you feel comfortable sharing)
-- Description of the incident
-- Context and any relevant links
-- How the incident affected you
+Por favor proporciona:
+- Tu información de contacto
+- Nombres de los involucrados (si te sientes cómodo compartiéndolos)
+- Descripción del incidente
+- Contexto y cualquier enlace relevante
+- Cómo el incidente te afectó
 
-**All reports will be kept confidential.**
+**Todos los reportes se mantendrán confidenciales.**
 
-### Investigation and Response
+### Investigación y Respuesta
 
-Community leaders will:
-- Review and investigate all complaints promptly and fairly
-- Maintain confidentiality with respect to the reporter
-- Respond to the reporter about the status of their report
-- Take appropriate action based on findings
+Los líderes de la comunidad:
+- Revisarán e investigarán todas las quejas de manera rápida y justa
+- Mantendrán la confidencialidad con respecto al reportante
+- Responderán al reportante sobre el estado de su reporte
+- Tomarán las acciones apropiadas basadas en los hallazgos
 
-Possible actions include:
-- Private warning or coaching
-- Public apology (if the violator agrees)
-- Temporary or permanent removal from community spaces
-- Loss of contributor privileges
-- Escalation to GitHub or other platforms as needed
+Las posibles acciones incluyen:
+- Advertencia privada o coaching
+- Disculpa pública (si el infractor acepta)
+- Remoción temporal o permanente de los espacios de la comunidad
+- Pérdida de privilegios de contribuyente
+- Escalamiento a GitHub u otras plataformas según sea necesario
 
-### Appeal Process
+### Proceso de Apelación
 
-If you believe a decision was made in error, you may appeal by:
-1. Providing new information or context
-2. Requesting a review by multiple maintainers
-3. Following up within 30 days of the initial decision
+Si crees que se tomó una decisión por error, puedes apelar mediante:
+1. Proporcionar nueva información o contexto
+2. Solicitar una revisión por múltiples mantenedores
+3. Hacer seguimiento dentro de los 30 días de la decisión inicial
 
-## Guidelines for Respectful Disagreement
+## Pautas para el Desacuerdo Respetuoso
 
-Disagreements are natural in technical communities. Here's how to disagree respectfully:
+Los desacuerdos son naturales en las comunidades técnicas. Aquí está cómo disentir respetuosamente:
 
-### Do's
-- ✅ Focus on the idea, not the person
-- ✅ Ask clarifying questions
-- ✅ Acknowledge valid points in opposing views
-- ✅ Use "I" statements ("I disagree because...")
-- ✅ Cite sources and evidence
-- ✅ Thank others for their perspective
+### Qué Hacer
+- ✅ Enfócate en la idea, no en la persona
+- ✅ Haz preguntas de clarificación
+- ✅ Reconoce puntos válidos en opiniones opuestas
+- ✅ Usa declaraciones en primera persona ("No estoy de acuerdo porque...")
+- ✅ Cita fuentes y evidencia
+- ✅ Agradece a otros por su perspectiva
 
-### Don'ts
-- ❌ Make personal attacks
-- ❌ Use dismissive language ("That's stupid")
-- ❌ Assume bad intent
-- ❌ Bring up unrelated past conflicts
-- ❌ Escalate tone or become hostile
-- ❌ Deliberately misrepresent others' views
+### Qué No Hacer
+- ❌ Hacer ataques personales
+- ❌ Usar lenguaje despectivo ("Eso es estúpido")
+- ❌ Asumir mala intención
+- ❌ Mencionar conflictos pasados no relacionados
+- ❌ Elevar el tono o volverse hostil
+- ❌ Representar deliberadamente mal las opiniones de otros
 
-### Example of Respectful Disagreement
+### Ejemplo de Desacuerdo Respetuoso
 ```
-❌ Bad: "That's a dumb idea and you clearly don't understand the project."
+❌ Malo: "Esa es una idea tonta y claramente no entiendes el proyecto."
 
-✅ Good: "I see your point, but I'm concerned this approach might
-not scale well with larger projects. Have you considered the
-performance implications shown in this benchmark? I'd love to
-hear your thoughts on this."
+✅ Bueno: "Veo tu punto, pero me preocupa que este enfoque podría
+no escalar bien con proyectos más grandes. ¿Has considerado las
+implicaciones de rendimiento mostradas en este benchmark? Me gustaría
+escuchar tus pensamientos sobre esto."
 ```
 
-## Building Bridges
+## Construyendo Puentes
 
-We believe in the power of dialogue and reconciliation:
+Creemos en el poder del diálogo y la reconciliación:
 
-- If someone calls out your behavior, listen and reflect
-- Be willing to apologize if you've caused harm
-- Support others in learning and growth
-- Recognize that people make mistakes
-- Focus on solutions, not blame
-- Assume good intent while holding people accountable
+- Si alguien señala tu comportamiento, escucha y reflexiona
+- Esté dispuesto a disculparte si has causado daño
+- Apoya a otros en el aprendizaje y crecimiento
+- Reconoce que las personas cometen errores
+- Enfócate en soluciones, no en culpas
+- Asume buena intención mientras responsabilizas a las personas
 
-## Benefits of Following This Code
+## Beneficios de Seguir Este Código
 
-By maintaining a respectful and inclusive community, we:
-- Attract diverse contributors with varied perspectives
-- Create better solutions through collaboration
-- Build stronger relationships
-- Make the project more welcoming to newcomers
-- Produce higher-quality documentation and examples
-- Foster a culture of learning and growth
+Al mantener una comunidad respetuosa e inclusiva, nosotros:
+- Atraemos contribuyentes diversos con perspectivas variadas
+- Creamos mejores soluciones a través de la colaboración
+- Construimos relaciones más fuertes
+- Hacemos el proyecto más acogedor para los recién llegados
+- Producimos documentación y ejemplos de mayor calidad
+- Fomentamos una cultura de aprendizaje y crecimiento
 
-## Special Considerations
+## Consideraciones Especiales
 
-### For Maintainers
-- Lead by example in adhering to this Code
-- Be responsive to reports
-- Be transparent about decisions
-- Help resolve conflicts fairly
-- Create a safe environment for all
+### Para Mantenedores
+- Da el ejemplo al adherirte a este Código
+- Sé receptivo a los reportes
+- Sé transparente sobre las decisiones
+- Ayuda a resolver conflictos de manera justa
+- Crea un entorno seguro para todos
 
-### For Contributors
-- Assume good intent from maintainers and other contributors
-- Provide constructive feedback
-- Support newcomers
-- Help enforce community standards
-- Take ownership of the community culture
+### Para Contribuyentes
+- Asume buena intención de los mantenedores y otros contribuyentes
+- Proporciona retroalimentación constructiva
+- Apoya a los recién llegados
+- Ayuda a hacer cumplir los estándares de la comunidad
+- Toma posesión de la cultura de la comunidad
 
-### For Everyone
-- Remember there's a human behind every message
-- Take breaks if you're feeling frustrated
-- Reach out to community leaders if you need support
-- Help create the community you want to be part of
+### Para Todos
+- Recuerda que hay un humano detrás de cada mensaje
+- Toma descansos si te sientes frustrado
+- Contacta a los líderes de la comunidad si necesitas apoyo
+- Ayuda a crear la comunidad de la que quieres ser parte
 
-## Attribution
+## Atribución
 
-This Code of Conduct is adapted from:
-- The [Contributor Covenant](https://www.contributor-covenant.org/)
-- The [Mozilla Community Participation Guidelines](https://www.mozilla.org/en-US/about/governance/policies/participation/)
-- The [Python Community Code of Conduct](https://www.python.org/psf/conduct/)
+Este Código de Conducta está adaptado de:
+- El [Contributor Covenant](https://www.contributor-covenant.org/)
+- Las [Mozilla Community Participation Guidelines](https://www.mozilla.org/en-US/about/governance/policies/participation/)
+- El [Python Community Code of Conduct](https://www.python.org/psf/conduct/)
 
-## Questions?
+## ¿Preguntas?
 
-If you have questions about this Code of Conduct, please reach out to the project maintainers.
+Si tienes preguntas sobre este Código de Conducta, por favor contacta a los mantenedores del proyecto.
 
-## Version History
+## Historial de Versiones
 
-- **Version 1.0** (January 2026) - Initial Code of Conduct
+- **Versión 1.0** (Enero 2026) - Código de Conducta inicial
 
 ---
 
-**Thank you for helping us create a welcoming, inclusive, and respectful community!** 🌟
+**¡Gracias por ayudarnos a crear una comunidad acogedora, inclusiva y respetuosa!** 🌟

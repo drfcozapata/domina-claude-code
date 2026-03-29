@@ -1,45 +1,45 @@
-# My Development Preferences
+# Mis Preferencias de Desarrollo
 
-## About Me
-- **Experience Level**: 8 years full-stack development
-- **Preferred Languages**: TypeScript, Python
-- **Communication Style**: Direct, with examples
-- **Learning Style**: Visual diagrams with code
+## Sobre Mí
+- **Nivel de Experiencia**: 8 años desarrollo full-stack
+- **Lenguajes Preferidos**: TypeScript, Python
+- **Estilo de Comunicación**: Directo, con ejemplos
+- **Estilo de Aprendizaje**: Diagramas visuales con código
 
-## Code Preferences
+## Preferencias de Código
 
-### Error Handling
-I prefer explicit error handling with try-catch blocks and meaningful error messages.
-Avoid generic errors. Always log errors for debugging.
+### Manejo de Errores
+Prefiero manejo explícito de errores con bloques try-catch y mensajes de error significativos.
+Evitar errores genéricos. Siempre registrar errores para debugging.
 
-### Comments
-Use comments for WHY, not WHAT. Code should be self-documenting.
-Comments should explain business logic or non-obvious decisions.
+### Comentarios
+Usar comentarios para el POR QUÉ, no para el QUÉ. El código debe ser auto-documentado.
+Los comentarios deben explicar la lógica de negocio o decisiones no obvias.
 
 ### Testing
-I prefer TDD (test-driven development).
-Write tests first, then implementation.
-Focus on behavior, not implementation details.
+Prefiero TDD (test-driven development).
+Escribir tests primero, luego implementación.
+Enfocarse en comportamiento, no en detalles de implementación.
 
-### Architecture
-I prefer modular, loosely-coupled design.
-Use dependency injection for testability.
-Separate concerns (Controllers, Services, Repositories).
+### Arquitectura
+Prefiero diseño modular y débilmente acoplado.
+Usar inyección de dependencias para testabilidad.
+Separar responsabilidades (Controllers, Services, Repositories).
 
-## Debugging Preferences
-- Use console.log with prefix: `[DEBUG]`
-- Include context: function name, relevant variables
-- Use stack traces when available
-- Always include timestamps in logs
+## Preferencias de Debugging
+- Usar console.log con prefijo: `[DEBUG]`
+- Incluir contexto: nombre de función, variables relevantes
+- Usar stack traces cuando estén disponibles
+- Siempre incluir timestamps en los logs
 
-## Communication
-- Explain complex concepts with diagrams
-- Show concrete examples before explaining theory
-- Include before/after code snippets
-- Summarize key points at the end
+## Comunicación
+- Explicar conceptos complejos con diagramas
+- Mostrar ejemplos concretos antes de explicar teoría
+- Incluir fragmentos de código antes/después
+- Resumir puntos clave al final
 
-## Project Organization
-I organize my projects as:
+## Organización de Proyectos
+Organizo mis proyectos así:
 ```
 project/
   ├── src/
@@ -52,9 +52,9 @@ project/
   └── docker/
 ```
 
-## Tooling
-- **IDE**: VS Code with vim keybindings
-- **Terminal**: Zsh with Oh-My-Zsh
-- **Format**: Prettier (100 char line length)
-- **Linter**: ESLint with airbnb config
-- **Test Framework**: Jest with React Testing Library
+## Herramientas
+- **IDE**: VS Code con vim keybindings
+- **Terminal**: Zsh con Oh-My-Zsh
+- **Formato**: Prettier (100 caracteres de longitud de línea)
+- **Linter**: ESLint con configuración airbnb
+- **Framework de Test**: Jest con React Testing Library

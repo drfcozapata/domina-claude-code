@@ -1,28 +1,28 @@
-# Code Smells Catalog
+# Catálogo de Code Smells
 
-A comprehensive reference of code smells based on Martin Fowler's *Refactoring* (2nd Edition). Code smells are symptoms of deeper problems—they indicate that something might be wrong with your code's design.
+Una referencia comprehensiva de code smells basada en *Refactoring* (2da Edición) de Martin Fowler. Los code smells son síntomas de problemas más profundos—indican que algo podría estar mal con el diseño de tu código.
 
-> "A code smell is a surface indication that usually corresponds to a deeper problem in the system." — Martin Fowler
+> "Un code smell es una indicación superficial que usualmente corresponde a un problema más profundo en el sistema." — Martin Fowler
 
 ---
 
 ## Bloaters
 
-Code smells representing something that has grown too large to be handled effectively.
+Code smells representando algo que ha crecido demasiado para ser manejado efectivamente.
 
-### Long Method
+### Método Largo
 
-**Signs:**
-- Method exceeds 30-50 lines
-- Need to scroll to see the whole method
-- Multiple levels of nesting
-- Comments explaining what sections do
+**Signos:**
+- El método excede 30-50 líneas
+- Necesitas hacer scroll para ver todo el método
+- Múltiples niveles de anidación
+- Comentarios explicando qué hacen las secciones
 
-**Why it's bad:**
-- Hard to understand
-- Difficult to test in isolation
-- Changes have unintended consequences
-- Duplicate logic hides inside
+**Por qué es malo:**
+- Difícil de entender
+- Difícil de testear en aislamiento
+- Los cambios tienen consecuencias no intencionadas
+- Lógica duplicada se esconde dentro
 
 **Refactorings:**
 - Extract Method
@@ -31,27 +31,27 @@ Code smells representing something that has grown too large to be handled effect
 - Replace Method with Method Object
 - Decompose Conditional
 
-**Example (Before):**
+**Ejemplo (Antes):**
 ```javascript
 function processOrder(order) {
-  // Validate order (20 lines)
-  if (!order.items) throw new Error('No items');
-  if (order.items.length === 0) throw new Error('Empty order');
-  // ... more validation
+  // Validar orden (20 líneas)
+  if (!order.items) throw new Error('Sin items');
+  if (order.items.length === 0) throw new Error('Orden vacía');
+  // ... más validación
 
-  // Calculate totals (30 lines)
+  // Calcular totales (30 líneas)
   let subtotal = 0;
   for (const item of order.items) {
     subtotal += item.price * item.quantity;
   }
-  // ... tax, shipping, discounts
+  // ... impuestos, envío, descuentos
 
-  // Send notifications (20 lines)
-  // ... email logic
+  // Enviar notificaciones (20 líneas)
+  // ... lógica de email
 }
 ```
 
-**Example (After):**
+**Ejemplo (Después):**
 ```javascript
 function processOrder(order) {
   validateOrder(order);
@@ -63,47 +63,47 @@ function processOrder(order) {
 
 ---
 
-### Large Class
+### Clase Grande
 
-**Signs:**
-- Class has many instance variables (>7-10)
-- Class has many methods (>15-20)
-- Class name is vague (Manager, Handler, Processor)
-- Methods don't use all instance variables
+**Signos:**
+- La clase tiene muchas variables de instancia (>7-10)
+- La clase tiene muchos métodos (>15-20)
+- El nombre de la clase es vago (Manager, Handler, Processor)
+- Los métodos no usan todas las variables de instancia
 
-**Why it's bad:**
-- Violates Single Responsibility Principle
-- Hard to test
-- Changes ripple through unrelated features
-- Difficult to reuse parts
+**Por qué es malo:**
+- Viola el Principio de Responsabilidad Única
+- Difícil de testear
+- Los cambios se propagan a través de características no relacionadas
+- Difícil de reusar partes
 
 **Refactorings:**
 - Extract Class
 - Extract Subclass
 - Extract Interface
 
-**Detection:**
+**Detección:**
 ```
-Lines of code > 300
-Number of methods > 15
-Number of fields > 10
+Líneas de código > 300
+Número de métodos > 15
+Número de campos > 10
 ```
 
 ---
 
-### Primitive Obsession
+### Obsesión Primitiva
 
-**Signs:**
-- Using primitives for domain concepts (string for email, int for money)
-- Arrays of primitives instead of objects
-- String constants for type codes
-- Magic numbers/strings
+**Signos:**
+- Usar primitivos para conceptos de dominio (string para email, int para dinero)
+- Arrays de primitivos en lugar de objetos
+- Constantes de string para códigos de tipo
+- Números/strings mágicos
 
-**Why it's bad:**
-- No validation at type level
-- Logic scattered across codebase
-- Easy to pass wrong values
-- Missing domain concepts
+**Por qué es malo:**
+- Sin validación a nivel de tipo
+- Lógica dispersa a través del codebase
+- Fácil pasar valores incorrectos
+- Faltan conceptos de dominio
 
 **Refactorings:**
 - Replace Primitive with Object
@@ -111,17 +111,17 @@ Number of fields > 10
 - Replace Type Code with Subclasses
 - Replace Type Code with State/Strategy
 
-**Example (Before):**
+**Ejemplo (Antes):**
 ```javascript
 const user = {
-  email: 'john@example.com',     // Just a string
-  phone: '1234567890',           // Just a string
-  status: 'active',              // Magic string
-  balance: 10050                 // Cents as integer
+  email: 'john@example.com',     // Solo un string
+  phone: '1234567890',           // Solo un string
+  status: 'active',              // String mágico
+  balance: 10050                 // Centavos como entero
 };
 ```
 
-**Example (After):**
+**Ejemplo (Después):**
 ```javascript
 const user = {
   email: new Email('john@example.com'),
@@ -133,19 +133,19 @@ const user = {
 
 ---
 
-### Long Parameter List
+### Lista de Parámetros Larga
 
-**Signs:**
-- Methods with 4+ parameters
-- Parameters that always appear together
-- Boolean flags changing method behavior
-- Null/undefined passed frequently
+**Signos:**
+- Métodos con 4+ parámetros
+- Parámetros que siempre aparecen juntos
+- Banderas booleanas cambiando el comportamiento del método
+- Null/undefined pasado frecuentemente
 
-**Why it's bad:**
-- Hard to call correctly
-- Parameter order confusion
-- Indicates method doing too much
-- Hard to add new parameters
+**Por qué es malo:**
+- Difícil de llamar correctamente
+- Confusión de orden de parámetros
+- Indica método haciendo demasiado
+- Difícil añadir nuevos parámetros
 
 **Refactorings:**
 - Introduce Parameter Object
@@ -153,7 +153,7 @@ const user = {
 - Replace Parameter with Method Call
 - Remove Flag Argument
 
-**Example (Before):**
+**Ejemplo (Antes):**
 ```javascript
 function createUser(firstName, lastName, email, phone,
                     street, city, state, zip,
@@ -162,7 +162,7 @@ function createUser(firstName, lastName, email, phone,
 }
 ```
 
-**Example (After):**
+**Ejemplo (Después):**
 ```javascript
 function createUser(personalInfo, address, options) {
   // personalInfo: { firstName, lastName, email, phone }
@@ -173,32 +173,32 @@ function createUser(personalInfo, address, options) {
 
 ---
 
-### Data Clumps
+### Grupos de Datos
 
-**Signs:**
-- Same 3+ fields appear together repeatedly
-- Parameters that always travel together
-- Classes with field subsets belonging together
+**Signos:**
+- Mismos 3+ campos aparecen juntos repetidamente
+- Parámetros que siempre viajan juntos
+- Clases con subconjuntos de campos perteneciendo juntos
 
-**Why it's bad:**
-- Duplicate handling logic
-- Missing abstraction
-- Harder to extend
-- Indicates hidden class
+**Por qué es malo:**
+- Lógica de manejo duplicada
+- Falta abstracción
+- Más difícil de extender
+- Indica clase oculta
 
 **Refactorings:**
 - Extract Class
 - Introduce Parameter Object
 - Preserve Whole Object
 
-**Example:**
+**Ejemplo:**
 ```javascript
-// Data clump: (x, y, z) coordinates
+// Grupo de datos: coordenadas (x, y, z)
 function movePoint(x, y, z, dx, dy, dz) { }
 function scalePoint(x, y, z, factor) { }
 function distanceBetween(x1, y1, z1, x2, y2, z2) { }
 
-// Extract Point3D class
+// Extraer clase Point3D
 class Point3D {
   constructor(x, y, z) { }
   move(delta) { }
@@ -209,30 +209,30 @@ class Point3D {
 
 ---
 
-## Object-Orientation Abusers
+## Abusadores de Orientación a Objetos
 
-Smells indicating incomplete or incorrect use of OOP principles.
+Smells indicando uso incompleto o incorrecto de principios OOP.
 
 ### Switch Statements
 
-**Signs:**
-- Long switch/case or if/else chains
-- Same switch in multiple places
-- Switch on type codes
-- Adding new cases requires changes everywhere
+**Signos:**
+- Cadenas largas de switch/case o if/else
+- Mismo switch en múltiples lugares
+- Switch en códigos de tipo
+- Añadir nuevos casos requiere cambios en todos lados
 
-**Why it's bad:**
-- Violates Open/Closed Principle
-- Changes ripple to all switch locations
-- Hard to extend
-- Often indicates missing polymorphism
+**Por qué es malo:**
+- Viola el Principio Abierto/Cerrado
+- Los cambios se propagan a todas las ubicaciones de switch
+- Difícil de extender
+- Usualmente indica polimorfismo faltante
 
 **Refactorings:**
 - Replace Conditional with Polymorphism
 - Replace Type Code with Subclasses
 - Replace Type Code with State/Strategy
 
-**Example (Before):**
+**Ejemplo (Antes):**
 ```javascript
 function calculatePay(employee) {
   switch (employee.type) {
@@ -246,7 +246,7 @@ function calculatePay(employee) {
 }
 ```
 
-**Example (After):**
+**Ejemplo (Después):**
 ```javascript
 class HourlyEmployee {
   calculatePay() {
@@ -263,17 +263,17 @@ class SalariedEmployee {
 
 ---
 
-### Temporary Field
+### Campo Temporal
 
-**Signs:**
-- Instance variables only used in some methods
-- Fields set conditionally
-- Complex initialization for certain cases
+**Signos:**
+- Variables de instancia solo usadas en algunos métodos
+- Campos establecidos condicionalmente
+- Inicialización compleja para ciertos casos
 
-**Why it's bad:**
-- Confusing—field exists but might be null
-- Hard to understand object state
-- Indicates conditional logic hiding
+**Por qué es malo:**
+- Confuso—el campo existe pero podría ser null
+- Difícil de entender el estado del objeto
+- Indica lógica condicional oculta
 
 **Refactorings:**
 - Extract Class
@@ -282,17 +282,17 @@ class SalariedEmployee {
 
 ---
 
-### Refused Bequest
+### Legado Rehusado
 
-**Signs:**
-- Subclass doesn't use inherited methods/data
-- Subclass overrides to do nothing
-- Inheritance used for code reuse, not IS-A relationship
+**Signos:**
+- La subclase no usa métodos/datos heredados
+- La subclase hace override para no hacer nada
+- Herencia usada para reuso de código, no relación ES-UN
 
-**Why it's bad:**
-- Wrong abstraction
-- Violates Liskov Substitution Principle
-- Misleading hierarchy
+**Por qué es malo:**
+- Abstracción incorrecta
+- Viola el Principio de Sustitución de Liskov
+- Jerarquía engañosa
 
 **Refactorings:**
 - Push Down Method/Field
@@ -301,17 +301,17 @@ class SalariedEmployee {
 
 ---
 
-### Alternative Classes with Different Interfaces
+### Clases Alternativas con Diferentes Interfaces
 
-**Signs:**
-- Two classes that do similar things
-- Different method names for same concept
-- Could be used interchangeably
+**Signos:**
+- Dos clases que hacen cosas similares
+- Diferentes nombres de métodos para mismo concepto
+- Podrían usarse intercambiablemente
 
-**Why it's bad:**
-- Duplicate implementations
-- No common interface
-- Hard to switch between
+**Por qué es malo:**
+- Implementaciones duplicadas
+- Sin interfaz común
+- Difícil cambiar entre ellas
 
 **Refactorings:**
 - Rename Method
@@ -321,150 +321,150 @@ class SalariedEmployee {
 
 ---
 
-## Change Preventers
+## Preventores de Cambios
 
-Smells that make changes difficult—changing one thing requires changing many others.
+Smells que hacen difíciles los cambios—cambiar una cosa requiere cambiar muchas otras.
 
-### Divergent Change
+### Cambio Divergente
 
-**Signs:**
-- One class changed for multiple different reasons
-- Changes in different areas trigger same class edits
-- Class is a "God class"
+**Signos:**
+- Una clase cambiada por múltiples razones diferentes
+- Cambios en diferentes áreas provocan ediciones de la misma clase
+- La clase es una "clase dios"
 
-**Why it's bad:**
-- Violates Single Responsibility
-- High change frequency
-- Merge conflicts
+**Por qué es malo:**
+- Viola Responsabilidad Única
+- Alta frecuencia de cambio
+- Conflictos de merge
 
 **Refactorings:**
 - Extract Class
 - Extract Superclass
 - Extract Subclass
 
-**Example:**
-A `User` class changes for:
-- Authentication changes
-- Profile changes
-- Billing changes
-- Notification changes
+**Ejemplo:**
+Una clase `User` cambia para:
+- Cambios de autenticación
+- Cambios de perfil
+- Cambios de facturación
+- Cambios de notificación
 
-→ Extract: `AuthService`, `ProfileService`, `BillingService`, `NotificationService`
+→ Extraer: `AuthService`, `ProfileService`, `BillingService`, `NotificationService`
 
 ---
 
-### Shotgun Surgery
+### Cirugía de Escopeta
 
-**Signs:**
-- One change requires edits in many classes
-- Small feature needs touching 10+ files
-- Changes are scattered, hard to find all
+**Signos:**
+- Un cambio requiere ediciones en muchas clases
+- Pequeña característica necesita tocar 10+ archivos
+- Los cambios están dispersos, difícil de encontrar todos
 
-**Why it's bad:**
-- Easy to miss a spot
-- High coupling
-- Changes are error-prone
+**Por qué es malo:**
+- Fácil perder un lugar
+- Alto acoplamiento
+- Cambios son propensos a errores
 
 **Refactorings:**
 - Move Method
 - Move Field
 - Inline Class
 
-**Detection:**
-Look for: adding one field requires changes in >5 files.
+**Detección:**
+Busca: añadir un campo requiere cambios en >5 archivos.
 
 ---
 
-### Parallel Inheritance Hierarchies
+### Jerarquías de Herencia Paralelas
 
-**Signs:**
-- Creating subclass in one hierarchy requires subclass in another
-- Class prefixes match (e.g., `DatabaseOrder`, `DatabaseProduct`)
+**Signos:**
+- Crear subclase en una jerarquía requiere subclase en otra
+- Prefijos de clases coinciden (ej. `DatabaseOrder`, `DatabaseProduct`)
 
-**Why it's bad:**
-- Double the maintenance
-- Coupling between hierarchies
-- Easy to forget one side
+**Por qué es malo:**
+- Doble el mantenimiento
+- Acoplamiento entre jerarquías
+- Fácil olvidar un lado
 
 **Refactorings:**
 - Move Method
 - Move Field
-- Eliminate one hierarchy
+- Eliminar una jerarquía
 
 ---
 
-## Dispensables
+## Desechables
 
-Something unnecessary that should be removed.
+Algo innecesario que debería ser eliminado.
 
-### Comments (Excessive)
+### Comentarios (Excesivos)
 
-**Signs:**
-- Comments explaining what code does
-- Commented-out code
-- TODO/FIXME that linger forever
-- Apologies in comments
+**Signos:**
+- Comentarios explicando qué hace el código
+- Código comentado
+- TODO/FIXME que permanecen para siempre
+- Disculpas en comentarios
 
-**Why it's bad:**
-- Comments lie (get out of sync)
-- Code should be self-documenting
-- Dead code causes confusion
+**Por qué es malo:**
+- Los comentarios mienten (se desactualizan)
+- El código debería ser auto-documentado
+- Código muerto causa confusión
 
 **Refactorings:**
-- Extract Method (name explains what)
-- Rename (clarity without comments)
-- Remove commented code
+- Extract Method (el nombre explica qué)
+- Rename (claridad sin comentarios)
+- Eliminar código comentado
 - Introduce Assertion
 
-**Good vs Bad Comments:**
+**Comentarios Buenos vs Malos:**
 ```javascript
-// BAD: Explaining what
-// Loop through users and check if active
+// MALO: Explicando qué
+// Loop a través de usuarios y verifica si activo
 for (const user of users) {
   if (user.status === 'active') { }
 }
 
-// GOOD: Explaining why
-// Active users only - inactive are handled by cleanup job
+// BUENO: Explicando por qué
+// Solo usuarios activos - los inactivos son manejados por el trabajo de limpieza
 const activeUsers = users.filter(u => u.isActive);
 ```
 
 ---
 
-### Duplicate Code
+### Código Duplicado
 
-**Signs:**
-- Same code in multiple places
-- Similar code with small variations
-- Copy-paste patterns
+**Signos:**
+- Mismo código en múltiples lugares
+- Código similar con pequeñas variaciones
+- Patrones de copy-paste
 
-**Why it's bad:**
-- Bug fixes needed in multiple places
-- Inconsistency risk
-- Bloated codebase
+**Por qué es malo:**
+- Fixes de bugs necesarios en múltiples lugares
+- Riesgo de inconsistencia
+- Codebase inflado
 
 **Refactorings:**
 - Extract Method
 - Extract Class
-- Pull Up Method (in hierarchies)
+- Pull Up Method (en jerarquías)
 - Form Template Method
 
-**Detection Rule:**
-Any code duplicated 3+ times should be extracted.
+**Regla de Detección:**
+Cualquier código duplicado 3+ veces debería ser extraído.
 
 ---
 
-### Lazy Class
+### Clase Perezosa
 
-**Signs:**
-- Class doesn't do enough to justify existence
-- Wrapper with no added value
-- Result of over-engineering
+**Signos:**
+- La clase no hace lo suficiente para justificar su existencia
+- Wrapper sin valor añadido
+- Resultado de sobre-ingeniería
 
-**Why it's bad:**
-- Maintenance overhead
-- Unnecessary indirection
-- Complexity without benefit
+**Por qué es malo:**
+- Carga de mantenimiento
+- Indirección innecesaria
+- Complejidad sin beneficio
 
 **Refactorings:**
 - Inline Class
@@ -472,44 +472,44 @@ Any code duplicated 3+ times should be extracted.
 
 ---
 
-### Dead Code
+### Código Muerto
 
-**Signs:**
-- Unreachable code
-- Unused variables/methods/classes
-- Commented-out code
-- Code behind impossible conditions
+**Signos:**
+- Código inalcanzable
+- Variables/métodos/clases no usados
+- Código comentado
+- Código detrás de condiciones imposibles
 
-**Why it's bad:**
-- Confusion
-- Maintenance burden
-- Slows down understanding
+**Por qué es malo:**
+- Confusión
+- Carga de mantenimiento
+- Ralentiza la comprensión
 
 **Refactorings:**
 - Remove Dead Code
 - Safe Delete
 
-**Detection:**
+**Detección:**
 ```bash
-# Look for unused exports
-# Look for unreferenced functions
-# IDE "unused" warnings
+# Busca exports no usados
+# Busca funciones no referenciadas
+# Warnings "unused" del IDE
 ```
 
 ---
 
-### Speculative Generality
+### Generalidad Especulativa
 
-**Signs:**
-- Abstract classes with one subclass
-- Unused parameters "for future use"
-- Methods that only delegate
-- "Framework" for one use case
+**Signos:**
+- Clases abstractas con una subclase
+- Parámetros no usados "para uso futuro"
+- Métodos que solo delegan
+- "Framework" para un caso de uso
 
-**Why it's bad:**
-- Complexity without benefit
+**Por qué es malo:**
+- Complejidad sin beneficio
 - YAGNI (You Ain't Gonna Need It)
-- Harder to understand
+- Más difícil de entender
 
 **Refactorings:**
 - Collapse Hierarchy
@@ -519,32 +519,32 @@ Any code duplicated 3+ times should be extracted.
 
 ---
 
-## Couplers
+## Acopladores
 
-Smells that represent excessive coupling between classes.
+Smells que representan acoplamiento excesivo entre clases.
 
-### Feature Envy
+### Envidia de Característica
 
-**Signs:**
-- Method uses more data from another class than its own
-- Many getter calls to another object
-- Data and behavior are separated
+**Signos:**
+- Método usa más datos de otra clase que los suyos
+- Muchas llamadas a getters a otro objeto
+- Datos y comportamiento están separados
 
-**Why it's bad:**
-- Wrong location for behavior
-- Poor encapsulation
-- Hard to maintain
+**Por qué es malo:**
+- Ubicación incorrecta para comportamiento
+- Pobre encapsulamiento
+- Difícil de mantener
 
 **Refactorings:**
 - Move Method
 - Move Field
-- Extract Method (then move)
+- Extract Method (luego mover)
 
-**Example (Before):**
+**Ejemplo (Antes):**
 ```javascript
 class Order {
   getDiscountedPrice(customer) {
-    // Uses customer data heavily
+    // Usa datos de customer extensamente
     if (customer.loyaltyYears > 5) {
       return this.price * customer.discountRate;
     }
@@ -553,7 +553,7 @@ class Order {
 }
 ```
 
-**Example (After):**
+**Ejemplo (Después):**
 ```javascript
 class Customer {
   getDiscountedPriceFor(price) {
@@ -567,17 +567,17 @@ class Customer {
 
 ---
 
-### Inappropriate Intimacy
+### Intimidad Inapropiada
 
-**Signs:**
-- Classes access each other's private parts
-- Bidirectional references
-- Subclasses know too much about parents
+**Signos:**
+- Las clases acceden a partes privadas de cada otra
+- Referencias bidireccionales
+- Subclases saben demasiado sobre padres
 
-**Why it's bad:**
-- High coupling
-- Changes cascade
-- Hard to modify one without other
+**Por qué es malo:**
+- Alto acoplamiento
+- Los cambios se propagan en cascada
+- Difícil modificar uno sin el otro
 
 **Refactorings:**
 - Move Method
@@ -588,45 +588,45 @@ class Customer {
 
 ---
 
-### Message Chains
+### Cadenas de Mensajes
 
-**Signs:**
-- Long chains of method calls: `a.getB().getC().getD().getValue()`
-- Client depends on navigation structure
-- "Train wreck" code
+**Signos:**
+- Cadenas largas de llamadas a métodos: `a.getB().getC().getD().getValue()`
+- Cliente depende de estructura de navegación
+- Código "train wreck"
 
-**Why it's bad:**
-- Fragile—any change breaks chain
-- Violates Law of Demeter
-- Coupling to structure
+**Por qué es malo:**
+- Frágil—cualquier cambio rompe la cadena
+- Viola la Ley de Demeter
+- Acoplamiento a estructura
 
 **Refactorings:**
-- Hide Delegate
+- Hide Delegates
 - Extract Method
 - Move Method
 
-**Example:**
+**Ejemplo:**
 ```javascript
-// Bad: Message chain
+// Malo: Cadena de mensajes
 const managerName = employee.getDepartment().getManager().getName();
 
-// Better: Hide delegation
+// Mejor: Ocultar delegación
 const managerName = employee.getManagerName();
 ```
 
 ---
 
-### Middle Man
+### Hombre del Medio
 
-**Signs:**
-- Class that only delegates to another
-- Half the methods are delegations
-- No added value
+**Signos:**
+- Clase que solo delega a otra
+- La mitad de los métodos son delegaciones
+- Sin valor añadido
 
-**Why it's bad:**
-- Unnecessary indirection
-- Maintenance overhead
-- Confusing architecture
+**Por qué es malo:**
+- Indirección innecesaria
+- Carga de mantenimiento
+- Arquitectura confusa
 
 **Refactorings:**
 - Remove Middle Man
@@ -634,36 +634,36 @@ const managerName = employee.getManagerName();
 
 ---
 
-## Smell Severity Guide
+## Guía de Severidad de Smells
 
-| Severity | Description | Action |
+| Severidad | Descripción | Acción |
 |----------|-------------|--------|
-| **Critical** | Blocks development, causes bugs | Fix immediately |
-| **High** | Significant maintenance burden | Fix in current sprint |
-| **Medium** | Noticeable but manageable | Plan for near future |
-| **Low** | Minor inconvenience | Fix opportunistically |
+| **Crítico** | Bloquea desarrollo, causa bugs | Arreglar inmediatamente |
+| **Alto** | Carga de mantenimiento significativa | Arreglar en sprint actual |
+| **Medio** | Notable pero manejable | Planear para futuro cercano |
+| **Bajo** | Inconveniencia menor | Arreglar oportunísticamente |
 
 ---
 
-## Quick Detection Checklist
+## Checklist de Detección Rápida
 
-Use this checklist when scanning code:
+Usa este checklist cuando escanees código:
 
-- [ ] Any method > 30 lines?
-- [ ] Any class > 300 lines?
-- [ ] Any method with > 4 parameters?
-- [ ] Any duplicated code blocks?
-- [ ] Any switch/case on type codes?
-- [ ] Any unused code?
-- [ ] Any methods using another class's data heavily?
-- [ ] Any long chains of method calls?
-- [ ] Any comments explaining "what" not "why"?
-- [ ] Any primitives that should be objects?
+- [ ] ¿Algún método > 30 líneas?
+- [ ] ¿Alguna clase > 300 líneas?
+- [ ] ¿Algún método con > 4 parámetros?
+- [ ] ¿Bloques de código duplicado?
+- [ ] ¿Algún switch/case en códigos de tipo?
+- [ ] ¿Código no usado?
+- [ ] ¿Algún método usando datos de otra clase extensamente?
+- [ ] ¿Cadenas largas de llamadas a métodos?
+- [ ] ¿Comentarios explicando "qué" no "por qué"?
+- [ ] ¿Primitivos que deberían ser objetos?
 
 ---
 
-## Further Reading
+## Lectura Adicional
 
-- Fowler, M. (2018). *Refactoring: Improving the Design of Existing Code* (2nd ed.)
+- Fowler, M. (2018). *Refactoring: Improving the Design of Existing Code* (2da ed.)
 - Kerievsky, J. (2004). *Refactoring to Patterns*
 - Feathers, M. (2004). *Working Effectively with Legacy Code*

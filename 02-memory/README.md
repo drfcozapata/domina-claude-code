@@ -3,263 +3,263 @@
   <img alt="Claude How To" src="../resources/logos/claude-howto-logo.svg">
 </picture>
 
-# Memory Guide
+# Guía de Memory
 
-Memory enables Claude to retain context across sessions and conversations. It exists in two forms: automatic synthesis in claude.ai, and filesystem-based CLAUDE.md in Claude Code.
+Memory permite que Claude retenga contexto entre sesiones y conversaciones. Existe en dos formas: síntesis automática en claude.ai, y CLAUDE.md basado en el sistema de archivos en Claude Code.
 
-## Overview
+## Visión General
 
-Memory in Claude Code provides persistent context that carries across multiple sessions and conversations. Unlike temporary context windows, memory files allow you to:
+Memory en Claude Code proporciona contexto persistente que se mantiene a través de múltiples sesiones y conversaciones. A diferencia de las ventanas de contexto temporales, los archivos de memory te permiten:
 
-- Share project standards across your team
-- Store personal development preferences
-- Maintain directory-specific rules and configurations
-- Import external documentation
-- Version control memory as part of your project
+- Compartir estándares de proyecto en tu equipo
+- Almacenar preferencias personales de desarrollo
+- Mantener reglas y configuraciones específicas de directorio
+- Importar documentación externa
+- Control de versiones de memory como parte de tu proyecto
 
-The memory system operates at multiple levels, from global personal preferences down to specific subdirectories, allowing for fine-grained control over what Claude remembers and how it applies that knowledge.
+El sistema de memory opera en múltiples niveles, desde preferencias personales globales hasta subdirectorios específicos, permitiendo un control detallado sobre lo que Claude recuerda y cómo aplica ese conocimiento.
 
-## Memory Commands Quick Reference
+## Referencia Rápida de Comandos de Memory
 
-| Command | Purpose | Usage | When to Use |
+| Comando | Propósito | Uso | Cuándo Usar |
 |---------|---------|-------|-------------|
-| `/init` | Initialize project memory | `/init` | Starting new project, first-time CLAUDE.md setup |
-| `/memory` | Edit memory files in editor | `/memory` | Extensive updates, reorganization, reviewing content |
-| `#` prefix | Quick single-line memory add | `# Your rule here` | Adding quick rules during conversation |
-| `# new rule into memory` | Explicit memory addition | `# new rule into memory<br/>Your detailed rule` | Adding complex multi-line rules |
-| `# remember this` | Natural language memory | `# remember this<br/>Your instruction` | Conversational memory updates |
-| `@path/to/file` | Import external content | `@README.md` or `@docs/api.md` | Referencing existing documentation in CLAUDE.md |
+| `/init` | Inicializar memory del proyecto | `/init` | Iniciando nuevo proyecto, configuración inicial de CLAUDE.md |
+| `/memory` | Editar archivos de memory en editor | `/memory` | Actualizaciones extensas, reorganización, revisión de contenido |
+| prefijo `#` | Adición rápida de memory de una línea | `# Tu regla aquí` | Agregando reglas rápidas durante la conversación |
+| `# new rule into memory` | Adición explícita de memory | `# new rule into memory<br/>Tu regla detallada` | Agregando reglas complejas de múltiples líneas |
+| `# remember this` | Memory de lenguaje natural | `# remember this<br/>Tu instrucción` | Actualizaciones conversacionales de memory |
+| `@ruta/al/archivo` | Importar contenido externo | `@README.md` o `@docs/api.md` | Referenciando documentación existente en CLAUDE.md |
 
-## Quick Start: Initializing Memory
+## Inicio Rápido: Inicializando Memory
 
-### The `/init` Command
+### El Comando `/init`
 
-The `/init` command is the fastest way to set up project memory in Claude Code. It initializes a CLAUDE.md file with foundational project documentation.
+El comando `/init` es la forma más rápida de configurar project memory en Claude Code. Inicializa un archivo CLAUDE.md con documentación fundamental del proyecto.
 
-**Usage:**
+**Uso:**
 
 ```bash
 /init
 ```
 
-**What it does:**
+**Lo que hace:**
 
-- Creates a new CLAUDE.md file in your project (typically at `./CLAUDE.md` or `./.claude/CLAUDE.md`)
-- Establishes project conventions and guidelines
-- Sets up the foundation for context persistence across sessions
-- Provides a template structure for documenting your project standards
+- Crea un nuevo archivo CLAUDE.md en tu proyecto (típicamente en `./CLAUDE.md` o `./.claude/CLAUDE.md`)
+- Establece convenciones y directrices del proyecto
+- Configura la base para la persistencia de contexto entre sesiones
+- Proporciona una estructura de plantilla para documentar los estándares de tu proyecto
 
-**Enhanced interactive mode:** Set `CLAUDE_CODE_NEW_INIT=true` to enable a multi-phase interactive flow that walks you through project setup step by step:
+**Modo interactivo mejorado:** Establece `CLAUDE_CODE_NEW_INIT=true` para habilitar un flujo interactivo de múltiples fases que te guía paso a paso en la configuración del proyecto:
 
 ```bash
 CLAUDE_CODE_NEW_INIT=true claude
 /init
 ```
 
-**When to use `/init`:**
+**Cuándo usar `/init`:**
 
-- Starting a new project with Claude Code
-- Establishing team coding standards and conventions
-- Creating documentation about your codebase structure
-- Setting up memory hierarchy for collaborative development
+- Iniciando un nuevo proyecto con Claude Code
+- Estableciendo estándares y convenciones de codificación del equipo
+- Creando documentación sobre la estructura de tu código
+- Configurando la jerarquía de memory para desarrollo colaborativo
 
-**Example workflow:**
+**Flujo de trabajo de ejemplo:**
 
 ```markdown
-# In your project directory
+# En tu directorio de proyecto
 /init
 
-# Claude creates CLAUDE.md with structure like:
-# Project Configuration
-## Project Overview
-- Name: Your Project
-- Tech Stack: [Your technologies]
-- Team Size: [Number of developers]
+# Claude crea CLAUDE.md con una estructura como:
+# Configuración del Proyecto
+## Visión General del Proyecto
+- Nombre: Tu Proyecto
+- Tech Stack: [Tus tecnologías]
+- Tamaño del Equipo: [Número de desarrolladores]
 
-## Development Standards
-- Code style preferences
-- Testing requirements
-- Git workflow conventions
+## Estándares de Desarrollo
+- Preferencias de estilo de código
+- Requisitos de testing
+- Convenciones de flujo de Git
 ```
 
-### Quick Memory Updates with `#`
+### Actualizaciones Rápidas de Memory con `#`
 
-You can quickly add information to memory during any conversation by starting your message with `#`:
+Puedes agregar información rápidamente a memory durante cualquier conversación comenzando tu mensaje con `#`:
 
-**Syntax:**
+**Sintaxis:**
 
 ```markdown
-# Your memory rule or instruction here
+# Tu regla o instrucción de memory aquí
 ```
 
-**Examples:**
+**Ejemplos:**
 
 ```markdown
-# Always use TypeScript strict mode in this project
+# Siempre usar modo estricto de TypeScript en este proyecto
 
-# Prefer async/await over promise chains
+# Preferir async/await sobre cadenas de promesas
 
-# Run npm test before every commit
+# Ejecutar npm test antes de cada commit
 
-# Use kebab-case for file names
+# Usar kebab-case para nombres de archivos
 ```
 
-**How it works:**
+**Cómo funciona:**
 
-1. Start your message with `#` followed by your rule
-2. Claude recognizes this as a memory update request
-3. Claude asks which memory file to update (project or personal)
-4. The rule is added to the appropriate CLAUDE.md file
-5. Future sessions automatically load this context
+1. Comienza tu mensaje con `#` seguido de tu regla
+2. Claude reconoce esto como una solicitud de actualización de memory
+3. Claude pregunta qué archivo de memory actualizar (proyecto o personal)
+4. La regla se agrega al archivo CLAUDE.md apropiado
+5. Las sesiones futuras cargan automáticamente este contexto
 
-**Alternative patterns:**
+**Patrones alternativos:**
 
 ```markdown
 # new rule into memory
-Always validate user input with Zod schemas
+Siempre validar entrada de usuario con esquemas Zod
 
 # remember this
-Use semantic versioning for all releases
+Usar versionamiento semántico para todos los lanzamientos
 
 # add to memory
-Database migrations must be reversible
+Las migraciones de base de datos deben ser reversibles
 ```
 
-### The `/memory` Command
+### El Comando `/memory`
 
-The `/memory` command provides direct access to edit your CLAUDE.md memory files within Claude Code sessions. It opens your memory files in your system editor for comprehensive editing.
+El comando `/memory` proporciona acceso directo para editar tus archivos de memory CLAUDE.md dentro de las sesiones de Claude Code. Abre tus archivos de memory en tu editor del sistema para una edición integral.
 
-**Usage:**
+**Uso:**
 
 ```bash
 /memory
 ```
 
-**What it does:**
+**Lo que hace:**
 
-- Opens your memory files in your system's default editor
-- Allows you to make extensive additions, modifications, and reorganizations
-- Provides direct access to all memory files in the hierarchy
-- Enables you to manage persistent context across sessions
+- Abre tus archivos de memory en el editor predeterminado de tu sistema
+- Te permite realizar adiciones, modificaciones y reorganizaciones extensas
+- Proporciona acceso directo a todos los archivos de memory en la jerarquía
+- Te permite gestionar el contexto persistente entre sesiones
 
-**When to use `/memory`:**
+**Cuándo usar `/memory`:**
 
-- Reviewing existing memory content
-- Making extensive updates to project standards
-- Reorganizing memory structure
-- Adding detailed documentation or guidelines
-- Maintaining and updating memory as your project evolves
+- Revisando contenido de memory existente
+- Realizando actualizaciones extensas a estándares de proyecto
+- Reorganizando la estructura de memory
+- Agregando documentación o directrices detalladas
+- Manteniendo y actualizando memory a medida que tu proyecto evoluciona
 
-**Comparison: `/memory` vs `/init`**
+**Comparación: `/memory` vs `/init`**
 
-| Aspect | `/memory` | `/init` |
+| Aspecto | `/memory` | `/init` |
 |--------|-----------|---------|
-| **Purpose** | Edit existing memory files | Initialize new CLAUDE.md |
-| **When to use** | Update/modify project context | Begin new projects |
-| **Action** | Opens editor for changes | Generates starter template |
-| **Workflow** | Ongoing maintenance | One-time setup |
+| **Propósito** | Editar archivos de memory existentes | Inicializar nuevo CLAUDE.md |
+| **Cuándo usar** | Actualizar/modificar contexto del proyecto | Iniciar nuevos proyectos |
+| **Acción** | Abre el editor para cambios | Genera plantilla inicial |
+| **Flujo de trabajo** | Mantenimiento continuo | Configuración única |
 
-**Example workflow:**
+**Flujo de trabajo de ejemplo:**
 
 ```markdown
-# Open memory for editing
+# Abrir memory para editar
 /memory
 
-# Claude presents options:
+# Claude presenta opciones:
 # 1. Managed Policy Memory
 # 2. Project Memory (./CLAUDE.md)
 # 3. User Memory (~/.claude/CLAUDE.md)
 # 4. Local Project Memory
 
-# Choose option 2 (Project Memory)
-# Your default editor opens with ./CLAUDE.md content
+# Elegir opción 2 (Project Memory)
+# Tu editor predeterminado se abre con el contenido de ./CLAUDE.md
 
-# Make changes, save, and close editor
-# Claude automatically reloads the updated memory
+# Realizar cambios, guardar y cerrar el editor
+# Claude recarga automáticamente la memory actualizada
 ```
 
-**Using Memory Imports:**
+**Usando Importaciones de Memory:**
 
-CLAUDE.md files support the `@path/to/file` syntax to include external content:
+Los archivos CLAUDE.md soportan la sintaxis `@ruta/al/archivo` para incluir contenido externo:
 
 ```markdown
-# Project Documentation
-See @README.md for project overview
-See @package.json for available npm commands
-See @docs/architecture.md for system design
+# Documentación del Proyecto
+Ver @README.md para visión general del proyecto
+Ver @package.json para comandos npm disponibles
+Ver @docs/architecture.md para diseño del sistema
 
-# Import from home directory using absolute path
+# Importar desde directorio home usando ruta absoluta
 @~/.claude/my-project-instructions.md
 ```
 
-**Import features:**
+**Características de importación:**
 
-- Both relative and absolute paths are supported (e.g., `@docs/api.md` or `@~/.claude/my-project-instructions.md`)
-- Recursive imports are supported with a maximum depth of 5
-- First-time imports from external locations trigger an approval dialog for security
-- Import directives are not evaluated inside markdown code spans or code blocks (so documenting them in examples is safe)
-- Helps avoid duplication by referencing existing documentation
-- Automatically includes referenced content in Claude's context
+- Se admiten rutas relativas y absolutas (ej. `@docs/api.md` o `@~/.claude/my-project-instructions.md`)
+- Las importaciones recursivas se admiten con una profundidad máxima de 5
+- Las importaciones desde ubicaciones externas por primera vez activan un diálogo de aprobación por seguridad
+- Las directivas de importación no se evalúan dentro de spans de código markdown o bloques de código (por lo que documentarlas en ejemplos es seguro)
+- Ayuda a evitar duplicación referenciando documentación existente
+- Incluye automáticamente el contenido referenciado en el contexto de Claude
 
-## Memory Architecture
+## Arquitectura de Memory
 
-Memory in Claude Code follows a hierarchical system where different scopes serve different purposes:
+Memory en Claude Code sigue un sistema jerárquico donde diferentes ámbitos sirven para diferentes propósitos:
 
 ```mermaid
 graph TB
-    A["Claude Session"]
-    B["User Input"]
-    C["Memory System"]
-    D["Memory Storage"]
+    A["Sesión de Claude"]
+    B["Entrada de Usuario"]
+    C["Sistema de Memory"]
+    D["Almacenamiento de Memory"]
 
-    B -->|User provides info| C
-    C -->|Synthesizes every 24h| D
-    D -->|Loads automatically| A
-    A -->|Uses context| C
+    B -->|Usuario proporciona info| C
+    C -->|Sintetiza cada 24h| D
+    D -->|Carga automáticamente| A
+    A -->|Usa contexto| C
 ```
 
-## Memory Hierarchy in Claude Code
+## Jerarquía de Memory en Claude Code
 
-Claude Code uses a multi-tier hierarchical memory system. Memory files are automatically loaded when Claude Code launches, with higher-level files taking precedence.
+Claude Code usa un sistema de memory jerárquico de múltiples niveles. Los archivos de memory se cargan automáticamente cuando Claude Code se inicia, con los archivos de nivel superior teniendo precedencia.
 
-**Complete Memory Hierarchy (in order of precedence):**
+**Jerarquía Completa de Memory (en orden de precedencia):**
 
-1. **Managed Policy** - Organization-wide instructions
+1. **Managed Policy** - Instrucciones a nivel de organización
    - macOS: `/Library/Application Support/ClaudeCode/CLAUDE.md`
    - Linux/WSL: `/etc/claude-code/CLAUDE.md`
    - Windows: `C:\Program Files\ClaudeCode\CLAUDE.md`
 
-2. **Managed Drop-ins** - Alphabetically merged policy files (v2.1.83+)
-   - `managed-settings.d/` directory alongside the managed policy CLAUDE.md
-   - Files are merged in alphabetical order for modular policy management
+2. **Managed Drop-ins** - Archivos de política fusionados alfabéticamente (v2.1.83+)
+   - Directorio `managed-settings.d/` junto al managed policy CLAUDE.md
+   - Los archivos se fusionan en orden alfabético para gestión modular de políticas
 
-3. **Project Memory** - Team-shared context (version controlled)
-   - `./.claude/CLAUDE.md` or `./CLAUDE.md` (in repository root)
+3. **Project Memory** - Contexto compartido por el equipo (controlado por versión)
+   - `./.claude/CLAUDE.md` o `./CLAUDE.md` (en la raíz del repositorio)
 
-4. **Project Rules** - Modular, topic-specific project instructions
+4. **Project Rules** - Instrucciones modulares de proyecto específicas por tema
    - `./.claude/rules/*.md`
 
-5. **User Memory** - Personal preferences (all projects)
+5. **User Memory** - Preferencias personales (todos los proyectos)
    - `~/.claude/CLAUDE.md`
 
-6. **User-Level Rules** - Personal rules (all projects)
+6. **User-Level Rules** - Reglas personales (todos los proyectos)
    - `~/.claude/rules/*.md`
 
-7. **Local Project Memory** - Personal project-specific preferences
+7. **Local Project Memory** - Preferencias personales específicas del proyecto
    - `./CLAUDE.local.md`
 
-> **Note**: `CLAUDE.local.md` is not mentioned in the [official documentation](https://code.claude.com/docs/en/memory) as of March 2026. It may still work as a legacy feature. For new projects, consider using `~/.claude/CLAUDE.md` (user-level) or `.claude/rules/` (project-level, path-scoped) instead.
+> **Nota**: `CLAUDE.local.md` no se menciona en la [documentación oficial](https://code.claude.com/docs/en/memory) a partir de marzo de 2026. Puede seguir funcionando como una característica heredada. Para nuevos proyectos, considera usar `~/.claude/CLAUDE.md` (nivel de usuario) o `.claude/rules/` (nivel de proyecto, con ámbito de ruta) en su lugar.
 
-8. **Auto Memory** - Claude's automatic notes and learnings
+8. **Auto Memory** - Notas y aprendizajes automáticos de Claude
    - `~/.claude/projects/<project>/memory/`
 
-**Memory Discovery Behavior:**
+**Comportamiento de Descubrimiento de Memory:**
 
-Claude searches for memory files in this order, with earlier locations taking precedence:
+Claude busca archivos de memory en este orden, con las ubicaciones anteriores teniendo precedencia:
 
 ```mermaid
 graph TD
-    A["Managed Policy<br/>/Library/.../ClaudeCode/CLAUDE.md"] -->|highest priority| A2["Managed Drop-ins<br/>managed-settings.d/"]
+    A["Managed Policy<br/>/Library/.../ClaudeCode/CLAUDE.md"] -->|mayor prioridad| A2["Managed Drop-ins<br/>managed-settings.d/"]
     A2 --> B["Project Memory<br/>./CLAUDE.md"]
     B --> C["Project Rules<br/>./.claude/rules/*.md"]
     C --> D["User Memory<br/>~/.claude/CLAUDE.md"]
@@ -267,8 +267,8 @@ graph TD
     E --> F["Local Project Memory<br/>./CLAUDE.local.md"]
     F --> G["Auto Memory<br/>~/.claude/projects/.../memory/"]
 
-    B -->|imports| H["@docs/architecture.md"]
-    H -->|imports| I["@docs/api-standards.md"]
+    B -->|importaciones| H["@docs/architecture.md"]
+    H -->|importaciones| I["@docs/api-standards.md"]
 
     style A fill:#fce4ec,stroke:#333,color:#333
     style A2 fill:#fce4ec,stroke:#333,color:#333
@@ -282,12 +282,12 @@ graph TD
     style I fill:#e1f5fe,stroke:#333,color:#333
 ```
 
-## Excluding CLAUDE.md Files with `claudeMdExcludes`
+## Excluyendo Archivos CLAUDE.md con `claudeMdExcludes`
 
-In large monorepos, some CLAUDE.md files may be irrelevant to your current work. The `claudeMdExcludes` setting lets you skip specific CLAUDE.md files so they are not loaded into context:
+En monorepos grandes, algunos archivos CLAUDE.md pueden ser irrelevantes para tu trabajo actual. La configuración `claudeMdExcludes` te permite omitir archivos CLAUDE.md específicos para que no se carguen en el contexto:
 
 ```jsonc
-// In ~/.claude/settings.json or .claude/settings.json
+// En ~/.claude/settings.json o .claude/settings.json
 {
   "claudeMdExcludes": [
     "packages/legacy-app/CLAUDE.md",
@@ -296,106 +296,106 @@ In large monorepos, some CLAUDE.md files may be irrelevant to your current work.
 }
 ```
 
-Patterns are matched against paths relative to the project root. This is particularly useful for:
+Los patrones se comparan con rutas relativas a la raíz del proyecto. Esto es particularmente útil para:
 
-- Monorepos with many sub-projects, where only some are relevant
-- Repositories that contain vendored or third-party CLAUDE.md files
-- Reducing noise in Claude's context window by excluding stale or unrelated instructions
+- Monorepos con muchos subproyectos, donde solo algunos son relevantes
+- Repositorios que contienen archivos CLAUDE.md de terceros o con código empaquetado
+- Reducir el ruido en la ventana de contexto de Claude excluyendo instrucciones obsoletas o no relacionadas
 
-## Settings File Hierarchy
+## Jerarquía de Archivos de Configuración
 
-Claude Code settings (including `autoMemoryDirectory`, `claudeMdExcludes`, and other configuration) are resolved from a five-level hierarchy, with higher levels taking precedence:
+Las configuraciones de Claude Code (incluyendo `autoMemoryDirectory`, `claudeMdExcludes`, y otras configuraciones) se resuelven desde una jerarquía de cinco niveles, con los niveles superiores teniendo precedencia:
 
-| Level | Location | Scope |
+| Nivel | Ubicación | Ámbito |
 |-------|----------|-------|
-| 1 (Highest) | Managed policy (system-level) | Organization-wide enforcement |
-| 2 | `managed-settings.d/` (v2.1.83+) | Modular policy drop-ins, merged alphabetically |
-| 3 | `~/.claude/settings.json` | User preferences |
-| 4 | `.claude/settings.json` | Project-level (committed to git) |
-| 5 (Lowest) | `.claude/settings.local.json` | Local overrides (git-ignored) |
+| 1 (Más alto) | Managed policy (nivel de sistema) | Aplicación a toda la organización |
+| 2 | `managed-settings.d/` (v2.1.83+) | Drop-ins modulares de políticas, fusionados alfabéticamente |
+| 3 | `~/.claude/settings.json` | Preferencias de usuario |
+| 4 | `.claude/settings.json` | Nivel de proyecto (confirmado en git) |
+| 5 (Más bajo) | `.claude/settings.local.json` | Anulaciones locales (ignorado por git) |
 
-**Platform-specific configuration (v2.1.51+):**
+**Configuración específica de plataforma (v2.1.51+):**
 
-Settings can also be configured via:
-- **macOS**: Property list (plist) files
+Las configuraciones también se pueden configurar mediante:
+- **macOS**: Archivos property list (plist)
 - **Windows**: Windows Registry
 
-These platform-native mechanisms are read alongside JSON settings files and follow the same precedence rules.
+Estos mecanismos nativos de plataforma se leen junto con los archivos de configuración JSON y siguen las mismas reglas de precedencia.
 
-## Modular Rules System
+## Sistema de Reglas Modulares
 
-Create organized, path-specific rules using the `.claude/rules/` directory structure. Rules can be defined at both the project level and user level:
+Crea reglas organizadas y específicas de ruta usando la estructura de directorios `.claude/rules/`. Las reglas se pueden definir tanto a nivel de proyecto como a nivel de usuario:
 
 ```
-your-project/
+tu-proyecto/
 ├── .claude/
 │   ├── CLAUDE.md
 │   └── rules/
 │       ├── code-style.md
 │       ├── testing.md
 │       ├── security.md
-│       └── api/                  # Subdirectories supported
+│       └── api/                  # Se admiten subdirectorios
 │           ├── conventions.md
 │           └── validation.md
 
 ~/.claude/
 ├── CLAUDE.md
-└── rules/                        # User-level rules (all projects)
+└── rules/                        # Reglas a nivel de usuario (todos los proyectos)
     ├── personal-style.md
     └── preferred-patterns.md
 ```
 
-Rules are discovered recursively within the `rules/` directory, including any subdirectories. User-level rules at `~/.claude/rules/` are loaded before project-level rules, allowing personal defaults that projects can override.
+Las reglas se descubren recursivamente dentro del directorio `rules/`, incluyendo cualquier subdirectorio. Las reglas a nivel de usuario en `~/.claude/rules/` se cargan antes que las reglas a nivel de proyecto, permitiendo valores predeterminados personales que los proyectos pueden anular.
 
-### Path-Specific Rules with YAML Frontmatter
+### Reglas Específicas de Ruta con YAML Frontmatter
 
-Define rules that apply only to specific file paths:
+Define reglas que se aplican solo a rutas de archivo específicas:
 
 ```markdown
 ---
 paths: src/api/**/*.ts
 ---
 
-# API Development Rules
+# Reglas de Desarrollo de API
 
-- All API endpoints must include input validation
-- Use Zod for schema validation
-- Document all parameters and response types
-- Include error handling for all operations
+- Todos los endpoints de API deben incluir validación de entrada
+- Usar Zod para validación de esquemas
+- Documentar todos los parámetros y tipos de respuesta
+- Incluir manejo de errores para todas las operaciones
 ```
 
-**Glob Pattern Examples:**
+**Ejemplos de Patrones Glob:**
 
-- `**/*.ts` - All TypeScript files
-- `src/**/*` - All files under src/
-- `src/**/*.{ts,tsx}` - Multiple extensions
-- `{src,lib}/**/*.ts, tests/**/*.test.ts` - Multiple patterns
+- `**/*.ts` - Todos los archivos TypeScript
+- `src/**/*` - Todos los archivos bajo src/
+- `src/**/*.{ts,tsx}` - Múltiples extensiones
+- `{src,lib}/**/*.ts, tests/**/*.test.ts` - Múltiples patrones
 
-### Subdirectories and Symlinks
+### Subdirectorios y Symlinks
 
-Rules in `.claude/rules/` support two organizational features:
+Las reglas en `.claude/rules/` admiten dos características de organización:
 
-- **Subdirectories**: Rules are discovered recursively, so you can organize them into topic-based folders (e.g., `rules/api/`, `rules/testing/`, `rules/security/`)
-- **Symlinks**: Symlinks are supported for sharing rules across multiple projects. For example, you can symlink a shared rule file from a central location into each project's `.claude/rules/` directory
+- **Subdirectorios**: Las reglas se descubren recursivamente, por lo que puedes organizarlas en carpetas basadas en temas (ej. `rules/api/`, `rules/testing/`, `rules/security/`)
+- **Symlinks**: Se admiten symlinks para compartir reglas entre múltiples proyectos. Por ejemplo, puedes vincular un archivo de regla compartido desde una ubicación central en el directorio `.claude/rules/` de cada proyecto
 
-## Memory Locations Table
+## Tabla de Ubicaciones de Memory
 
-| Location | Scope | Priority | Shared | Access | Best For |
+| Ubicación | Ámbito | Prioridad | Compartido | Acceso | Mejor Para |
 |----------|-------|----------|--------|--------|----------|
-| `/Library/Application Support/ClaudeCode/CLAUDE.md` (macOS) | Managed Policy | 1 (Highest) | Organization | System | Company-wide policies |
-| `/etc/claude-code/CLAUDE.md` (Linux/WSL) | Managed Policy | 1 (Highest) | Organization | System | Organization standards |
-| `C:\Program Files\ClaudeCode\CLAUDE.md` (Windows) | Managed Policy | 1 (Highest) | Organization | System | Corporate guidelines |
-| `managed-settings.d/*.md` (alongside policy) | Managed Drop-ins | 1.5 | Organization | System | Modular policy files (v2.1.83+) |
-| `./CLAUDE.md` or `./.claude/CLAUDE.md` | Project Memory | 2 | Team | Git | Team standards, shared architecture |
-| `./.claude/rules/*.md` | Project Rules | 3 | Team | Git | Path-specific, modular rules |
-| `~/.claude/CLAUDE.md` | User Memory | 4 | Individual | Filesystem | Personal preferences (all projects) |
-| `~/.claude/rules/*.md` | User Rules | 5 | Individual | Filesystem | Personal rules (all projects) |
-| `./CLAUDE.local.md` | Project Local | 6 | Individual | Git (ignored) | Personal project-specific preferences |
-| `~/.claude/projects/<project>/memory/` | Auto Memory | 7 (Lowest) | Individual | Filesystem | Claude's automatic notes and learnings |
+| `/Library/Application Support/ClaudeCode/CLAUDE.md` (macOS) | Managed Policy | 1 (Más alto) | Organización | Sistema | Políticas de toda la empresa |
+| `/etc/claude-code/CLAUDE.md` (Linux/WSL) | Managed Policy | 1 (Más alto) | Organización | Sistema | Estándares de organización |
+| `C:\Program Files\ClaudeCode\CLAUDE.md` (Windows) | Managed Policy | 1 (Más alto) | Organización | Sistema | Directrices corporativas |
+| `managed-settings.d/*.md` (junto a la política) | Managed Drop-ins | 1.5 | Organización | Sistema | Archivos de política modulares (v2.1.83+) |
+| `./CLAUDE.md` o `./.claude/CLAUDE.md` | Project Memory | 2 | Equipo | Git | Estándares de equipo, arquitectura compartida |
+| `./.claude/rules/*.md` | Project Rules | 3 | Equipo | Git | Reglas modulares, específicas de ruta |
+| `~/.claude/CLAUDE.md` | User Memory | 4 | Individual | Sistema de archivos | Preferencias personales (todos los proyectos) |
+| `~/.claude/rules/*.md` | User Rules | 5 | Individual | Sistema de archivos | Reglas personales (todos los proyectos) |
+| `./CLAUDE.local.md` | Project Local | 6 | Individual | Git (ignorado) | Preferencias personales específicas del proyecto |
+| `~/.claude/projects/<project>/memory/` | Auto Memory | 7 (Más bajo) | Individual | Sistema de archivos | Notas y aprendizajes automáticos de Claude |
 
-## Memory Update Lifecycle
+## Ciclo de Vida de Actualización de Memory
 
-Here's how memory updates flow through your Claude Code sessions:
+Así es como fluyen las actualizaciones de memory a través de tus sesiones de Claude Code:
 
 ```mermaid
 sequenceDiagram
@@ -404,40 +404,40 @@ sequenceDiagram
     participant Editor as File System
     participant Memory as CLAUDE.md
 
-    User->>Claude: "Remember: use async/await"
-    Claude->>User: "Which memory file?"
+    User->>Claude: "Recuerda: usar async/await"
+    Claude->>User: "¿Qué archivo de memory?"
     User->>Claude: "Project memory"
-    Claude->>Editor: Open ~/.claude/settings.json
-    Claude->>Memory: Write to ./CLAUDE.md
-    Memory-->>Claude: File saved
-    Claude->>Claude: Load updated memory
-    Claude-->>User: "Memory saved!"
+    Claude->>Editor: Abrir ~/.claude/settings.json
+    Claude->>Memory: Escribir en ./CLAUDE.md
+    Memory-->>Claude: Archivo guardado
+    Claude->>Claude: Cargar memory actualizada
+    Claude-->>User: "¡Memory guardada!"
 ```
 
 ## Auto Memory
 
-Auto memory is a persistent directory where Claude automatically records learnings, patterns, and insights as it works with your project. Unlike CLAUDE.md files which you write and maintain manually, auto memory is written by Claude itself during sessions.
+Auto memory es un directorio persistente donde Claude registra automáticamente aprendizajes, patrones y conocimientos mientras trabaja con tu proyecto. A diferencia de los archivos CLAUDE.md que escribes y mantienes manualmente, auto memory es escrito por el propio Claude durante las sesiones.
 
-### How Auto Memory Works
+### Cómo Funciona Auto Memory
 
-- **Location**: `~/.claude/projects/<project>/memory/`
-- **Entrypoint**: `MEMORY.md` serves as the main file in the auto memory directory
-- **Topic files**: Optional additional files for specific subjects (e.g., `debugging.md`, `api-conventions.md`)
-- **Loading behavior**: The first 200 lines of `MEMORY.md` are loaded into the system prompt at session start. Topic files are loaded on demand, not at startup.
-- **Read/write**: Claude reads and writes memory files during sessions as it discovers patterns and project-specific knowledge
+- **Ubicación**: `~/.claude/projects/<project>/memory/`
+- **Punto de entrada**: `MEMORY.md` sirve como archivo principal en el directorio de auto memory
+- **Archivos de tema**: Archivos adicionales opcionales para temas específicos (ej. `debugging.md`, `api-conventions.md`)
+- **Comportamiento de carga**: Las primeras 200 líneas de `MEMORY.md` se cargan en el system prompt al inicio de la sesión. Los archivos de tema se cargan bajo demanda, no al inicio.
+- **Lectura/escritura**: Claude lee y escribe archivos de memory durante las sesiones a medida que descubre patrones y conocimiento específico del proyecto
 
-### Auto Memory Architecture
+### Arquitectura de Auto Memory
 
 ```mermaid
 graph TD
-    A["Claude Session Starts"] --> B["Load MEMORY.md<br/>(first 200 lines)"]
-    B --> C["Session Active"]
-    C --> D["Claude discovers<br/>patterns & insights"]
-    D --> E{"Write to<br/>auto memory"}
-    E -->|General notes| F["MEMORY.md"]
-    E -->|Topic-specific| G["debugging.md"]
-    E -->|Topic-specific| H["api-conventions.md"]
-    C --> I["On-demand load<br/>topic files"]
+    A["Inician Sesiones de Claude"] --> B["Cargar MEMORY.md<br/>(primeras 200 líneas)"]
+    B --> C["Sesión Activa"]
+    C --> D["Claude descubre<br/>patrones y conocimientos"]
+    D --> E{"Escribir en<br/>auto memory"}
+    E -->|Notas generales| F["MEMORY.md"]
+    E -->|Específico del tema| G["debugging.md"]
+    E -->|Específico del tema| H["api-conventions.md"]
+    C --> I["Carga bajo demanda<br/>archivos de tema"]
     I --> C
 
     style A fill:#e1f5fe,stroke:#333,color:#333
@@ -451,100 +451,100 @@ graph TD
     style I fill:#f3e5f5,stroke:#333,color:#333
 ```
 
-### Auto Memory Directory Structure
+### Estructura del Directorio de Auto Memory
 
 ```
 ~/.claude/projects/<project>/memory/
-├── MEMORY.md              # Entrypoint (first 200 lines loaded at startup)
-├── debugging.md           # Topic file (loaded on demand)
-├── api-conventions.md     # Topic file (loaded on demand)
-└── testing-patterns.md    # Topic file (loaded on demand)
+├── MEMORY.md              # Punto de entrada (primeras 200 líneas cargadas al inicio)
+├── debugging.md           # Archivo de tema (cargado bajo demanda)
+├── api-conventions.md     # Archivo de tema (cargado bajo demanda)
+└── testing-patterns.md    # Archivo de tema (cargado bajo demanda)
 ```
 
-### Version Requirement
+### Requisito de Versión
 
-Auto memory requires **Claude Code v2.1.59 or later**. If you are on an older version, upgrade first:
+Auto memory requiere **Claude Code v2.1.59 o posterior**. Si estás en una versión anterior, actualiza primero:
 
 ```bash
 npm install -g @anthropic-ai/claude-code@latest
 ```
 
-### Custom Auto Memory Directory
+### Directorio de Auto Memory Personalizado
 
-By default, auto memory is stored in `~/.claude/projects/<project>/memory/`. You can change this location using the `autoMemoryDirectory` setting (available since **v2.1.74**):
+Por defecto, auto memory se almacena en `~/.claude/projects/<project>/memory/`. Puedes cambiar esta ubicación usando la configuración `autoMemoryDirectory` (disponible desde **v2.1.74**):
 
 ```jsonc
-// In ~/.claude/settings.json or .claude/settings.local.json (user/local settings only)
+// En ~/.claude/settings.json o .claude/settings.local.json (solo configuraciones de usuario/local)
 {
-  "autoMemoryDirectory": "/path/to/custom/memory/directory"
+  "autoMemoryDirectory": "/ruta/al/directorio/personalizado/de/memory"
 }
 ```
 
-> **Note**: `autoMemoryDirectory` can only be set in user-level (`~/.claude/settings.json`) or local settings (`.claude/settings.local.json`), not in project or managed policy settings.
+> **Nota**: `autoMemoryDirectory` solo se puede establecer en configuraciones a nivel de usuario (`~/.claude/settings.json`) o configuraciones locales (`.claude/settings.local.json`), no en configuraciones de proyecto o managed policy.
 
-This is useful when you want to:
+Esto es útil cuando quieres:
 
-- Store auto memory in a shared or synced location
-- Separate auto memory from the default Claude configuration directory
-- Use a project-specific path outside the default hierarchy
+- Almacenar auto memory en una ubicación compartida o sincronizada
+- Separar auto memory del directorio de configuración predeterminado de Claude
+- Usar una ruta específica del proyecto fuera de la jerarquía predeterminada
 
-### Worktree and Repository Sharing
+### Uso Compartido de Worktree y Repositorio
 
-All worktrees and subdirectories within the same git repository share a single auto memory directory. This means switching between worktrees or working in different subdirectories of the same repo will read and write to the same memory files.
+Todos los worktrees y subdirectorios dentro del mismo repositorio git comparten un único directorio de auto memory. Esto significa que cambiar entre worktrees o trabajar en diferentes subdirectorios del mismo repo leerá y escribirá en los mismos archivos de memory.
 
 ### Subagent Memory
 
-Subagents (spawned via tools like Task or parallel execution) can have their own memory context. Use the `memory` frontmatter field in the subagent definition to specify which memory scopes to load:
+Los subagentes (creados mediante herramientas como Task o ejecución paralela) pueden tener su propio contexto de memory. Usa el campo `memory` frontmatter en la definición del subagente para especificar qué ámbitos de memory cargar:
 
 ```yaml
-memory: user      # Load user-level memory only
-memory: project   # Load project-level memory only
-memory: local     # Load local memory only
+memory: user      # Cargar solo memory a nivel de usuario
+memory: project   # Cargar solo memory a nivel de proyecto
+memory: local     # Cargar solo memory local
 ```
 
-This allows subagents to operate with focused context rather than inheriting the full memory hierarchy.
+Esto permite que los subagentes operen con un contexto enfocado en lugar de heredar la jerarquía completa de memory.
 
-### Controlling Auto Memory
+### Controlando Auto Memory
 
-Auto memory can be controlled via the `CLAUDE_CODE_DISABLE_AUTO_MEMORY` environment variable:
+Auto memory se puede controlar mediante la variable de entorno `CLAUDE_CODE_DISABLE_AUTO_MEMORY`:
 
-| Value | Behavior |
+| Valor | Comportamiento |
 |-------|----------|
-| `0` | Force auto memory **on** |
-| `1` | Force auto memory **off** |
-| *(unset)* | Default behavior (auto memory enabled) |
+| `0` | Forzar auto memory **encendido** |
+| `1` | Forzar auto memory **apagado** |
+| *(no establecido)* | Comportamiento predeterminado (auto memory habilitado) |
 
 ```bash
-# Disable auto memory for a session
+# Deshabilitar auto memory para una sesión
 CLAUDE_CODE_DISABLE_AUTO_MEMORY=1 claude
 
-# Force auto memory on explicitly
+# Forzar auto memory encendido explícitamente
 CLAUDE_CODE_DISABLE_AUTO_MEMORY=0 claude
 ```
 
-## Additional Directories with `--add-dir`
+## Directorios Adicionales con `--add-dir`
 
-The `--add-dir` flag allows Claude Code to load CLAUDE.md files from additional directories beyond the current working directory. This is useful for monorepos or multi-project setups where context from other directories is relevant.
+La bandera `--add-dir` permite que Claude Code cargue archivos CLAUDE.md desde directorios adicionales más allá del directorio de trabajo actual. Esto es útil para monorepos o configuraciones de múltiples proyectos donde el contexto de otros directorios es relevante.
 
-To enable this feature, set the environment variable:
+Para habilitar esta función, establece la variable de entorno:
 
 ```bash
 CLAUDE_CODE_ADDITIONAL_DIRECTORIES_CLAUDE_MD=1
 ```
 
-Then launch Claude Code with the flag:
+Luego inicia Claude Code con la bandera:
 
 ```bash
-claude --add-dir /path/to/other/project
+claude --add-dir /ruta/a/otro/proyecto
 ```
 
-Claude will load CLAUDE.md from the specified additional directory alongside the memory files from your current working directory.
+Claude cargará CLAUDE.md desde el directorio adicional especificado junto con los archivos de memory de tu directorio de trabajo actual.
 
-## Practical Examples
+## Ejemplos Prácticos
 
-### Example 1: Project Memory Structure
+### Ejemplo 1: Estructura de Project Memory
 
-**File:** `./CLAUDE.md`
+**Archivo:** `./CLAUDE.md`
 
 ```markdown
 # Project Configuration
@@ -637,9 +637,9 @@ Claude will load CLAUDE.md from the specified additional directory alongside the
 - Admin Panel: `/projects/admin`
 ```
 
-### Example 2: Directory-Specific Memory
+### Ejemplo 2: Memory Específica de Directorio
 
-**File:** `./src/api/CLAUDE.md`
+**Archivo:** `./src/api/CLAUDE.md`
 
 ```markdown
 # API Module Standards
@@ -705,9 +705,9 @@ Error responses:
 - Tag cache keys with resource type
 ```
 
-### Example 3: Personal Memory
+### Ejemplo 3: Personal Memory
 
-**File:** `~/.claude/CLAUDE.md`
+**Archivo:** `~/.claude/CLAUDE.md`
 
 ```markdown
 # My Development Preferences
@@ -752,16 +752,17 @@ Separate concerns (Controllers, Services, Repositories).
 
 ## Project Organization
 I organize my projects as:
-
-   project/
-   ├── src/
-   │   ├── api/
-   │   ├── services/
-   │   ├── models/
-   │   └── utils/
-   ├── tests/
-   ├── docs/
-   └── docker/
+```
+project/
+  ├── src/
+  │   ├── api/
+  │   ├── services/
+  │   ├── models/
+  │   └── utils/
+  ├── tests/
+  ├── docs/
+  └── docker/
+```
 
 ## Tooling
 - **IDE**: VS Code with vim keybindings
@@ -779,237 +780,237 @@ Claude has not save the rule because I did not have any `Claude.md` file anywher
 
 ![Ask Claude to save a new rule](memory-saved.png)
 
-### Example 4: Memory Update During Session
+### Ejemplo 4: Actualización de Memory Durante la Sesión
 
-You can add new rules to memory during an active Claude Code session. There are two ways to do this:
+Puedes agregar nuevas reglas a memory durante una sesión activa de Claude Code. Hay dos formas de hacer esto:
 
-#### Method 1: Direct Request
+#### Método 1: Solicitud Directa
 
 ```markdown
-User: Remember that I prefer using React hooks instead of class components
-     for all new components.
+Usuario: Recuerda que prefiero usar React hooks en lugar de componentes de clase
+     para todos los nuevos componentes.
 
-Claude: I'm adding that to your memory. Which memory file should this go in?
+Claude: Estoy agregando eso a tu memory. ¿En qué archivo de memory debería ir?
         1. Project memory (./CLAUDE.md)
         2. Personal memory (~/.claude/CLAUDE.md)
 
-User: Project memory
+Usuario: Project memory
 
-Claude: ✅ Memory saved!
+Claude: ✅ ¡Memory guardada!
 
-Added to ./CLAUDE.md:
+Agregado a ./CLAUDE.md:
 ---
 
-### Component Development
-- Use functional components with React Hooks
-- Prefer hooks over class components
-- Custom hooks for reusable logic
-- Use useCallback for event handlers
-- Use useMemo for expensive computations
+### Desarrollo de Componentes
+- Usar componentes funcionales con React Hooks
+- Preferir hooks sobre componentes de clase
+- Custom hooks para lógica reutilizable
+- Usar useCallback para manejadores de eventos
+- Usar useMemo para computaciones costosas
 ```
 
-#### Method 2: Using "# new rule into memory" Pattern
+#### Método 2: Usando el Patrón "# new rule into memory"
 
-You can also use the explicit pattern "# new rule into memory" to trigger memory updates:
+También puedes usar el patrón explícito "# new rule into memory" para activar actualizaciones de memory:
 
 ```markdown
-User: # new rule into memory
-      Always validate user input with Zod schemas before processing.
+Usuario: # new rule into memory
+      Siempre validar la entrada del usuario con esquemas Zod antes de procesar.
 
-Claude: I'm saving this rule to memory. Which memory file should I use?
+Claude: Estoy guardando esta regla en memory. ¿Qué archivo de memory debo usar?
         1. Project memory (./CLAUDE.md)
         2. Personal memory (~/.claude/CLAUDE.md)
 
-User: Project memory
+Usuario: Project memory
 
-Claude: ✅ Memory saved!
+Claude: ✅ ¡Memory guardada!
 
-Added to ./CLAUDE.md:
+Agregado a ./CLAUDE.md:
 ---
 
-### Input Validation
-- Always validate user input with Zod schemas before processing
-- Define schemas at the top of each API handler file
-- Return 400 status with validation errors
+### Validación de Entrada
+- Siempre validar la entrada del usuario con esquemas Zod antes de procesar
+- Definir esquemas en la parte superior de cada archivo de API handler
+- Devolver estado 400 con errores de validación
 ```
 
-#### Tips for Adding Memory
+#### Consejos para Agregar Memory
 
-- Be specific and actionable in your rules
-- Group related rules together under a section header
-- Update existing sections instead of duplicating content
-- Choose the appropriate memory scope (project vs. personal)
+- Sé específico y accionable en tus reglas
+- Agrupa reglas relacionadas juntas bajo un encabezado de sección
+- Actualiza secciones existentes en lugar de duplicar contenido
+- Elige el ámbito de memory apropiado (proyecto vs. personal)
 
-## Memory Features Comparison
+## Comparación de Funciones de Memory
 
-| Feature | Claude Web/Desktop | Claude Code (CLAUDE.md) |
+| Función | Claude Web/Desktop | Claude Code (CLAUDE.md) |
 |---------|-------------------|------------------------|
-| Auto-synthesis | ✅ Every 24h | ❌ Manual |
-| Cross-project | ✅ Shared | ❌ Project-specific |
-| Team access | ✅ Shared projects | ✅ Git-tracked |
-| Searchable | ✅ Built-in | ✅ Through `/memory` |
-| Editable | ✅ In-chat | ✅ Direct file edit |
-| Import/Export | ✅ Yes | ✅ Copy/paste |
-| Persistent | ✅ 24h+ | ✅ Indefinite |
+| Auto-síntesis | ✅ Cada 24h | ❌ Manual |
+| Entre proyectos | ✅ Compartido | ❌ Específico del proyecto |
+| Acceso de equipo | ✅ Proyectos compartidos | ✅ Rastreable por git |
+| Buscable | ✅ Integrado | ✅ A través de `/memory` |
+| Editable | ✅ En chat | ✅ Edición directa de archivo |
+| Importar/Exportar | ✅ Sí | ✅ Copiar/pegar |
+| Persistente | ✅ 24h+ | ✅ Indefinido |
 
-### Memory in Claude Web/Desktop
+### Memory en Claude Web/Desktop
 
-#### Memory Synthesis Timeline
+#### Línea de Tiempo de Síntesis de Memory
 
 ```mermaid
 graph LR
-    A["Day 1: User<br/>Conversations"] -->|24 hours| B["Day 2: Memory<br/>Synthesis"]
-    B -->|Automatic| C["Memory Updated<br/>Summarized"]
-    C -->|Loaded in| D["Day 2-N:<br/>New Conversations"]
-    D -->|Add to| E["Memory"]
-    E -->|24 hours later| F["Memory Refreshed"]
+    A["Día 1: Usuario<br/>Conversaciones"] -->|24 horas| B["Día 2: Memory<br/>Síntesis"]
+    B -->|Automático| C["Memory Actualizada<br/>Resumida"]
+    C -->|Cargado en| D["Día 2-N:<br/>Nuevas Conversaciones"]
+    D -->|Agregar a| E["Memory"]
+    E -->|24 horas después| F["Memory Refrescada"]
 ```
 
-**Example Memory Summary:**
+**Ejemplo de Resumen de Memory:**
 
 ```markdown
-## Claude's Memory of User
+## Memory de Claude sobre el Usuario
 
-### Professional Background
-- Senior full-stack developer with 8 years experience
-- Focus on TypeScript/Node.js backends and React frontends
-- Active open source contributor
-- Interested in AI and machine learning
+### Antecedentes Profesionales
+- Desarrollador full-stack senior con 8 años de experiencia
+- Enfoque en backends TypeScript/Node.js y frontends React
+- Contribuyente activo de código abierto
+- Interesado en IA y aprendizaje automático
 
-### Project Context
-- Currently building e-commerce platform
+### Contexto del Proyecto
+- Actualmente construyendo plataforma de comercio electrónico
 - Tech stack: Node.js, PostgreSQL, React 18, Docker
-- Working with team of 5 developers
-- Using CI/CD and blue-green deployments
+- Trabajando con equipo de 5 desarrolladores
+- Usando CI/CD y despliegues blue-green
 
-### Communication Preferences
-- Prefers direct, concise explanations
-- Likes visual diagrams and examples
-- Appreciates code snippets
-- Explains business logic in comments
+### Preferencias de Comunicación
+- Prefiere explicaciones directas y concisas
+- Le gustan los diagramas visuales y ejemplos
+- Aprecia los fragmentos de código
+- Explica la lógica de negocio en comentarios
 
-### Current Goals
-- Improve API performance
-- Increase test coverage to 90%
-- Implement caching strategy
-- Document architecture
+### Objetivos Actuales
+- Mejorar el rendimiento de la API
+- Aumentar la cobertura de pruebas al 90%
+- Implementar estrategia de caché
+- Documentar arquitectura
 ```
 
-## Best Practices
+## Mejores Prácticas
 
-### Do's - What To Include
+### Lo Que Se Debe Hacer - Qué Incluir
 
-- **Be specific and detailed**: Use clear, detailed instructions rather than vague guidance
-  - ✅ Good: "Use 2-space indentation for all JavaScript files"
-  - ❌ Avoid: "Follow best practices"
+- **Sé específico y detallado**: Usa instrucciones claras y detalladas en lugar de orientación vaga
+  - ✅ Bueno: "Usar indentación de 2 espacios para todos los archivos JavaScript"
+  - ❌ Evitar: "Seguir las mejores prácticas"
 
-- **Keep organized**: Structure memory files with clear markdown sections and headings
+- **Mantente organizado**: Estructura los archivos de memory con secciones y encabezados markdown claros
 
-- **Use appropriate hierarchy levels**:
-  - **Managed policy**: Company-wide policies, security standards, compliance requirements
-  - **Project memory**: Team standards, architecture, coding conventions (commit to git)
-  - **User memory**: Personal preferences, communication style, tooling choices
-  - **Directory memory**: Module-specific rules and overrides
+- **Usa niveles de jerarquía apropiados**:
+  - **Managed policy**: Políticas de empresa, estándares de seguridad, requisitos de cumplimiento
+  - **Project memory**: Estándares de equipo, arquitectura, convenciones de codificación (confirmar en git)
+  - **User memory**: Preferencias personales, estilo de comunicación, elecciones de herramientas
+  - **Directory memory**: Reglas específicas de módulo y anulaciones
 
-- **Leverage imports**: Use `@path/to/file` syntax to reference existing documentation
-  - Supports up to 5 levels of recursive nesting
-  - Avoids duplication across memory files
-  - Example: `See @README.md for project overview`
+- **Aprovecha las importaciones**: Usa la sintaxis `@ruta/al/archivo` para referenciar documentación existente
+  - Admite hasta 5 niveles de anidamiento recursivo
+  - Evita la duplicación entre archivos de memory
+  - Ejemplo: `Ver @README.md para visión general del proyecto`
 
-- **Document frequent commands**: Include commands you use repeatedly to save time
+- **Documenta comandos frecuentes**: Incluye comandos que usas repetidamente para ahorrar tiempo
 
-- **Version control project memory**: Commit project-level CLAUDE.md files to git for team benefit
+- **Control de versiones de project memory**: Confirma archivos CLAUDE.md a nivel de proyecto en git para beneficio del equipo
 
-- **Review periodically**: Update memory regularly as projects evolve and requirements change
+- **Revisa periódicamente**: Actualiza memory regularmente a medida que los proyectos evolucionan y los requisitos cambian
 
-- **Provide concrete examples**: Include code snippets and specific scenarios
+- **Proporciona ejemplos concretos**: Incluye fragmentos de código y escenarios específicos
 
-### Don'ts - What To Avoid
+### Lo Que No Se Debe Hacer - Qué Evitar
 
-- **Don't store secrets**: Never include API keys, passwords, tokens, or credentials
+- **No almacenes secretos**: Nunca incluyas claves de API, contraseñas, tokens o credenciales
 
-- **Don't include sensitive data**: No PII, private information, or proprietary secrets
+- **No incluyas datos sensibles**: No PII, información privada o secretos propietarios
 
-- **Don't duplicate content**: Use imports (`@path`) to reference existing documentation instead
+- **No dupliques contenido**: Usa importaciones (`@ruta`) para referenciar documentación existente en su lugar
 
-- **Don't be vague**: Avoid generic statements like "follow best practices" or "write good code"
+- **No seas vago**: Evita declaraciones genéricas como "seguir las mejores prácticas" o "escribir buen código"
 
-- **Don't make it too long**: Keep individual memory files focused and under 500 lines
+- **No lo hagas demasiado largo**: Mantén los archivos de memory individuales enfocados y bajo 500 líneas
 
-- **Don't over-organize**: Use hierarchy strategically; don't create excessive subdirectory overrides
+- **No sobre-organices**: Usa la jerarquía estratégicamente; no creas anulaciones excesivas de subdirectorios
 
-- **Don't forget to update**: Stale memory can cause confusion and outdated practices
+- **No olvides actualizar**: La memory obsoleta puede causar confusión y prácticas desactualizadas
 
-- **Don't exceed nesting limits**: Memory imports support up to 5 levels of nesting
+- **No excedas los límites de anidamiento**: Las importaciones de memory admiten hasta 5 niveles de anidamiento
 
-### Memory Management Tips
+### Consejos de Gestión de Memory
 
-**Choose the right memory level:**
+**Elige el nivel de memory correcto:**
 
-| Use Case | Memory Level | Rationale |
+| Caso de Uso | Nivel de Memory | Justificación |
 |----------|-------------|-----------|
-| Company security policy | Managed Policy | Applies to all projects organization-wide |
-| Team code style guide | Project | Shared with team via git |
-| Your preferred editor shortcuts | User | Personal preference, not shared |
-| API module standards | Directory | Specific to that module only |
+| Política de seguridad de la empresa | Managed Policy | Se aplica a todos los proyectos de toda la organización |
+| Guía de estilo de código del equipo | Project | Compartido con el equipo vía git |
+| Tus atajos de editor preferidos | User | Preferencia personal, no compartida |
+| Estándares de módulo de API | Directory | Específico de ese módulo solamente |
 
-**Quick update workflow:**
+**Flujo de trabajo de actualización rápida:**
 
-1. For single rules: Use `#` prefix in conversation
-2. For multiple changes: Use `/memory` to open editor
-3. For initial setup: Use `/init` to create template
+1. Para reglas individuales: Usa el prefijo `#` en la conversación
+2. Para múltiples cambios: Usa `/memory` para abrir el editor
+3. Para configuración inicial: Usa `/init` para crear una plantilla
 
-**Import best practices:**
+**Mejores prácticas de importación:**
 
 ```markdown
-# Good: Reference existing docs
+# Bueno: Referenciar documentación existente
 @README.md
 @docs/architecture.md
 @package.json
 
-# Avoid: Copying content that exists elsewhere
-# Instead of copying README content into CLAUDE.md, just import it
+# Evitar: Copiar contenido que existe en otra parte
+# En lugar de copiar el contenido de README en CLAUDE.md, solo impórtalo
 ```
 
-## Installation Instructions
+## Instrucciones de Instalación
 
-### Setup Project Memory
+### Configurar Project Memory
 
-#### Method 1: Using `/init` Command (Recommended)
+#### Método 1: Usando el Comando `/init` (Recomendado)
 
-The fastest way to set up project memory:
+La forma más rápida de configurar project memory:
 
-1. **Navigate to your project directory:**
+1. **Navega a tu directorio de proyecto:**
    ```bash
-   cd /path/to/your/project
+   cd /ruta/a/tu/proyecto
    ```
 
-2. **Run the init command in Claude Code:**
+2. **Ejecuta el comando init en Claude Code:**
    ```bash
    /init
    ```
 
-3. **Claude will create and populate CLAUDE.md** with a template structure
+3. **Claude creará y poblará CLAUDE.md** con una estructura de plantilla
 
-4. **Customize the generated file** to match your project needs
+4. **Personaliza el archivo generado** para que coincida con las necesidades de tu proyecto
 
-5. **Commit to git:**
+5. **Confirma en git:**
    ```bash
    git add CLAUDE.md
-   git commit -m "Initialize project memory with /init"
+   git commit -m "Inicializar project memory con /init"
    ```
 
-#### Method 2: Manual Creation
+#### Método 2: Creación Manual
 
-If you prefer manual setup:
+Si prefieres configuración manual:
 
-1. **Create a CLAUDE.md in your project root:**
+1. **Crea un CLAUDE.md en la raíz de tu proyecto:**
    ```bash
-   cd /path/to/your/project
+   cd /ruta/a/tu/proyecto
    touch CLAUDE.md
    ```
 
-2. **Add project standards:**
+2. **Agrega estándares de proyecto:**
    ```bash
    cat > CLAUDE.md << 'EOF'
    # Project Configuration
@@ -1026,39 +1027,39 @@ If you prefer manual setup:
    EOF
    ```
 
-3. **Commit to git:**
+3. **Confirma en git:**
    ```bash
    git add CLAUDE.md
-   git commit -m "Add project memory configuration"
+   git commit -m "Agregar configuración de project memory"
    ```
 
-#### Method 3: Quick Updates with `#`
+#### Método 3: Actualizaciones Rápidas con `#`
 
-Once CLAUDE.md exists, add rules quickly during conversations:
+Una vez que CLAUDE.md existe, agrega reglas rápidamente durante las conversaciones:
 
 ```markdown
-# Use semantic versioning for all releases
+# Usar versionamiento semántico para todos los lanzamientos
 
-# Always run tests before committing
+# Siempre ejecutar pruebas antes de confirmar
 
-# Prefer composition over inheritance
+# Preferir composición sobre herencia
 ```
 
-Claude will prompt you to choose which memory file to update.
+Claude te pedirá que elijas qué archivo de memory actualizar.
 
-### Setup Personal Memory
+### Configurar Personal Memory
 
-1. **Create ~/.claude directory:**
+1. **Crea el directorio ~/.claude:**
    ```bash
    mkdir -p ~/.claude
    ```
 
-2. **Create personal CLAUDE.md:**
+2. **Crea CLAUDE.md personal:**
    ```bash
    touch ~/.claude/CLAUDE.md
    ```
 
-3. **Add your preferences:**
+3. **Agrega tus preferencias:**
    ```bash
    cat > ~/.claude/CLAUDE.md << 'EOF'
    # My Development Preferences
@@ -1073,18 +1074,18 @@ Claude will prompt you to choose which memory file to update.
    EOF
    ```
 
-### Setup Directory-Specific Memory
+### Configurar Directory-Specific Memory
 
-1. **Create memory for specific directories:**
+1. **Crea memory para directorios específicos:**
    ```bash
-   mkdir -p /path/to/directory/.claude
-   touch /path/to/directory/CLAUDE.md
+   mkdir -p /ruta/al/directorio/.claude
+   touch /ruta/al/directorio/CLAUDE.md
    ```
 
-2. **Add directory-specific rules:**
+2. **Agrega reglas específicas del directorio:**
    ```bash
-   cat > /path/to/directory/CLAUDE.md << 'EOF'
-   # [Directory Name] Standards
+   cat > /ruta/al/directorio/CLAUDE.md << 'EOF'
+   # [Nombre del Directorio] Standards
 
    This file overrides root CLAUDE.md for this directory.
 
@@ -1092,15 +1093,15 @@ Claude will prompt you to choose which memory file to update.
    EOF
    ```
 
-3. **Commit to version control:**
+3. **Confirma en el control de versiones:**
    ```bash
-   git add /path/to/directory/CLAUDE.md
-   git commit -m "Add [directory] memory configuration"
+   git add /ruta/al/directorio/CLAUDE.md
+   git commit -m "Agregar configuración de memory del [directorio]"
    ```
 
-### Verify Setup
+### Verificar Configuración
 
-1. **Check memory locations:**
+1. **Verifica las ubicaciones de memory:**
    ```bash
    # Project root memory
    ls -la ./CLAUDE.md
@@ -1109,53 +1110,53 @@ Claude will prompt you to choose which memory file to update.
    ls -la ~/.claude/CLAUDE.md
    ```
 
-2. **Claude Code will automatically load** these files when starting a session
+2. **Claude Code cargará automáticamente** estos archivos al iniciar una sesión
 
-3. **Test with Claude Code** by starting a new session in your project
+3. **Prueba con Claude Code** iniciando una nueva sesión en tu proyecto
 
-## Official Documentation
+## Documentación Oficial
 
-For the most up-to-date information, refer to the official Claude Code documentation:
+Para obtener la información más actualizada, consulta la documentación oficial de Claude Code:
 
-- **[Memory Documentation](https://code.claude.com/docs/en/memory)** - Complete memory system reference
-- **[Slash Commands Reference](https://code.claude.com/docs/en/interactive-mode)** - All built-in commands including `/init` and `/memory`
-- **[CLI Reference](https://code.claude.com/docs/en/cli-reference)** - Command-line interface documentation
+- **[Documentación de Memory](https://code.claude.com/docs/en/memory)** - Referencia completa del sistema de memory
+- **[Referencia de Slash Commands](https://code.claude.com/docs/en/interactive-mode)** - Todos los comandos integrados incluyendo `/init` y `/memory`
+- **[Referencia de CLI](https://code.claude.com/docs/en/cli-reference)** - Documentación de la interfaz de línea de comandos
 
-### Key Technical Details from Official Docs
+### Detalles Técnicos Clave de la Documentación Oficial
 
-**Memory Loading:**
+**Carga de Memory:**
 
-- All memory files are automatically loaded when Claude Code launches
-- Claude traverses upward from the current working directory to discover CLAUDE.md files
-- Subtree files are discovered and loaded contextually when accessing those directories
+- Todos los archivos de memory se cargan automáticamente cuando Claude Code se inicia
+- Claude recorre hacia arriba desde el directorio de trabajo actual para descubrir archivos CLAUDE.md
+- Los archivos de subárbol se descubren y cargan contextualmente al acceder a esos directorios
 
-**Import Syntax:**
+**Sintaxis de Importación:**
 
-- Use `@path/to/file` to include external content (e.g., `@~/.claude/my-project-instructions.md`)
-- Supports both relative and absolute paths
-- Recursive imports supported with a maximum depth of 5
-- First-time external imports trigger an approval dialog
-- Not evaluated inside markdown code spans or code blocks
-- Automatically includes referenced content in Claude's context
+- Usa `@ruta/al/archivo` para incluir contenido externo (ej. `@~/.claude/my-project-instructions.md`)
+- Admite rutas relativas y absolutas
+- Importaciones recursivas admitidas con una profundidad máxima de 5
+- Las importaciones externas por primera vez activan un diálogo de aprobación
+- No se evalúa dentro de spans de código markdown o bloques de código
+- Incluye automáticamente el contenido referenciado en el contexto de Claude
 
-**Memory Hierarchy Precedence:**
+**Precedencia de Jerarquía de Memory:**
 
-1. Managed Policy (highest precedence)
+1. Managed Policy (mayor precedencia)
 2. Managed Drop-ins (`managed-settings.d/`, v2.1.83+)
 3. Project Memory
 4. Project Rules (`.claude/rules/`)
 5. User Memory
 6. User-Level Rules (`~/.claude/rules/`)
 7. Local Project Memory
-8. Auto Memory (lowest precedence)
+8. Auto Memory (menor precedencia)
 
-## Related Concepts Links
+## Enlaces de Conceptos Relacionados
 
-### Integration Points
-- [MCP Protocol](../05-mcp/) - Live data access alongside memory
-- [Slash Commands](../01-slash-commands/) - Session-specific shortcuts
-- [Skills](../03-skills/) - Automated workflows with memory context
+### Puntos de Integración
+- [Protocolo MCP](../05-mcp/) - Acceso a datos en vivo junto con memory
+- [Slash Commands](../01-slash-commands/) - Atajos específicos de sesión
+- [Skills](../03-skills/) - Flujos de trabajo automatizados con contexto de memory
 
-### Related Claude Features
-- [Claude Web Memory](https://claude.ai) - Automatic synthesis
-- [Official Memory Docs](https://code.claude.com/docs/en/memory) - Anthropic documentation
+### Funciones Relacionadas de Claude
+- [Claude Web Memory](https://claude.ai) - Síntesis automática
+- [Documentación Oficial de Memory](https://code.claude.com/docs/en/memory) - Documentación de Anthropic

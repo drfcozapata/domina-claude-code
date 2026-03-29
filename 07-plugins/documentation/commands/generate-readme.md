@@ -1,15 +1,15 @@
 ---
 name: Generate README
-description: Create or update project README
+description: Crear o actualizar README del proyecto
 ---
 
-# README Generator
+# Generador de README
 
-Generate comprehensive README:
+Generar README comprehensivo:
 
-1. Project overview and description
-2. Installation instructions
-3. Usage examples
-4. API documentation links
-5. Contributing guidelines
-6. License information
+1. Visión general y descripción del proyecto
+2. Instrucciones de instalación
+3. Ejemplos de uso
+4. Enlaces a documentación de API
+5. Guías de contribución
+6. Información de licencia

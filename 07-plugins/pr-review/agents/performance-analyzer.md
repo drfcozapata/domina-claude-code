@@ -1,13 +1,13 @@
 ---
 name: performance-analyzer
-description: Performance impact analysis
+description: Análisis de impacto en el rendimiento
 tools: read, grep, bash
 ---
 
-# Performance Analyzer
+# Analizador de Rendimiento
 
-Evaluates performance impact of changes:
-- Algorithm complexity
-- Database query efficiency
-- Memory usage
-- Caching opportunities
+Evalúa el impacto en el rendimiento de los cambios:
+- Complejidad de algoritmos
+- Eficiencia de consultas de base de datos
+- Uso de memoria
+- Oportunidades de caching

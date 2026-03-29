@@ -1,44 +1,44 @@
 ---
-name: Documentation Issue
-about: Report unclear documentation, typos, or missing information
+name: Issue de Documentación
+about: Reportar documentación poco clara, typos o información faltante
 title: "[DOCS] "
 labels: documentation
 assignees: ''
 
 ---
 
-## Type of Issue
-- [ ] Typo or grammar error
-- [ ] Unclear explanation
-- [ ] Missing information
-- [ ] Broken link or reference
-- [ ] Outdated content
-- [ ] Better example needed
+## Tipo de Issue
+- [ ] Error tipográfico o gramatical
+- [ ] Explicación poco clara
+- [ ] Información faltante
+- [ ] Enlace o referencia rota
+- [ ] Contenido desactualizado
+- [ ] Se necesita mejor ejemplo
 
-## Location
-Which section has the issue?
-- **File**: (e.g., README.md, 03-skills/README.md)
-- **Section**: (e.g., "Installation Quick Reference")
-- **Line/Area**: (if specific)
+## Ubicación
+¿Qué sección tiene el issue?
+- **Archivo**: (ej. README.md, 03-skills/README.md)
+- **Sección**: (ej. "Installation Quick Reference")
+- **Línea/Área**: (si es específico)
 
-## Current Content
-What does it currently say?
+## Contenido Actual
+¿Qué dice actualmente?
 ```
-[Paste the current text here]
-```
-
-## Issue Description
-What's wrong with it?
-
-## Suggested Improvement
-How could this be improved or clarified?
-```
-[Provide improved text or suggestion here]
+[Pegar el texto actual aquí]
 ```
 
-## Why This Matters
-How does this issue impact users?
+## Descripción del Issue
+¿Qué está mal con ello?
 
-## Related Documentation
-Links to related sections:
-- Related Guide: <!-- Add link here -->
+## Mejora Sugerida
+¿Cómo podría mejorarse o aclararse esto?
+```
+[Proporcionar texto mejorado o sugerencia aquí]
+```
+
+## Por Qué Esto Importa
+¿Cómo impacta este issue a los usuarios?
+
+## Documentación Relacionada
+Enlaces a secciones relacionadas:
+- Guide Relacionado: <!-- Agregar enlace aquí -->

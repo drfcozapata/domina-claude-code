@@ -3,50 +3,50 @@
   <img alt="Claude How To" src="../resources/logos/claude-howto-logo.svg">
 </picture>
 
-# EPUB Builder Script
+# Script de Construcción de EPUB
 
-Build an EPUB ebook from the Claude How-To markdown files.
+Construye un libro electrónico en formato EPUB a partir de los archivos markdown de Claude How-To.
 
-## Features
+## Características
 
-- Organizes chapters by folder structure (01-slash-commands, 02-memory, etc.)
-- Renders Mermaid diagrams as PNG images via Kroki.io API
-- Async concurrent fetching - renders all diagrams in parallel
-- Generates a cover image from the project logo
-- Converts internal markdown links to EPUB chapter references
-- Strict error mode - fails if any diagram cannot be rendered
+- Organiza los capítulos por estructura de carpetas (01-slash-commands, 02-memory, etc.)
+- Renderiza diagramas Mermaid como imágenes PNG mediante la API de Kroki.io
+- Obtención asíncrona concurrente - renderiza todos los diagramas en paralelo
+- Genera una imagen de portada a partir del logotipo del proyecto
+- Convierte enlaces internos de markdown a referencias de capítulos EPUB
+- Modo de error estricto - falla si no se puede renderizar algún diagrama
 
-## Requirements
+## Requisitos
 
 - Python 3.10+
 - [uv](https://github.com/astral-sh/uv)
-- Internet connection for Mermaid diagram rendering
+- Conexión a Internet para el renderizado de diagramas Mermaid
 
-## Quick Start
+## Inicio Rápido
 
 ```bash
-# Simplest way - uv handles everything
+# La forma más simple - uv se encarga de todo
 uv run scripts/build_epub.py
 ```
 
-## Development Setup
+## Configuración de Desarrollo
 
 ```bash
-# Create virtual environment
+# Crear entorno virtual
 uv venv
 
-# Activate and install dependencies
+# Activar e instalar dependencias
 source .venv/bin/activate
 uv pip install -r requirements-dev.txt
 
-# Run tests
+# Ejecutar pruebas
 pytest scripts/tests/ -v
 
-# Run the script
+# Ejecutar el script
 python scripts/build_epub.py
 ```
 
-## Command-Line Options
+## Opciones de Línea de Comandos
 
 ```
 usage: build_epub.py [-h] [--root ROOT] [--output OUTPUT] [--verbose]
@@ -61,60 +61,60 @@ options:
   --max-concurrent N    Max concurrent requests (default: 10)
 ```
 
-## Examples
+## Ejemplos
 
 ```bash
-# Build with verbose output
+# Construir con salida detallada
 uv run scripts/build_epub.py --verbose
 
-# Custom output location
+# Ubicación de salida personalizada
 uv run scripts/build_epub.py --output ~/Desktop/claude-guide.epub
 
-# Limit concurrent requests (if rate-limited)
+# Limitar solicitudes concurrentes (si hay limitación de tasa)
 uv run scripts/build_epub.py --max-concurrent 5
 ```
 
-## Output
+## Salida
 
-Creates `claude-howto-guide.epub` in the repository root directory.
+Crea `claude-howto-guide.epub` en el directorio raíz del repositorio.
 
-The EPUB includes:
-- Cover image with project logo
-- Table of contents with nested sections
-- All markdown content converted to EPUB-compatible HTML
-- Mermaid diagrams rendered as PNG images
+El EPUB incluye:
+- Imagen de portada con el logotipo del proyecto
+- Tabla de contenidos con secciones anidadas
+- Todo el contenido markdown convertido a HTML compatible con EPUB
+- Diagramas Mermaid renderizados como imágenes PNG
 
-## Running Tests
+## Ejecución de Pruebas
 
 ```bash
-# With virtual environment
+# Con entorno virtual
 source .venv/bin/activate
 pytest scripts/tests/ -v
 
-# Or with uv directly
+# O directamente con uv
 uv run --with pytest --with pytest-asyncio \
     --with ebooklib --with markdown --with beautifulsoup4 \
     --with httpx --with pillow --with tenacity \
     pytest scripts/tests/ -v
 ```
 
-## Dependencies
+## Dependencias
 
-Managed via PEP 723 inline script metadata:
+Gestionadas mediante metadatos en línea de script PEP 723:
 
-| Package | Purpose |
+| Paquete | Propósito |
 |---------|---------|
-| `ebooklib` | EPUB generation |
-| `markdown` | Markdown to HTML conversion |
-| `beautifulsoup4` | HTML parsing |
-| `httpx` | Async HTTP client |
-| `pillow` | Cover image generation |
-| `tenacity` | Retry logic |
+| `ebooklib` | Generación de EPUB |
+| `markdown` | Conversión de Markdown a HTML |
+| `beautifulsoup4` | Análisis de HTML |
+| `httpx` | Cliente HTTP asíncrono |
+| `pillow` | Generación de imagen de portada |
+| `tenacity` | Lógica de reintentos |
 
-## Troubleshooting
+## Solución de Problemas
 
-**Build fails with network error**: Check internet connectivity and Kroki.io status. Try `--timeout 60`.
+**La construcción falla con error de red**: Verifica la conectividad a Internet y el estado de Kroki.io. Intenta con `--timeout 60`.
 
-**Rate limiting**: Reduce concurrent requests with `--max-concurrent 3`.
+**Limitación de tasa**: Reduce las solicitudes concurrentes con `--max-concurrent 3`.
 
-**Missing logo**: The script generates a text-only cover if `claude-howto-logo.png` is not found.
+**Logotipo faltante**: El script genera una portada solo con texto si no se encuentra `claude-howto-logo.png`.

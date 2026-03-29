@@ -1,185 +1,185 @@
 ╔═══════════════════════════════════════════════════════════════════════════╗
-║           CLAUDE HOW TO - BRAND ASSETS RESOURCE LIBRARY                   ║
-║                         Complete Asset Package                            ║
+║           CLAUDE HOW TO - BIBLIOTECA DE ACTIVOS DE MARCA                  ║
+║                         Paquete Completo de Activos                       ║
 ╚═══════════════════════════════════════════════════════════════════════════╝
 
-📁 DIRECTORY STRUCTURE
+📁 ESTRUCTURA DEL DIRECTORIO
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 resources/
 │
-├── 📄 README.md (Complete Documentation)
-│   └─ Full guide for all assets, usage patterns, HTML integration
+├── 📄 README.md (Documentación Completa)
+│   └─ Guía completa para todos los activos, patrones de uso, integración HTML
 │
-├── 📄 QUICK-START.md (Copy & Paste Solutions)
-│   └─ Fast setup, recommended sizes, color values
+├── 📄 QUICK-START.md (Soluciones Copiar y Pegar)
+│   └─ Configuración rápida, tamaños recomendados, valores de color
 │
-├── 📄 DESIGN-SYSTEM.md (Brand Guidelines)
-│   └─ Visual identity, color system, typography, effects
+├── 📄 DESIGN-SYSTEM.md (Directrices de Marca)
+│   └─ Identidad visual, sistema de color, tipografía, efectos
 │
 ├── 📁 logos/
 │   └─ 📊 claude-howto-logo.svg (800×200px)
-│       → Main horizontal logo with terminal icon
-│       → Perfect for: Headers, marketing, print
+│       → Logotipo horizontal principal con icono de terminal
+│       → Perfecto para: Encabezados, marketing, impresión
 │
 ├── 📁 icons/
 │   └─ 🔷 claude-howto-icon.svg (256×256px)
-│       → App icon with ascending hexagons
-│       → Perfect for: Apps, avatars, thumbnails
+│       → Icono de app con hexágonos ascendentes
+│       → Perfecto para: Apps, avatares, miniaturas
 │
 └── 📁 favicons/
-    ├─ 🔹 favicon-16.svg   (16×16px)   → Browser tabs
-    ├─ 🔹 favicon-32.svg   (32×32px)   → Standard favicon
-    ├─ 🔹 favicon-64.svg   (64×64px)   → High-DPI
-    ├─ 🔹 favicon-128.svg  (128×128px) → Apple touch icon
-    └─ 🔹 favicon-256.svg  (256×256px) → Modern browsers/PWA
+    ├─ 🔹 favicon-16.svg   (16×16px)   → Pestañas de navegador
+    ├─ 🔹 favicon-32.svg   (32×32px)   → Favicon estándar
+    ├─ 🔹 favicon-64.svg   (64×64px)   → Alta densidad (High-DPI)
+    ├─ 🔹 favicon-128.svg  (128×128px) → Icono táctil de Apple
+    └─ 🔹 favicon-256.svg  (256×256px) → Navegadores modernos/PWA
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-📋 QUICK FILE REFERENCE
+📋 REFERENCIA RÁPIDA DE ARCHIVOS
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-FILE                          SIZE        USE CASE
+ARCHIVO                         TAMAÑO      CASO DE USO
 ────────────────────────────────────────────────────────────────────────────
-logos/claude-howto-logo.svg   800×200px   Website headers, marketing
-icons/claude-howto-icon.svg   256×256px   App icons, avatars, social
-favicons/favicon-32.svg       32×32px     Browser favicon (primary)
-favicons/favicon-16.svg       16×16px     Browser tab (old browsers)
-favicons/favicon-64.svg       64×64px     Bookmarks, high-DPI
-favicons/favicon-128.svg      128×128px   Apple touch icon
-favicons/favicon-256.svg      256×256px   Android, PWA, modern
+logos/claude-howto-logo.svg   800×200px   Encabezados de sitio web, marketing
+icons/claude-howto-icon.svg   256×256px   Iconos de app, avatares, social
+favicons/favicon-32.svg       32×32px     Favicon de navegador (principal)
+favicons/favicon-16.svg       16×16px     Pestaña de navegador (navegadores antiguos)
+favicons/favicon-64.svg       64×64px     Marcadores, alta densidad (High-DPI)
+favicons/favicon-128.svg      128×128px   Icono táctil de Apple
+favicons/favicon-256.svg      256×256px   Android, PWA, moderno
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-🎨 DESIGN CONCEPT
+🎨 CONCEPTO DE DISEÑO
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-The icon uses ASCENDING HEXAGONS to represent learning progression:
+El icono usa HEXÁGONOS ASCENDENTES para representar la progresión de aprendizaje:
 
-              🟢 MINT (Top)
-        Advanced Features
-        Levels 7-10
+              🟢 MENTA (Arriba)
+        Características Avanzadas
+        Niveles 7-10
 
-          🟢 EMERALD (Middle)
-    Intermediate Skills
-    Levels 4-6
+          🟢 ESMERALDA (Medio)
+    Habilidades Intermedias
+    Niveles 4-6
 
-      🟢 DARK EMERALD (Bottom)
-  Beginner Fundamentals
-  Levels 1-3
+      🟢 ESMERALDA OSCURO (Abajo)
+  Fundamentos Principiantes
+  Niveles 1-3
 
-Visual meaning: Upward progression = Learning journey from beginner to mastery
+Significado visual: Progresión ascendente = Viaje de aprendizaje de principiante a maestro
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-🎨 COLOR PALETTE
+🎨 PALETA DE COLORES
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-COLOR               HEX         RGB             USAGE
+COLOR               HEX         RGB             USO
 ─────────────────────────────────────────────────────────────────────────────
-Deep Forest         #0d1f0d     13, 31, 13      Backgrounds
-Emerald (Primary)   #10b981     16, 185, 129    Main accents
-Dark Emerald        #059669     5, 150, 105     Secondary accents
-Forest              #047857     4, 120, 87      Tertiary accents
-Mint (Highlight)    #6ee7b7     110, 231, 183   Highlights
-Light Mint          #34d399     52, 211, 153    Secondary highlights
+Bosque Profundo     #0d1f0d     13, 31, 13      Fondos
+Esmeralda (Princ.)  #10b981     16, 185, 129    Acentos principales
+Esmeralda Oscuro    #059669     5, 150, 105     Acentos secundarios
+Bosque              #047857     4, 120, 87      Acentos terciarios
+Menta (Resaltado)   #6ee7b7     110, 231, 183   Resaltados
+Menta Claro         #34d399     52, 211, 153    Resaltados secundarios
 
-All colors maintain WCAG AAA contrast on dark backgrounds (8.2:1+)
+Todos los colores mantienen contraste WCAG AAA sobre fondos oscuros (8.2:1+)
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-📖 DOCUMENTATION FILES
+📖 ARCHIVOS DE DOCUMENTACIÓN
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 1. README.md
-   Complete guide covering:
-   • Asset descriptions and purposes
-   • HTML integration templates
-   • Favicon setup instructions
-   • Color palette and guidelines
-   • SVG optimization tips
-   • Accessibility considerations
+   Guía completa que cubre:
+   • Descripciones y propósitos de activos
+   • Plantillas de integración HTML
+   • Instrucciones de configuración de favicon
+   • Paleta de colores y directrices
+   • Consejos de optimización SVG
+   • Consideraciones de accesibilidad
 
 2. QUICK-START.md
-   Fast reference with:
-   • Copy-paste code
-   • Recommended sizes
-   • Color CSS variables
-   • Icon meaning explanation
-   • Usage by platform
+   Referencia rápida con:
+   • Código copiar-pegar
+   • Tamaños recomendados
+   • Variables CSS de color
+   • Explicación del significado del icono
+   • Uso por plataforma
 
 3. DESIGN-SYSTEM.md
-   Brand guidelines including:
-   • Visual identity principles
-   • Color system and contrast
-   • Gradient specifications
-   • Typography standards
-   • Icon geometry details
-   • Sizing recommendations
-   • Effects and filters
-   • Customization guide
+   Directrices de marca que incluyen:
+   • Principios de identidad visual
+   • Sistema de color y contraste
+   • Especificaciones de gradiente
+   • Estándares de tipografía
+   • Detalles de geometría de icono
+   • Recomendaciones de tamaño
+   • Efectos y filtros
+   • Guía de personalización
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-🚀 GETTING STARTED
+🚀 CÓMO EMPEZAR
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-STEP 1: Choose Your Use Case
-   • Website? → Use logos/claude-howto-logo.svg
-   • App/Avatar? → Use icons/claude-howto-icon.svg
-   • Browser? → Use favicons/favicon-32.svg
+PASO 1: Elige Tu Caso de Uso
+   • ¿Sitio web? → Usa logos/claude-howto-logo.svg
+   • ¿App/Avatar? → Usa icons/claude-howto-icon.svg
+   • ¿Navegador? → Usa favicons/favicon-32.svg
 
-STEP 2: Read the Right Guide
-   • Quick setup? → Read QUICK-START.md
-   • Full details? → Read README.md
-   • Brand guidelines? → Read DESIGN-SYSTEM.md
+PASO 2: Lee la Guía Correcta
+   • ¿Configuración rápida? → Lee QUICK-START.md
+   • ¿Detalles completos? → Lee README.md
+   • ¿Directrices de marca? → Lee DESIGN-SYSTEM.md
 
-STEP 3: Copy & Use
-   • Copy file to your project
-   • Use provided HTML code
-   • Or reference from CDN/web server
+PASO 3: Copia y Usa
+   • Copia el archivo a tu proyecto
+   • Usa el código HTML proporcionado
+   • O referencia desde CDN/servidor web
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-✅ FILE CHECKLIST
+✅ LISTA DE VERIFICACIÓN DE ARCHIVOS
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-Logos:
-  ✓ claude-howto-logo.svg (main logo)
+Logotipos:
+  ✓ claude-howto-logo.svg (logotipo principal)
 
-Icons:
-  ✓ claude-howto-icon.svg (app icon)
+Iconos:
+  ✓ claude-howto-icon.svg (icono de app)
 
-Favicons (all sizes):
+Favicons (todos los tamaños):
   ✓ favicon-16.svg
   ✓ favicon-32.svg
   ✓ favicon-64.svg
   ✓ favicon-128.svg
   ✓ favicon-256.svg
 
-Documentation:
-  ✓ README.md (complete guide)
-  ✓ QUICK-START.md (fast reference)
-  ✓ DESIGN-SYSTEM.md (brand guidelines)
-  ✓ INDEX.txt (this file)
+Documentación:
+  ✓ README.md (guía completa)
+  ✓ QUICK-START.md (referencia rápida)
+  ✓ DESIGN-SYSTEM.md (directrices de marca)
+  ✓ INDEX.txt (este archivo)
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-📝 FILE FORMATS
+📝 FORMATOS DE ARCHIVO
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-All assets are in SVG format:
-  • Scalable: Works at any size
-  • Lightweight: Smaller than PNG/JPG
-  • Sharp: No pixelation at any zoom
-  • Flexible: Can be styled with CSS/JS
-  • Universal: Works in all modern browsers
+Todos los activos están en formato SVG:
+  • Escalable: Funciona a cualquier tamaño
+  • Ligero: Más pequeño que PNG/JPG
+  • Nítido: Sin pixelación a ningún zoom
+  • Flexible: Se puede estilizar con CSS/JS
+  • Universal: Funciona en todos los navegadores modernos
 
-No raster images needed - SVG covers all use cases!
+¡No se necesitan imágenes ráster - SVG cubre todos los casos de uso!
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-🤝 INTEGRATION EXAMPLES
+🤝 EJEMPLOS DE INTEGRACIÓN
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 HTML (Web):
@@ -188,55 +188,54 @@ HTML (Web):
 Markdown:
   ![Claude How To](resources/icons/claude-howto-icon.svg)
 
-CSS Background:
+Fondo CSS:
   background-image: url('resources/icons/claude-howto-icon.svg');
 
 React/JSX:
   import logo from './resources/icons/claude-howto-icon.svg';
   <img src={logo} alt="Claude How To" />
 
-Next.js/Web Framework:
+Next.js/Marco de Trabajo Web:
   <Image src={logo} alt="Claude How To" />
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-📊 ASSET STATISTICS
+📊 ESTADÍSTICAS DE ACTIVOS
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-Total Assets: 7 SVG files
-  • 1 Logo
-  • 1 Icon
-  • 5 Favicon variants
+Total de Activos: 7 archivos SVG
+  • 1 Logotipo
+  • 1 Icono
+  • 5 Variantes de favicon
 
-Documentation: 4 files
-  • Complete guide (README.md)
-  • Quick reference (QUICK-START.md)
-  • Brand guidelines (DESIGN-SYSTEM.md)
-  • This index (INDEX.txt)
+Documentación: 4 archivos
+  • Guía completa (README.md)
+  • Referencia rápida (QUICK-START.md)
+  • Directrices de marca (DESIGN-SYSTEM.md)
+  • Este índice (INDEX.txt)
 
-Total Size: ~150 KB (all files)
-  • Individual SVGs: 8-15 KB each
-  • Documentation: 20-50 KB each
+Tamaño Total: ~150 KB (todos los archivos)
+  • SVGs individuales: 8-15 KB cada uno
+  • Documentación: 20-50 KB cada uno
 
-Design System Version: 1.0
-Last Updated: January 2026
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-📞 SUPPORT & MORE
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-For detailed information:
-  1. Start with QUICK-START.md for immediate use
-  2. Refer to README.md for complete documentation
-  3. Check DESIGN-SYSTEM.md for brand guidelines
-
-Questions or customization needed?
-  • Review DESIGN-SYSTEM.md for customization guide
-  • All files are fully editable SVG
-  • Maintain color palette for brand consistency
+Versión del Sistema de Diseño: 1.0
+Última Actualización: Enero 2026
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-Happy building! 🚀
+📞 SOPORTE Y MÁS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
+Para información detallada:
+  1. Comienza con QUICK-START.md para uso inmediato
+  2. Consulta README.md para documentación completa
+  3. Revisa DESIGN-SYSTEM.md para directrices de marca
+
+¿Preguntas o personalización necesaria?
+  • Revisa DESIGN-SYSTEM.md para guía de personalización
+  • Todos los archivos son SVG totalmente editable
+  • Mantén la paleta de colores para consistencia de marca
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+¡Feliz construcción! 🚀

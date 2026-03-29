@@ -1,19 +1,19 @@
 ---
-description: Analyze code for performance issues and suggest optimizations
+description: Analizar código en busca de problemas de rendimiento y sugerir optimizaciones
 ---
 
-# Code Optimization
+# Optimización de Código
 
-Review the provided code for the following issues in order of priority:
+Revisa el código proporcionado en busca de los siguientes problemas en orden de prioridad:
 
-1. **Performance bottlenecks** - identify O(n²) operations, inefficient loops
-2. **Memory leaks** - find unreleased resources, circular references
-3. **Algorithm improvements** - suggest better algorithms or data structures
-4. **Caching opportunities** - identify repeated computations
-5. **Concurrency issues** - find race conditions or threading problems
+1. **Cuellos de botella de rendimiento** - identifica operaciones O(n²), bucles ineficientes
+2. **Fugas de memoria** - encuentra recursos no liberados, referencias circulares
+3. **Mejoras de algoritmos** - sugiere mejores algoritmos o estructuras de datos
+4. **Oportunidades de caching** - identifica computaciones repetidas
+5. **Problemas de concurrencia** - encuentra condiciones de carrera o problemas de threading
 
-Format your response with:
-- Issue severity (Critical/High/Medium/Low)
-- Location in code
-- Explanation
-- Recommended fix with code example
+Formatea tu respuesta con:
+- Severidad del problema (Crítico/Alto/Medio/Bajo)
+- Ubicación en el código
+- Explicación
+- Solución recomendada con ejemplo de código

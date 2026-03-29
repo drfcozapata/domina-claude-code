@@ -1,14 +1,14 @@
-Subject: [Clear, benefit-driven subject]
+Asunto: [Asunto claro, dirigido a beneficios]
 
-Hi [Name],
+Hola [Nombre],
 
-[Opening: What's the value for them]
+[Apertura: Cuál es el valor para ellos]
 
-[Body: How it works / What they'll get]
+[Cuerpo: Cómo funciona / Qué obtendrán]
 
-[Specific example or benefit]
+[Ejemplo o beneficio específico]
 
-[Call to action: Clear next step]
+[Call to action: Siguiente paso claro]
 
-Best regards,
-[Name]
+Saludos cordiales,
+[Nombre]

@@ -1,37 +1,37 @@
 ---
-description: Stage all changes, create commit, and push to remote (use with caution)
+description: Preparar todos los cambios en stage, crear commit y hacer push al remoto (usar con precaución)
 allowed-tools: Bash(git add:*), Bash(git status:*), Bash(git commit:*), Bash(git push:*), Bash(git diff:*), Bash(git log:*), Bash(git pull:*)
 ---
 
-# Commit and Push Everything
+# Commit y Push de Todo
 
-⚠️ **CAUTION**: Stage ALL changes, commit, and push to remote. Use only when confident all changes belong together.
+⚠️ **PRECAUCIÓN**: Prepara TODOS los cambios en stage, haz commit y push al remoto. Usa solo cuando estés seguro de que todos los cambios pertenecen juntos.
 
-## Workflow
+## Flujo de Trabajo
 
-### 1. Analyze Changes
-Run in parallel:
-- `git status` - Show modified/added/deleted/untracked files
-- `git diff --stat` - Show change statistics
-- `git log -1 --oneline` - Show recent commit for message style
+### 1. Analizar Cambios
+Ejecuta en paralelo:
+- `git status` - Mostrar archivos modificados/agregados/eliminados/no rastreados
+- `git diff --stat` - Mostrar estadísticas de cambios
+- `git log -1 --oneline` - Mostrar commit reciente para estilo de mensaje
 
-### 2. Safety Checks
+### 2. Verificaciones de Seguridad
 
-**❌ STOP and WARN if detected:**
-- Secrets: `.env*`, `*.key`, `*.pem`, `credentials.json`, `secrets.yaml`, `id_rsa`, `*.p12`, `*.pfx`, `*.cer`
-- API Keys: Any `*_API_KEY`, `*_SECRET`, `*_TOKEN` variables with real values (not placeholders like `your-api-key`, `xxx`, `placeholder`)
-- Large files: `>10MB` without Git LFS
-- Build artifacts: `node_modules/`, `dist/`, `build/`, `__pycache__/`, `*.pyc`, `.venv/`
-- Temp files: `.DS_Store`, `thumbs.db`, `*.swp`, `*.tmp`
+**❌ DETENERSE y ADVERTIR si se detecta:**
+- Secretos: `.env*`, `*.key`, `*.pem`, `credentials.json`, `secrets.yaml`, `id_rsa`, `*.p12`, `*.pfx`, `*.cer`
+- Claves de API: Cualquier variable `*_API_KEY`, `*_SECRET`, `*_TOKEN` con valores reales (no marcadores de posición como `your-api-key`, `xxx`, `placeholder`)
+- Archivos grandes: `>10MB` sin Git LFS
+- Artefactos de build: `node_modules/`, `dist/`, `build/`, `__pycache__/`, `*.pyc`, `.venv/`
+- Archivos temporales: `.DS_Store`, `thumbs.db`, `*.swp`, `*.tmp`
 
-**API Key Validation:**
-Check modified files for patterns like:
+**Validación de Claves de API:**
+Verifica archivos modificados en busca de patrones como:
 ```bash
-OPENAI_API_KEY=sk-proj-xxxxx  # ❌ Real key detected!
-AWS_SECRET_KEY=AKIA...         # ❌ Real key detected!
-STRIPE_API_KEY=sk_live_...    # ❌ Real key detected!
+OPENAI_API_KEY=sk-proj-xxxxx  # ❌ Clave real detectada!
+AWS_SECRET_KEY=AKIA...         # ❌ Clave real detectada!
+STRIPE_API_KEY=sk_live_...    # ❌ Clave real detectada!
 
-# ✅ Acceptable placeholders:
+# ✅ Marcadores de posición aceptables:
 API_KEY=your-api-key-here
 SECRET_KEY=placeholder
 TOKEN=xxx
@@ -39,114 +39,114 @@ API_KEY=<your-key>
 SECRET=${YOUR_SECRET}
 ```
 
-**✅ Verify:**
-- `.gitignore` properly configured
-- No merge conflicts
-- Correct branch (warn if main/master)
-- API keys are placeholders only
+**✅ Verificar:**
+- `.gitignore` configurado apropiadamente
+- Sin conflictos de merge
+- Rama correcta (advertir si es main/master)
+- Claves de API son solo marcadores de posición
 
-### 3. Request Confirmation
+### 3. Solicitar Confirmación
 
-Present summary:
+Presentar resumen:
 ```
-📊 Changes Summary:
-- X files modified, Y added, Z deleted
-- Total: +AAA insertions, -BBB deletions
+📊 Resumen de Cambios:
+- X archivos modificados, Y agregados, Z eliminados
+- Total: +AAA inserciones, -BBB eliminaciones
 
-🔒 Safety: ✅ No secrets | ✅ No large files | ⚠️ [warnings]
-🌿 Branch: [name] → origin/[name]
+🔒 Seguridad: ✅ Sin secretos | ✅ Sin archivos grandes | ⚠️ [advertencias]
+🌿 Rama: [nombre] → origin/[nombre]
 
-I will: git add . → commit → push
+Haré: git add . → commit → push
 
-Type 'yes' to proceed or 'no' to cancel.
+Escribe 'yes' para proceder o 'no' para cancelar.
 ```
 
-**WAIT for explicit "yes" before proceeding.**
+**ESPERA confirmación explícita de "yes" antes de proceder.**
 
-### 4. Execute (After Confirmation)
+### 4. Ejecutar (Después de Confirmación)
 
-Run sequentially:
+Ejecuta secuencialmente:
 ```bash
 git add .
-git status  # Verify staging
+git status  # Verificar staging
 ```
 
-### 5. Generate Commit Message
+### 5. Generar Mensaje de Commit
 
-Analyze changes and create conventional commit:
+Analiza cambios y crea commit convencional:
 
-**Format:**
+**Formato:**
 ```
-[type]: Brief summary (max 72 characters)
+[tipo]: Breve resumen (máx 72 caracteres)
 
-- Key change 1
-- Key change 2
-- Key change 3
-```
-
-**Types:** `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`, `perf`, `build`, `ci`
-
-**Example:**
-```
-docs: Update concept README files with comprehensive documentation
-
-- Add architecture diagrams and tables
-- Include practical examples
-- Expand best practices sections
+- Cambio clave 1
+- Cambio clave 2
+- Cambio clave 3
 ```
 
-### 6. Commit and Push
+**Tipos:** `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`, `perf`, `build`, `ci`
+
+**Ejemplo:**
+```
+docs: Actualizar archivos README de conceptos con documentación comprehensiva
+
+- Agregar diagramas de arquitectura y tablas
+- Incluir ejemplos prácticos
+- Expandir secciones de mejores prácticas
+```
+
+### 6. Commit y Push
 
 ```bash
 git commit -m "$(cat <<'EOF'
-[Generated commit message]
+[Mensaje de commit generado]
 EOF
 )"
-git push  # If fails: git pull --rebase && git push
-git log -1 --oneline --decorate  # Verify
+git push  # Si falla: git pull --rebase && git push
+git log -1 --oneline --decorate  # Verificar
 ```
 
-### 7. Confirm Success
+### 7. Confirmar Éxito
 
 ```
-✅ Successfully pushed to remote!
+✅ ¡Push al remoto exitoso!
 
-Commit: [hash] [message]
-Branch: [branch] → origin/[branch]
-Files changed: X (+insertions, -deletions)
+Commit: [hash] [mensaje]
+Rama: [rama] → origin/[rama]
+Archivos cambiados: X (+inserciones, -eliminaciones)
 ```
 
-## Error Handling
+## Manejo de Errores
 
-- **git add fails**: Check permissions, locked files, verify repo initialized
-- **git commit fails**: Fix pre-commit hooks, check git config (user.name/email)
-- **git push fails**:
+- **git add falla**: Verifica permisos, archivos bloqueados, verifica que el repo esté inicializado
+- **git commit falla**: Corrige hooks de pre-commit, verifica configuración de git (user.name/email)
+- **git push falla**:
   - Non-fast-forward: `git pull --rebase && git push`
-  - No remote branch: `git push -u origin [branch]`
-  - Protected branch: Use PR workflow instead
+  - Sin rama remota: `git push -u origin [rama]`
+  - Rama protegida: Usa flujo de PR en su lugar
 
-## When to Use
+## Cuándo Usar
 
-✅ **Good:**
-- Multi-file documentation updates
-- Feature with tests and docs
-- Bug fixes across files
-- Project-wide formatting/refactoring
-- Configuration changes
+✅ **Bueno:**
+- Actualizaciones de documentación multi-archivo
+- Característica con tests y docs
+- Correcciones de bugs a través de archivos
+- Refactorización/formateo a nivel de proyecto
+- Cambios de configuración
 
-❌ **Avoid:**
-- Uncertain what's being committed
-- Contains secrets/sensitive data
-- Protected branches without review
-- Merge conflicts present
-- Want granular commit history
-- Pre-commit hooks failing
+❌ **Evitar:**
+- Incierto de qué se está confirmando
+- Contiene secretos/datos sensibles
+- Ramas protegidas sin revisión
+- Conflictos de merge presentes
+- Se desea historial de commits granular
+- Hooks de pre-commit fallando
 
-## Alternatives
+## Alternativas
 
-If user wants control, suggest:
-1. **Selective staging**: Review/stage specific files
-2. **Interactive staging**: `git add -p` for patch selection
-3. **PR workflow**: Create branch → push → PR (use `/pr` command)
+Si el usuario quiere control, sugiere:
+1. **Staging selectivo**: Revisar/preparar en stage archivos específicos
+2. **Staging interactivo**: `git add -p` para selección de patches
+3. **Flujo de PR**: Crear rama → push → PR (usar comando `/pr`)
 
-**⚠️ Remember**: Always review changes before pushing. When in doubt, use individual git commands for more control.
+**⚠️ Recuerda**: Siempre revisa los cambios antes de hacer push. En caso de duda, usa comandos git individuales para más control.

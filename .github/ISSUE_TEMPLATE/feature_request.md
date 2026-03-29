@@ -1,46 +1,46 @@
 ---
-name: Feature Request
-about: Suggest a new example, guide, or improvement
+name: Solicitud de Feature
+about: Sugerir un nuevo ejemplo, guide o mejora
 title: "[FEATURE] "
 labels: enhancement
 assignees: ''
 
 ---
 
-## Description
-Describe the feature or improvement you'd like to see.
+## Descripción
+Describe el feature o mejora que te gustaría ver.
 
-## Problem It Solves
-What problem or gap does this address?
+## Problema que Resuelve
+¿Qué problema o brecha aborda esto?
 
-Examples:
-- There's no example of X feature
-- The current documentation for Y is unclear
-- We need a guide for Z use case
-- The structure could be improved by...
+Ejemplos:
+- No hay ejemplo de la feature X
+- La documentación actual para Y no es clara
+- Necesitamos un guide para el caso de uso Z
+- La estructura podría mejorarse mediante...
 
-## Use Case
-When and how would this be used? Include real-world scenarios.
+## Caso de Uso
+¿Cuándo y cómo se usaría esto? Incluye escenarios del mundo real.
 
-## Proposed Solution
-How should this be implemented or documented?
+## Solución Propuesta
+¿Cómo debería implementarse o documentarse esto?
 
-## Example
-If applicable, provide an example of what you envision:
+## Ejemplo
+Si es aplicable, proporciona un ejemplo de lo que envisionas:
 ```
-[Insert example here]
+[Insertar ejemplo aquí]
 ```
 
-## Related Examples
-Link any existing related examples or guides:
-- Existing Guide: <!-- Add link here -->
-- Feature: (e.g., Skills, Hooks, Subagents)
+## Ejemplos Relacionados
+Enlaza cualquier ejemplo o guide existente relacionado:
+- Guide Existente: <!-- Agregar enlace aquí -->
+- Feature: (ej. Skills, Hooks, Subagents)
 
-## Additional Context
-Any other information that might be helpful?
+## Contexto Adicional
+¿Alguna otra información que pueda ser útil?
 
-## Acceptance Criteria
-How would you know this feature is complete?
-- [ ] Criterion 1
-- [ ] Criterion 2
-- [ ] Criterion 3
+## Criterios de Aceptación
+¿Cómo sabrías que esta feature está completa?
+- [ ] Criterio 1
+- [ ] Criterio 2
+- [ ] Criterio 3

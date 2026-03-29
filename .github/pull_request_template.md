@@ -1,57 +1,57 @@
-## Description
-Brief summary of what this PR does.
+## Descripción
+Resumen breve de lo que hace este PR.
 
-## Type of Change
-- [ ] New example or template
-- [ ] Documentation improvement
+## Tipo de Cambio
+- [ ] Nuevo ejemplo o template
+- [ ] Mejora de documentación
 - [ ] Bug fix
 - [ ] Feature guide
-- [ ] Other (please describe)
+- [ ] Otro (por favor describir)
 
-## Related Issues
-Closes #(issue number)
+## Issues Relacionados
+Cierra #(número de issue)
 
-## Changes Made
-- Change 1
-- Change 2
-- Change 3
+## Cambios Realizados
+- Cambio 1
+- Cambio 2
+- Cambio 3
 
-## What to Review
-What should reviewers focus on?
+## Qué Revisar
+¿En qué deberían enfocarse los reviewers?
 
-## Files Changed
+## Archivos Cambiados
 - `path/to/file1.md`
 - `path/to/file2.md`
 
 ## Testing
-How have you tested this?
-- [ ] Tested locally with Claude Code
-- [ ] Verified examples work
-- [ ] Checked links and references
-- [ ] Reviewed for typos and clarity
+¿Cómo has testeado esto?
+- [ ] Testeado localmente con Claude Code
+- [ ] Verificado que los ejemplos funcionan
+- [ ] Revisados enlaces y referencias
+- [ ] Revisado por typos y claridad
 
 ## Checklist
-- [ ] Follows project structure and conventions
-- [ ] Includes clear documentation/examples
-- [ ] Code/examples are copy-paste ready
-- [ ] All links are verified and working
-- [ ] No sensitive information included (keys, tokens, credentials)
-- [ ] Updated relevant README files
-- [ ] Commit message follows conventional commit format
-- [ ] No large files (>1MB) added
+- [ ] Sigue la estructura y convenciones del proyecto
+- [ ] Incluye documentación/ejemplos claros
+- [ ] El código/ejemplos están listos para copiar y pegar
+- [ ] Todos los enlaces están verificados y funcionan
+- [ ] No se incluye información sensible (keys, tokens, credenciales)
+- [ ] Actualizados los archivos README relevantes
+- [ ] El mensaje de commit sigue el formato de conventional commit
+- [ ] No se agregaron archivos grandes (>1MB)
 
-## Screenshots or Examples
-If applicable, show what this adds:
+## Capturas de Pantalla o Ejemplos
+Si es aplicable, muestra lo que esto agrega:
 ```
-[Example code or before/after comparison]
+[Código de ejemplo o comparación antes/después]
 ```
 
 ## Breaking Changes
-Does this change any existing content or behavior?
-- [ ] No breaking changes
-- [ ] Yes, and it's documented below
+¿Este cambio modifica algún contenido o comportamiento existente?
+- [ ] No hay breaking changes
+- [ ] Sí, y está documentado abajo
 
-If yes, please describe:
+Si es sí, por favor describir:
 
-## Additional Notes
-Any other information for reviewers?
+## Notas Adicionales
+¿Alguna otra información para los reviewers?

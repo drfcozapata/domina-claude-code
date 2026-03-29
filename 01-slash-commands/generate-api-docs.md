@@ -1,19 +1,19 @@
 ---
-description: Create comprehensive API documentation from source code
+description: Crear documentación de API comprehensiva desde el código fuente
 ---
 
-# API Documentation Generator
+# Generador de Documentación de API
 
-Generate API documentation by:
+Genera documentación de API mediante:
 
-1. Scanning all files in `/src/api/`
-2. Extracting function signatures and JSDoc comments
-3. Organizing by endpoint/module
-4. Creating markdown with examples
-5. Including request/response schemas
-6. Adding error documentation
+1. Escanear todos los archivos en `/src/api/`
+2. Extraer firmas de funciones y comentarios JSDoc
+3. Organizar por endpoint/módulo
+4. Crear markdown con ejemplos
+5. Incluir esquemas de request/response
+6. Agregar documentación de errores
 
-Output format:
-- Markdown file in `/docs/api.md`
-- Include curl examples for all endpoints
-- Add TypeScript types
+Formato de salida:
+- Archivo Markdown en `/docs/api.md`
+- Incluir ejemplos de curl para todos los endpoints
+- Agregar tipos de TypeScript

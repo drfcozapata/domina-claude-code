@@ -3,157 +3,157 @@
   <img alt="Claude How To" src="../resources/logos/claude-howto-logo.svg">
 </picture>
 
-# Agent Skills Guide
+# Guía de Agent Skills
 
-Agent Skills are reusable, filesystem-based capabilities that extend Claude's functionality. They package domain-specific expertise, workflows, and best practices into discoverable components that Claude automatically uses when relevant.
+Agent Skills son capacidades reutilizables basadas en el sistema de archivos que extienden la funcionalidad de Claude. Empaquetan experiencia específica de dominio, flujos de trabajo y mejores prácticas en componentes descubribles que Claude usa automáticamente cuando son relevantes.
 
-## Overview
+## Visión General
 
-**Agent Skills** are modular capabilities that transform general-purpose agents into specialists. Unlike prompts (conversation-level instructions for one-off tasks), Skills load on-demand and eliminate the need to repeatedly provide the same guidance across multiple conversations.
+**Agent Skills** son módulos de capacidad que transforman agentes de propósito general en especialistas. A diferencia de los prompts (instrucciones a nivel de conversación para tareas únicas), los Skills se cargan bajo demanda y eliminan la necesidad de proporcionar repetidamente la misma guía a través de múltiples conversaciones.
 
-### Key Benefits
+### Beneficios Clave
 
-- **Specialize Claude**: Tailor capabilities for domain-specific tasks
-- **Reduce repetition**: Create once, use automatically across conversations
-- **Compose capabilities**: Combine Skills to build complex workflows
-- **Scale workflows**: Reuse skills across multiple projects and teams
-- **Maintain quality**: Embed best practices directly into your workflow
+- **Especializar Claude**: Adapta capacidades para tareas específicas de dominio
+- **Reducir repetición**: Crea una vez, usa automáticamente a través de conversaciones
+- **Componer capacidades**: Combina Skills para construir flujos de trabajo complejos
+- **Escalar flujos de trabajo**: Reutiliza skills a través de múltiples proyectos y equipos
+- **Mantener calidad**: Incrusta mejores prácticas directamente en tu flujo de trabajo
 
-Skills follow the [Agent Skills](https://agentskills.io) open standard, which works across multiple AI tools. Claude Code extends the standard with additional features like invocation control, subagent execution, and dynamic context injection.
+Los Skills siguen el estándar abierto [Agent Skills](https://agentskills.io), que funciona a través de múltiples herramientas de IA. Claude Code extiende el estándar con características adicionales como control de invocación, ejecución de subagentes e inyección dinámica de contexto.
 
-> **Note**: Custom slash commands have been merged into skills. `.claude/commands/` files still work and support the same frontmatter fields. Skills are recommended for new development. When both exist at the same path (e.g., `.claude/commands/review.md` and `.claude/skills/review/SKILL.md`), the skill takes precedence.
+> **Nota**: Los comandos slash personalizados se han fusionado en skills. Los archivos en `.claude/commands/` aún funcionan y soportan los mismos campos de frontmatter. Los Skills se recomiendan para nuevo desarrollo. Cuando ambos existen en la misma ruta (ej. `.claude/commands/review.md` y `.claude/skills/review/SKILL.md`), el skill tiene precedencia.
 
-## How Skills Work: Progressive Disclosure
+## Cómo Funcionan los Skills: Divulgación Progresiva
 
-Skills leverage a **progressive disclosure** architecture—Claude loads information in stages as needed, rather than consuming context upfront. This enables efficient context management while maintaining unlimited scalability.
+Los Skills aprovechan una arquitectura de **divulgación progresiva**—Claude carga información en etapas según sea necesario, en lugar de consumir contexto por adelantado. Esto permite una gestión eficiente del contexto mientras mantiene escalabilidad ilimitada.
 
-### Three Levels of Loading
+### Tres Niveles de Carga
 
 ```mermaid
 graph TB
-    subgraph "Level 1: Metadata (Always Loaded)"
-        A["YAML Frontmatter"]
-        A1["~100 tokens per skill"]
-        A2["name + description"]
+    subgraph "Nivel 1: Metadatos (Siempre Cargado)"
+        A["Frontmatter YAML"]
+        A1["~100 tokens por skill"]
+        A2["nombre + descripción"]
     end
 
-    subgraph "Level 2: Instructions (When Triggered)"
-        B["SKILL.md Body"]
-        B1["Under 5k tokens"]
-        B2["Workflows & guidance"]
+    subgraph "Nivel 2: Instrucciones (Cuando se Activa)"
+        B["Cuerpo de SKILL.md"]
+        B1["Menos de 5k tokens"]
+        B2["Flujos de trabajo y guía"]
     end
 
-    subgraph "Level 3: Resources (As Needed)"
-        C["Bundled Files"]
-        C1["Effectively unlimited"]
-        C2["Scripts, templates, docs"]
+    subgraph "Nivel 3: Recursos (Según sea Necesario)"
+        C["Archivos Incluidos"]
+        C1["Efectivamente ilimitado"]
+        C2["Scripts, plantillas, docs"]
     end
 
     A --> B
     B --> C
 ```
 
-| Level | When Loaded | Token Cost | Content |
-|-------|------------|------------|---------|
-| **Level 1: Metadata** | Always (at startup) | ~100 tokens per Skill | `name` and `description` from YAML frontmatter |
-| **Level 2: Instructions** | When Skill is triggered | Under 5k tokens | SKILL.md body with instructions and guidance |
-| **Level 3+: Resources** | As needed | Effectively unlimited | Bundled files executed via bash without loading contents into context |
+| Nivel | Cuándo se Carga | Costo de Tokens | Contenido |
+|-------|----------------|----------------|-----------|
+| **Nivel 1: Metadatos** | Siempre (al inicio) | ~100 tokens por Skill | `name` y `description` del frontmatter YAML |
+| **Nivel 2: Instrucciones** | Cuando se activa el Skill | Menos de 5k tokens | Cuerpo de SKILL.md con instrucciones y guía |
+| **Nivel 3+: Recursos** | Según sea necesario | Efectivamente ilimitado | Archivos incluidos ejecutados vía bash sin cargar el contenido en contexto |
 
-This means you can install many Skills without context penalty—Claude only knows each Skill exists and when to use it until actually triggered.
+Esto significa que puedes instalar muchos Skills sin penalización de contexto—Claude solo sabe que cada Skill existe y cuándo usarlo hasta que realmente se activa.
 
-## Skill Loading Process
+## Proceso de Carga de Skills
 
 ```mermaid
 sequenceDiagram
-    participant User
+    participant Usuario
     participant Claude as Claude
-    participant System as System
+    participant Sistema as Sistema
     participant Skill as Skill
 
-    User->>Claude: "Review this code for security issues"
-    Claude->>System: Check available skills (metadata)
-    System-->>Claude: Skill descriptions loaded at startup
-    Claude->>Claude: Match request to skill description
-    Claude->>Skill: bash: read code-review/SKILL.md
-    Skill-->>Claude: Instructions loaded into context
-    Claude->>Claude: Determine: Need templates?
-    Claude->>Skill: bash: read templates/checklist.md
-    Skill-->>Claude: Template loaded
-    Claude->>Claude: Execute skill instructions
-    Claude->>User: Comprehensive code review
+    Usuario->>Claude: "Revisa este código en busca de problemas de seguridad"
+    Claude->>Sistema: Verificar skills disponibles (metadatos)
+    Sistema-->>Claude: Descripciones de Skills cargadas al inicio
+    Claude->>Claude: Coincidir solicitud con descripción del skill
+    Claude->>Skill: bash: leer code-review/SKILL.md
+    Skill-->>Claude: Instrucciones cargadas en contexto
+    Claude->>Claude: Determinar: ¿Se necesitan plantillas?
+    Claude->>Skill: bash: leer templates/checklist.md
+    Skill-->>Claude: Plantilla cargada
+    Claude->>Claude: Ejecutar instrucciones del skill
+    Claude->>Usuario: Revisión de código comprehensiva
 ```
 
-## Skill Types & Locations
+## Tipos de Skills y Ubicaciones
 
-| Type | Location | Scope | Shared | Best For |
+| Tipo | Ubicación | Alcance | Compartido | Mejor Para |
 |------|----------|-------|--------|----------|
-| **Enterprise** | Managed settings | All org users | Yes | Organization-wide standards |
-| **Personal** | `~/.claude/skills/<skill-name>/SKILL.md` | Individual | No | Personal workflows |
-| **Project** | `.claude/skills/<skill-name>/SKILL.md` | Team | Yes (via git) | Team standards |
-| **Plugin** | `<plugin>/skills/<skill-name>/SKILL.md` | Where enabled | Depends | Bundled with plugins |
+| **Empresarial** | Configuración administrada | Todos los usuarios de la org | Sí | Estándares de toda la organización |
+| **Personal** | `~/.claude/skills/<nombre-skill>/SKILL.md` | Individual | No | Flujos de trabajo personales |
+| **Proyecto** | `.claude/skills/<nombre-skill>/SKILL.md` | Equipo | Sí (vía git) | Estándares del equipo |
+| **Plugin** | `<plugin>/skills/<nombre-skill>/SKILL.md` | Donde esté habilitado | Depende | Incluido con plugins |
 
-When skills share the same name across levels, higher-priority locations win: **enterprise > personal > project**. Plugin skills use a `plugin-name:skill-name` namespace, so they cannot conflict.
+Cuando los skills comparten el mismo nombre a través de niveles, las ubicaciones de mayor prioridad ganan: **empresarial > personal > proyecto**. Los skills de plugins usan un espacio de nombres `nombre-plugin:nombre-skill`, por lo que no pueden entrar en conflicto.
 
-### Automatic Discovery
+### Descubrimiento Automático
 
-**Nested directories**: When you work with files in subdirectories, Claude Code automatically discovers skills from nested `.claude/skills/` directories. For example, if you're editing a file in `packages/frontend/`, Claude Code also looks for skills in `packages/frontend/.claude/skills/`. This supports monorepo setups where packages have their own skills.
+**Directorios anidados**: Cuando trabajas con archivos en subdirectorios, Claude Code descubre automáticamente skills desde directorios `.claude/skills/` anidados. Por ejemplo, si estás editando un archivo en `packages/frontend/`, Claude Code también busca skills en `packages/frontend/.claude/skills/`. Esto soporta configuraciones monorepo donde los paquetes tienen sus propios skills.
 
-**`--add-dir` directories**: Skills from directories added via `--add-dir` are loaded automatically with live change detection. Any edits to skill files in those directories take effect immediately without restarting Claude Code.
+**Directorios `--add-dir`**: Los skills de directorios agregados vía `--add-dir` se cargan automáticamente con detección de cambios en vivo. Cualquier edición a archivos de skill en esos directorios tiene efecto inmediatamente sin reiniciar Claude Code.
 
-**Description budget**: Skill descriptions (Level 1 metadata) are capped at **2% of the context window** (fallback: **16,000 characters**). If you have many skills installed, some may be excluded. Run `/context` to check for warnings. Override the budget with the `SLASH_COMMAND_TOOL_CHAR_BUDGET` environment variable.
+**Presupuesto de descripción**: Las descripciones de Skills (metadatos de Nivel 1) están limitadas a **2% de la ventana de contexto** (fallback: **16,000 caracteres**). Si tienes muchos skills instalados, algunos pueden ser excluidos. Ejecuta `/context` para verificar advertencias. Sobrescribe el presupuesto con la variable de entorno `SLASH_COMMAND_TOOL_CHAR_BUDGET`.
 
-## Creating Custom Skills
+## Creando Skills Personalizados
 
-### Basic Directory Structure
+### Estructura Básica de Directorios
 
 ```
-my-skill/
-├── SKILL.md           # Main instructions (required)
-├── template.md        # Template for Claude to fill in
-├── examples/
-│   └── sample.md      # Example output showing expected format
+mi-skill/
+├── SKILL.md           # Instrucciones principales (requerido)
+├── plantilla.md       # Plantilla para que Claude la complete
+├── ejemplos/
+│   └── muestra.md     # Ejemplo de salida mostrando el formato esperado
 └── scripts/
-    └── validate.sh    # Script Claude can execute
+    └── validar.sh     # Script que Claude puede ejecutar
 ```
 
-### SKILL.md Format
+### Formato de SKILL.md
 
 ```yaml
 ---
-name: your-skill-name
-description: Brief description of what this Skill does and when to use it
+name: nombre-de-tu-skill
+description: Breve descripción de lo que hace este Skill y cuándo usarlo
 ---
 
-# Your Skill Name
+# Nombre de tu Skill
 
-## Instructions
-Provide clear, step-by-step guidance for Claude.
+## Instrucciones
+Proporciona guía clara, paso a paso para Claude.
 
-## Examples
-Show concrete examples of using this Skill.
+## Ejemplos
+Muestra ejemplos concretos de usar este Skill.
 ```
 
-### Required Fields
+### Campos Requeridos
 
-- **name**: lowercase letters, numbers, hyphens only (max 64 characters). Cannot contain "anthropic" or "claude".
-- **description**: what the Skill does AND when to use it (max 1024 characters). This is critical for Claude to know when to activate the skill.
+- **name**: solo letras minúsculas, números, guiones (máx 64 caracteres). No puede contener "anthropic" o "claude".
+- **description**: qué hace el Skill Y cuándo usarlo (máx 1024 caracteres). Esto es crítico para que Claude sepa cuándo activar el skill.
 
-### Optional Frontmatter Fields
+### Campos Opcionales de Frontmatter
 
 ```yaml
 ---
-name: my-skill
-description: What this skill does and when to use it
-argument-hint: "[filename] [format]"        # Hint for autocomplete
-disable-model-invocation: true              # Only user can invoke
-user-invocable: false                       # Hide from slash menu
-allowed-tools: Read, Grep, Glob             # Restrict tool access
-model: opus                                 # Specific model to use
-effort: high                                # Effort level override (low, medium, high, max)
-context: fork                               # Run in isolated subagent
-agent: Explore                              # Which agent type (with context: fork)
-shell: bash                                 # Shell for commands: bash (default) or powershell
-hooks:                                      # Skill-scoped hooks
+name: mi-skill
+description: Qué hace este skill y cuándo usarlo
+argument-hint: "[archivo] [formato]"        # Pista para autocompletado
+disable-model-invocation: true              # Solo el usuario puede invocar
+user-invocable: false                       # Ocultar del menú slash
+allowed-tools: Read, Grep, Glob             # Restringir acceso a herramientas
+model: opus                                 # Modelo específico a usar
+effort: high                                # Nivel de esfuerzo (low, medium, high, max)
+context: fork                               # Ejecutar en subagente aislado
+agent: Explore                              # Qué tipo de agente (con context: fork)
+shell: bash                                 # Shell para comandos: bash (default) o powershell
+hooks:                                      # Hooks con scope de este skill
   PreToolUse:
     - matcher: "Bash"
       hooks:
@@ -162,139 +162,139 @@ hooks:                                      # Skill-scoped hooks
 ---
 ```
 
-| Field | Description |
+| Campo | Descripción |
 |-------|-------------|
-| `name` | Lowercase letters, numbers, hyphens only (max 64 chars). Cannot contain "anthropic" or "claude". |
-| `description` | What the Skill does AND when to use it (max 1024 chars). Critical for auto-invocation matching. |
-| `argument-hint` | Hint shown in the `/` autocomplete menu (e.g., `"[filename] [format]"`). |
-| `disable-model-invocation` | `true` = only the user can invoke via `/name`. Claude will never auto-invoke. |
-| `user-invocable` | `false` = hidden from the `/` menu. Only Claude can invoke it automatically. |
-| `allowed-tools` | Comma-separated list of tools the skill may use without permission prompts. |
-| `model` | Model override while the skill is active (e.g., `opus`, `sonnet`). |
-| `effort` | Effort level override while the skill is active: `low`, `medium`, `high`, or `max`. |
-| `context` | `fork` to run the skill in a forked subagent context with its own context window. |
-| `agent` | Subagent type when `context: fork` (e.g., `Explore`, `Plan`, `general-purpose`). |
-| `shell` | Shell used for `!`command`` substitutions and scripts: `bash` (default) or `powershell`. |
-| `hooks` | Hooks scoped to this skill's lifecycle (same format as global hooks). |
+| `name` | Solo letras minúsculas, números, guiones (máx 64 caracteres). No puede contener "anthropic" o "claude". |
+| `description` | Qué hace el Skill Y cuándo usarlo (máx 1024 caracteres). Crítico para coincidencia de auto-invocación. |
+| `argument-hint` | Pista mostrada en el menú de autocompletado `/` (ej. `"[archivo] [formato]"`). |
+| `disable-model-invocation` | `true` = solo el usuario puede invocar vía `/nombre`. Claude nunca auto-invocará. |
+| `user-invocable` | `false` = oculto del menú `/`. Solo Claude puede invocarlo automáticamente. |
+| `allowed-tools` | Lista separada por comas de herramientas que el skill puede usar sin prompts de permiso. |
+| `model` | Override de modelo mientras el skill está activo (ej. `opus`, `sonnet`). |
+| `effort` | Override de nivel de esfuerzo mientras el skill está activo: `low`, `medium`, `high`, o `max`. |
+| `context` | `fork` para ejecutar el skill en un contexto de subagente bifurcado con su propia ventana de contexto. |
+| `agent` | Tipo de subagente cuando `context: fork` (ej. `Explore`, `Plan`, `general-purpose`). |
+| `shell` | Shell usada para sustituciones `!`comando`` y scripts: `bash` (default) o `powershell`. |
+| `hooks` | Hooks con scope del lifecycle de este skill (mismo formato que hooks globales). |
 
-## Skill Content Types
+## Tipos de Contenido de Skills
 
-Skills can contain two types of content, each suited for different purposes:
+Los Skills pueden contener dos tipos de contenido, cada uno adecuado para diferentes propósitos:
 
-### Reference Content
+### Contenido de Referencia
 
-Adds knowledge Claude applies to your current work—conventions, patterns, style guides, domain knowledge. Runs inline with your conversation context.
+Añade conocimiento que Claude aplica a tu trabajo actual—convenciones, patrones, guías de estilo, conocimiento de dominio. Se ejecuta en línea con tu contexto de conversación.
 
 ```yaml
 ---
-name: api-conventions
-description: API design patterns for this codebase
+name: convenciones-api
+description: Patrones de diseño API para este codebase
 ---
 
-When writing API endpoints:
-- Use RESTful naming conventions
-- Return consistent error formats
-- Include request validation
+Cuando escribas endpoints de API:
+- Usa convenciones de nombres RESTful
+- Retorna formatos de error consistentes
+- Incluye validación de requests
 ```
 
-### Task Content
+### Contenido de Tarea
 
-Step-by-step instructions for specific actions. Often invoked directly with `/skill-name`.
+Instrucciones paso a paso para acciones específicas. A menudo invocado directamente con `/nombre-skill`.
 
 ```yaml
 ---
 name: deploy
-description: Deploy the application to production
+description: Desplegar la aplicación a producción
 context: fork
 disable-model-invocation: true
 ---
 
-Deploy the application:
-1. Run the test suite
-2. Build the application
-3. Push to the deployment target
+Despliega la aplicación:
+1. Ejecuta la suite de tests
+2. Construye la aplicación
+3. Push al objetivo de despliegue
 ```
 
-## Controlling Skill Invocation
+## Controlando la Invocación de Skills
 
-By default, both you and Claude can invoke any skill. Two frontmatter fields control the three invocation modes:
+Por defecto, tanto tú como Claude pueden invocar cualquier skill. Dos campos de frontmatter controlan los tres modos de invocación:
 
-| Frontmatter | You can invoke | Claude can invoke |
+| Frontmatter | Tú puedes invocar | Claude puede invocar |
 |---|---|---|
-| (default) | Yes | Yes |
-| `disable-model-invocation: true` | Yes | No |
-| `user-invocable: false` | No | Yes |
+| (default) | Sí | Sí |
+| `disable-model-invocation: true` | Sí | No |
+| `user-invocable: false` | No | Sí |
 
-**Use `disable-model-invocation: true`** for workflows with side effects: `/commit`, `/deploy`, `/send-slack-message`. You don't want Claude deciding to deploy because your code looks ready.
+**Usa `disable-model-invocation: true`** para flujos de trabajo con efectos secundarios: `/commit`, `/deploy`, `/send-slack-message`. No quieres que Claude decida desplegar porque tu código parece listo.
 
-**Use `user-invocable: false`** for background knowledge that isn't actionable as a command. A `legacy-system-context` skill explains how an old system works—useful for Claude, but not a meaningful action for users.
+**Usa `user-invocable: false`** para conocimiento de fondo que no es accionable como un comando. Un skill `legacy-system-context` explica cómo funciona un sistema antiguo—útil para Claude, pero no una acción significativa para usuarios.
 
-## String Substitutions
+## Sustituciones de Strings
 
-Skills support dynamic values that are resolved before the skill content reaches Claude:
+Los Skills soportan valores dinámicos que se resuelven antes de que el contenido del skill llegue a Claude:
 
-| Variable | Description |
+| Variable | Descripción |
 |----------|-------------|
-| `$ARGUMENTS` | All arguments passed when invoking the skill |
-| `$ARGUMENTS[N]` or `$N` | Access specific argument by index (0-based) |
-| `${CLAUDE_SESSION_ID}` | Current session ID |
-| `${CLAUDE_SKILL_DIR}` | Directory containing the skill's SKILL.md file |
-| `` !`command` `` | Dynamic context injection — runs a shell command and inlines the output |
+| `$ARGUMENTS` | Todos los argumentos pasados al invocar el skill |
+| `$ARGUMENTS[N]` o `$N` | Acceder a argumento específico por índice (base 0) |
+| `${CLAUDE_SESSION_ID}` | ID de sesión actual |
+| `${CLAUDE_SKILL_DIR}` | Directorio que contiene el archivo SKILL.md del skill |
+| `` !`comando` `` | Inyección dinámica de contexto — ejecuta un comando shell e inserta la salida |
 
-**Example:**
+**Ejemplo:**
 
 ```yaml
 ---
 name: fix-issue
-description: Fix a GitHub issue
+description: Arreglar un issue de GitHub
 ---
 
-Fix GitHub issue $ARGUMENTS following our coding standards.
-1. Read the issue description
-2. Implement the fix
-3. Write tests
-4. Create a commit
+Arregla el issue de GitHub $ARGUMENTS siguiendo nuestros estándares de código.
+1. Lee la descripción del issue
+2. Implementa el fix
+3. Escribe tests
+4. Crea un commit
 ```
 
-Running `/fix-issue 123` replaces `$ARGUMENTS` with `123`.
+Ejecutar `/fix-issue 123` reemplaza `$ARGUMENTS` con `123`.
 
-## Injecting Dynamic Context
+## Inyectando Contexto Dinámico
 
-The `!`command`` syntax runs shell commands before the skill content is sent to Claude:
+La sintaxis `!`comando`` ejecuta comandos shell antes de que el contenido del skill sea enviado a Claude:
 
 ```yaml
 ---
 name: pr-summary
-description: Summarize changes in a pull request
+description: Resumir cambios en un pull request
 context: fork
 agent: Explore
 ---
 
-## Pull request context
-- PR diff: !`gh pr diff`
-- PR comments: !`gh pr view --comments`
-- Changed files: !`gh pr diff --name-only`
+## Contexto del pull request
+- Diff del PR: !`gh pr diff`
+- Comentarios del PR: !`gh pr view --comments`
+- Archivos cambiados: !`gh pr diff --name-only`
 
-## Your task
-Summarize this pull request...
+## Tu tarea
+Resume este pull request...
 ```
 
-Commands execute immediately; Claude only sees the final output. By default, commands run in `bash`. Set `shell: powershell` in frontmatter to use PowerShell instead.
+Los comandos se ejecutan inmediatamente; Claude solo ve la salida final. Por defecto, los comandos se ejecutan en `bash`. Establece `shell: powershell` en el frontmatter para usar PowerShell en su lugar.
 
-## Running Skills in Subagents
+## Ejecutando Skills en Subagentes
 
-Add `context: fork` to run a skill in an isolated subagent context. The skill content becomes the task for a dedicated subagent with its own context window, keeping the main conversation uncluttered.
+Añade `context: fork` para ejecutar un skill en un contexto de subagente aislado. El contenido del skill se convierte en la tarea para un subagente dedicado con su propia ventana de contexto, manteniendo la conversación principal sin desorden.
 
-The `agent` field specifies which agent type to use:
+El campo `agent` especifica qué tipo de agente usar:
 
-| Agent Type | Best For |
+| Tipo de Agente | Mejor Para |
 |---|---|
-| `Explore` | Read-only research, codebase analysis |
-| `Plan` | Creating implementation plans |
-| `general-purpose` | Broad tasks requiring all tools |
-| Custom agents | Specialized agents defined in your configuration |
+| `Explore` | Investigación solo lectura, análisis de codebase |
+| `Plan` | Crear planes de implementación |
+| `general-purpose` | Tareas amplias que requieren todas las herramientas |
+| Agentes personalizados | Agentes especializados definidos en tu configuración |
 
-**Example frontmatter:**
+**Ejemplo de frontmatter:**
 
 ```yaml
 ---
@@ -303,27 +303,27 @@ agent: Explore
 ---
 ```
 
-**Full skill example:**
+**Ejemplo completo de skill:**
 
 ```yaml
 ---
 name: deep-research
-description: Research a topic thoroughly
+description: Investigar un tema a fondo
 context: fork
 agent: Explore
 ---
 
-Research $ARGUMENTS thoroughly:
-1. Find relevant files using Glob and Grep
-2. Read and analyze the code
-3. Summarize findings with specific file references
+Investiga $ARGUMENTS a fondo:
+1. Encuentra archivos relevantes usando Glob y Grep
+2. Lee y analiza el código
+3. Resume hallazgos con referencias específicas a archivos
 ```
 
-## Practical Examples
+## Ejemplos Prácticos
 
-### Example 1: Code Review Skill
+### Ejemplo 1: Skill de Code Review
 
-**Directory Structure:**
+**Estructura de Directorios:**
 
 ```
 ~/.claude/skills/code-review/
@@ -336,66 +336,66 @@ Research $ARGUMENTS thoroughly:
     └── compare-complexity.py
 ```
 
-**File:** `~/.claude/skills/code-review/SKILL.md`
+**Archivo:** `~/.claude/skills/code-review/SKILL.md`
 
 ```yaml
 ---
 name: code-review-specialist
-description: Comprehensive code review with security, performance, and quality analysis. Use when users ask to review code, analyze code quality, evaluate pull requests, or mention code review, security analysis, or performance optimization.
+description: Revisión de código comprehensiva con análisis de seguridad, rendimiento y calidad. Usa cuando los usuarios pidan revisar código, analizar calidad de código, evaluar pull requests, o mencionen code review, análisis de seguridad, o optimización de rendimiento.
 ---
 
-# Code Review Skill
+# Skill de Code Review
 
-This skill provides comprehensive code review capabilities focusing on:
+Este skill proporciona capacidades comprehensivas de code review enfocándose en:
 
-1. **Security Analysis**
-   - Authentication/authorization issues
-   - Data exposure risks
-   - Injection vulnerabilities
-   - Cryptographic weaknesses
+1. **Análisis de Seguridad**
+   - Problemas de autenticación/autorización
+   - Riesgos de exposición de datos
+   - Vulnerabilidades de inyección
+   - Debilidades criptográficas
 
-2. **Performance Review**
-   - Algorithm efficiency (Big O analysis)
-   - Memory optimization
-   - Database query optimization
-   - Caching opportunities
+2. **Revisión de Rendimiento**
+   - Eficiencia de algoritmos (análisis Big O)
+   - Optimización de memoria
+   - Optimización de queries de base de datos
+   - Oportunidades de caching
 
-3. **Code Quality**
-   - SOLID principles
-   - Design patterns
-   - Naming conventions
-   - Test coverage
+3. **Calidad de Código**
+   - Principios SOLID
+   - Patrones de diseño
+   - Convenciones de nombres
+   - Cobertura de tests
 
-4. **Maintainability**
-   - Code readability
-   - Function size (should be < 50 lines)
-   - Cyclomatic complexity
-   - Type safety
+4. **Mantenibilidad**
+   - Legibilidad de código
+   - Tamaño de funciones (debería ser < 50 líneas)
+   - Complejidad ciclomática
+   - Seguridad de tipos
 
-## Review Template
+## Plantilla de Review
 
-For each piece of code reviewed, provide:
+Para cada pieza de código revisada, proporciona:
 
-### Summary
-- Overall quality assessment (1-5)
-- Key findings count
-- Recommended priority areas
+### Resumen
+- Evaluación de calidad general (1-5)
+- Cantidad de hallazgos clave
+- Áreas de prioridad recomendadas
 
-### Critical Issues (if any)
-- **Issue**: Clear description
-- **Location**: File and line number
-- **Impact**: Why this matters
-- **Severity**: Critical/High/Medium
-- **Fix**: Code example
+### Issues Críticos (si los hay)
+- **Issue**: Descripción clara
+- **Ubicación**: Archivo y número de línea
+- **Impacto**: Por qué esto importa
+- **Severidad**: Crítico/Alto/Medio
+- **Fix**: Ejemplo de código
 
-For detailed checklists, see [templates/review-checklist.md](templates/review-checklist.md).
+Para checklists detallados, ver [templates/review-checklist.md](templates/review-checklist.md).
 ```
 
-### Example 2: Codebase Visualizer Skill
+### Ejemplo 2: Skill de Visualizador de Codebase
 
-A skill that generates interactive HTML visualizations:
+Un skill que genera visualizaciones HTML interactivas:
 
-**Directory Structure:**
+**Estructura de Directorios:**
 
 ```
 ~/.claude/skills/codebase-visualizer/
@@ -404,113 +404,113 @@ A skill that generates interactive HTML visualizations:
     └── visualize.py
 ```
 
-**File:** `~/.claude/skills/codebase-visualizer/SKILL.md`
+**Archivo:** `~/.claude/skills/codebase-visualizer/SKILL.md`
 
 ```yaml
 ---
 name: codebase-visualizer
-description: Generate an interactive collapsible tree visualization of your codebase. Use when exploring a new repo, understanding project structure, or identifying large files.
+description: Generar una visualización de árbol colapsable interactiva de tu codebase. Usa cuando explores un nuevo repo, entiendas la estructura del proyecto, o identifiques archivos grandes.
 allowed-tools: Bash(python *)
 ---
 
-# Codebase Visualizer
+# Visualizador de Codebase
 
-Generate an interactive HTML tree view showing your project's file structure.
+Genera una vista de árbol HTML interactiva mostrando la estructura de archivos de tu proyecto.
 
-## Usage
+## Uso
 
-Run the visualization script from your project root:
+Ejecuta el script de visualización desde la raíz de tu proyecto:
 
 ```bash
 python ~/.claude/skills/codebase-visualizer/scripts/visualize.py .
 ```
 
-This creates `codebase-map.html` and opens it in your default browser.
+Esto crea `codebase-map.html` y lo abre en tu navegador por defecto.
 
-## What the visualization shows
+## Qué muestra la visualización
 
-- **Collapsible directories**: Click folders to expand/collapse
-- **File sizes**: Displayed next to each file
-- **Colors**: Different colors for different file types
-- **Directory totals**: Shows aggregate size of each folder
+- **Directorios colapsables**: Click en carpetas para expandir/colapsar
+- **Tamaños de archivo**: Mostrados junto a cada archivo
+- **Colores**: Diferentes colores para diferentes tipos de archivo
+- **Totales de directorio**: Muestra el tamaño agregado de cada carpeta
 ```
 
-The bundled Python script does the heavy lifting while Claude handles orchestration.
+El script de Python incluido hace el trabajo pesado mientras Claude maneja la orquestación.
 
-### Example 3: Deploy Skill (User-Invoked Only)
+### Ejemplo 3: Skill de Deploy (Solo Invocado por Usuario)
 
 ```yaml
 ---
 name: deploy
-description: Deploy the application to production
+description: Desplegar la aplicación a producción
 disable-model-invocation: true
 allowed-tools: Bash(npm *), Bash(git *)
 ---
 
-Deploy $ARGUMENTS to production:
+Despliega $ARGUMENTS a producción:
 
-1. Run the test suite: `npm test`
-2. Build the application: `npm run build`
-3. Push to the deployment target
-4. Verify the deployment succeeded
-5. Report deployment status
+1. Ejecuta la suite de tests: `npm test`
+2. Construye la aplicación: `npm run build`
+3. Push al objetivo de despliegue
+4. Verifica que el despliegue succeeded
+5. Reporta el estado del despliegue
 ```
 
-### Example 4: Brand Voice Skill (Background Knowledge)
+### Ejemplo 4: Skill de Brand Voice (Conocimiento de Fondo)
 
 ```yaml
 ---
 name: brand-voice
-description: Ensure all communication matches brand voice and tone guidelines. Use when creating marketing copy, customer communications, or public-facing content.
+description: Asegurar que toda comunicación coincida con las guías de voz y tono de marca. Usa cuando crees copy de marketing, comunicaciones con clientes, o contenido público.
 user-invocable: false
 ---
 
-## Tone of Voice
-- **Friendly but professional** - approachable without being casual
-- **Clear and concise** - avoid jargon
-- **Confident** - we know what we're doing
-- **Empathetic** - understand user needs
+## Tono de Voz
+- **Amigable pero profesional** - accesible sin ser casual
+- **Claro y conciso** - evita jerga
+- **Confidente** - sabemos lo que hacemos
+- **Empático** - entiende las necesidades del usuario
 
-## Writing Guidelines
-- Use "you" when addressing readers
-- Use active voice
-- Keep sentences under 20 words
-- Start with value proposition
+## Guías de Escritura
+- Usa "tú" cuando te dirijas a lectores
+- Usa voz activa
+- Mantén oraciones bajo 20 palabras
+- Comienza con la propuesta de valor
 
-For templates, see [templates/](templates/).
+Para plantillas, ver [templates/](templates/).
 ```
 
-### Example 5: CLAUDE.md Generator Skill
+### Ejemplo 5: Skill de Generador de CLAUDE.md
 
 ```yaml
 ---
 name: claude-md
-description: Create or update CLAUDE.md files following best practices for optimal AI agent onboarding. Use when users mention CLAUDE.md, project documentation, or AI onboarding.
+description: Crear o actualizar archivos CLAUDE.md siguiendo mejores prácticas para onboarding óptimo de agentes de IA. Usa cuando los usuarios mencionen CLAUDE.md, documentación de proyecto, o onboarding de IA.
 ---
 
-## Core Principles
+## Principios Fundamentales
 
-**LLMs are stateless**: CLAUDE.md is the only file automatically included in every conversation.
+**Los LLMs son stateless**: CLAUDE.md es el único archivo automáticamente incluido en cada conversación.
 
-### The Golden Rules
+### Las Reglas de Oro
 
-1. **Less is More**: Keep under 300 lines (ideally under 100)
-2. **Universal Applicability**: Only include information relevant to EVERY session
-3. **Don't Use Claude as a Linter**: Use deterministic tools instead
-4. **Never Auto-Generate**: Craft it manually with careful consideration
+1. **Menos es Más**: Mantén bajo 300 líneas (idealmente bajo 100)
+2. **Aplicabilidad Universal**: Solo incluye información relevante para CADA sesión
+3. **No Uses a Claude como un Linter**: Usa herramientas deterministas en su lugar
+4. **Nunca Auto-Generes**: Elabóralo manualmente con cuidadosa consideración
 
-## Essential Sections
+## Secciones Esenciales
 
-- **Project Name**: Brief one-line description
-- **Tech Stack**: Primary language, frameworks, database
-- **Development Commands**: Install, test, build commands
-- **Critical Conventions**: Only non-obvious, high-impact conventions
-- **Known Issues / Gotchas**: Things that trip up developers
+- **Nombre del Proyecto**: Breve descripción de una línea
+- **Tech Stack**: Lenguaje primario, frameworks, base de datos
+- **Comandos de Desarrollo**: Comandos de install, test, build
+- **Convenciones Críticas**: Solo convenciones no obvias, de alto impacto
+- **Known Issues / Gotchas**: Cosas que confunden a desarrolladores
 ```
 
-### Example 6: Refactoring Skill with Scripts
+### Ejemplo 6: Skill de Refactoring con Scripts
 
-**Directory Structure:**
+**Estructura de Directorios:**
 
 ```
 refactor/
@@ -525,272 +525,233 @@ refactor/
     └── detect-smells.py
 ```
 
-**File:** `refactor/SKILL.md`
+**Archivo:** `refactor/SKILL.md`
 
 ```yaml
 ---
 name: code-refactor
-description: Systematic code refactoring based on Martin Fowler's methodology. Use when users ask to refactor code, improve code structure, reduce technical debt, or eliminate code smells.
+description: Refactoring sistemático de código basado en la metodología de Martin Fowler. Usa cuando los usuarios pidan refactorizar código, mejorar estructura de código, reducir deuda técnica, o eliminar code smells.
 ---
 
-# Code Refactoring Skill
+# Skill de Refactoring de Código
 
-A phased approach emphasizing safe, incremental changes backed by tests.
+Un enfoque por fases enfatizando cambios incrementales seguros respaldados por tests.
 
-## Workflow
+## Flujo de Trabajo
 
-Phase 1: Research & Analysis → Phase 2: Test Coverage Assessment →
-Phase 3: Code Smell Identification → Phase 4: Refactoring Plan Creation →
-Phase 5: Incremental Implementation → Phase 6: Review & Iteration
+Fase 1: Investigación y Análisis → Fase 2: Evaluación de Cobertura de Tests →
+Fase 3: Identificación de Code Smells → Fase 4: Creación de Plan de Refactoring →
+Fase 5: Implementación Incremental → Fase 6: Revisión e Iteración
 
-## Core Principles
+## Principios Fundamentales
 
-1. **Behavior Preservation**: External behavior must remain unchanged
-2. **Small Steps**: Make tiny, testable changes
-3. **Test-Driven**: Tests are the safety net
-4. **Continuous**: Refactoring is ongoing, not a one-time event
+1. **Preservación de Comportamiento**: El comportamiento externo debe permanecer sin cambios
+2. **Pasos Pequeños**: Haz cambios pequeños y testeables
+3. **Test-Driven**: Los tests son la red de seguridad
+4. **Continuo**: El refactoring es continuo, no un evento único
 
-For code smell catalog, see [references/code-smells.md](references/code-smells.md).
-For refactoring techniques, see [references/refactoring-catalog.md](references/refactoring-catalog.md).
+Para el catálogo de code smells, ver [references/code-smells.md](references/code-smells.md).
+Para técnicas de refactoring, ver [references/refactoring-catalog.md](references/refactoring-catalog.md).
 ```
 
-## Supporting Files
+## Archivos de Soporte
 
-Skills can include multiple files in their directory beyond `SKILL.md`. These supporting files (templates, examples, scripts, reference documents) let you keep the main skill file focused while providing Claude with additional resources it can load as needed.
+Los Skills pueden incluir múltiples archivos en su directorio más allá de `SKILL.md`. Estos archivos de soporte (plantillas, ejemplos, scripts, documentos de referencia) te permiten mantener el archivo principal del skill enfocado mientras proporcionas a Claude recursos adicionales que puede cargar según sea necesario.
 
 ```
-my-skill/
-├── SKILL.md              # Main instructions (required, keep under 500 lines)
-├── templates/            # Templates for Claude to fill in
-│   └── output-format.md
-├── examples/             # Example outputs showing expected format
-│   └── sample-output.md
-├── references/           # Domain knowledge and specifications
+mi-skill/
+├── SKILL.md              # Instrucciones principales (requerido, mantener bajo 500 líneas)
+├── templates/            # Plantillas para que Claude complete
+│   └── formato-salida.md
+├── ejemplos/             # Ejemplos de salidas mostrando el formato esperado
+│   └── muestra-salida.md
+├── references/           # Conocimiento de dominio y especificaciones
 │   └── api-spec.md
-└── scripts/              # Scripts Claude can execute
-    └── validate.sh
+└── scripts/              # Scripts que Claude puede ejecutar
+    └── validar.sh
 ```
 
-Guidelines for supporting files:
+Guías para archivos de soporte:
 
-- Keep `SKILL.md` under **500 lines**. Move detailed reference material, large examples, and specifications to separate files.
-- Reference additional files from `SKILL.md` using **relative paths** (e.g., `[API reference](references/api-spec.md)`).
-- Supporting files are loaded at Level 3 (as needed), so they do not consume context until Claude actually reads them.
+- Mantén `SKILL.md` bajo **500 líneas**. Mueve material de referencia detallado, ejemplos grandes y especificaciones a archivos separados.
+- Referencia archivos adicionales desde `SKILL.md` usando **rutas relativas** (ej. `[Referencia API](references/api-spec.md)`).
+- Los archivos de soporte se cargan en Nivel 3 (según sea necesario), por lo que no consumen contexto hasta que Claude realmente los lee.
 
-## Managing Skills
+## Gestionando Skills
 
-### Viewing Available Skills
+### Viendo Skills Disponibles
 
-Ask Claude directly:
+Pregunta a Claude directamente:
 ```
-What Skills are available?
+¿Qué Skills están disponibles?
 ```
 
-Or check the filesystem:
+O verifica el sistema de archivos:
 ```bash
-# List personal Skills
+# Listar skills personales
 ls ~/.claude/skills/
 
-# List project Skills
+# Listar skills de proyecto
 ls .claude/skills/
 ```
 
-### Testing a Skill
+### Probando un Skill
 
-Two ways to test:
+Dos formas de probar:
 
-**Let Claude invoke it automatically** by asking something that matches the description:
+**Deja que Claude lo invoque automáticamente** preguntando algo que coincida con la descripción:
 ```
-Can you help me review this code for security issues?
+¿Puedes ayudarme a revisar este código en busca de problemas de seguridad?
 ```
 
-**Or invoke it directly** with the skill name:
+**O invócalo directamente** con el nombre del skill:
 ```
 /code-review src/auth/login.ts
 ```
 
-### Updating a Skill
+### Actualizando un Skill
 
-Edit the `SKILL.md` file directly. Changes take effect on next Claude Code startup.
+Edita el archivo `SKILL.md` directamente. Los cambios tienen efecto en el próximo inicio de Claude Code.
 
 ```bash
-# Personal Skill
-code ~/.claude/skills/my-skill/SKILL.md
+# Skill personal
+code ~/.claude/skills/mi-skill/SKILL.md
 
-# Project Skill
-code .claude/skills/my-skill/SKILL.md
+# Skill de proyecto
+code .claude/skills/mi-skill/SKILL.md
 ```
 
-### Restricting Claude's Skill Access
+### Restringiendo el Acceso de Claude a Skills
 
-Three ways to control which skills Claude can invoke:
+Tres formas de controlar qué skills puede invocar Claude:
 
-**Disable all skills** in `/permissions`:
+**Deshabilitar todos los skills** en `/permissions`:
 ```
-# Add to deny rules:
+# Añadir a reglas de deny:
 Skill
 ```
 
-**Allow or deny specific skills**:
+**Permitir o denegar skills específicos**:
 ```
-# Allow only specific skills
+# Permitir solo skills específicos
 Skill(commit)
 Skill(review-pr *)
 
-# Deny specific skills
+# Denegar skills específicos
 Skill(deploy *)
 ```
 
-**Hide individual skills** by adding `disable-model-invocation: true` to their frontmatter.
+**Ocultar skills individuales** añadiendo `disable-model-invocation: true` a su frontmatter.
 
-## Best Practices
+## Mejores Prácticas
 
-### 1. Make Descriptions Specific
+### 1. Haz Descripciones Específicas
 
-- **Bad (Vague)**: "Helps with documents"
-- **Good (Specific)**: "Extract text and tables from PDF files, fill forms, merge documents. Use when working with PDF files or when the user mentions PDFs, forms, or document extraction."
+- **Malo (Vago)**: "Ayuda con documentos"
+- **Bueno (Específico)**: "Extraer texto y tablas de archivos PDF, rellenar formularios, fusionar documentos. Usa cuando trabajes con archivos PDF o cuando el usuario mencione PDFs, formularios, o extracción de documentos."
 
-### 2. Keep Skills Focused
+### 2. Mantén los Skills Enfocados
 
-- One Skill = one capability
-- ✅ "PDF form filling"
-- ❌ "Document processing" (too broad)
+- Un Skill = una capacidad
+- ✅ "Relleno de formularios PDF"
+- ❌ "Procesamiento de documentos" (demasiado amplio)
 
-### 3. Include Trigger Terms
+### 3. Incluye Términos de Activación
 
-Add keywords in descriptions that match user requests:
+Añade keywords en descripciones que coincidan con solicitudes de usuario:
 ```yaml
-description: Analyze Excel spreadsheets, generate pivot tables, create charts. Use when working with Excel files, spreadsheets, or .xlsx files.
+description: Analizar hojas de cálculo de Excel, generar tablas dinámicas, crear gráficos. Usa cuando trabajes con archivos de Excel, hojas de cálculo, o archivos .xlsx.
 ```
 
-### 4. Keep SKILL.md Under 500 Lines
+### 4. Mantén SKILL.md Bajo 500 Líneas
 
-Move detailed reference material to separate files that Claude loads as needed.
+Mueve material de referencia detallado a archivos separados que Claude carga según sea necesario.
 
-### 5. Reference Supporting Files
+### 5. Referencia Archivos de Soporte
 
 ```markdown
-## Additional resources
+## Recursos adicionales
 
-- For complete API details, see [reference.md](reference.md)
-- For usage examples, see [examples.md](examples.md)
+- Para detalles completos de la API, ver [reference.md](reference.md)
+- Para ejemplos de uso, ver [examples.md](examples.md)
 ```
 
 ### Do's
 
-- Use clear, descriptive names
-- Include comprehensive instructions
-- Add concrete examples
-- Package related scripts and templates
-- Test with real scenarios
-- Document dependencies
+- Usa nombres claros y descriptivos
+- Incluye instrucciones comprehensivas
+- Añade ejemplos concretos
+- Empaqueta scripts y plantillas relacionados
+- Prueba con escenarios reales
+- Documenta dependencias
 
 ### Don'ts
 
-- Don't create skills for one-time tasks
-- Don't duplicate existing functionality
-- Don't make skills too broad
-- Don't skip the description field
-- Don't install skills from untrusted sources without auditing
+- No crees skills para tareas de una sola vez
+- No dupliques funcionalidad existente
+- No hagas skills demasiado amplios
+- No saltes el campo de descripción
+- No instales skills de fuentes no confiables sin auditar
 
 ## Troubleshooting
 
-### Quick Reference
+### Referencia Rápida
 
-| Issue | Solution |
+| Issue | Solución |
 |-------|----------|
-| Claude doesn't use Skill | Make description more specific with trigger terms |
-| Skill file not found | Verify path: `~/.claude/skills/name/SKILL.md` |
-| YAML errors | Check `---` markers, indentation, no tabs |
-| Skills conflict | Use distinct trigger terms in descriptions |
-| Scripts not running | Check permissions: `chmod +x scripts/*.py` |
-| Claude doesn't see all skills | Too many skills; check `/context` for warnings |
+| Claude no usa el Skill | Haz la descripción más específica con términos de activación |
+| Archivo de Skill no encontrado | Verifica la ruta: `~/.claude/skills/nombre/SKILL.md` |
+| Errores de YAML | Verifica marcadores `---`, indentación, sin tabs |
+| Conflictos de Skills | Usa términos de activación distintos en descripciones |
+| Scripts no se ejecutan | Verifica permisos: `chmod +x scripts/*.py` |
+| Claude no ve todos los skills | Demasiados skills; verifica `/context` por advertencias |
 
-### Skill Not Triggering
+### Skill No se Activa
 
-If Claude doesn't use your skill when expected:
+Si Claude no usa tu skill cuando se espera:
 
-1. Check the description includes keywords users would naturally say
-2. Verify the skill appears when asking "What skills are available?"
-3. Try rephrasing your request to match the description
-4. Invoke directly with `/skill-name` to test
+1. Verifica que la descripción incluya keywords que los usuarios dirían naturalmente
+2. Verifica que el skill aparezca al preguntar "¿Qué skills están disponibles?"
+3. Intenta reformular tu solicitud para que coincida con la descripción
+4. Invoca directamente con `/nombre-skill` para probar
 
-### Skill Triggers Too Often
+### Skill se Activa Demasiado a Menudo
 
-If Claude uses your skill when you don't want it:
+Si Claude usa tu skill cuando no lo quieres:
 
-1. Make the description more specific
-2. Add `disable-model-invocation: true` for manual-only invocation
+1. Haz la descripción más específica
+2. Añade `disable-model-invocation: true` para invocación solo manual
 
-### Claude Doesn't See All Skills
+### Claude No Ve Todos los Skills
 
-Skill descriptions are loaded at **2% of the context window** (fallback: **16,000 characters**). Run `/context` to check for warnings about excluded skills. Override the budget with the `SLASH_COMMAND_TOOL_CHAR_BUDGET` environment variable.
+Las descripciones de Skills se cargan al **2% de la ventana de contexto** (fallback: **16,000 caracteres**). Ejecuta `/context` para verificar advertencias sobre skills excluidos. Sobrescribe el presupuesto con la variable de entorno `SLASH_COMMAND_TOOL_CHAR_BUDGET`.
 
-## Security Considerations
+## Consideraciones de Seguridad
 
-**Only use Skills from trusted sources.** Skills provide Claude with capabilities through instructions and code—a malicious Skill can direct Claude to invoke tools or execute code in harmful ways.
+**Usa solo Skills de fuentes confiables.** Los Skills proporcionan a Claude capacidades a través de instrucciones y código—un Skill malicioso puede dirigir a Claude a invocar herramientas o ejecutar código de manera dañina.
 
-**Key security considerations:**
+**Consideraciones clave de seguridad:**
 
-- **Audit thoroughly**: Review all files in the Skill directory
-- **External sources are risky**: Skills that fetch from external URLs can be compromised
-- **Tool misuse**: Malicious Skills can invoke tools in harmful ways
-- **Treat like installing software**: Only use Skills from trusted sources
+- **Audita minuciosamente**: Revisa todos los archivos en el directorio del Skill
+- **Fuentes externas son riesgosas**: Skills que obtienen de URLs externas pueden ser comprometidos
+- **Mal uso de herramientas**: Skills maliciosos pueden invocar herramientas de manera dañina
+- **Trata como instalar software**: Usa solo Skills de fuentes confiables
 
-## Skills vs Other Features
+## Skills vs Otras Características
 
-| Feature | Invocation | Best For |
+| Característica | Invocación | Mejor Para |
 |---------|------------|----------|
-| **Skills** | Auto or `/name` | Reusable expertise, workflows |
-| **Slash Commands** | User-initiated `/name` | Quick shortcuts (merged into skills) |
-| **Subagents** | Auto-delegated | Isolated task execution |
-| **Memory (CLAUDE.md)** | Always loaded | Persistent project context |
-| **MCP** | Real-time | External data/service access |
-| **Hooks** | Event-driven | Automated side effects |
+| **Skills** | Auto o `/nombre` | Experiencia reutilizable, flujos de trabajo |
+| **Slash Commands** | Iniciado por usuario `/nombre` | Atajos rápidos (fusionados en skills) |
+| **Subagentes** | Auto-delegado | Ejecución de tareas aisladas |
+| **Memoria (CLAUDE.md)** | Siempre cargado | Contexto persistente de proyecto |
+| **MCP** | Tiempo real | Acceso a datos/servicios externos |
+| **Hooks** | Dirigido por eventos | Efectos secundarios automatizados |
 
-## Bundled Skills
+## Skills Incluidos
 
-Claude Code ships with several built-in skills that are always available without installation:
+Claude Code viene con varios skills incorporados que siempre están disponibles sin instalación:
 
-| Skill | Description |
+| Skill | Descripción |
 |-------|-------------|
-| `/simplify` | Review changed files for reuse, quality, and efficiency; spawns 3 parallel review agents |
-| `/batch <instruction>` | Orchestrate large-scale parallel changes across codebase using git worktrees |
-| `/debug [description]` | Troubleshoot current session by reading debug log |
-| `/loop [interval] <prompt>` | Run prompt repeatedly on interval (e.g., `/loop 5m check the deploy`) |
-| `/claude-api` | Load Claude API/SDK reference; auto-activates on `anthropic`/`@anthropic-ai/sdk` imports |
-
-These skills are available out-of-the-box and do not need to be installed or configured. They follow the same SKILL.md format as custom skills.
-
-## Sharing Skills
-
-### Project Skills (Team Sharing)
-
-1. Create Skill in `.claude/skills/`
-2. Commit to git
-3. Team members pull changes — Skills available immediately
-
-### Personal Skills
-
-```bash
-# Copy to personal directory
-cp -r my-skill ~/.claude/skills/
-
-# Make scripts executable
-chmod +x ~/.claude/skills/my-skill/scripts/*.py
-```
-
-### Plugin Distribution
-
-Package skills in a plugin's `skills/` directory for broader distribution.
-
-## Additional Resources
-
-- [Official Skills Documentation](https://code.claude.com/docs/en/skills)
-- [Agent Skills Architecture Blog](https://claude.com/blog/equipping-agents-for-the-real-world-with-agent-skills)
-- [Skills Repository](https://github.com/luongnv89/skills) - Collection of ready-to-use skills
-- [Slash Commands Guide](../01-slash-commands/) - User-initiated shortcuts
-- [Subagents Guide](../04-subagents/) - Delegated AI agents
-- [Memory Guide](../02-memory/) - Persistent context
-- [MCP (Model Context Protocol)](../05-mcp/) - Real-time external data
-- [Hooks Guide](../06-hooks/) - Event-driven automation
+| `/simpli... [truncado]

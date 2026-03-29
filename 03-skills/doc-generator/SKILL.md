@@ -1,38 +1,38 @@
 ---
 name: api-documentation-generator
-description: Generate comprehensive, accurate API documentation from source code. Use when creating or updating API documentation, generating OpenAPI specs, or when users mention API docs, endpoints, or documentation.
+description: Generar documentación de API comprehensiva y precisa desde código fuente. Usa cuando crees o actualices documentación de API, generes specs OpenAPI, o cuando los usuarios mencionen docs de API, endpoints, o documentación.
 ---
 
-# API Documentation Generator Skill
+# Skill de Generador de Documentación de API
 
-## Generates
+## Genera
 
-- OpenAPI/Swagger specifications
-- API endpoint documentation
-- SDK usage examples
-- Integration guides
-- Error code references
-- Authentication guides
+- Especificaciones OpenAPI/Swagger
+- Documentación de endpoints de API
+- Ejemplos de uso de SDK
+- Guías de integración
+- Referencias de códigos de error
+- Guías de autenticación
 
-## Documentation Structure
+## Estructura de Documentación
 
-### For Each Endpoint
+### Para Cada Endpoint
 
 ```markdown
 ## GET /api/v1/users/:id
 
-### Description
-Brief explanation of what this endpoint does
+### Descripción
+Breve explicación de lo que hace este endpoint
 
-### Parameters
+### Parámetros
 
-| Name | Type | Required | Description |
+| Nombre | Tipo | Requerido | Descripción |
 |------|------|----------|-------------|
-| id | string | Yes | User ID |
+| id | string | Sí | ID de Usuario |
 
-### Response
+### Respuesta
 
-**200 Success**
+**200 Éxito**
 ```json
 {
   "id": "usr_123",
@@ -42,15 +42,15 @@ Brief explanation of what this endpoint does
 }
 ```
 
-**404 Not Found**
+**404 No Encontrado**
 ```json
 {
   "error": "USER_NOT_FOUND",
-  "message": "User does not exist"
+  "message": "El usuario no existe"
 }
 ```
 
-### Examples
+### Ejemplos
 
 **cURL**
 ```bash

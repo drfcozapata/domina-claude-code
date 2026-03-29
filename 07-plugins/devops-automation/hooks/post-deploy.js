@@ -1,34 +1,34 @@
 #!/usr/bin/env node
 
 /**
- * Post-deployment hook
- * Runs after deployment completes
+ * Hook post-despliegue
+ * Se ejecuta después de que el despliegue se completa
  */
 
 async function postDeploy() {
-  console.log('Running post-deployment tasks...');
+  console.log('Ejecutando tareas post-despliegue...');
 
   const { execSync } = require('child_process');
 
-  // Wait for pods to be ready
-  console.log('Waiting for pods to be ready...');
+  // Esperar a que los pods estén listos
+  console.log('Esperando a que los pods estén listos...');
   try {
     execSync('kubectl wait --for=condition=ready pod -l app=myapp --timeout=300s', {
       stdio: 'inherit'
     });
   } catch (error) {
-    console.error('❌ Pods failed to become ready');
+    console.error('❌ Los pods fallaron en estar listos');
     process.exit(1);
   }
 
-  // Run smoke tests
-  console.log('Running smoke tests...');
-  // Add your smoke test commands here
+  // Ejecutar smoke tests
+  console.log('Ejecutando smoke tests...');
+  // Agrega aquí tus comandos de smoke test
 
-  console.log('✅ Post-deployment tasks complete');
+  console.log('✅ Tareas post-despliegue completadas');
 }
 
 postDeploy().catch(error => {
-  console.error('Post-deploy hook failed:', error);
+  console.error('El hook post-deploy falló:', error);
   process.exit(1);
 });

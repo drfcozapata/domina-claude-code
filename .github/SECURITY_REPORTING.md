@@ -1,309 +1,309 @@
-# Security Vulnerability Reporting
+# Reporte de Vulnerabilidades de Seguridad
 
-This file explains how to report security vulnerabilities to the Claude How To project.
+Este archivo explica cómo reportar vulnerabilidades de seguridad al proyecto Claude How To.
 
-## Quick Links
+## Enlaces Rápidos
 
-- **Private Reporting**: https://github.com/luongnv89/claude-howto/security/advisories
-- **Security Policy**: [SECURITY.md](../SECURITY.md)
-- **Report Template**: See below
+- **Reporte Privado**: https://github.com/luongnv89/claude-howto/security/advisories
+- **Política de Seguridad**: [SECURITY.md](../SECURITY.md)
+- **Plantilla de Reporte**: Ver abajo
 
-## Report a Vulnerability
+## Reportar una Vulnerabilidad
 
-### Option 1: GitHub Private Vulnerability Report (RECOMMENDED)
+### Opción 1: GitHub Private Vulnerability Report (RECOMENDADO)
 
-This is the preferred method for reporting security vulnerabilities.
+Este es el método preferido para reportar vulnerabilidades de seguridad.
 
-**Steps:**
-1. Go to: https://github.com/luongnv89/claude-howto/security/advisories
-2. Click "Report a vulnerability"
-3. Fill in the details (use template below)
-4. Submit
+**Pasos:**
+1. Ir a: https://github.com/luongnv89/claude-howto/security/advisories
+2. Hacer clic en "Report a vulnerability"
+3. Completar los detalles (usar plantilla abajo)
+4. Enviar
 
-**Advantages:**
-- Keeps vulnerability private until fix is released
-- Automatic notifications to maintainers
-- Built-in collaboration features
-- Integrated with GitHub security tools
+**Ventajas:**
+- Mantiene la vulnerabilidad privada hasta que se lance el fix
+- Notificaciones automáticas a maintainers
+- Funciones de colaboración integradas
+- Integrado con herramientas de seguridad de GitHub
 
-### Option 2: GitHub Security Alert (For Dependencies)
+### Opción 2: GitHub Security Alert (Para Dependencias)
 
-If you discover a vulnerability in a dependency:
+Si descubres una vulnerabilidad en una dependencia:
 
-1. Go to: https://github.com/luongnv89/claude-howto/security/dependabot/alerts
-2. Review the alert
-3. Create a pull request with the fix
-4. Tag with `security` label
+1. Ir a: https://github.com/luongnv89/claude-howto/security/dependabot/alerts
+2. Revisar la alerta
+3. Crear un pull request con el fix
+4. Etiquetar con label `security`
 
-### Option 3: Private Email (If GitHub unavailable)
+### Opción 3: Email Privado (Si GitHub no está disponible)
 
-If you cannot use GitHub's reporting system:
+Si no puedes usar el sistema de reporte de GitHub:
 
-**Coming soon**: Security contact email will be added here
+**Próximamente**: El email de contacto de seguridad será agregado aquí
 
-For now, use GitHub's private vulnerability reporting as described above.
+Por ahora, usa el reporte de vulnerabilidad privado de GitHub como se describe arriba.
 
-## Vulnerability Report Template
+## Plantilla de Reporte de Vulnerabilidad
 
-Use this template when reporting a vulnerability:
+Usa esta plantilla al reportar una vulnerabilidad:
 
 ```
-**Title**: [Brief description of vulnerability]
+**Título**: [Descripción breve de la vulnerabilidad]
 
-**Severity**: [Critical/High/Medium/Low]
-Estimated CVSS Score: [0-10]
+**Severidad**: [Crítica/Alta/Media/Baja]
+Puntaje CVSS Estimado: [0-10]
 
-**Type**: [Code/Documentation/Dependency/Configuration]
+**Tipo**: [Código/Documentación/Dependencia/Configuración]
 
-**Affected Component**:
-- File: [path/to/file.py]
-- Section: [Section name if documentation]
-- Version: [latest/specific version]
+**Componente Afectado**:
+- Archivo: [path/to/file.py]
+- Sección: [Nombre de sección si es documentación]
+- Versión: [latest/versión específica]
 
-**Description**:
-[Clear explanation of what the vulnerability is]
+**Descripción**:
+[Explicación clara de qué es la vulnerabilidad]
 
-**Potential Impact**:
-[What could an attacker do with this vulnerability?]
-[Who could be affected?]
+**Impacto Potencial**:
+[¿Qué podría hacer un atacante con esta vulnerabilidad?]
+[¿Quién podría verse afectado?]
 
-**Steps to Reproduce**:
-1. [First step]
-2. [Second step]
-3. [Third step]
-[Expected result vs actual result]
+**Pasos para Reproducir**:
+1. [Primer paso]
+2. [Segundo paso]
+3. [Tercer paso]
+[Resultado esperado vs resultado real]
 
-**Proof of Concept** (if available):
-[Code or steps to demonstrate the vulnerability]
+**Prueba de Concepto** (si está disponible):
+[Código o pasos para demostrar la vulnerabilidad]
 
-**Suggested Fix**:
-[Your recommended solution, if you have one]
+**Fix Sugerido**:
+[Tu solución recomendada, si tienes una]
 
-**Additional Context**:
-[Any other relevant information]
+**Contexto Adicional**:
+[Cualquier otra información relevante]
 
-**Your Information**:
-- Name: [Your name or anonymous]
-- Email: [Your email]
-- Credit: [How you'd like to be credited, if at all]
+**Tu Información**:
+- Nombre: [Tu nombre o anónimo]
+- Email: [Tu email]
+- Crédito: [Cómo te gustaría ser acreditado, si es que lo deseas]
 ```
 
-## What Happens After You Report
+## Qué Sucede Después de Reportar
 
 ### Timeline
 
-1. **Immediate (< 1 hour)**
-   - Automatic notification sent to project maintainers
+1. **Inmediato (< 1 hora)**
+   - Notificación automática enviada a project maintainers
 
-2. **Within 24 hours**
-   - Initial assessment of the report
-   - Confirmation that we received it
-   - Preliminary severity assessment
+2. **Dentro de 24 horas**
+   - Evaluación inicial del reporte
+   - Confirmación de que lo recibimos
+   - Evaluación preliminar de severidad
 
-3. **Within 48 hours**
-   - Detailed response from security team
-   - Questions for clarification (if needed)
-   - Timeline for fix (if vulnerability confirmed)
+3. **Dentro de 48 horas**
+   - Respuesta detallada del equipo de seguridad
+   - Preguntas para clarificación (si es necesario)
+   - Timeline para el fix (si la vulnerabilidad es confirmada)
 
-4. **Within 1-7 days** (depends on severity)
-   - Fix developed and tested
-   - Security advisory prepared
-   - Fix released and public advisory published
+4. **Dentro de 1-7 días** (depende de la severidad)
+   - Fix desarrollado y testeado
+   - Security advisory preparado
+   - Fix lanzado y advisory público publicado
 
-### Communication
+### Comunicación
 
-We will keep you informed through:
-- GitHub private vulnerability discussion
-- Email (if provided)
-- Updates in the discussion thread
+Te mantendremos informado a través de:
+- Discusión de vulnerabilidad privada de GitHub
+- Email (si es proporcionado)
+- Actualizaciones en el hilo de discusión
 
-You can:
-- Ask clarifying questions
-- Provide additional information
-- Suggest improvements to the fix
-- Request timeline adjustments
+Puedes:
+- Hacer preguntas de clarificación
+- Proporcionar información adicional
+- Sugerir mejoras al fix
+- Solicitar ajustes de timeline
 
-### Disclosure Timeline
+### Timeline de Divulgación
 
-**Critical Issues (CVSS 9.0-10.0)**
-- Fix: Released immediately (within 24 hours)
-- Disclosure: Public advisory issued same day
-- Notice: 24 hours advance notice to reporter
+**Issues Críticos (CVSS 9.0-10.0)**
+- Fix: Lanzado inmediatamente (dentro de 24 horas)
+- Divulgación: Advisory público emitido el mismo día
+- Noticia: 24 horas de aviso previo al reporter
 
-**High Issues (CVSS 7.0-8.9)**
-- Fix: Released within 48-72 hours
-- Disclosure: Public advisory on release
-- Notice: 5 days advance notice to reporter
+**Issues Altos (CVSS 7.0-8.9)**
+- Fix: Lanzado dentro de 48-72 horas
+- Divulgación: Advisory público en el lanzamiento
+- Noticia: 5 días de aviso previo al reporter
 
-**Medium Issues (CVSS 4.0-6.9)**
-- Fix: Included in next regular update
-- Disclosure: Public advisory on release
-- Notice: Coordinated timing
+**Issues Medios (CVSS 4.0-6.9)**
+- Fix: Incluido en la próxima actualización regular
+- Divulgación: Advisory público en el lanzamiento
+- Noticia: Timing coordinado
 
-**Low Issues (CVSS 0.1-3.9)**
-- Fix: Included in next regular update
-- Disclosure: Advisory on release
-- Notice: Same day as release
+**Issues Bajos (CVSS 0.1-3.9)**
+- Fix: Incluido en la próxima actualización regular
+- Divulgación: Advisory en el lanzamiento
+- Noticia: Mismo día que el lanzamiento
 
-## Security Vulnerability Criteria
+## Criterios de Vulnerabilidad de Seguridad
 
 ### In Scope
 
-We accept reports on:
+Aceptamos reportes sobre:
 
-- **Code Vulnerabilities**
-  - Injection attacks (command, SQL, etc.)
-  - Cross-site scripting (XSS) in examples
-  - Authentication/authorization flaws
-  - Path traversal vulnerabilities
-  - Cryptography issues
+- **Vulnerabilidades de Código**
+  - Ataques de inyección (comando, SQL, etc.)
+  - Cross-site scripting (XSS) en ejemplos
+  - Fallos de autenticación/autorización
+  - Vulnerabilidades de path traversal
+  - Problemas de criptografía
 
-- **Documentation Security**
-  - Exposed secrets or credentials
-  - Insecure code patterns
+- **Seguridad de Documentación**
+  - Secrets o credenciales expuestas
+  - Patrones de código inseguro
   - Security anti-patterns
-  - Misleading security claims
+  - Afirmaciones de seguridad engañosas
 
-- **Dependency Vulnerabilities**
-  - Known CVEs in dependencies
-  - Supply chain attacks
-  - Malicious dependencies
+- **Vulnerabilidades de Dependencias**
+  - CVEs conocidos en dependencias
+  - Ataques de supply chain
+  - Dependencias maliciosas
 
-- **Configuration Issues**
-  - Insecure defaults
-  - Missing security headers
-  - Credential exposure in examples
+- **Problemas de Configuración**
+  - Defaults inseguros
+  - Security headers faltantes
+  - Exposición de credenciales en ejemplos
 
 ### Out of Scope
 
-We do NOT accept reports on:
+NO aceptamos reportes sobre:
 
-- Vulnerabilities in Claude Code itself (contact Anthropic)
-- Vulnerabilities in external services
-- Theoretical vulnerabilities without proof
-- Issues already reported to upstream projects
-- Social engineering or phishing
-- User education/training issues
+- Vulnerabilidades en Claude Code mismo (contactar a Anthropic)
+- Vulnerabilidades en servicios externos
+- Vulnerabilidades teóricas sin prueba
+- Issues ya reportados a proyectos upstream
+- Ingeniería social o phishing
+- Problemas de educación/entrenamiento de usuarios
 
-## Responsible Disclosure Guidelines
+## Guías de Responsible Disclosure
 
 ### Do's ✅
 
-- **Report privately** before public disclosure
-- **Be specific** with file paths and line numbers
-- **Provide proof** of the vulnerability
-- **Give us time** to fix (coordinated disclosure)
-- **Update** if you discover more details
-- **Be professional** in all communications
-- **Respect confidentiality** until we publish
+- **Reportar privadamente** antes de la divulgación pública
+- **Ser específico** con paths de archivos y números de línea
+- **Proporcionar prueba** de la vulnerabilidad
+- **Darnos tiempo** para fix (divulgación coordinada)
+- **Actualizar** si descubres más detalles
+- **Ser profesional** en todas las comunicaciones
+- **Respetar confidencialidad** hasta que publiquemos
 
 ### Don'ts ❌
 
-- **Don't publicly disclose** before we fix
-- **Don't exploit** the vulnerability beyond testing
-- **Don't modify** other users' data
-- **Don't demand** payment or favors
-- **Don't share** the vulnerability with others
-- **Don't use** it in any harmful way
-- **Don't spam** with non-security related issues
+- **No divulgar públicamente** antes de que hagamos el fix
+- **No explotar** la vulnerabilidad más allá del testing
+- **No modificar** datos de otros usuarios
+- **No exigir** pago o favores
+- **No compartir** la vulnerabilidad con otros
+- **No usar** de ninguna manera dañina
+- **No hacer spam** con issues no relacionados con seguridad
 
-## Coordinated Disclosure
+## Divulgación Coordinada
 
-We practice responsible disclosure:
+Practicamos responsible disclosure:
 
-1. **Private Report**: You report to us privately
-2. **Our Assessment**: We evaluate and assess severity
-3. **Fix Development**: We develop and test a fix
-4. **Advance Notice**: We give you advance notice before public disclosure
-5. **Public Release**: We release fix and advisory together
-6. **Your Credit**: We acknowledge your contribution (if desired)
+1. **Reporte Privado**: Nos reportas privadamente
+2. **Nuestra Evaluación**: Evaluamos y assessamos la severidad
+3. **Desarrollo del Fix**: Desarrollamos y testeamos un fix
+4. **Aviso Previo**: Te damos aviso previo antes de la divulgación pública
+5. **Lanzamiento Público**: Lanzamos fix y advisory juntos
+6. **Tu Crédito**: Reconocemos tu contribución (si lo deseas)
 
-**Timeline varies based on severity** (see section above)
+**El timeline varía según la severidad** (ver sección arriba)
 
-## After the Fix is Released
+## Después de que se Lanza el Fix
 
-### Public Advisory
+### Advisory Público
 
-A public security advisory will include:
-- Description of the vulnerability
-- Affected versions
-- Severity (CVSS score)
-- Steps to remediate
-- Link to the fix
-- Credit to reporter (with permission)
+Un security advisory público incluirá:
+- Descripción de la vulnerabilidad
+- Versiones afectadas
+- Severidad (puntaje CVSS)
+- Pasos para remediar
+- Enlace al fix
+- Crédito al reporter (con permiso)
 
-### Your Recognition
+### Tu Reconocimiento
 
-If you wish to be credited:
-- Your name/handle in the advisory
-- Link to your profile/website
-- Mention in release notes
-- Addition to hall of fame (if created)
+Si deseas ser acreditado:
+- Tu nombre/handle en el advisory
+- Enlace a tu perfil/sitio web
+- Mención en release notes
+- Adición al hall of fame (si se crea)
 
-### No Compensation
+### Sin Compensación
 
-Please note:
-- This is a volunteer-run open-source project
-- We cannot offer financial rewards
-- We do offer recognition and credit
-- Your contribution helps the community
+Por favor nota:
+- Este es un proyecto open-source dirigido por voluntarios
+- No podemos ofrecer recompensas financieras
+- Ofrecemos reconocimiento y crédito
+- Tu contribución ayuda a la comunidad
 
 ## Security Research
 
-If you're conducting security research:
+Si estás conduciendo security research:
 
-1. **Get Permission**: Contact maintainers first
-2. **Define Scope**: Agree on what you'll test
-3. **Report Findings**: Use this process
-4. **Respect Timeline**: Allow time for fixes
-5. **Publish Responsibly**: Coordinate with us
+1. **Obtener Permiso**: Contactar maintainers primero
+2. **Definir Scope**: Acordar qué testearás
+3. **Reportar Hallazgos**: Usar este proceso
+4. **Respetar Timeline**: Permitir tiempo para fixes
+5. **Publicar Responsablemente**: Coordinar con nosotros
 
-## Questions?
+## ¿Preguntas?
 
-For questions about this process:
+Para preguntas sobre este proceso:
 
-1. Check [SECURITY.md](../SECURITY.md) for detailed policy
-2. Look at [FAQ](#faq) section below
-3. Open a discussion with `[SECURITY]` label
-4. Use private vulnerability reporting for sensitive questions
+1. Revisar [SECURITY.md](../SECURITY.md) para política detallada
+2. Mirar sección [FAQ](#faq) abajo
+3. Abrir una discusión con label `[SECURITY]`
+4. Usar reporte de vulnerabilidad privado para preguntas sensibles
 
 ## FAQ
 
-**Q: Will my report be kept confidential?**
-A: Yes, until the fix is released. We only share details with those working on the fix.
+**P: ¿Mi reporte se mantendrá confidencial?**
+R: Sí, hasta que se lance el fix. Solo compartimos detalles con aquellos trabajando en el fix.
 
-**Q: How long do I need to wait before public disclosure?**
-A: We follow responsible disclosure timelines based on severity (24 hours to 7 days). You can agree to extend this if needed.
+**P: ¿Cuánto tiempo debo esperar antes de la divulgación pública?**
+R: Seguimos timelines de responsible disclosure basados en severidad (24 horas a 7 días). Puedes acordar extender esto si es necesario.
 
-**Q: Will I get credit?**
-A: Yes, in the security advisory and release notes (unless you prefer anonymity).
+**P: ¿Recibiré crédito?**
+R: Sí, en el security advisory y release notes (a menos que prefieras anonimato).
 
-**Q: What if the vulnerability is minor?**
-A: All legitimate security issues are taken seriously. Even minor fixes will be acknowledged.
+**P: ¿Qué pasa si la vulnerabilidad es menor?**
+R: Todos los issues de seguridad legítimos se toman en serio. Incluso los fixes menores serán reconocidos.
 
-**Q: Can I report vulnerabilities in documentation only?**
-A: Yes! Documentation security is important too. Examples with insecure patterns are in scope.
+**P: ¿Puedo reportar vulnerabilidades solo en documentación?**
+R: ¡Sí! La seguridad de documentación es importante también. Los ejemplos con patrones inseguros están en scope.
 
-**Q: What if I'm not sure if something is a security issue?**
-A: Report it anyway! If it's not a security issue, we'll let you know. False positives are fine.
+**P: ¿Qué pasa si no estoy seguro si algo es un issue de seguridad?**
+R: ¡Repórtalo de todos modos! Si no es un issue de seguridad, te lo haremos saber. ¡Los falsos positivos están bien!
 
-**Q: Can I publicly discuss the vulnerability after reporting?**
-A: No, please keep it private until we publish the advisory. Premature disclosure could put users at risk.
+**P: ¿Puedo discutir públicamente la vulnerabilidad después de reportar?**
+R: No, por favor manténlo privado hasta que publiquemos el advisory. La divulgación prematura podría poner a los usuarios en riesgo.
 
-**Q: How do I know you received my report?**
-A: GitHub will send an automatic notification, and we'll follow up within 24 hours.
+**P: ¿Cómo sé que recibiste mi reporte?**
+R: GitHub enviará una notificación automática, y haremos seguimiento dentro de 24 horas.
 
-**Q: What if I don't hear back?**
-A: Check GitHub security advisories page. If you still don't see a response, you can follow up with a comment on the private report.
+**P: ¿Qué pasa si no recibo respuesta?**
+R: Revisa la página de security advisories de GitHub. Si aún no ves una respuesta, puedes hacer seguimiento con un comentario en el reporte privado.
 
 ## Resources
 
-- [SECURITY.md](../SECURITY.md) - Full security policy
-- [CONTRIBUTING.md](../CONTRIBUTING.md) - Contributing guidelines
-- [CODE_OF_CONDUCT.md](../CODE_OF_CONDUCT.md) - Community standards
-- [OWASP Vulnerability Disclosure](https://cheatsheetseries.owasp.org/cheatsheets/Vulnerability_Disclosure_Cheat_Sheet.html) - Responsible disclosure best practices
+- [SECURITY.md](../SECURITY.md) - Política de seguridad completa
+- [CONTRIBUTING.md](../CONTRIBUTING.md) - Guías de contribución
+- [CODE_OF_CONDUCT.md](../CODE_OF_CONDUCT.md) - Estándares de comunidad
+- [OWASP Vulnerability Disclosure](https://cheatsheetseries.owasp.org/cheatsheets/Vulnerability_Disclosure_Cheat_Sheet.html) - Mejores prácticas de responsible disclosure
 - [Coordinated Vulnerability Disclosure](https://cheatsheetseries.owasp.org/cheatsheets/Vulnerable_Dependency_Management_Cheat_Sheet.html)
 
 ---
 
-Thank you for helping keep this project secure! 🔒
+¡Gracias por ayudar a mantener este proyecto seguro! 🔒

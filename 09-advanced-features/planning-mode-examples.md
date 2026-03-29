@@ -1,6 +1,6 @@
 # Planning Mode Examples
 
-Real-world examples demonstrating effective use of planning mode in Claude Code.
+Ejemplos del mundo real demostrando el uso efectivo de Planning Mode en Claude Code.
 
 ## Example 1: Building a REST API
 
@@ -500,34 +500,34 @@ Proceed with this plan? (yes/no/modify)
 
 ### Benefits of Planning Mode
 
-1. **Clarity**: Clear roadmap before starting
-2. **Estimation**: Time and effort estimates
-3. **Risk Assessment**: Identify potential issues early
-4. **Prioritization**: Logical order of tasks
-5. **Approval**: Review and approve before execution
-6. **Modification**: Adjust plan based on feedback
+1. **Clarity**: Hoja de ruta clara antes de comenzar
+2. **Estimation**: Estimaciones de tiempo y esfuerzo
+3. **Risk Assessment**: Identificar problemas potenciales temprano
+4. **Prioritization**: Orden lógico de tareas
+5. **Approval**: Revisar y aprobar antes de la ejecución
+6. **Modification**: Ajustar plan basado en feedback
 
 ### When to Use Planning Mode
 
-✅ **Always use for**:
-- Multi-day projects
-- Team collaborations
-- Critical system changes
-- Learning new concepts
-- Complex refactoring
+✅ **Usar siempre para**:
+- Proyectos de varios días
+- Colaboraciones en equipo
+- Cambios críticos en el sistema
+- Aprender nuevos conceptos
+- Refactorización compleja
 
-❌ **Don't use for**:
-- Bug fixes
-- Small tweaks
-- Simple queries
-- Quick experiments
+❌ **No usar para**:
+- Corrección de bugs
+- Pequeños ajustes
+- Consultas simples
+- Experimentos rápidos
 
 ### Best Practices
 
-1. **Review plans carefully** before approving
-2. **Modify plans** when you spot issues
-3. **Break down** complex tasks
-4. **Estimate realistic** timeframes
-5. **Include rollback** strategies
-6. **Add success** criteria
-7. **Plan for testing** at each phase
+1. **Revisar planes cuidadosamente** antes de aprobar
+2. **Modificar planes** cuando encuentres problemas
+3. **Desglosar** tareas complejas
+4. **Estimar** cronogramas realistas
+5. **Incluir** estrategias de rollback
+6. **Agregar** criterios de éxito
+7. **Planificar** pruebas en cada fase

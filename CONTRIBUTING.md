@@ -3,356 +3,356 @@
   <img alt="Claude How To" src="resources/logos/claude-howto-logo.svg">
 </picture>
 
-# Contributing to Claude How To
+# Contribuir a Claude How To
 
-Thank you for your interest in contributing to this project! This guide will help you understand how to contribute effectively.
+¡Gracias por tu interés en contribuir a este proyecto! Esta guía te ayudará a entender cómo contribuir de manera efectiva.
 
-## About This Project
+## Acerca de Este Proyecto
 
-Claude How To is a visual, example-driven guide to Claude Code. We provide:
-- **Mermaid diagrams** explaining how features work
-- **Production-ready templates** you can use immediately
-- **Real-world examples** with context and best practices
-- **Progressive learning paths** from beginner to advanced
+Claude How To es una guía visual, basada en ejemplos, para Claude Code. Proporcionamos:
+- **Diagramas Mermaid** que explican cómo funcionan las características
+- **Plantillas listas para producción** que puedes usar inmediatamente
+- **Ejemplos del mundo real** con contexto y mejores prácticas
+- **Rutas de aprendizaje progresivas** desde principiante hasta avanzado
 
-## Types of Contributions
+## Tipos de Contribuciones
 
-### 1. New Examples or Templates
-Add examples for existing features (slash commands, skills, hooks, etc.):
-- Copy-paste ready code
-- Clear explanations of how it works
-- Use cases and benefits
-- Troubleshooting tips
+### 1. Nuevos Ejemplos o Plantillas
+Agrega ejemplos para características existentes (Slash Commands, Skills, Hooks, etc.):
+- Código listo para copiar y pegar
+- Explicaciones claras de cómo funciona
+- Casos de uso y beneficios
+- Consejos de solución de problemas
 
-### 2. Documentation Improvements
-- Clarify confusing sections
-- Fix typos and grammar
-- Add missing information
-- Improve code examples
+### 2. Mejoras de Documentación
+- Clarificar secciones confusas
+- Corregir errores tipográficos y gramática
+- Agregar información faltante
+- Mejorar ejemplos de código
 
-### 3. Feature Guides
-Create guides for new Claude Code features:
-- Step-by-step tutorials
-- Architecture diagrams
-- Common patterns and anti-patterns
-- Real-world workflows
+### 3. Guías de Características
+Crea guías para nuevas características de Claude Code:
+- Tutoriales paso a paso
+- Diagramas de arquitectura
+- Patrones comunes y anti-patrones
+- Flujos de trabajo del mundo real
 
-### 4. Bug Reports
-Report issues you encounter:
-- Describe what you expected
-- Describe what actually happened
-- Include steps to reproduce
-- Add relevant Claude Code version and OS
+### 4. Reportes de Errores
+Reporta problemas que encuentres:
+- Describe lo que esperabas
+- Describe lo que realmente sucedió
+- Incluye pasos para reproducir
+- Agrega la versión relevante de Claude Code y sistema operativo
 
-### 5. Feedback and Suggestions
-Help improve the guide:
-- Suggest better explanations
-- Point out gaps in coverage
-- Recommend new sections or reorganization
+### 5. Comentarios y Sugerencias
+Ayuda a mejorar la guía:
+- Sugiere mejores explicaciones
+- Señala vacíos en la cobertura
+- Recomienda nuevas secciones o reorganización
 
-## Getting Started
+## Primeros Pasos
 
-### 1. Fork and Clone
+### 1. Bifurcar y Clonar
 ```bash
 git clone https://github.com/luongnv89/claude-howto.git
 cd claude-howto
 ```
 
-### 2. Create a Branch
-Use a descriptive branch name:
+### 2. Crear una Rama
+Usa un nombre descriptivo para la rama:
 ```bash
 git checkout -b add/feature-name
 git checkout -b fix/issue-description
 git checkout -b docs/improvement-area
 ```
 
-### 3. Set Up Your Environment
+### 3. Configurar tu Entorno
 ```bash
-# Create virtual environment
+# Crear entorno virtual
 python3 -m venv .venv
 source .venv/bin/activate
 
-# Install pre-commit hooks (optional but recommended)
+# Instalar hooks de pre-commit (opcional pero recomendado)
 pip install pre-commit
 pre-commit install
 
-# Run pre-commit checks manually
+# Ejecutar verificaciones de pre-commit manualmente
 pre-commit run --all-files
 ```
 
-## Directory Structure
+## Estructura de Directorios
 
 ```
-├── 01-slash-commands/      # User-invoked shortcuts
-├── 02-memory/              # Persistent context examples
-├── 03-skills/              # Reusable capabilities
-├── 04-subagents/           # Specialized AI assistants
-├── 05-mcp/                 # Model Context Protocol examples
-├── 06-hooks/               # Event-driven automation
-├── 07-plugins/             # Bundled features
-├── 08-checkpoints/         # Session snapshots
+├── 01-slash-commands/      # Atajos invocados por el usuario
+├── 02-memory/              # Ejemplos de contexto persistente
+├── 03-skills/              # Capacidades reutilizables
+├── 04-subagents/           # Asistentes de IA especializados
+├── 05-mcp/                 # Ejemplos de Model Context Protocol
+├── 06-hooks/               # Automatización basada en eventos
+├── 07-plugins/             # Características agrupadas
+├── 08-checkpoints/         # Instantáneas de sesión
 ├── 09-advanced-features/   # Planning, thinking, backgrounds
-├── 10-cli/                 # CLI reference
-├── scripts/                # Build and utility scripts
-└── README.md               # Main guide
+├── 10-cli/                 # Referencia de CLI
+├── scripts/                # Scripts de construcción y utilidades
+└── README.md               # Guía principal
 ```
 
-## How to Contribute Examples
+## Cómo Contribuir con Ejemplos
 
-### Adding a Slash Command
-1. Create a `.md` file in `01-slash-commands/`
-2. Include:
-   - Clear description of what it does
-   - Use cases
-   - Installation instructions
-   - Usage examples
-   - Customization tips
-3. Update `01-slash-commands/README.md`
+### Agregar un Slash Command
+1. Crea un archivo `.md` en `01-slash-commands/`
+2. Incluye:
+   - Descripción clara de lo que hace
+   - Casos de uso
+   - Instrucciones de instalación
+   - Ejemplos de uso
+   - Consejos de personalización
+3. Actualiza `01-slash-commands/README.md`
 
-### Adding a Skill
-1. Create a directory in `03-skills/`
-2. Include:
-   - `SKILL.md` - Main documentation
-   - `scripts/` - Helper scripts if needed
-   - `templates/` - Prompt templates
-   - Example usage in README
-3. Update `03-skills/README.md`
+### Agregar un Skill
+1. Crea un directorio en `03-skills/`
+2. Incluye:
+   - `SKILL.md` - Documentación principal
+   - `scripts/` - Scripts auxiliares si es necesario
+   - `templates/` - Plantillas de prompt
+   - Ejemplo de uso en README
+3. Actualiza `03-skills/README.md`
 
-### Adding a Subagent
-1. Create a `.md` file in `04-subagents/`
-2. Include:
-   - Agent purpose and capabilities
-   - System prompt structure
-   - Example use cases
-   - Integration examples
-3. Update `04-subagents/README.md`
+### Agregar un Subagent
+1. Crea un archivo `.md` en `04-subagents/`
+2. Incluye:
+   - Propósito y capacidades del agente
+   - Estructura del prompt del sistema
+   - Casos de uso de ejemplo
+   - Ejemplos de integración
+3. Actualiza `04-subagents/README.md`
 
-### Adding MCP Configuration
-1. Create a `.json` file in `05-mcp/`
-2. Include:
-   - Configuration explanation
-   - Required environment variables
-   - Setup instructions
-   - Usage examples
-3. Update `05-mcp/README.md`
+### Agregar Configuración MCP
+1. Crea un archivo `.json` en `05-mcp/`
+2. Incluye:
+   - Explicación de la configuración
+   - Variables de entorno requeridas
+   - Instrucciones de configuración
+   - Ejemplos de uso
+3. Actualiza `05-mcp/README.md`
 
-### Adding a Hook
-1. Create a `.sh` file in `06-hooks/`
-2. Include:
-   - Shebang and description
-   - Clear comments explaining logic
-   - Error handling
-   - Security considerations
-3. Update `06-hooks/README.md`
+### Agregar un Hook
+1. Crea un archivo `.sh` en `06-hooks/`
+2. Incluye:
+   - Shebang y descripción
+   - Comentarios claros explicando la lógica
+   - Manejo de errores
+   - Consideraciones de seguridad
+3. Actualiza `06-hooks/README.md`
 
-## Writing Guidelines
+## Directrices de Escritura
 
-### Markdown Style
-- Use clear headings (H2 for sections, H3 for subsections)
-- Keep paragraphs short and focused
-- Use bullet points for lists
-- Include code blocks with language specification
-- Add blank lines between sections
+### Estilo Markdown
+- Usa encabezados claros (H2 para secciones, H3 para subsecciones)
+- Mantén los párrafos cortos y enfocados
+- Usa viñetas para listas
+- Incluye bloques de código con especificación de lenguaje
+- Agrega líneas en blanco entre secciones
 
-### Code Examples
-- Make examples copy-paste ready
-- Comment non-obvious logic
-- Include both simple and advanced versions
-- Show real-world use cases
-- Highlight potential issues
+### Ejemplos de Código
+- Haz que los ejemplos estén listos para copiar y pegar
+- Comenta la lógica no obvia
+- Incluye versiones simples y avanzadas
+- Muestra casos de uso del mundo real
+- Destaca problemas potenciales
 
-### Documentation
-- Explain the "why" not just the "what"
-- Include prerequisites
-- Add troubleshooting sections
-- Link to related topics
-- Keep it beginner-friendly
+### Documentación
+- Explica el "por qué", no solo el "qué"
+- Incluye prerrequisitos
+- Agrega secciones de solución de problemas
+- Enlaza a temas relacionados
+- Manténlo amigable para principiantes
 
 ### JSON/YAML
-- Use proper indentation (2 or 4 spaces consistently)
-- Add comments explaining configuration
-- Include validation examples
+- Usa indentación apropiada (2 o 4 espacios consistentemente)
+- Agrega comentarios explicando la configuración
+- Incluye ejemplos de validación
 
-### Diagrams
-- Use Mermaid when possible
-- Keep diagrams simple and readable
-- Include descriptions below diagrams
-- Link to relevant sections
+### Diagramas
+- Usa Mermaid cuando sea posible
+- Mantén los diagramas simples y legibles
+- Incluye descripciones debajo de los diagramas
+- Enlaza a secciones relevantes
 
-## Commit Guidelines
+## Directrices de Commits
 
-Follow conventional commit format:
+Sigue el formato convencional de commits:
 ```
-type(scope): description
+tipo(alcance): descripción
 
-[optional body]
-```
-
-Types:
-- `feat`: New feature or example
-- `fix`: Bug fix or correction
-- `docs`: Documentation changes
-- `refactor`: Code restructuring
-- `style`: Formatting changes
-- `test`: Test additions or changes
-- `chore`: Build, dependencies, etc.
-
-Examples:
-```
-feat(slash-commands): Add API documentation generator
-docs(memory): Improve personal preferences example
-fix(README): Correct table of contents link
-docs(skills): Add comprehensive code review skill
+[cuerpo opcional]
 ```
 
-## Before Submitting
+Tipos:
+- `feat`: Nueva característica o ejemplo
+- `fix`: Corrección de errores
+- `docs`: Cambios de documentación
+- `refactor`: Reestructuración de código
+- `style`: Cambios de formato
+- `test`: Adiciones o cambios de pruebas
+- `chore`: Construcción, dependencias, etc.
 
-### Checklist
-- [ ] Code follows project style and conventions
-- [ ] New examples include clear documentation
-- [ ] README files are updated (both local and root)
-- [ ] No sensitive information (API keys, credentials)
-- [ ] Examples are tested and working
-- [ ] Links are verified and correct
-- [ ] Files have proper permissions (scripts are executable)
-- [ ] Commit message is clear and descriptive
+Ejemplos:
+```
+feat(slash-commands): Agregar generador de documentación de API
+docs(memory): Mejorar ejemplo de preferencias personales
+fix(README): Corregir enlace de tabla de contenidos
+docs(skills): Agregar skill exhaustivo de revisión de código
+```
 
-### Local Testing
+## Antes de Enviar
+
+### Lista de Verificación
+- [ ] El código sigue el estilo y convenciones del proyecto
+- [ ] Los nuevos ejemplos incluyen documentación clara
+- [ ] Los archivos README están actualizados (local y raíz)
+- [ ] No hay información sensible (claves de API, credenciales)
+- [ ] Los ejemplos están probados y funcionando
+- [ ] Los enlaces están verificados y son correctos
+- [ ] Los archivos tienen los permisos apropiados (los scripts son ejecutables)
+- [ ] El mensaje de commit es claro y descriptivo
+
+### Pruebas Locales
 ```bash
-# Check file formatting
+# Verificar formato de archivos
 pre-commit run --all-files
 
-# Verify links work (if applicable)
-# Test examples manually with Claude Code
+# Verificar que los enlaces funcionen (si aplica)
+# Probar ejemplos manualmente con Claude Code
 
-# Review your changes
+# Revisar tus cambios
 git diff
 
-# Test the EPUB generation (if docs changed)
+# Probar la generación de EPUB (si cambiaste docs)
 uv run scripts/build_epub.py
 ```
 
-## Pull Request Process
+## Proceso de Pull Request
 
-1. **Create PR with clear description**:
-   - What does this add/fix?
-   - Why is it needed?
-   - Related issues (if any)
+1. **Crear PR con descripción clara**:
+   - ¿Qué agrega/corrige esto?
+   - ¿Por qué es necesario?
+   - Problemas relacionados (si los hay)
 
-2. **Include relevant details**:
-   - New feature? Include use cases
-   - Documentation? Explain improvements
-   - Examples? Show before/after
+2. **Incluir detalles relevantes**:
+   - ¿Nueva característica? Incluye casos de uso
+   - ¿Documentación? Explica las mejoras
+   - ¿Ejemplos? Muestra antes/después
 
-3. **Link to issues**:
-   - Use `Closes #123` to auto-close related issues
+3. **Enlazar a problemas**:
+   - Usa `Closes #123` para cerrar automáticamente problemas relacionados
 
-4. **Be patient with reviews**:
-   - Maintainers may suggest improvements
-   - Iterate based on feedback
-   - Final decision rests with maintainers
+4. **Ser paciente con las revisiones**:
+   - Los mantenedores pueden sugerir mejoras
+   - Itera basado en los comentarios
+   - La decisión final recae en los mantenedores
 
-## Code Review Process
+## Proceso de Revisión de Código
 
-Reviewers will check:
-- **Accuracy**: Does it work as described?
-- **Quality**: Is it production-ready?
-- **Consistency**: Does it follow project patterns?
-- **Documentation**: Is it clear and complete?
-- **Security**: Are there any vulnerabilities?
+Los revisores verificarán:
+- **Precisión**: ¿Funciona como se describe?
+- **Calidad**: ¿Está listo para producción?
+- **Consistencia**: ¿Sigue los patrones del proyecto?
+- **Documentación**: ¿Es clara y completa?
+- **Seguridad**: ¿Hay alguna vulnerabilidad?
 
-## Reporting Issues
+## Reportar Problemas
 
-### Bug Reports
-Include:
-- Claude Code version
-- Operating system
-- Steps to reproduce
-- Expected behavior
-- Actual behavior
-- Screenshots if applicable
+### Reportes de Errores
+Incluye:
+- Versión de Claude Code
+- Sistema operativo
+- Pasos para reproducir
+- Comportamiento esperado
+- Comportamiento real
+- Capturas de pantalla si aplica
 
-### Feature Requests
-Include:
-- Use case or problem being solved
-- Proposed solution
-- Alternatives you've considered
-- Additional context
+### Solicitudes de Características
+Incluye:
+- Caso de uso o problema a resolver
+- Solución propuesta
+- Alternativas que has considerado
+- Contexto adicional
 
-### Documentation Issues
-Include:
-- What's confusing or missing
-- Suggested improvements
-- Examples or references
+### Problemas de Documentación
+Incluye:
+- Qué es confuso o faltante
+- Mejoras sugeridas
+- Ejemplos o referencias
 
-## Project Policies
+## Políticas del Proyecto
 
-### Sensitive Information
-- Never commit API keys, tokens, or credentials
-- Use placeholder values in examples
-- Include `.env.example` for configuration files
-- Document required environment variables
+### Información Sensible
+- Nunca hagas commit de claves de API, tokens o credenciales
+- Usa valores de marcador de posición en ejemplos
+- Incluye `.env.example` para archivos de configuración
+- Documenta las variables de entorno requeridas
 
-### Code Quality
-- Keep examples focused and readable
-- Avoid over-engineering solutions
-- Include comments for non-obvious logic
-- Test thoroughly before submitting
+### Calidad de Código
+- Mantén los ejemplos enfocados y legibles
+- Evita soluciones de ingeniería excesiva
+- Incluye comentarios para lógica no obvia
+- Prueba exhaustivamente antes de enviar
 
-### Intellectual Property
-- Original content owned by author
-- Project uses educational license
-- Respect existing copyrights
-- Provide attribution where needed
+### Propiedad Intelectual
+- Contenido original propiedad del autor
+- El proyecto usa licencia educativa
+- Respeta los derechos de autor existentes
+- Proporciona atribución donde sea necesario
 
-## Getting Help
+## Obtener Ayuda
 
-- **Questions**: Open a discussion in GitHub Issues
-- **General Help**: Check existing documentation
-- **Development Help**: Review similar examples
-- **Code Review**: Tag maintainers in PRs
+- **Preguntas**: Abre una discusión en GitHub Issues
+- **Ayuda General**: Revisa la documentación existente
+- **Ayuda de Desarrollo**: Revisa ejemplos similares
+- **Revisión de Código**: Etiqueta a los mantenedores en los PRs
 
-## Recognition
+## Reconocimiento
 
-Contributors are recognized in:
-- README.md Contributors section
-- GitHub contributors page
-- Commit history
+Los contribuyentes son reconocidos en:
+- Sección de Contribuyentes del README.md
+- Página de contribuyentes de GitHub
+- Historial de commits
 
-## Security
+## Seguridad
 
-When contributing examples and documentation, please follow secure coding practices:
+Al contribuir con ejemplos y documentación, sigue prácticas de codificación segura:
 
-- **Never hardcode secrets or API keys** - Use environment variables
-- **Warn about security implications** - Highlight potential risks
-- **Use secure defaults** - Enable security features by default
-- **Validate inputs** - Show proper input validation and sanitization
-- **Include security notes** - Document security considerations
+- **Nunca codifiques secretos o claves de API** - Usa variables de entorno
+- **Advierte sobre implicaciones de seguridad** - Destaca riesgos potenciales
+- **Usa valores predeterminados seguros** - Habilita características de seguridad por defecto
+- **Valida entradas** - Muestra validación y saneamiento apropiados de entradas
+- **Incluye notas de seguridad** - Documenta consideraciones de seguridad
 
-For security issues, see [SECURITY.md](SECURITY.md) for our vulnerability reporting process.
+Para problemas de seguridad, consulta [SECURITY.md](SECURITY.md) para nuestro proceso de reporte de vulnerabilidades.
 
-## Code of Conduct
+## Código de Conducta
 
-We are committed to providing a welcoming and inclusive community. Please read [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) for our full community standards.
+Estamos comprometidos a proporcionar una comunidad acogedora e inclusiva. Por favor, lee [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) para nuestros estándares completos de la comunidad.
 
-In brief:
-- Be respectful and inclusive
-- Welcome feedback gracefully
-- Help others learn and grow
-- Avoid harassment or discrimination
-- Report issues to maintainers
+En resumen:
+- Sé respetuoso e inclusivo
+- Acepta los comentarios con gracia
+- Ayuda a otros a aprender y crecer
+- Evita el acoso o la discriminación
+- Reporta problemas a los mantenedores
 
-All contributors are expected to uphold this code and treat each other with kindness and respect.
+Se espera que todos los contribuyentes mantengan este código y se traten unos a otros con amabilidad y respeto.
 
-## License
+## Licencia
 
-By contributing to this project, you agree that your contributions will be licensed under the MIT License. See [LICENSE](LICENSE) file for details.
+Al contribuir a este proyecto, aceptas que tus contribuciones estarán licenciadas bajo la Licencia MIT. Consulta el archivo [LICENSE](LICENSE) para más detalles.
 
-## Questions?
+## ¿Preguntas?
 
-- Check the [README](README.md)
-- Review [LEARNING-ROADMAP.md](LEARNING-ROADMAP.md)
-- Look at existing examples
-- Open an issue for discussion
+- Consulta el [README](README.md)
+- Revisa [LEARNING-ROADMAP.md](LEARNING-ROADMAP.md)
+- Mira los ejemplos existentes
+- Abre un problema para discusión
 
-Thank you for contributing! 🙏
+¡Gracias por contribuir! 🙏

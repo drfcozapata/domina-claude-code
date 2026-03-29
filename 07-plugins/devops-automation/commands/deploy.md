@@ -1,15 +1,15 @@
 ---
 name: Deploy
-description: Deploy application to production or staging
+description: Desplegar aplicación a producción o staging
 ---
 
-# Deploy Application
+# Desplegar Aplicación
 
-Execute deployment workflow:
+Ejecutar flujo de trabajo de despliegue:
 
-1. Run pre-deployment checks
-2. Build application
-3. Run tests
-4. Deploy to target environment
-5. Run health checks
-6. Notify team on Slack
+1. Ejecutar verificaciones pre-despliegue
+2. Construir aplicación
+3. Ejecutar pruebas
+4. Desplegar al entorno objetivo
+5. Ejecutar verificaciones de salud
+6. Notificar al equipo en Slack

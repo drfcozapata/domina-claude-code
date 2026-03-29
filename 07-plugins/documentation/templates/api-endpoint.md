@@ -1,32 +1,32 @@
 # [METHOD] /api/v1/[endpoint]
 
-## Description
-Brief explanation of what this endpoint does.
+## Descripción
+Breve explicación de lo que hace este endpoint.
 
-## Authentication
-Required authentication method (e.g., Bearer token).
+## Autenticación
+Método de autenticación requerido (ej. Bearer token).
 
-## Parameters
+## Parámetros
 
-### Path Parameters
-| Name | Type | Required | Description |
+### Parámetros de Path
+| Nombre | Tipo | Requerido | Descripción |
 |------|------|----------|-------------|
-| id | string | Yes | Resource ID |
+| id | string | Sí | ID del recurso |
 
-### Query Parameters
-| Name | Type | Required | Description |
+### Parámetros de Query
+| Nombre | Tipo | Requerido | Descripción |
 |------|------|----------|-------------|
-| page | integer | No | Page number (default: 1) |
-| limit | integer | No | Items per page (default: 20) |
+| page | integer | No | Número de página (predeterminado: 1) |
+| limit | integer | No | Elementos por página (predeterminado: 20) |
 
-### Request Body
+### Body del Request
 ```json
 {
   "field": "value"
 }
 ```
 
-## Responses
+## Respuestas
 
 ### 200 OK
 ```json
@@ -45,7 +45,7 @@ Required authentication method (e.g., Bearer token).
   "success": false,
   "error": {
     "code": "VALIDATION_ERROR",
-    "message": "Invalid input"
+    "message": "Entrada inválida"
   }
 }
 ```
@@ -56,12 +56,12 @@ Required authentication method (e.g., Bearer token).
   "success": false,
   "error": {
     "code": "NOT_FOUND",
-    "message": "Resource not found"
+    "message": "Recurso no encontrado"
   }
 }
 ```
 
-## Examples
+## Ejemplos
 
 ### cURL
 ```bash
@@ -93,9 +93,9 @@ data = response.json()
 ```
 
 ## Rate Limits
-- 1000 requests per hour for authenticated users
-- 100 requests per hour for public endpoints
+- 1000 requests por hora para usuarios autenticados
+- 100 requests por hora para endpoints públicos
 
-## Related Endpoints
+## Endpoints Relacionados
 - [GET /api/v1/related](#)
 - [POST /api/v1/related](#)

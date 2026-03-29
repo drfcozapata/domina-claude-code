@@ -1,70 +1,70 @@
 ---
 name: code-review-specialist
-description: Comprehensive code review with security, performance, and quality analysis. Use when users ask to review code, analyze code quality, evaluate pull requests, or mention code review, security analysis, or performance optimization.
+description: Revisión de código comprehensiva con análisis de seguridad, rendimiento y calidad. Usa cuando los usuarios pidan revisar código, analizar calidad de código, evaluar pull requests, o mencionen code review, análisis de seguridad, u optimización de rendimiento.
 ---
 
-# Code Review Skill
+# Skill de Code Review
 
-This skill provides comprehensive code review capabilities focusing on:
+Este skill proporciona capacidades comprehensivas de code review enfocándose en:
 
-1. **Security Analysis**
-   - Authentication/authorization issues
-   - Data exposure risks
-   - Injection vulnerabilities
-   - Cryptographic weaknesses
-   - Sensitive data logging
+1. **Análisis de Seguridad**
+   - Problemas de autenticación/autorización
+   - Riesgos de exposición de datos
+   - Vulnerabilidades de inyección
+   - Debilidades criptográficas
+   - Logging de datos sensibles
 
-2. **Performance Review**
-   - Algorithm efficiency (Big O analysis)
-   - Memory optimization
-   - Database query optimization
-   - Caching opportunities
-   - Concurrency issues
+2. **Revisión de Rendimiento**
+   - Eficiencia de algoritmos (análisis Big O)
+   - Optimización de memoria
+   - Optimización de queries de base de datos
+   - Oportunidades de caching
+   - Problemas de concurrencia
 
-3. **Code Quality**
-   - SOLID principles
-   - Design patterns
-   - Naming conventions
-   - Documentation
-   - Test coverage
+3. **Calidad de Código**
+   - Principios SOLID
+   - Patrones de diseño
+   - Convenciones de nombres
+   - Documentación
+   - Cobertura de tests
 
-4. **Maintainability**
-   - Code readability
-   - Function size (should be < 50 lines)
-   - Cyclomatic complexity
-   - Dependency management
-   - Type safety
+4. **Mantenibilidad**
+   - Legibilidad de código
+   - Tamaño de funciones (debería ser < 50 líneas)
+   - Complejidad ciclomática
+   - Gestión de dependencias
+   - Seguridad de tipos
 
-## Review Template
+## Plantilla de Review
 
-For each piece of code reviewed, provide:
+Para cada pieza de código revisada, proporciona:
 
-### Summary
-- Overall quality assessment (1-5)
-- Key findings count
-- Recommended priority areas
+### Resumen
+- Evaluación de calidad general (1-5)
+- Cantidad de hallazgos clave
+- Áreas de prioridad recomendadas
 
-### Critical Issues (if any)
-- **Issue**: Clear description
-- **Location**: File and line number
-- **Impact**: Why this matters
-- **Severity**: Critical/High/Medium
-- **Fix**: Code example
+### Issues Críticos (si los hay)
+- **Issue**: Descripción clara
+- **Ubicación**: Archivo y número de línea
+- **Impacto**: Por qué esto importa
+- **Severidad**: Crítico/Alto/Medio
+- **Fix**: Ejemplo de código
 
-### Findings by Category
+### Hallazgos por Categoría
 
-#### Security (if issues found)
-List security vulnerabilities with examples
+#### Seguridad (si se encuentran issues)
+Lista vulnerabilidades de seguridad con ejemplos
 
-#### Performance (if issues found)
-List performance problems with complexity analysis
+#### Rendimiento (si se encuentran issues)
+Lista problemas de rendimiento con análisis de complejidad
 
-#### Quality (if issues found)
-List code quality issues with refactoring suggestions
+#### Calidad (si se encuentran issues)
+Lista issues de calidad de código con sugerencias de refactoring
 
-#### Maintainability (if issues found)
-List maintainability problems with improvements
+#### Mantenibilidad (si se encuentran issues)
+Lista problemas de mantenibilidad con mejoras
 
-## Version History
+## Historial de Versiones
 
-- v1.0.0 (2024-12-10): Initial release with security, performance, quality, and maintainability analysis
+- v1.0.0 (2024-12-10): Lanzamiento inicial con análisis de seguridad, rendimiento, calidad y mantenibilidad

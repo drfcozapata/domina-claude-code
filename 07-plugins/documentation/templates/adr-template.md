@@ -1,39 +1,39 @@
-# ADR [Number]: [Title]
+# ADR [Número]: [Título]
 
-## Status
-[Proposed | Accepted | Deprecated | Superseded]
+## Estado
+[Propuesto | Aceptado | Depricado | Reemplazado]
 
-## Context
-What is the issue that we're seeing that is motivating this decision or change?
+## Contexto
+¿Cuál es el problema que estamos viendo que motiva esta decisión o cambio?
 
-## Decision
-What is the change that we're proposing and/or doing?
+## Decisión
+¿Cuál es el cambio que estamos proponiendo y/o haciendo?
 
-## Consequences
-What becomes easier or more difficult to do because of this change?
+## Consecuencias
+¿Qué se vuelve más fácil o más difícil de hacer debido a este cambio?
 
-### Positive
-- Benefit 1
-- Benefit 2
+### Positivas
+- Beneficio 1
+- Beneficio 2
 
-### Negative
-- Drawback 1
-- Drawback 2
+### Negativas
+- Desventaja 1
+- Desventaja 2
 
-### Neutral
-- Consideration 1
-- Consideration 2
+### Neutras
+- Consideración 1
+- Consideración 2
 
-## Alternatives Considered
-What other options were considered and why were they not chosen?
+## Alternativas Consideradas
+¿Qué otras opciones fueron consideradas y por qué no fueron elegidas?
 
-### Alternative 1
-Description and reason for not choosing.
+### Alternativa 1
+Descripción y razón de no elegir.
 
-### Alternative 2
-Description and reason for not choosing.
+### Alternativa 2
+Descripción y razón de no elegir.
 
-## References
-- Related ADRs
-- External documentation
-- Discussion links
+## Referencias
+- ADRs relacionados
+- Documentación externa
+- Enlaces de discusión

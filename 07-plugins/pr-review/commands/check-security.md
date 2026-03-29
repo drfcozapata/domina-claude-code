@@ -1,14 +1,14 @@
 ---
 name: Security Check
-description: Run security-focused code review
+description: Ejecutar revisión de código enfocada en seguridad
 ---
 
-# Security Check
+# Verificación de Seguridad
 
-Perform focused security analysis on code changes:
+Realizar análisis de seguridad enfocado en cambios de código:
 
-1. Authentication/authorization checks
-2. Data exposure risks
-3. Injection vulnerabilities
-4. Cryptographic weaknesses
-5. Sensitive data in logs
+1. Verificaciones de autenticación/autorización
+2. Riesgos de exposición de datos
+3. Vulnerabilidades de inyección
+4. Debilidades criptográficas
+5. Datos sensibles en logs

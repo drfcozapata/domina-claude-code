@@ -1,14 +1,14 @@
 ---
 name: Test Coverage Check
-description: Verify test coverage and quality
+description: Verificar cobertura y calidad de pruebas
 ---
 
-# Test Coverage Check
+# Verificación de Cobertura de Pruebas
 
-Analyze test coverage and quality:
+Analizar cobertura y calidad de pruebas:
 
-1. Check test coverage percentage
-2. Identify untested code paths
-3. Review test quality
-4. Suggest missing test cases
-5. Verify edge cases are covered
+1. Verificar porcentaje de cobertura de pruebas
+2. Identificar rutas de código no testeadas
+3. Revisar calidad de pruebas
+4. Sugerir casos de prueba faltantes
+5. Verificar que los casos edge estén cubiertos

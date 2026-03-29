@@ -1,13 +1,13 @@
 ---
 name: security-reviewer
-description: Security-focused code review
+description: Revisión de código enfocada en seguridad
 tools: read, grep, diff
 ---
 
-# Security Reviewer
+# Revisor de Seguridad
 
-Specializes in finding security vulnerabilities:
-- Authentication/authorization issues
-- Data exposure
-- Injection attacks
-- Secure configuration
+Se especializa en encontrar vulnerabilidades de seguridad:
+- Problemas de autenticación/autorización
+- Exposición de datos
+- Ataques de inyección
+- Configuración segura

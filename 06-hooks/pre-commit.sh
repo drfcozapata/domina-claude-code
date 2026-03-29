@@ -1,50 +1,50 @@
 #!/bin/bash
-# Run tests before commit
-# Hook: PreToolUse (matcher: Bash) - checks if the command is a git commit
-# Note: There is no "PreCommit" hook event. Use PreToolUse with a Bash matcher
-# and inspect the command to detect git commit operations.
+# Ejecutar tests antes del commit
+# Hook: PreToolUse (matcher: Bash) - verifica si el comando es un git commit
+# Nota: No existe el evento de hook "PreCommit". Usa PreToolUse con un matcher Bash
+# e inspecciona el comando para detectar operaciones de git commit.
 
-echo "🧪 Running tests before commit..."
+echo "🧪 Ejecutando tests antes del commit..."
 
-# Check if package.json exists (Node.js project)
+# Verificar si package.json existe (proyecto Node.js)
 if [ -f "package.json" ]; then
   if grep -q "\"test\":" package.json; then
     npm test
     if [ $? -ne 0 ]; then
-      echo "❌ Tests failed! Commit blocked."
+      echo "❌ ¡Tests fallaron! Commit bloqueado."
       exit 1
     fi
   fi
 fi
 
-# Check if pytest is available (Python project)
+# Verificar si pytest está disponible (proyecto Python)
 if [ -f "pytest.ini" ] || [ -f "setup.py" ]; then
   if command -v pytest &> /dev/null; then
     pytest
     if [ $? -ne 0 ]; then
-      echo "❌ Tests failed! Commit blocked."
+      echo "❌ ¡Tests fallaron! Commit bloqueado."
       exit 1
     fi
   fi
 fi
 
-# Check if go.mod exists (Go project)
+# Verificar si go.mod existe (proyecto Go)
 if [ -f "go.mod" ]; then
   go test ./...
   if [ $? -ne 0 ]; then
-    echo "❌ Tests failed! Commit blocked."
+    echo "❌ ¡Tests fallaron! Commit bloqueado."
     exit 1
   fi
 fi
 
-# Check if Cargo.toml exists (Rust project)
+# Verificar si Cargo.toml existe (proyecto Rust)
 if [ -f "Cargo.toml" ]; then
   cargo test
   if [ $? -ne 0 ]; then
-    echo "❌ Tests failed! Commit blocked."
+    echo "❌ ¡Tests fallaron! Commit bloqueado."
     exit 1
   fi
 fi
 
-echo "✅ All tests passed! Proceeding with commit."
+echo "✅ ¡Todos los tests pasaron! Procediendo con el commit."
 exit 0

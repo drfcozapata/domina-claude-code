@@ -3,79 +3,79 @@
   <img alt="Claude How To" src="resources/logos/claude-howto-logo.svg">
 </picture>
 
-# Complete Guide to Claude Concepts
+# Guía Completa de Conceptos de Claude
 
-A comprehensive reference guide covering Slash Commands, Subagents, Memory, MCP Protocol, and Agent Skills with tables, diagrams, and practical examples.
+Una referencia completa que cubre Slash Commands, Subagents, Memory, Protocolo MCP, y Agent Skills con tablas, diagramas y ejemplos prácticos.
 
 ---
 
-## Table of Contents
+## Tabla de Contenidos
 
 1. [Slash Commands](#slash-commands)
 2. [Subagents](#subagents)
 3. [Memory](#memory)
-4. [MCP Protocol](#mcp-protocol)
+4. [Protocolo MCP](#mcp-protocol)
 5. [Agent Skills](#agent-skills)
 6. [Plugins](#plugins)
 7. [Hooks](#hooks)
 8. [Checkpoints and Rewind](#checkpoints-and-rewind)
-9. [Advanced Features](#advanced-features)
-10. [Comparison & Integration](#comparison--integration)
+9. [Características Avanzadas](#advanced-features)
+10. [Comparación e Integración](#comparison--integration)
 
 ---
 
 ## Slash Commands
 
-### Overview
+### Visión General
 
-Slash commands are user-invoked shortcuts stored as Markdown files that Claude Code can execute. They enable teams to standardize frequently-used prompts and workflows.
+Los Slash Commands son atajos invocados por el usuario almacenados como archivos Markdown que Claude Code puede ejecutar. Permiten a los equipos estandarizar prompts y flujos de trabajo de uso frecuente.
 
-### Architecture
+### Arquitectura
 
 ```mermaid
 graph TD
-    A["User Input: /command-name"] -->|Triggers| B["Search .claude/commands/"]
-    B -->|Finds| C["command-name.md"]
-    C -->|Loads| D["Markdown Content"]
-    D -->|Executes| E["Claude Processes Prompt"]
-    E -->|Returns| F["Result in Context"]
+    A["Entrada de Usuario: /command-name"] -->|Activa| B["Buscar en .claude/commands/"]
+    B -->|Encuentra| C["command-name.md"]
+    C -->|Carga| D["Contenido Markdown"]
+    D -->|Ejecuta| E["Claude Procesa el Prompt"]
+    E -->|Devuelve| F["Resultado en Contexto"]
 ```
 
-### File Structure
+### Estructura de Archivos
 
 ```mermaid
 graph LR
-    A["Project Root"] -->|contains| B[".claude/commands/"]
-    B -->|contains| C["optimize.md"]
-    B -->|contains| D["test.md"]
-    B -->|contains| E["docs/"]
-    E -->|contains| F["generate-api-docs.md"]
-    E -->|contains| G["generate-readme.md"]
+    A["Raíz del Proyecto"] -->|contiene| B[".claude/commands/"]
+    B -->|contiene| C["optimize.md"]
+    B -->|contiene| D["test.md"]
+    B -->|contiene| E["docs/"]
+    E -->|contiene| F["generate-api-docs.md"]
+    E -->|contiene| G["generate-readme.md"]
 ```
 
-### Command Organization Table
+### Tabla de Organización de Commands
 
-| Location | Scope | Availability | Use Case | Git Tracked |
+| Ubicación | Alcance | Disponibilidad | Caso de Uso | Git Tracked |
 |----------|-------|--------------|----------|-------------|
-| `.claude/commands/` | Project-specific | Team members | Team workflows, shared standards | ✅ Yes |
-| `~/.claude/commands/` | Personal | Individual user | Personal shortcuts across projects | ❌ No |
-| Subdirectories | Namespaced | Based on parent | Organize by category | ✅ Yes |
+| `.claude/commands/` | Específico del proyecto | Miembros del equipo | Flujos de trabajo del equipo, estándares compartidos | ✅ Sí |
+| `~/.claude/commands/` | Personal | Usuario individual | Atajos personales entre proyectos | ❌ No |
+| Subdirectorios | Con namespace | Basado en el padre | Organizar por categoría | ✅ Sí |
 
-### Features & Capabilities
+### Características y Capacidades
 
-| Feature | Example | Supported |
+| Característica | Ejemplo | Soportado |
 |---------|---------|-----------|
-| Shell script execution | `bash scripts/deploy.sh` | ✅ Yes |
-| File references | `@path/to/file.js` | ✅ Yes |
-| Bash integration | `$(git log --oneline)` | ✅ Yes |
-| Arguments | `/pr --verbose` | ✅ Yes |
-| MCP commands | `/mcp__github__list_prs` | ✅ Yes |
+| Ejecución de scripts shell | `bash scripts/deploy.sh` | ✅ Sí |
+| Referencias a archivos | `@path/to/file.js` | ✅ Sí |
+| Integración Bash | `$(git log --oneline)` | ✅ Sí |
+| Argumentos | `/pr --verbose` | ✅ Sí |
+| Commands MCP | `/mcp__github__list_prs` | ✅ Sí |
 
-### Practical Examples
+### Ejemplos Prácticos
 
-#### Example 1: Code Optimization Command
+#### Ejemplo 1: Command de Optimización de Código
 
-**File:** `.claude/commands/optimize.md`
+**Archivo:** `.claude/commands/optimize.md`
 
 ```markdown
 ---
@@ -101,17 +101,17 @@ Format your response with:
 - Recommended fix with code example
 ```
 
-**Usage:**
+**Uso:**
 ```bash
-# User types in Claude Code
+# El usuario escribe en Claude Code
 /optimize
 
-# Claude loads the prompt and waits for code input
+# Claude carga el prompt y espera la entrada de código
 ```
 
-#### Example 2: Pull Request Helper Command
+#### Ejemplo 2: Command Helper para Pull Request
 
-**File:** `.claude/commands/pr.md`
+**Archivo:** `.claude/commands/pr.md`
 
 ```markdown
 ---
@@ -143,16 +143,16 @@ Before creating a PR, execute these steps:
    - Potential impacts
 ```
 
-**Usage:**
+**Uso:**
 ```bash
 /pr
 
-# Claude runs through checklist and prepares the PR
+# Claude ejecuta la lista de verificación y prepara el PR
 ```
 
-#### Example 3: Hierarchical Documentation Generator
+#### Ejemplo 3: Generador de Documentación Jerárquica
 
-**File:** `.claude/commands/docs/generate-api-docs.md`
+**Archivo:** `.claude/commands/docs/generate-api-docs.md`
 
 ```markdown
 ---
@@ -178,7 +178,7 @@ Output format:
 - Add TypeScript types
 ```
 
-### Command Lifecycle Diagram
+### Diagrama de Ciclo de Vida del Command
 
 ```mermaid
 sequenceDiagram
@@ -187,103 +187,103 @@ sequenceDiagram
     participant FS as File System
     participant CLI as Shell/Bash
 
-    User->>Claude: Types /optimize
-    Claude->>FS: Searches .claude/commands/
-    FS-->>Claude: Returns optimize.md
-    Claude->>Claude: Loads Markdown content
-    Claude->>User: Displays prompt context
-    User->>Claude: Provides code to analyze
-    Claude->>CLI: (May execute scripts)
-    CLI-->>Claude: Results
-    Claude->>User: Returns analysis
+    User->>Claude: Escribe /optimize
+    Claude->>FS: Busca en .claude/commands/
+    FS-->>Claude: Devuelve optimize.md
+    Claude->>Claude: Carga contenido Markdown
+    Claude->>User: Muestra contexto del prompt
+    User->>Claude: Proporciona código para analizar
+    Claude->>CLI: (Puede ejecutar scripts)
+    CLI-->>Claude: Resultados
+    Claude->>User: Devuelve análisis
 ```
 
-### Best Practices
+### Mejores Prácticas
 
-| ✅ Do | ❌ Don't |
+| ✅ Hacer | ❌ No Hacer |
 |------|---------|
-| Use clear, action-oriented names | Create commands for one-time tasks |
-| Document trigger words in description | Build complex logic in commands |
-| Keep commands focused on single task | Create redundant commands |
-| Version control project commands | Hardcode sensitive information |
-| Organize in subdirectories | Create long lists of commands |
-| Use simple, readable prompts | Use abbreviated or cryptic wording |
+| Usar nombres claros y orientados a la acción | Crear commands para tareas de una sola vez |
+| Documentar palabras activadoras en la descripción | Construir lógica compleja en commands |
+| Mantener commands enfocados en una sola tarea | Crear commands redundantes |
+| Control de versión para commands del proyecto | Hardcodear información sensible |
+| Organizar en subdirectorios | Crear listas largas de commands |
+| Usar prompts simples y legibles | Usar abreviaturas o palabras crípticas |
 
 ---
 
 ## Subagents
 
-### Overview
+### Visión General
 
-Subagents are specialized AI assistants with isolated context windows and customized system prompts. They enable delegated task execution while maintaining clean separation of concerns.
+Los Subagents son asistentes especializados de IA con ventanas de contexto aisladas y system prompts personalizados. Permiten la ejecución delegada de tareas manteniendo una separación limpia de responsabilidades.
 
-### Architecture Diagram
+### Diagrama de Arquitectura
 
 ```mermaid
 graph TB
-    User["👤 User"]
-    Main["🎯 Main Agent<br/>(Coordinator)"]
-    Reviewer["🔍 Code Reviewer<br/>Subagent"]
-    Tester["✅ Test Engineer<br/>Subagent"]
-    Docs["📝 Documentation<br/>Subagent"]
+    User["👤 Usuario"]
+    Main["🎯 Agente Principal<br/>(Coordinador)"]
+    Reviewer["🔍 Revisor de Código<br/>Subagent"]
+    Tester["✅ Ingeniero de Pruebas<br/>Subagent"]
+    Docs["📝 Documentación<br/>Subagent"]
 
-    User -->|asks| Main
-    Main -->|delegates| Reviewer
-    Main -->|delegates| Tester
-    Main -->|delegates| Docs
-    Reviewer -->|returns result| Main
-    Tester -->|returns result| Main
-    Docs -->|returns result| Main
-    Main -->|synthesizes| User
+    User -->|pregunta| Main
+    Main -->|delega| Reviewer
+    Main -->|delega| Tester
+    Main -->|delega| Docs
+    Reviewer -->|devuelve resultado| Main
+    Tester -->|devuelve resultado| Main
+    Docs -->|devuelve resultado| Main
+    Main -->|sintetiza| User
 ```
 
-### Subagent Lifecycle
+### Ciclo de Vida del Subagent
 
 ```mermaid
 sequenceDiagram
     participant User
-    participant MainAgent as Main Agent
-    participant CodeReviewer as Code Reviewer<br/>Subagent
-    participant Context as Separate<br/>Context Window
+    participant MainAgent as Agente Principal
+    participant CodeReviewer as Revisor de Código<br/>Subagent
+    participant Context as Ventana de<br/>Contexto Separada
 
-    User->>MainAgent: "Build new auth feature"
-    MainAgent->>MainAgent: Analyze task
-    MainAgent->>CodeReviewer: "Review this code"
-    CodeReviewer->>Context: Initialize clean context
-    Context->>CodeReviewer: Load reviewer instructions
-    CodeReviewer->>CodeReviewer: Perform review
-    CodeReviewer-->>MainAgent: Return findings
-    MainAgent->>MainAgent: Incorporate results
-    MainAgent-->>User: Provide synthesis
+    User->>MainAgent: "Construir nueva función de auth"
+    MainAgent->>MainAgent: Analizar tarea
+    MainAgent->>CodeReviewer: "Revisar este código"
+    CodeReviewer->>Context: Inicializar contexto limpio
+    Context->>CodeReviewer: Cargar instrucciones del revisor
+    CodeReviewer->>CodeReviewer: Realizar revisión
+    CodeReviewer-->>MainAgent: Devolver hallazgos
+    MainAgent->>MainAgent: Incorporar resultados
+    MainAgent-->>User: Proporcionar síntesis
 ```
 
-### Subagent Configuration Table
+### Tabla de Configuración de Subagent
 
-| Configuration | Type | Purpose | Example |
+| Configuración | Tipo | Propósito | Ejemplo |
 |---------------|------|---------|---------|
-| `name` | String | Agent identifier | `code-reviewer` |
-| `description` | String | Purpose & trigger terms | `Comprehensive code quality analysis` |
-| `tools` | List/String | Allowed capabilities | `read, grep, diff, lint_runner` |
-| `system_prompt` | Markdown | Behavioral instructions | Custom guidelines |
+| `name` | String | Identificador del agente | `code-reviewer` |
+| `description` | String | Propósito y términos activadores | `Análisis completo de calidad de código` |
+| `tools` | Lista/String | Capacidades permitidas | `read, grep, diff, lint_runner` |
+| `system_prompt` | Markdown | Instrucciones de comportamiento | Directrices personalizadas |
 
-### Tool Access Hierarchy
+### Jerarquía de Acceso a Herramientas
 
 ```mermaid
 graph TD
-    A["Subagent Configuration"] -->|Option 1| B["Inherit All Tools<br/>from Main Thread"]
-    A -->|Option 2| C["Specify Individual Tools"]
-    B -->|Includes| B1["File Operations"]
-    B -->|Includes| B2["Shell Commands"]
-    B -->|Includes| B3["MCP Tools"]
-    C -->|Explicit List| C1["read, grep, diff"]
-    C -->|Explicit List| C2["Bash(npm:*), Bash(test:*)"]
+    A["Configuración de Subagent"] -->|Opción 1| B["Heredar Todas las Herramientas<br/>del Hilo Principal"]
+    A -->|Opción 2| C["Especificar Herramientas Individuales"]
+    B -->|Incluye| B1["Operaciones de Archivo"]
+    B -->|Incluye| B2["Commands Shell"]
+    B -->|Incluye| B3["Herramientas MCP"]
+    C -->|Lista Explícita| C1["read, grep, diff"]
+    C -->|Lista Explícita| C2["Bash(npm:*), Bash(test:*)"]
 ```
 
-### Practical Examples
+### Ejemplos Prácticos
 
-#### Example 1: Complete Subagent Setup
+#### Ejemplo 1: Configuración Completa de Subagent
 
-**File:** `.claude/agents/code-reviewer.md`
+**Archivo:** `.claude/agents/code-reviewer.md`
 
 ```yaml
 ---
@@ -329,7 +329,7 @@ For each issue:
 - **Fix**: Use JOIN or batch query
 ```
 
-**File:** `.claude/agents/test-engineer.md`
+**Archivo:** `.claude/agents/test-engineer.md`
 
 ```yaml
 ---
@@ -370,7 +370,7 @@ You are expert at:
 - Report missing coverage areas
 ```
 
-**File:** `.claude/agents/documentation-writer.md`
+**Archivo:** `.claude/agents/documentation-writer.md`
 
 ```yaml
 ---
@@ -415,45 +415,45 @@ You create:
 - Related topics
 ```
 
-#### Example 2: Subagent Delegation in Action
+#### Ejemplo 2: Delegación de Subagent en Acción
 
 ```markdown
-# Scenario: Building a Payment Feature
+# Escenario: Construyendo una Función de Pago
 
-## User Request
-"Build a secure payment processing feature that integrates with Stripe"
+## Solicitud del Usuario
+"Construir una función de procesamiento de pagos segura que se integre con Stripe"
 
-## Main Agent Flow
+## Flujo del Agente Principal
 
-1. **Planning Phase**
-   - Understands requirements
-   - Determines tasks needed
-   - Plans architecture
+1. **Fase de Planificación**
+   - Comprende los requisitos
+   - Determina las tareas necesarias
+   - Planifica la arquitectura
 
-2. **Delegates to Code Reviewer Subagent**
-   - Task: "Review the payment processing implementation for security"
-   - Context: Auth, API keys, token handling
-   - Reviews for: SQL injection, key exposure, HTTPS enforcement
+2. **Delega al Subagent Revisor de Código**
+   - Tarea: "Revisar la implementación del procesamiento de pagos para seguridad"
+   - Contexto: Auth, claves de API, manejo de tokens
+   - Revisa para: Inyección SQL, exposición de claves, aplicación de HTTPS
 
-3. **Delegates to Test Engineer Subagent**
-   - Task: "Create comprehensive tests for payment flows"
-   - Context: Success scenarios, failures, edge cases
-   - Creates tests for: Valid payments, declined cards, network failures, webhooks
+3. **Delega al Subagent Ingeniero de Pruebas**
+   - Tarea: "Crear pruebas completas para flujos de pago"
+   - Contexto: Escenarios de éxito, fallos, casos extremos
+   - Crea pruebas para: Pagos válidos, tarjetas rechazadas, fallos de red, webhooks
 
-4. **Delegates to Documentation Writer Subagent**
-   - Task: "Document the payment API endpoints"
-   - Context: Request/response schemas
-   - Produces: API docs with curl examples, error codes
+4. **Delega al Subagent Escritor de Documentación**
+   - Tarea: "Documentar los endpoints de la API de pago"
+   - Contexto: Esquemas de solicitud/respuesta
+   - Produce: Documentación de API con ejemplos curl, códigos de error
 
-5. **Synthesis**
-   - Main agent collects all outputs
-   - Integrates findings
-   - Returns complete solution to user
+5. **Síntesis**
+   - El agente principal recopila todas las salidas
+   - Integra los hallazgos
+   - Devuelve la solución completa al usuario
 ```
 
-#### Example 3: Tool Permission Scoping
+#### Ejemplo 3: Ámbito de Permisos de Herramientas
 
-**Restrictive Setup - Limited to Specific Commands**
+**Configuración Restrictiva - Limitado a Commands Específicos**
 
 ```yaml
 ---
@@ -476,7 +476,7 @@ This agent:
 This ensures the reviewer doesn't accidentally break anything.
 ```
 
-**Extended Setup - All Tools for Implementation**
+**Configuración Extendida - Todas las Herramientas para Implementación**
 
 ```yaml
 ---
@@ -500,22 +500,22 @@ This agent:
 Full capabilities for independent feature development.
 ```
 
-### Subagent Context Management
+### Gestión de Contexto de Subagent
 
 ```mermaid
 graph TB
-    A["Main Agent Context<br/>50,000 tokens"]
-    B["Subagent 1 Context<br/>20,000 tokens"]
-    C["Subagent 2 Context<br/>20,000 tokens"]
-    D["Subagent 3 Context<br/>20,000 tokens"]
+    A["Contexto del Agente Principal<br/>50,000 tokens"]
+    B["Contexto del Subagent 1<br/>20,000 tokens"]
+    C["Contexto del Subagent 2<br/>20,000 tokens"]
+    D["Contexto del Subagent 3<br/>20,000 tokens"]
 
-    A -->|Clean slate| B
-    A -->|Clean slate| C
-    A -->|Clean slate| D
+    A -->|Pizarra limpia| B
+    A -->|Pizarra limpia| C
+    A -->|Pizarra limpia| D
 
-    B -->|Results only| A
-    C -->|Results only| A
-    D -->|Results only| A
+    B -->|Solo resultados| A
+    C -->|Solo resultados| A
+    D -->|Solo resultados| A
 
     style A fill:#e1f5ff
     style B fill:#fff9c4
@@ -523,56 +523,56 @@ graph TB
     style D fill:#fff9c4
 ```
 
-### When to Use Subagents
+### Cuándo Usar Subagents
 
-| Scenario | Use Subagent | Why |
+| Escenario | Usar Subagent | Por Qué |
 |----------|--------------|-----|
-| Complex feature with many steps | ✅ Yes | Separate concerns, prevent context pollution |
-| Quick code review | ❌ No | Not necessary overhead |
-| Parallel task execution | ✅ Yes | Each subagent has own context |
-| Specialized expertise needed | ✅ Yes | Custom system prompts |
-| Long-running analysis | ✅ Yes | Prevents main context exhaustion |
-| Single task | ❌ No | Adds latency unnecessarily |
+| Función compleja con muchos pasos | ✅ Sí | Separar responsabilidades, prevenir contaminación de contexto |
+| Revisión de código rápida | ❌ No | Sobrecarga innecesaria |
+| Ejecución de tareas paralelas | ✅ Sí | Cada subagent tiene su propio contexto |
+| Se necesita experiencia especializada | ✅ Sí | System prompts personalizados |
+| Análisis de larga duración | ✅ Sí | Previene el agotamiento del contexto principal |
+| Tarea única | ❌ No | Añade latencia innecesariamente |
 
-### Agent Teams
+### Equipos de Agentes (Agent Teams)
 
-Agent Teams coordinate multiple agents working on related tasks. Rather than delegating to one subagent at a time, Agent Teams allow the main agent to orchestrate a group of agents that collaborate, share intermediate results, and work toward a common goal. This is useful for large-scale tasks like full-stack feature development where a frontend agent, backend agent, and testing agent work in parallel.
+Los Agent Teams coordinan múltiples agentes trabajando en tareas relacionadas. En lugar de delegar a un subagent a la vez, los Agent Teams permiten al agente principal orquestar un grupo de agentes que colaboran, comparten resultados intermedios y trabajan hacia un objetivo común. Esto es útil para tareas a gran escala como el desarrollo de funciones full-stack donde un agente de frontend, un agente de backend y un agente de pruebas trabajan en paralelo.
 
 ---
 
 ## Memory
 
-### Overview
+### Visión General
 
-Memory enables Claude to retain context across sessions and conversations. It exists in two forms: automatic synthesis in claude.ai, and filesystem-based CLAUDE.md in Claude Code.
+Memory permite a Claude retener contexto entre sesiones y conversaciones. Existe en dos formas: síntesis automática en claude.ai, y CLAUDE.md basado en el sistema de archivos en Claude Code.
 
-### Memory Architecture
+### Arquitectura de Memory
 
 ```mermaid
 graph TB
-    A["Claude Session"]
-    B["User Input"]
-    C["Memory System"]
-    D["Memory Storage"]
+    A["Sesión de Claude"]
+    B["Entrada del Usuario"]
+    C["Sistema de Memory"]
+    D["Almacenamiento de Memory"]
 
-    B -->|User provides info| C
-    C -->|Synthesizes every 24h| D
-    D -->|Loads automatically| A
-    A -->|Uses context| C
+    B -->|El usuario proporciona información| C
+    C -->|Sintetiza cada 24h| D
+    D -->|Carga automáticamente| A
+    A -->|Usa contexto| C
 ```
 
-### Memory Hierarchy in Claude Code (7 Tiers)
+### Jerarquía de Memory en Claude Code (7 Niveles)
 
-Claude Code loads memory from 7 tiers, listed from highest to lowest priority:
+Claude Code carga memory de 7 niveles, listados de mayor a menor prioridad:
 
 ```mermaid
 graph TD
-    A["1. Managed Policy<br/>Enterprise admin policies"] --> B["2. Project Memory<br/>./CLAUDE.md"]
+    A["1. Managed Policy<br/>Políticas administrativas empresariales"] --> B["2. Project Memory<br/>./CLAUDE.md"]
     B --> C["3. Project Rules<br/>.claude/rules/*.md"]
     C --> D["4. User Memory<br/>~/.claude/CLAUDE.md"]
     D --> E["5. User Rules<br/>~/.claude/rules/*.md"]
     E --> F["6. Local Memory<br/>.claude/local/CLAUDE.md"]
-    F --> G["7. Auto Memory<br/>Automatically captured preferences"]
+    F --> G["7. Auto Memory<br/>Preferencias capturadas automáticamente"]
 
     style A fill:#fce4ec,stroke:#333,color:#333
     style B fill:#e1f5fe,stroke:#333,color:#333
@@ -583,30 +583,30 @@ graph TD
     style G fill:#fff3e0,stroke:#333,color:#333
 ```
 
-### Memory Locations Table
+### Tabla de Ubicaciones de Memory
 
-| Tier | Location | Scope | Priority | Shared | Best For |
+| Nivel | Ubicación | Alcance | Prioridad | Compartido | Ideal Para |
 |------|----------|-------|----------|--------|----------|
-| 1. Managed Policy | Enterprise admin | Organization | Highest | All org users | Compliance, security policies |
-| 2. Project | `./CLAUDE.md` | Project | High | Team (Git) | Team standards, architecture |
-| 3. Project Rules | `.claude/rules/*.md` | Project | High | Team (Git) | Modular project conventions |
-| 4. User | `~/.claude/CLAUDE.md` | Personal | Medium | Individual | Personal preferences |
-| 5. User Rules | `~/.claude/rules/*.md` | Personal | Medium | Individual | Personal rule modules |
-| 6. Local | `.claude/local/CLAUDE.md` | Local | Low | Not shared | Machine-specific settings |
-| 7. Auto Memory | Automatic | Session | Lowest | Individual | Learned preferences, patterns |
+| 1. Managed Policy | Admin empresarial | Organización | Más alta | Todos los usuarios de la org | Cumplimiento, políticas de seguridad |
+| 2. Project | `./CLAUDE.md` | Proyecto | Alta | Equipo (Git) | Estándares del equipo, arquitectura |
+| 3. Project Rules | `.claude/rules/*.md` | Proyecto | Alta | Equipo (Git) | Convenciones modulares del proyecto |
+| 4. User | `~/.claude/CLAUDE.md` | Personal | Media | Individual | Preferencias personales |
+| 5. User Rules | `~/.claude/rules/*.md` | Personal | Media | Individual | Módulos de reglas personales |
+| 6. Local | `.claude/local/CLAUDE.md` | Local | Baja | No compartido | Configuraciones específicas de la máquina |
+| 7. Auto Memory | Automático | Sesión | Más baja | Individual | Preferencias y patrones aprendidos |
 
 ### Auto Memory
 
-Auto Memory automatically captures user preferences and patterns observed during sessions. Claude learns from your interactions and remembers:
+Auto Memory captura automáticamente preferencias de usuario y patrones observados durante las sesiones. Claude aprende de tus interacciones y recuerda:
 
-- Coding style preferences
-- Common corrections you make
-- Framework and tool choices
-- Communication style preferences
+- Preferencias de estilo de codificación
+- Correcciones comunes que realizas
+- Elecciones de frameworks y herramientas
+- Preferencias de estilo de comunicación
 
-Auto Memory works in the background and does not require manual configuration.
+Auto Memory funciona en segundo plano y no requiere configuración manual.
 
-### Memory Update Lifecycle
+### Ciclo de Vida de Actualización de Memory
 
 ```mermaid
 sequenceDiagram
@@ -615,21 +615,21 @@ sequenceDiagram
     participant Editor as File System
     participant Memory as CLAUDE.md
 
-    User->>Claude: "Remember: use async/await"
-    Claude->>User: "Which memory file?"
-    User->>Claude: "Project memory"
-    Claude->>Editor: Open ~/.claude/settings.json
-    Claude->>Memory: Write to ./CLAUDE.md
-    Memory-->>Claude: File saved
-    Claude->>Claude: Load updated memory
-    Claude-->>User: "Memory saved!"
+    User->>Claude: "Recuerda: usa async/await"
+    Claude->>User: "¿Qué archivo de memory?"
+    User->>Claude: "Memory del proyecto"
+    Claude->>Editor: Abre ~/.claude/settings.json
+    Claude->>Memory: Escribe en ./CLAUDE.md
+    Memory-->>Claude: Archivo guardado
+    Claude->>Claude: Carga memory actualizado
+    Claude-->>User: "¡Memory guardado!"
 ```
 
-### Practical Examples
+### Ejemplos Prácticos
 
-#### Example 1: Project Memory Structure
+#### Ejemplo 1: Estructura de Project Memory
 
-**File:** `./CLAUDE.md`
+**Archivo:** `./CLAUDE.md`
 
 ```markdown
 # Project Configuration
@@ -722,9 +722,9 @@ sequenceDiagram
 - Admin Panel: `/projects/admin`
 ```
 
-#### Example 2: Directory-Specific Memory
+#### Ejemplo 2: Memory Específico de Directorio
 
-**File:** `./src/api/CLAUDE.md`
+**Archivo:** `./src/api/CLAUDE.md`
 
 ~~~~markdown
 # API Module Standards
@@ -790,9 +790,9 @@ All responses must follow this structure:
 - Tag cache keys with resource type
 ~~~~
 
-#### Example 3: Personal Memory
+#### Ejemplo 3: Personal Memory
 
-**File:** `~/.claude/CLAUDE.md`
+**Archivo:** `~/.claude/CLAUDE.md`
 
 ~~~~markdown
 # My Development Preferences
@@ -857,9 +857,9 @@ project/
 - **Test Framework**: Jest with React Testing Library
 ~~~~
 
-#### Example 4: Memory Update During Session
+#### Ejemplo 4: Actualización de Memory Durante la Sesión
 
-**Session Interaction:**
+**Interacción de Sesión:**
 
 ```markdown
 User: Remember that I prefer using React hooks instead of class components
@@ -884,20 +884,20 @@ Added to ./CLAUDE.md:
 - Use useMemo for expensive computations
 ```
 
-### Memory in Claude Web/Desktop
+### Memory en Claude Web/Desktop
 
-#### Memory Synthesis Timeline
+#### Línea de Tiempo de Síntesis de Memory
 
 ```mermaid
 graph LR
-    A["Day 1: User<br/>Conversations"] -->|24 hours| B["Day 2: Memory<br/>Synthesis"]
-    B -->|Automatic| C["Memory Updated<br/>Summarized"]
-    C -->|Loaded in| D["Day 2-N:<br/>New Conversations"]
-    D -->|Add to| E["Memory"]
-    E -->|24 hours later| F["Memory Refreshed"]
+    A["Día 1: Usuario<br/>Conversaciones"] -->|24 horas| B["Día 2: Síntesis<br/>de Memory"]
+    B -->|Automático| C["Memory Actualizado<br/>Resumido"]
+    C -->|Cargado en| D["Día 2-N:<br/>Nuevas Conversaciones"]
+    D -->|Añade a| E["Memory"]
+    E -->|24 horas después| F["Memory Refrescado"]
 ```
 
-**Example Memory Summary:**
+**Ejemplo de Resumen de Memory:**
 
 ```markdown
 ## Claude's Memory of User
@@ -911,7 +911,7 @@ graph LR
 ### Project Context
 - Currently building e-commerce platform
 - Tech stack: Node.js, PostgreSQL, React 18, Docker
-- Working with team of 5 developers
+- Working with team o... [truncado]
 - Using CI/CD and blue-green deployments
 
 ### Communication Preferences
@@ -927,100 +927,100 @@ graph LR
 - Document architecture
 ```
 
-### Memory Features Comparison
+### Comparación de Características de Memory
 
-| Feature | Claude Web/Desktop | Claude Code (CLAUDE.md) |
+| Característica | Claude Web/Desktop | Claude Code (CLAUDE.md) |
 |---------|-------------------|------------------------|
-| Auto-synthesis | ✅ Every 24h | ❌ Manual |
-| Cross-project | ✅ Shared | ❌ Project-specific |
-| Team access | ✅ Shared projects | ✅ Git-tracked |
-| Searchable | ✅ Built-in | ✅ Through `/memory` |
-| Editable | ✅ In-chat | ✅ Direct file edit |
-| Import/Export | ✅ Yes | ✅ Copy/paste |
-| Persistent | ✅ 24h+ | ✅ Indefinite |
+| Auto-síntesis | ✅ Cada 24h | ❌ Manual |
+| Entre proyectos | ✅ Compartido | ❌ Específico del proyecto |
+| Acceso del equipo | ✅ Proyectos compartidos | ✅ Con seguimiento en Git |
+| Buscable | ✅ Integrado | ✅ A través de `/memory` |
+| Editable | ✅ En chat | ✅ Edición directa de archivo |
+| Importar/Exportar | ✅ Sí | ✅ Copiar/pegar |
+| Persistente | ✅ 24h+ | ✅ Indefinido |
 
 ---
 
-## MCP Protocol
+## Protocolo MCP
 
-### Overview
+### Visión General
 
-MCP (Model Context Protocol) is a standardized way for Claude to access external tools, APIs, and real-time data sources. Unlike Memory, MCP provides live access to changing data.
+MCP (Model Context Protocol) es una forma estandarizada para que Claude acceda a herramientas externas, APIs y datos en tiempo real. A diferencia de Memory, MCP proporciona acceso en vivo a datos cambiantes.
 
-### MCP Architecture
+### Arquitectura MCP
 
 ```mermaid
 graph TB
     A["Claude"]
-    B["MCP Server"]
-    C["External Service"]
+    B["Servidor MCP"]
+    C["Servicio Externo"]
 
-    A -->|Request: list_issues| B
-    B -->|Query| C
-    C -->|Data| B
-    B -->|Response| A
+    A -->|Solicitud: list_issues| B
+    B -->|Consulta| C
+    C -->|Datos| B
+    B -->|Respuesta| A
 
-    A -->|Request: create_issue| B
-    B -->|Action| C
-    C -->|Result| B
-    B -->|Response| A
+    A -->|Solicitud: create_issue| B
+    B -->|Acción| C
+    C -->|Resultado| B
+    B -->|Respuesta| A
 ```
 
-### MCP Ecosystem
+### Ecosistema MCP
 
 ```mermaid
 graph TB
-    A["Claude"] -->|MCP| B["Filesystem<br/>MCP Server"]
-    A -->|MCP| C["GitHub<br/>MCP Server"]
-    A -->|MCP| D["Database<br/>MCP Server"]
-    A -->|MCP| E["Slack<br/>MCP Server"]
-    A -->|MCP| F["Google Docs<br/>MCP Server"]
+    A["Claude"] -->|MCP| B["Filesystem<br/>Servidor MCP"]
+    A -->|MCP| C["GitHub<br/>Servidor MCP"]
+    A -->|MCP| D["Database<br/>Servidor MCP"]
+    A -->|MCP| E["Slack<br/>Servidor MCP"]
+    A -->|MCP| F["Google Docs<br/>Servidor MCP"]
 
-    B -->|File I/O| G["Local Files"]
-    C -->|API| H["GitHub Repos"]
-    D -->|Query| I["PostgreSQL/MySQL"]
-    E -->|Messages| J["Slack Workspace"]
+    B -->|E/S de Archivos| G["Archivos Locales"]
+    C -->|API| H["Repositorios GitHub"]
+    D -->|Consulta| I["PostgreSQL/MySQL"]
+    E -->|Mensajes| J["Espacio de Trabajo Slack"]
     F -->|Docs| K["Google Drive"]
 ```
 
-### MCP Setup Process
+### Proceso de Configuración MCP
 
 ```mermaid
 sequenceDiagram
     participant User
     participant Claude as Claude Code
-    participant Config as Config File
-    participant Service as External Service
+    participant Config as Archivo de Configuración
+    participant Service as Servicio Externo
 
-    User->>Claude: Type /mcp
-    Claude->>Claude: List available MCP servers
-    Claude->>User: Show options
-    User->>Claude: Select GitHub MCP
-    Claude->>Config: Update configuration
-    Config->>Claude: Activate connection
-    Claude->>Service: Test connection
-    Service-->>Claude: Authentication successful
-    Claude->>User: ✅ MCP connected!
+    User->>Claude: Escribe /mcp
+    Claude->>Claude: Lista servidores MCP disponibles
+    Claude->>User: Muestra opciones
+    User->>Claude: Selecciona GitHub MCP
+    Claude->>Config: Actualiza configuración
+    Config->>Claude: Activa conexión
+    Claude->>Service: Prueba conexión
+    Service-->>Claude: Autenticación exitosa
+    Claude->>User: ✅ ¡MCP conectado!
 ```
 
-### Available MCP Servers Table
+### Tabla de Servidores MCP Disponibles
 
-| MCP Server | Purpose | Common Tools | Auth | Real-time |
+| Servidor MCP | Propósito | Herramientas Comunes | Auth | Tiempo Real |
 |------------|---------|--------------|------|-----------|
-| **Filesystem** | File operations | read, write, delete | OS permissions | ✅ Yes |
-| **GitHub** | Repository management | list_prs, create_issue, push | OAuth | ✅ Yes |
-| **Slack** | Team communication | send_message, list_channels | Token | ✅ Yes |
-| **Database** | SQL queries | query, insert, update | Credentials | ✅ Yes |
-| **Google Docs** | Document access | read, write, share | OAuth | ✅ Yes |
-| **Asana** | Project management | create_task, update_status | API Key | ✅ Yes |
-| **Stripe** | Payment data | list_charges, create_invoice | API Key | ✅ Yes |
-| **Memory** | Persistent memory | store, retrieve, delete | Local | ❌ No |
+| **Filesystem** | Operaciones de archivo | read, write, delete | Permisos del SO | ✅ Sí |
+| **GitHub** | Gestión de repositorios | list_prs, create_issue, push | OAuth | ✅ Sí |
+| **Slack** | Comunicación de equipo | send_message, list_channels | Token | ✅ Sí |
+| **Database** | Consultas SQL | query, insert, update | Credenciales | ✅ Sí |
+| **Google Docs** | Acceso a documentos | read, write, share | OAuth | ✅ Sí |
+| **Asana** | Gestión de proyectos | create_task, update_status | API Key | ✅ Sí |
+| **Stripe** | Datos de pago | list_charges, create_invoice | API Key | ✅ Sí |
+| **Memory** | Memory persistente | store, retrieve, delete | Local | ❌ No |
 
-### Practical Examples
+### Ejemplos Prácticos
 
-#### Example 1: GitHub MCP Configuration
+#### Ejemplo 1: Configuración de GitHub MCP
 
-**File:** `.mcp.json` (project scope) or `~/.claude.json` (user scope)
+**Archivo:** `.mcp.json` (ámbito del proyecto) o `~/.claude.json` (ámbito de usuario)
 
 ```json
 {
@@ -1036,7 +1036,7 @@ sequenceDiagram
 }
 ```
 
-**Available GitHub MCP Tools:**
+**Herramientas de GitHub MCP Disponibles:**
 
 ~~~~markdown
 # GitHub MCP Tools
@@ -1080,9 +1080,9 @@ Reviewers: @bob, @charlie
 - `create_commit` - Create new commit
 ~~~~
 
-#### Example 2: Database MCP Setup
+#### Ejemplo 2: Configuración de Database MCP
 
-**Configuration:**
+**Configuración:**
 
 ```json
 {
@@ -1098,7 +1098,7 @@ Reviewers: @bob, @charlie
 }
 ```
 
-**Example Usage:**
+**Ejemplo de Uso:**
 
 ```markdown
 User: Fetch all users with more than 10 orders
@@ -1119,9 +1119,9 @@ ORDER BY order_count DESC;
 - Charlie: 11 orders
 ```
 
-#### Example 3: Multi-MCP Workflow
+#### Ejemplo 3: Flujo de Trabajo Multi-MCP
 
-**Scenario: Daily Report Generation**
+**Escenario: Generación de Informe Diario**
 
 ```markdown
 # Daily Report Workflow using Multiple MCPs
@@ -1166,9 +1166,9 @@ Final Output:
 💰 $12,450 in daily sales
 ```
 
-#### Example 4: Filesystem MCP Operations
+#### Ejemplo 4: Operaciones de Filesystem MCP
 
-**Configuration:**
+**Configuración:**
 
 ```json
 {
@@ -1181,70 +1181,70 @@ Final Output:
 }
 ```
 
-**Available Operations:**
+**Operaciones Disponibles:**
 
-| Operation | Command | Purpose |
+| Operación | Command | Propósito |
 |-----------|---------|---------|
-| List files | `ls ~/projects` | Show directory contents |
-| Read file | `cat src/main.ts` | Read file contents |
-| Write file | `create docs/api.md` | Create new file |
-| Edit file | `edit src/app.ts` | Modify file |
-| Search | `grep "async function"` | Search in files |
-| Delete | `rm old-file.js` | Delete file |
+| Listar archivos | `ls ~/projects` | Mostrar contenidos del directorio |
+| Leer archivo | `cat src/main.ts` | Leer contenidos del archivo |
+| Escribir archivo | `create docs/api.md` | Crear nuevo archivo |
+| Editar archivo | `edit src/app.ts` | Modificar archivo |
+| Buscar | `grep "async function"` | Buscar en archivos |
+| Eliminar | `rm old-file.js` | Eliminar archivo |
 
-### MCP vs Memory: Decision Matrix
+### MCP vs Memory: Matriz de Decisión
 
 ```mermaid
 graph TD
-    A["Need external data?"]
-    A -->|No| B["Use Memory"]
-    A -->|Yes| C["Does it change frequently?"]
-    C -->|No/Rarely| B
-    C -->|Yes/Often| D["Use MCP"]
+    A["¿Necesitas datos externos?"]
+    A -->|No| B["Usar Memory"]
+    A -->|Sí| C["¿Cambia frecuentemente?"]
+    C -->|No/Rara vez| B
+    C -->|Sí/A menudo| D["Usar MCP"]
 
-    B -->|Stores| E["Preferences<br/>Context<br/>History"]
-    D -->|Accesses| F["Live APIs<br/>Databases<br/>Services"]
+    B -->|Almacena| E["Preferencias<br/>Contexto<br/>Historial"]
+    D -->|Accede| F["APIs en Vivo<br/>Bases de Datos<br/>Servicios"]
 
     style B fill:#e1f5ff
     style D fill:#fff9c4
 ```
 
-### Request/Response Pattern
+### Patrón Solicitud/Respuesta
 
 ```mermaid
 sequenceDiagram
     participant App as Claude
-    participant MCP as MCP Server
-    participant DB as Database
+    participant MCP as Servidor MCP
+    participant DB as Base de Datos
 
-    App->>MCP: Request: "SELECT * FROM users WHERE id=1"
-    MCP->>DB: Execute query
-    DB-->>MCP: Result set
-    MCP-->>App: Return parsed data
-    App->>App: Process result
-    App->>App: Continue task
+    App->>MCP: Solicitud: "SELECT * FROM users WHERE id=1"
+    MCP->>DB: Ejecutar consulta
+    DB-->>MCP: Conjunto de resultados
+    MCP-->>App: Devolver datos parseados
+    App->>App: Procesar resultado
+    App->>App: Continuar tarea
 
-    Note over MCP,DB: Real-time access<br/>No caching
+    Note over MCP,DB: Acceso en tiempo real<br/>Sin caché
 ```
 
 ---
 
 ## Agent Skills
 
-### Overview
+### Visión General
 
-Agent Skills are reusable, model-invoked capabilities packaged as folders containing instructions, scripts, and resources. Claude automatically detects and uses relevant skills.
+Agent Skills son capacidades reutilizables invocadas por el modelo, empaquetadas como carpetas que contienen instrucciones, scripts y recursos. Claude detecta y usa automáticamente las skills relevantes.
 
-### Skill Architecture
+### Arquitectura de Skill
 
 ```mermaid
 graph TB
-    A["Skill Directory"]
+    A["Directorio de Skill"]
     B["SKILL.md"]
-    C["YAML Metadata"]
-    D["Instructions"]
+    C["Metadatos YAML"]
+    D["Instrucciones"]
     E["Scripts"]
-    F["Templates"]
+    F["Plantillas"]
 
     A --> B
     B --> C
@@ -1253,7 +1253,7 @@ graph TB
     F --> A
 ```
 
-### Skill Loading Process
+### Proceso de Carga de Skills
 
 ```mermaid
 sequenceDiagram
@@ -1262,30 +1262,30 @@ sequenceDiagram
     participant System as System
     participant Skill as Skill
 
-    User->>Claude: "Create Excel report"
-    Claude->>System: Scan available skills
-    System->>System: Load skill metadata
-    Claude->>Claude: Match user request to skills
-    Claude->>Skill: Load xlsx skill SKILL.md
-    Skill-->>Claude: Return instructions + tools
-    Claude->>Claude: Execute skill
-    Claude->>User: Generate Excel file
+    User->>Claude: "Crear informe Excel"
+    Claude->>System: Escanear skills disponibles
+    System->>System: Cargar metadatos de skill
+    Claude->>Claude: Coincidir solicitud de usuario con skills
+    Claude->>Skill: Cargar SKILL.md de skill xlsx
+    Skill-->>Claude: Devolver instrucciones + herramientas
+    Claude->>Claude: Ejecutar skill
+    Claude->>User: Generar archivo Excel
 ```
 
-### Skill Types & Locations Table
+### Tabla de Tipos y Ubicaciones de Skills
 
-| Type | Location | Scope | Shared | Sync | Best For |
+| Tipo | Ubicación | Alcance | Compartido | Sync | Ideal Para |
 |------|----------|-------|--------|------|----------|
-| Pre-built | Built-in | Global | All users | Auto | Document creation |
-| Personal | `~/.claude/skills/` | Individual | No | Manual | Personal automation |
-| Project | `.claude/skills/` | Team | Yes | Git | Team standards |
-| Plugin | Via plugin install | Varies | Depends | Auto | Integrated features |
+| Pre-built | Integrado | Global | Todos los usuarios | Auto | Creación de documentos |
+| Personal | `~/.claude/skills/` | Individual | No | Manual | Automatización personal |
+| Project | `.claude/skills/` | Equipo | Sí | Git | Estándares del equipo |
+| Plugin | Vía instalación de plugin | Varía | Depende | Auto | Características integradas |
 
-### Pre-built Skills
+### Skills Pre-built
 
 ```mermaid
 graph TB
-    A["Pre-built Skills"]
+    A["Skills Pre-built"]
     B["PowerPoint (pptx)"]
     C["Excel (xlsx)"]
     D["Word (docx)"]
@@ -1296,35 +1296,35 @@ graph TB
     A --> D
     A --> E
 
-    B --> B1["Create presentations"]
-    B --> B2["Edit slides"]
-    C --> C1["Create spreadsheets"]
-    C --> C2["Analyze data"]
-    D --> D1["Create documents"]
-    D --> D2["Format text"]
-    E --> E1["Generate PDFs"]
-    E --> E2["Fill forms"]
+    B --> B1["Crear presentaciones"]
+    B --> B2["Editar diapositivas"]
+    C --> C1["Crear hojas de cálculo"]
+    C --> C2["Analizar datos"]
+    D --> D1["Crear documentos"]
+    D --> D2["Formatear texto"]
+    E --> E1["Generar PDFs"]
+    E --> E2["Completar formularios"]
 ```
 
-### Bundled Skills
+### Skills Bundled
 
-Claude Code now includes 5 bundled skills available out of the box:
+Claude Code ahora incluye 5 skills bundled disponibles desde el inicio:
 
-| Skill | Command | Purpose |
+| Skill | Command | Propósito |
 |-------|---------|---------|
-| **Simplify** | `/simplify` | Simplify complex code or explanations |
-| **Batch** | `/batch` | Run operations across multiple files or items |
-| **Debug** | `/debug` | Systematic debugging of issues with root cause analysis |
-| **Loop** | `/loop` | Schedule recurring tasks on a timer |
-| **Claude API** | `/claude-api` | Interact with the Anthropic API directly |
+| **Simplify** | `/simplify` | Simplificar código complejo o explicaciones |
+| **Batch** | `/batch` | Ejecutar operaciones en múltiples archivos o elementos |
+| **Debug** | `/debug` | Depuración sistemática de problemas con análisis de causa raíz |
+| **Loop** | `/loop` | Programar tareas recurrentes en un temporizador |
+| **Claude API** | `/claude-api` | Interactuar directamente con la API de Anthropic |
 
-These bundled skills are always available and do not require installation or configuration.
+Estas skills bundled están siempre disponibles y no requieren instalación ni configuración.
 
-### Practical Examples
+### Ejemplos Prácticos
 
-#### Example 1: Custom Code Review Skill
+#### Ejemplo 1: Skill de Revisión de Código Personalizada
 
-**Directory Structure:**
+**Estructura de Directorio:**
 
 ```
 ~/.claude/skills/code-review/
@@ -1337,7 +1337,7 @@ These bundled skills are always available and do not require installation or con
     └── compare-complexity.py
 ```
 
-**File:** `~/.claude/skills/code-review/SKILL.md`
+**Archivo:** `~/.claude/skills/code-review/SKILL.md`
 
 ```yaml
 ---
@@ -1415,7 +1415,8 @@ List code quality issues with refactoring suggestions
 #### Maintainability (if issues found)
 List maintainability problems with improvements
 ```
-## Python Script: analyze-metrics.py
+
+## Script Python: analyze-metrics.py
 
 ```python
 #!/usr/bin/env python3
@@ -1453,7 +1454,7 @@ if __name__ == '__main__':
         print(f"{key}: {value:.2f}")
 ```
 
-## Python Script: compare-complexity.py
+## Script Python: compare-complexity.py
 
 ```python
 #!/usr/bin/env python3
@@ -1617,7 +1618,7 @@ if __name__ == '__main__':
     compare_files(sys.argv[1], sys.argv[2])
 ```
 
-## Template: review-checklist.md
+## Plantilla: review-checklist.md
 
 ```markdown
 # Code Review Checklist
@@ -1669,7 +1670,7 @@ if __name__ == '__main__':
 - [ ] Clear test names
 ```
 
-## Template: finding-template.md
+## Plantilla: finding-template.md
 
 ~~~~markdown
 # Code Review Finding Template
@@ -1787,7 +1788,7 @@ When reviewing multiple findings, track:
 **Overall Code Quality:** 1-5 stars
 ~~~~
 
-## Usage Example
+## Ejemplo de Uso
 
 ~~~~markdown
 User: Review this React component code
@@ -1833,9 +1834,9 @@ const users = fetchUsersWithPosts(); // 1 query
 - Props should have TypeScript types
 ~~~~
 
-#### Example 2: Brand Voice Skill
+#### Ejemplo 2: Skill de Voz de Marca
 
-**Directory Structure:**
+**Estructura de Directorio:**
 
 ```
 .claude/skills/brand-voice/
@@ -1848,7 +1849,7 @@ const users = fetchUsersWithPosts(); // 1 query
     └── blog-post-template.md
 ```
 
-**File:** `.claude/skills/brand-voice/SKILL.md`
+**Archivo:** `.claude/skills/brand-voice/SKILL.md`
 
 ```yaml
 ---
@@ -1880,9 +1881,10 @@ Help teams automate their development workflows with AI
 - **Friendly but professional** - approachable without being casual
 - **Clear and concise** - avoid jargon, explain technical concepts simply
 - **Confident** - we know what we're doing
-- **Empathetic** - understand user needs and pain points
+- **Empathetic** - understand user needs and ... [truncado]
+```
 
-## Writing Guidelines
+## Directrices de Escritura
 
 ### Do's ✅
 - Use "you" when addressing readers
@@ -1917,6 +1919,7 @@ Help teams automate their development workflows with AI
 - "Utilize" (use "use")
 - "Paradigm shift" (unclear)
 ```
+
 ## Examples
 
 ### ✅ Good Example
@@ -1972,9 +1975,9 @@ Educational blog post:
 "Let's explore how agents improve code review workflows. Here's what we learned..."
 ```
 
-#### Example 3: Documentation Generator Skill
+#### Ejemplo 3: Skill de Generador de Documentación
 
-**File:** `.claude/skills/doc-generator/SKILL.md`
+**Archivo:** `.claude/skills/doc-generator/SKILL.md`
 
 ~~~~yaml
 ---
@@ -2116,27 +2119,28 @@ if __name__ == '__main__':
     markdown = generate_markdown_docs(extractor.endpoints)
     print(markdown)
 ~~~~
-### Skill Discovery & Invocation
+
+### Descubrimiento e Invocación de Skills
 
 ```mermaid
 graph TD
-    A["User Request"] --> B["Claude Analyzes"]
-    B -->|Scans| C["Available Skills"]
-    C -->|Metadata check| D["Skill Description Match?"]
-    D -->|Yes| E["Load SKILL.md"]
-    D -->|No| F["Try next skill"]
-    F -->|More skills?| D
-    F -->|No more| G["Use general knowledge"]
-    E --> H["Extract Instructions"]
-    H --> I["Execute Skill"]
-    I --> J["Return Results"]
+    A["Solicitud del Usuario"] --> B["Claude Analiza"]
+    B -->|Escanea| C["Skills Disponibles"]
+    C -->|Verificación de metadatos| D["¿Coincide Descripción de Skill?"]
+    D -->|Sí| E["Cargar SKILL.md"]
+    D -->|No| F["Intentar siguiente skill"]
+    F -->|¿Más skills?| D
+    F -->|No más| G["Usar conocimiento general"]
+    E --> H["Extraer Instrucciones"]
+    H --> I["Ejecutar Skill"]
+    I --> J["Devolver Resultados"]
 ```
 
-### Skill vs Other Features
+### Skill vs Otras Características
 
 ```mermaid
 graph TB
-    A["Extending Claude"]
+    A["Extender Claude"]
     B["Slash Commands"]
     C["Subagents"]
     D["Memory"]
@@ -2149,97 +2153,97 @@ graph TB
     A --> E
     A --> F
 
-    B -->|User-invoked| G["Quick shortcuts"]
-    C -->|Auto-delegated| H["Isolated contexts"]
-    D -->|Persistent| I["Cross-session context"]
-    E -->|Real-time| J["External data access"]
-    F -->|Auto-invoked| K["Autonomous execution"]
+    B -->|Invocado por usuario| G["Atajos rápidos"]
+    C -->|Delegado automáticamente| H["Contextos aislados"]
+    D -->|Persistente| I["Contexto entre sesiones"]
+    E -->|Tiempo real| J["Acceso a datos externos"]
+    F -->|Invocado automáticamente| K["Ejecución autónoma"]
 ```
 
 ---
 
 ## Claude Code Plugins
 
-### Overview
+### Visión General
 
-Claude Code Plugins are bundled collections of customizations (slash commands, subagents, MCP servers, and hooks) that install with a single command. They represent the highest-level extension mechanism—combining multiple features into cohesive, shareable packages.
+Claude Code Plugins son colecciones empaquetadas de personalizaciones (slash commands, subagents, servidores MCP, y hooks) que se instalan con un solo command. Representan el mecanismo de extensión de más alto nivel, combinando múltiples características en paquetes cohesivos y compartibles.
 
-### Architecture
+### Arquitectura
 
 ```mermaid
 graph TB
     A["Plugin"]
     B["Slash Commands"]
     C["Subagents"]
-    D["MCP Servers"]
+    D["Servidores MCP"]
     E["Hooks"]
-    F["Configuration"]
+    F["Configuración"]
 
-    A -->|bundles| B
-    A -->|bundles| C
-    A -->|bundles| D
-    A -->|bundles| E
-    A -->|bundles| F
+    A -->|agrupa| B
+    A -->|agrupa| C
+    A -->|agrupa| D
+    A -->|agrupa| E
+    A -->|agrupa| F
 ```
 
-### Plugin Loading Process
+### Proceso de Carga de Plugins
 
 ```mermaid
 sequenceDiagram
     participant User
     participant Claude as Claude Code
-    participant Plugin as Plugin Marketplace
-    participant Install as Installation
+    participant Plugin as Marketplace de Plugins
+    participant Install as Instalación
     participant SlashCmds as Slash Commands
     participant Subagents
-    participant MCPServers as MCP Servers
+    participant MCPServers as Servidores MCP
     participant Hooks
-    participant Tools as Configured Tools
+    participant Tools as Herramientas Configuradas
 
     User->>Claude: /plugin install pr-review
-    Claude->>Plugin: Download plugin manifest
-    Plugin-->>Claude: Return plugin definition
-    Claude->>Install: Extract components
-    Install->>SlashCmds: Configure
-    Install->>Subagents: Configure
-    Install->>MCPServers: Configure
-    Install->>Hooks: Configure
-    SlashCmds-->>Tools: Ready to use
-    Subagents-->>Tools: Ready to use
-    MCPServers-->>Tools: Ready to use
-    Hooks-->>Tools: Ready to use
-    Tools-->>Claude: Plugin installed ✅
+    Claude->>Plugin: Descargar manifiesto del plugin
+    Plugin-->>Claude: Devolver definición del plugin
+    Claude->>Install: Extraer componentes
+    Install->>SlashCmds: Configurar
+    Install->>Subagents: Configurar
+    Install->>MCPServers: Configurar
+    Install->>Hooks: Configurar
+    SlashCmds-->>Tools: Listo para usar
+    Subagents-->>Tools: Listo para usar
+    MCPServers-->>Tools: Listo para usar
+    Hooks-->>Tools: Listo para usar
+    Tools-->>Claude: Plugin instalado ✅
 ```
 
-### Plugin Types & Distribution
+### Tipos y Distribución de Plugins
 
-| Type | Scope | Shared | Authority | Examples |
+| Tipo | Alcance | Compartido | Autoridad | Ejemplos |
 |------|-------|--------|-----------|----------|
-| Official | Global | All users | Anthropic | PR Review, Security Guidance |
-| Community | Public | All users | Community | DevOps, Data Science |
-| Organization | Internal | Team members | Company | Internal standards, tools |
-| Personal | Individual | Single user | Developer | Custom workflows |
+| Oficial | Global | Todos los usuarios | Anthropic | PR Review, Security Guidance |
+| Comunidad | Público | Todos los usuarios | Comunidad | DevOps, Data Science |
+| Organización | Interno | Miembros del equipo | Empresa | Estándares internos, herramientas |
+| Personal | Individual | Usuario único | Desarrollador | Flujos de trabajo personalizados |
 
-### Plugin Definition Structure
+### Estructura de Definición de Plugin
 
 ```yaml
 ---
 name: plugin-name
 version: "1.0.0"
-description: "What this plugin does"
-author: "Your Name"
+description: "Lo que hace este plugin"
+author: "Tu Nombre"
 license: MIT
 
-# Plugin metadata
+# Metadatos del plugin
 tags:
-  - category
-  - use-case
+  - categoría
+  - caso-de-uso
 
-# Requirements
+# Requisitos
 requires:
   - claude-code: ">=1.0.0"
 
-# Components bundled
+# Componentes agrupados
 components:
   - type: commands
     path: commands/
@@ -2250,14 +2254,14 @@ components:
   - type: hooks
     path: hooks/
 
-# Configuration
+# Configuración
 config:
   auto_load: true
   enabled_by_default: true
 ---
 ```
 
-### Plugin Structure
+### Estructura de Plugin
 
 ```
 my-plugin/
@@ -2291,11 +2295,11 @@ my-plugin/
     └── plugin.test.js
 ```
 
-### Practical Examples
+### Ejemplos Prácticos
 
-#### Example 1: PR Review Plugin
+#### Ejemplo 1: Plugin PR Review
 
-**File:** `.claude-plugin/plugin.json`
+**Archivo:** `.claude-plugin/plugin.json`
 
 ```json
 {
@@ -2309,7 +2313,7 @@ my-plugin/
 }
 ```
 
-**File:** `commands/review-pr.md`
+**Archivo:** `commands/review-pr.md`
 
 ```markdown
 ---
@@ -2328,7 +2332,7 @@ This command initiates a complete pull request review including:
 5. Performance impact assessment
 ```
 
-**File:** `agents/security-reviewer.md`
+**Archivo:** `agents/security-reviewer.md`
 
 ```yaml
 ---
@@ -2346,22 +2350,22 @@ Specializes in finding security vulnerabilities:
 - Secure configuration
 ```
 
-**Installation:**
+**Instalación:**
 
 ```bash
 /plugin install pr-review
 
-# Result:
-# ✅ 3 slash commands installed
-# ✅ 3 subagents configured
-# ✅ 2 MCP servers connected
-# ✅ 4 hooks registered
-# ✅ Ready to use!
+# Resultado:
+# ✅ 3 slash commands instalados
+# ✅ 3 subagents configurados
+# ✅ 2 servidores MCP conectados
+# ✅ 4 hooks registrados
+# ✅ ¡Listo para usar!
 ```
 
-#### Example 2: DevOps Plugin
+#### Ejemplo 2: Plugin DevOps
 
-**Components:**
+**Componentes:**
 
 ```
 devops-automation/
@@ -2388,9 +2392,9 @@ devops-automation/
     └── health-check.sh
 ```
 
-#### Example 3: Documentation Plugin
+#### Ejemplo 3: Plugin de Documentación
 
-**Bundled Components:**
+**Componentes Agrupados:**
 
 ```
 documentation/
@@ -2412,105 +2416,105 @@ documentation/
     └── adr-template.md
 ```
 
-### Plugin Marketplace
+### Marketplace de Plugins
 
 ```mermaid
 graph TB
-    A["Plugin Marketplace"]
-    B["Official<br/>Anthropic"]
-    C["Community<br/>Marketplace"]
-    D["Enterprise<br/>Registry"]
+    A["Marketplace de Plugins"]
+    B["Oficial<br/>Anthropic"]
+    C["Marketplace<br/>de Comunidad"]
+    D["Registro<br/>Empresarial"]
 
     A --> B
     A --> C
     A --> D
 
-    B -->|Categories| B1["Development"]
-    B -->|Categories| B2["DevOps"]
-    B -->|Categories| B3["Documentation"]
+    B -->|Categorías| B1["Desarrollo"]
+    B -->|Categorías| B2["DevOps"]
+    B -->|Categorías| B3["Documentación"]
 
-    C -->|Search| C1["DevOps Automation"]
-    C -->|Search| C2["Mobile Dev"]
-    C -->|Search| C3["Data Science"]
+    C -->|Búsqueda| C1["Automatización DevOps"]
+    C -->|Búsqueda| C2["Desarrollo Móvil"]
+    C -->|Búsqueda| C3["Data Science"]
 
-    D -->|Internal| D1["Company Standards"]
-    D -->|Internal| D2["Legacy Systems"]
-    D -->|Internal| D3["Compliance"]
+    D -->|Interno| D1["Estándares de Empresa"]
+    D -->|Interno| D2["Sistemas Legacy"]
+    D -->|Interno| D3["Cumplimiento"]
 ```
 
-### Plugin Installation & Lifecycle
+### Instalación y Ciclo de Vida de Plugins
 
 ```mermaid
 graph LR
-    A["Discover"] -->|Browse| B["Marketplace"]
-    B -->|Select| C["Plugin Page"]
-    C -->|View| D["Components"]
-    D -->|Install| E["/plugin install"]
-    E -->|Extract| F["Configure"]
-    F -->|Activate| G["Use"]
-    G -->|Check| H["Update"]
-    H -->|Available| G
-    G -->|Done| I["Disable"]
-    I -->|Later| J["Enable"]
-    J -->|Back| G
+    A["Descubrir"] -->|Explorar| B["Marketplace"]
+    B -->|Seleccionar| C["Página del Plugin"]
+    C -->|Ver| D["Componentes"]
+    D -->|Instalar| E["/plugin install"]
+    E -->|Extraer| F["Configurar"]
+    F -->|Activar| G["Usar"]
+    G -->|Verificar| H["Actualizar"]
+    H -->|Disponible| G
+    G -->|Hecho| I["Deshabilitar"]
+    I -->|Más tarde| J["Habilitar"]
+    J -->|Volver| G
 ```
 
-### Plugin Features Comparison
+### Comparación de Características de Plugins
 
-| Feature | Slash Command | Skill | Subagent | Plugin |
+| Característica | Slash Command | Skill | Subagent | Plugin |
 |---------|---------------|-------|----------|--------|
-| **Installation** | Manual copy | Manual copy | Manual config | One command |
-| **Setup Time** | 5 minutes | 10 minutes | 15 minutes | 2 minutes |
-| **Bundling** | Single file | Single file | Single file | Multiple |
-| **Versioning** | Manual | Manual | Manual | Automatic |
-| **Team Sharing** | Copy file | Copy file | Copy file | Install ID |
-| **Updates** | Manual | Manual | Manual | Auto-available |
-| **Dependencies** | None | None | None | May include |
-| **Marketplace** | No | No | No | Yes |
-| **Distribution** | Repository | Repository | Repository | Marketplace |
+| **Instalación** | Copia manual | Copia manual | Configuración manual | Un command |
+| **Tiempo de Configuración** | 5 minutos | 10 minutos | 15 minutos | 2 minutos |
+| **Agrupación** | Archivo único | Archivo único | Archivo único | Múltiple |
+| **Versionado** | Manual | Manual | Manual | Automático |
+| **Compartir en Equipo** | Copiar archivo | Copiar archivo | Copiar archivo | ID de instalación |
+| **Actualizaciones** | Manual | Manual | Manual | Auto-disponible |
+| **Dependencias** | Ninguna | Ninguna | Ninguna | Puede incluir |
+| **Marketplace** | No | No | No | Sí |
+| **Distribución** | Repositorio | Repositorio | Repositorio | Marketplace |
 
-### Plugin Use Cases
+### Casos de Uso de Plugins
 
-| Use Case | Recommendation | Why |
+| Caso de Uso | Recomendación | Por Qué |
 |----------|-----------------|-----|
-| **Team Onboarding** | ✅ Use Plugin | Instant setup, all configurations |
-| **Framework Setup** | ✅ Use Plugin | Bundles framework-specific commands |
-| **Enterprise Standards** | ✅ Use Plugin | Central distribution, version control |
-| **Quick Task Automation** | ❌ Use Command | Overkill complexity |
-| **Single Domain Expertise** | ❌ Use Skill | Too heavy, use skill instead |
-| **Specialized Analysis** | ❌ Use Subagent | Create manually or use skill |
-| **Live Data Access** | ❌ Use MCP | Standalone, don't bundle |
+| **Incorporación de Equipo** | ✅ Usar Plugin | Configuración instantánea, todas las configuraciones |
+| **Configuración de Framework** | ✅ Usar Plugin | Agrupa commands específicos del framework |
+| **Estándares Empresariales** | ✅ Usar Plugin | Distribución centralizada, control de versiones |
+| **Automatización de Tarea Rápida** | ❌ Usar Command | Complejidad excesiva |
+| **Experiencia de Dominio Único** | ❌ Usar Skill | Demasiado pesado, usar skill en su lugar |
+| **Análisis Especializado** | ❌ Usar Subagent | Crear manualmente o usar skill |
+| **Acceso a Datos en Vivo** | ❌ Usar MCP | Independiente, no agrupar |
 
-### When to Create a Plugin
+### Cuándo Crear un Plugin
 
 ```mermaid
 graph TD
-    A["Should I create a plugin?"]
-    A -->|Need multiple components| B{"Multiple commands<br/>or subagents<br/>or MCPs?"}
-    B -->|Yes| C["✅ Create Plugin"]
-    B -->|No| D["Use Individual Feature"]
-    A -->|Team workflow| E{"Share with<br/>team?"}
-    E -->|Yes| C
-    E -->|No| F["Keep as Local Setup"]
-    A -->|Complex setup| G{"Needs auto<br/>configuration?"}
-    G -->|Yes| C
+    A["¿Debería crear un plugin?"]
+    A -->|Necesito múltiples componentes| B{"¿Múltiples commands<br/>o subagents<br/>o MCPs?"}
+    B -->|Sí| C["✅ Crear Plugin"]
+    B -->|No| D["Usar Característica Individual"]
+    A -->|Flujo de trabajo del equipo| E{"¿Compartir con<br/>el equipo?"}
+    E -->|Sí| C
+    E -->|No| F["Mantener como Configuración Local"]
+    A -->|Configuración compleja| G{"¿Necesita auto<br/>configuración?"}
+    G -->|Sí| C
     G -->|No| D
 ```
 
-### Publishing a Plugin
+### Publicar un Plugin
 
-**Steps to publish:**
+**Pasos para publicar:**
 
-1. Create plugin structure with all components
-2. Write `.claude-plugin/plugin.json` manifest
-3. Create `README.md` with documentation
-4. Test locally with `/plugin install ./my-plugin`
-5. Submit to plugin marketplace
-6. Get reviewed and approved
-7. Published on marketplace
-8. Users can install with one command
+1. Crear estructura de plugin con todos los componentes
+2. Escribir manifiesto `.claude-plugin/plugin.json`
+3. Crear `README.md` con documentación
+4. Probar localmente con `/plugin install ./my-plugin`
+5. Enviar al marketplace de plugins
+6. Obtener revisión y aprobación
+7. Publicado en el marketplace
+8. Los usuarios pueden instalar con un command
 
-**Example submission:**
+**Ejemplo de envío:**
 
 ~~~~markdown
 # PR Review Plugin
@@ -2549,299 +2553,299 @@ Complete PR review workflow with security, testing, and documentation checks.
 - CodeQL (optional)
 ~~~~
 
-### Plugin vs Manual Configuration
+### Plugin vs Configuración Manual
 
-**Manual Setup (2+ hours):**
-- Install slash commands one by one
-- Create subagents individually
-- Configure MCPs separately
-- Set up hooks manually
-- Document everything
-- Share with team (hope they configure correctly)
+**Configuración Manual (2+ horas):**
+- Instalar slash commands uno por uno
+- Crear subagents individualmente
+- Configurar MCPs por separado
+- Configurar hooks manualmente
+- Documentar todo
+- Compartir con el equipo (esperar que configuren correctamente)
 
-**With Plugin (2 minutes):**
+**Con Plugin (2 minutos):**
 ```bash
 /plugin install pr-review
-# ✅ Everything installed and configured
-# ✅ Ready to use immediately
-# ✅ Team can reproduce exact setup
+# ✅ Todo instalado y configurado
+# ✅ Listo para usar inmediatamente
+# ✅ El equipo puede reproducir la configuración exacta
 ```
 
 ---
 
-## Comparison & Integration
+## Comparación e Integración
 
-### Feature Comparison Matrix
+### Matriz de Comparación de Características
 
-| Feature | Invocation | Persistence | Scope | Use Case |
+| Característica | Invocación | Persistencia | Alcance | Caso de Uso |
 |---------|-----------|------------|-------|----------|
-| **Slash Commands** | Manual (`/cmd`) | Session only | Single command | Quick shortcuts |
-| **Subagents** | Auto-delegated | Isolated context | Specialized task | Task distribution |
-| **Memory** | Auto-loaded | Cross-session | User/team context | Long-term learning |
-| **MCP Protocol** | Auto-queried | Real-time external | Live data access | Dynamic information |
-| **Skills** | Auto-invoked | Filesystem-based | Reusable expertise | Automated workflows |
+| **Slash Commands** | Manual (`/cmd`) | Solo sesión | Command único | Atajos rápidos |
+| **Subagents** | Auto-delegado | Contexto aislado | Tarea especializada | Distribución de tareas |
+| **Memory** | Auto-cargado | Entre sesiones | Contexto de usuario/equipo | Aprendizaje a largo plazo |
+| **Protocolo MCP** | Auto-consultado | Externo en tiempo real | Acceso a datos en vivo | Información dinámica |
+| **Skills** | Auto-invocado | Basado en sistema de archivos | Experiencia reutilizable | Flujos de trabajo automatizados |
 
-### Interaction Timeline
+### Línea de Tiempo de Interacción
 
 ```mermaid
 graph LR
-    A["Session Start"] -->|Load| B["Memory (CLAUDE.md)"]
-    B -->|Discover| C["Available Skills"]
-    C -->|Register| D["Slash Commands"]
-    D -->|Connect| E["MCP Servers"]
-    E -->|Ready| F["User Interaction"]
+    A["Inicio de Sesión"] -->|Cargar| B["Memory (CLAUDE.md)"]
+    B -->|Descubrir| C["Skills Disponibles"]
+    C -->|Registrar| D["Slash Commands"]
+    D -->|Conectar| E["Servidores MCP"]
+    E -->|Listo| F["Interacción con Usuario"]
 
-    F -->|Type /cmd| G["Slash Command"]
-    F -->|Request| H["Skill Auto-Invoke"]
-    F -->|Query| I["MCP Data"]
-    F -->|Complex task| J["Delegate to Subagent"]
+    F -->|Escribe /cmd| G["Slash Command"]
+    F -->|Solicitud| H["Auto-Invocar Skill"]
+    F -->|Consulta| I["Datos MCP"]
+    F -->|Tarea compleja| J["Delegar a Subagent"]
 
-    G -->|Uses| B
-    H -->|Uses| B
-    I -->|Uses| B
-    J -->|Uses| B
+    G -->|Usa| B
+    H -->|Usa| B
+    I -->|Usa| B
+    J -->|Usa| B
 ```
 
-### Practical Integration Example: Customer Support Automation
+### Ejemplo de Integración Práctica: Automatización de Soporte al Cliente
 
-#### Architecture
+#### Arquitectura
 
 ```mermaid
 graph TB
-    User["Customer Email"] -->|Receives| Router["Support Router"]
+    User["Email del Cliente"] -->|Recibe| Router["Enrutador de Soporte"]
 
-    Router -->|Analyze| Memory["Memory<br/>Customer history"]
-    Router -->|Lookup| MCP1["MCP: Customer DB<br/>Previous tickets"]
-    Router -->|Check| MCP2["MCP: Slack<br/>Team status"]
+    Router -->|Analizar| Memory["Memory<br/>Historial del cliente"]
+    Router -->|Buscar| MCP1["MCP: BD de Clientes<br/>Tickets anteriores"]
+    Router -->|Verificar| MCP2["MCP: Slack<br/>Estado del equipo"]
 
-    Router -->|Route Complex| Sub1["Subagent: Tech Support<br/>Context: Technical issues"]
-    Router -->|Route Simple| Sub2["Subagent: Billing<br/>Context: Payment issues"]
-    Router -->|Route Urgent| Sub3["Subagent: Escalation<br/>Context: Priority handling"]
+    Router -->|Enrutar Complejo| Sub1["Subagent: Soporte Técnico<br/>Contexto: Problemas técnicos"]
+    Router -->|Enrutar Simple| Sub2["Subagent: Facturación<br/>Contexto: Problemas de pago"]
+    Router -->|Enrutar Urgente| Sub3["Subagent: Escalamiento<br/>Contexto: Manejo prioritario"]
 
-    Sub1 -->|Format| Skill1["Skill: Response Generator<br/>Brand voice maintained"]
-    Sub2 -->|Format| Skill2["Skill: Response Generator"]
-    Sub3 -->|Format| Skill3["Skill: Response Generator"]
+    Sub1 -->|Formatear| Skill1["Skill: Generador de Respuestas<br/>Voz de marca mantenida"]
+    Sub2 -->|Formatear| Skill2["Skill: Generador de Respuestas"]
+    Sub3 -->|Formatear| Skill3["Skill: Generador de Respuestas"]
 
-    Skill1 -->|Generate| Output["Formatted Response"]
-    Skill2 -->|Generate| Output
-    Skill3 -->|Generate| Output
+    Skill1 -->|Generar| Output["Respuesta Formateada"]
+    Skill2 -->|Generar| Output
+    Skill3 -->|Generar| Output
 
-    Output -->|Post| MCP3["MCP: Slack<br/>Notify team"]
-    Output -->|Send| Reply["Customer Reply"]
+    Output -->|Publicar| MCP3["MCP: Slack<br/>Notificar al equipo"]
+    Output -->|Enviar| Reply["Respuesta al Cliente"]
 ```
 
-#### Request Flow
+#### Flujo de Solicitud
 
 ```markdown
-## Customer Support Request Flow
+## Flujo de Solicitud de Soporte al Cliente
 
-### 1. Incoming Email
-"I'm getting error 500 when trying to upload files. This is blocking my workflow!"
+### 1. Email Entrante
+"¡Estoy recibiendo error 500 al intentar subir archivos. Esto está bloqueando mi flujo de trabajo!"
 
-### 2. Memory Lookup
-- Loads CLAUDE.md with support standards
-- Checks customer history: VIP customer, 3rd incident this month
+### 2. Búsqueda de Memory
+- Carga CLAUDE.md con estándares de soporte
+- Verifica historial del cliente: Cliente VIP, 3er incidente este mes
 
-### 3. MCP Queries
-- GitHub MCP: List open issues (finds related bug report)
-- Database MCP: Check system status (no outages reported)
-- Slack MCP: Check if engineering is aware
+### 3. Consultas MCP
+- GitHub MCP: Listar issues abiertos (encuentra informe de bug relacionado)
+- Database MCP: Verificar estado del sistema (sin interrupciones reportadas)
+- Slack MCP: Verificar si ingeniería está al tanto
 
-### 4. Skill Detection & Loading
-- Request matches "Technical Support" skill
-- Loads support response template from Skill
+### 4. Detección y Carga de Skills
+- La solicitud coincide con la skill "Soporte Técnico"
+- Carga plantilla de respuesta de soporte desde la Skill
 
-### 5. Subagent Delegation
-- Routes to Tech Support Subagent
-- Provides context: customer history, error details, known issues
-- Subagent has full access to: read, bash, grep tools
+### 5. Delegación de Subagent
+- Enruta al Subagent de Soporte Técnico
+- Proporciona contexto: historial del cliente, detalles del error, issues conocidos
+- El subagent tiene acceso completo a: herramientas read, bash, grep
 
-### 6. Subagent Processing
-Tech Support Subagent:
-- Searches codebase for 500 error in file upload
-- Finds recent change in commit 8f4a2c
-- Creates workaround documentation
+### 6. Procesamiento del Subagent
+Subagent de Soporte Técnico:
+- Busca en el código base error 500 en subida de archivos
+- Encuentra cambio reciente en commit 8f4a2c
+- Crea documentación de solución alternativa
 
-### 7. Skill Execution
-Response Generator Skill:
-- Uses Brand Voice guidelines
-- Formats response with empathy
-- Includes workaround steps
-- Links to related documentation
+### 7. Ejecución de Skill
+Skill Generador de Respuestas:
+- Usa directrices de Brand Voice
+- Formatea respuesta con empatía
+- Incluye pasos de solución alternativa
+- Enlaza a documentación relacionada
 
-### 8. MCP Output
-- Posts update to #support Slack channel
-- Tags engineering team
-- Updates ticket in Jira MCP
+### 8. Salida MCP
+- Publica actualización en canal de Slack #support
+- Etiqueta al equipo de ingeniería
+- Actualiza ticket en Jira MCP
 
-### 9. Response
-Customer receives:
-- Empathetic acknowledgment
-- Explanation of cause
-- Immediate workaround
-- Timeline for permanent fix
-- Link to related issues
+### 9. Respuesta
+El cliente recibe:
+- Reconocimiento empático
+- Explicación de la causa
+- Solución alternativa inmediata
+- Cronograma para solución permanente
+- Enlace a issues relacionados
 ```
 
-### Complete Feature Orchestration
+### Orquestación Completa de Características
 
 ```mermaid
 sequenceDiagram
     participant User
     participant Claude as Claude Code
     participant Memory as Memory<br/>CLAUDE.md
-    participant MCP as MCP Servers
+    participant MCP as Servidores MCP
     participant Skills as Skills
     participant SubAgent as Subagents
 
-    User->>Claude: Request: "Build auth system"
-    Claude->>Memory: Load project standards
-    Memory-->>Claude: Auth standards, team practices
-    Claude->>MCP: Query GitHub for similar implementations
-    MCP-->>Claude: Code examples, best practices
-    Claude->>Skills: Detect matching Skills
-    Skills-->>Claude: Security Review Skill + Testing Skill
-    Claude->>SubAgent: Delegate implementation
-    SubAgent->>SubAgent: Build feature
-    Claude->>Skills: Apply Security Review Skill
-    Skills-->>Claude: Security checklist results
-    Claude->>SubAgent: Delegate testing
-    SubAgent-->>Claude: Test results
-    Claude->>User: Complete system delivered
+    User->>Claude: Solicitud: "Construir sistema de auth"
+    Claude->>Memory: Cargar estándares del proyecto
+    Memory-->>Claude: Estándares de auth, prácticas del equipo
+    Claude->>MCP: Consultar GitHub para implementaciones similares
+    MCP-->>Claude: Ejemplos de código, mejores prácticas
+    Claude->>Skills: Detectar Skills coincidentes
+    Skills-->>Claude: Skill de Revisión de Seguridad + Skill de Pruebas
+    Claude->>SubAgent: Delegar implementación
+    SubAgent->>SubAgent: Construir función
+    Claude->>Skills: Aplicar Skill de Revisión de Seguridad
+    Skills-->>Claude: Resultados de lista de verificación de seguridad
+    Claude->>SubAgent: Delegar pruebas
+    SubAgent-->>Claude: Resultados de pruebas
+    Claude->>User: Sistema completo entregado
 ```
 
-### When to Use Each Feature
+### Cuándo Usar Cada Característica
 
 ```mermaid
 graph TD
-    A["New Task"] --> B{Type of Task?}
+    A["Nueva Tarea"] --> B{¿Tipo de Tarea?}
 
-    B -->|Repeated workflow| C["Slash Command"]
-    B -->|Need real-time data| D["MCP Protocol"]
-    B -->|Remember for next time| E["Memory"]
-    B -->|Specialized subtask| F["Subagent"]
-    B -->|Domain-specific work| G["Skill"]
+    B -->|Flujo de trabajo repetido| C["Slash Command"]
+    B -->|Necesita datos en tiempo real| D["Protocolo MCP"]
+    B -->|Recordar para la próxima vez| E["Memory"]
+    B -->|Subtarea especializada| F["Subagent"]
+    B -->|Trabajo específico de dominio| G["Skill"]
 
-    C --> C1["✅ Team shortcut"]
-    D --> D1["✅ Live API access"]
-    E --> E1["✅ Persistent context"]
-    F --> F1["✅ Parallel execution"]
-    G --> G1["✅ Auto-invoked expertise"]
+    C --> C1["✅ Atajo del equipo"]
+    D --> D1["✅ Acceso a API en vivo"]
+    E --> E1["✅ Contexto persistente"]
+    F --> F1["✅ Ejecución paralela"]
+    G --> G1["✅ Experiencia auto-invocada"]
 ```
 
-### Selection Decision Tree
+### Árbol de Decisión de Selección
 
 ```mermaid
 graph TD
-    Start["Need to extend Claude?"]
+    Start["¿Necesitas extender Claude?"]
 
-    Start -->|Quick repeated task| A{"Manual or Auto?"}
+    Start -->|Tarea repetida rápida| A{"¿Manual o Auto?"}
     A -->|Manual| B["Slash Command"]
     A -->|Auto| C["Skill"]
 
-    Start -->|Need external data| D{"Real-time?"}
-    D -->|Yes| E["MCP Protocol"]
-    D -->|No/Cross-session| F["Memory"]
+    Start -->|Necesita datos externos| D{"¿En tiempo real?"}
+    D -->|Sí| E["Protocolo MCP"]
+    D -->|No/Entre sesiones| F["Memory"]
 
-    Start -->|Complex project| G{"Multiple roles?"}
-    G -->|Yes| H["Subagents"]
+    Start -->|Proyecto complejo| G{"¿Múltiples roles?"}
+    G -->|Sí| H["Subagents"]
     G -->|No| I["Skills + Memory"]
 
-    Start -->|Long-term context| J["Memory"]
-    Start -->|Team workflow| K["Slash Command +<br/>Memory"]
-    Start -->|Full automation| L["Skills +<br/>Subagents +<br/>MCP"]
+    Start -->|Contexto a largo plazo| J["Memory"]
+    Start -->|Flujo de trabajo del equipo| K["Slash Command +<br/>Memory"]
+    Start -->|Automatización completa| L["Skills +<br/>Subagents +<br/>MCP"]
 ```
 
 ---
 
-## Summary Table
+## Tabla Resumen
 
-| Aspect | Slash Commands | Subagents | Memory | MCP | Skills | Plugins |
+| Aspecto | Slash Commands | Subagents | Memory | MCP | Skills | Plugins |
 |--------|---|---|---|---|---|---|
-| **Setup Difficulty** | Easy | Medium | Easy | Medium | Medium | Easy |
-| **Learning Curve** | Low | Medium | Low | Medium | Medium | Low |
-| **Team Benefit** | High | High | Medium | High | High | Very High |
-| **Automation Level** | Low | High | Medium | High | High | Very High |
-| **Context Management** | Single-session | Isolated | Persistent | Real-time | Persistent | All features |
-| **Maintenance Burden** | Low | Medium | Low | Medium | Medium | Low |
-| **Scalability** | Good | Excellent | Good | Excellent | Excellent | Excellent |
-| **Shareability** | Fair | Fair | Good | Good | Good | Excellent |
-| **Versioning** | Manual | Manual | Manual | Manual | Manual | Automatic |
-| **Installation** | Manual copy | Manual config | N/A | Manual config | Manual copy | One command |
+| **Dificultad de Configuración** | Fácil | Media | Fácil | Media | Media | Fácil |
+| **Curva de Aprendizaje** | Baja | Media | Baja | Media | Media | Baja |
+| **Beneficio para Equipo** | Alto | Alto | Medio | Alto | Alto | Muy Alto |
+| **Nivel de Automatización** | Bajo | Alto | Medio | Alto | Alto | Muy Alto |
+| **Gestión de Contexto** | Sesión única | Aislado | Persistente | Tiempo real | Persistente | Todas las características |
+| **Carga de Mantenimiento** | Bajo | Medio | Bajo | Medio | Medio | Bajo |
+| **Escalabilidad** | Buena | Excelente | Buena | Excelente | Excelente | Excelente |
+| **Capacidad de Compartir** | Regular | Regular | Buena | Buena | Buena | Excelente |
+| **Versionado** | Manual | Manual | Manual | Manual | Manual | Automático |
+| **Instalación** | Copia manual | Configuración manual | N/A | Configuración manual | Copia manual | Un command |
 
 ---
 
-## Quick Start Guide
+## Guía de Inicio Rápido
 
-### Week 1: Start Simple
-- Create 2-3 slash commands for common tasks
-- Enable Memory in Settings
-- Document team standards in CLAUDE.md
+### Semana 1: Comenzar Simple
+- Crear 2-3 slash commands para tareas comunes
+- Habilitar Memory en Configuración
+- Documentar estándares del equipo en CLAUDE.md
 
-### Week 2: Add Real-time Access
-- Set up 1 MCP (GitHub or Database)
-- Use `/mcp` to configure
-- Query live data in your workflows
+### Semana 2: Añadir Acceso en Tiempo Real
+- Configurar 1 MCP (GitHub o Database)
+- Usar `/mcp` para configurar
+- Consultar datos en vivo en tus flujos de trabajo
 
-### Week 3: Distribute Work
-- Create first Subagent for specific role
-- Use `/agents` command
-- Test delegation with simple task
+### Semana 3: Distribuir Trabajo
+- Crear primer Subagent para rol específico
+- Usar `/agents` command
+- Probar delegación con tarea simple
 
-### Week 4: Automate Everything
-- Create first Skill for repeated automation
-- Use Skill marketplace or build custom
-- Combine all features for full workflow
+### Semana 4: Automatizar Todo
+- Crear primera Skill para automatización repetida
+- Usar marketplace de Skills o construir personalizada
+- Combinar todas las características para flujo de trabajo completo
 
-### Ongoing
-- Review and update Memory monthly
-- Add new Skills as patterns emerge
-- Optimize MCP queries
-- Refine Subagent prompts
+### Continuo
+- Revisar y actualizar Memory mensualmente
+- Añadir nuevas Skills a medida que surjan patrones
+- Optimizar consultas MCP
+- Refinar prompts de Subagent
 
 ---
 
 ## Hooks
 
-### Overview
+### Visión General
 
-Hooks are event-driven shell commands that execute automatically in response to Claude Code events. They enable automation, validation, and custom workflows without manual intervention.
+Hooks son commands shell impulsados por eventos que se ejecutan automáticamente en respuesta a eventos de Claude Code. Permiten automatización, validación y flujos de trabajo personalizados sin intervención manual.
 
-### Hook Events
+### Eventos de Hook
 
-Claude Code supports **25 hook events** across four hook types (command, http, prompt, agent):
+Claude Code soporta **25 eventos de hook** en cuatro tipos de hook (command, http, prompt, agent):
 
-| Hook Event | Trigger | Use Cases |
+| Evento de Hook | Activador | Casos de Uso |
 |------------|---------|-----------|
-| **SessionStart** | Session begins/resumes/clear/compact | Environment setup, initialization |
-| **InstructionsLoaded** | CLAUDE.md or rules file loaded | Validation, transformation, augmentation |
-| **UserPromptSubmit** | User submits prompt | Input validation, prompt filtering |
-| **PreToolUse** | Before any tool runs | Validation, approval gates, logging |
-| **PermissionRequest** | Permission dialog shown | Auto-approve/deny flows |
-| **PostToolUse** | After tool succeeds | Auto-formatting, notifications, cleanup |
-| **PostToolUseFailure** | Tool execution fails | Error handling, logging |
-| **Notification** | Notification sent | Alerting, external integrations |
-| **SubagentStart** | Subagent spawned | Context injection, initialization |
-| **SubagentStop** | Subagent finishes | Result validation, logging |
-| **Stop** | Claude finishes responding | Summary generation, cleanup tasks |
-| **StopFailure** | API error ends turn | Error recovery, logging |
-| **TeammateIdle** | Agent team teammate idle | Work distribution, coordination |
-| **TaskCompleted** | Task marked complete | Post-task processing |
-| **TaskCreated** | Task created via TaskCreate | Task tracking, logging |
-| **ConfigChange** | Config file changes | Validation, propagation |
-| **CwdChanged** | Working directory changes | Directory-specific setup |
-| **FileChanged** | Watched file changes | File monitoring, rebuild triggers |
-| **PreCompact** | Before context compaction | State preservation |
-| **PostCompact** | After compaction completes | Post-compact actions |
-| **WorktreeCreate** | Worktree being created | Environment setup, dependency install |
-| **WorktreeRemove** | Worktree being removed | Cleanup, resource deallocation |
-| **Elicitation** | MCP server requests user input | Input validation |
-| **ElicitationResult** | User responds to elicitation | Response processing |
-| **SessionEnd** | Session terminates | Cleanup, final logging |
+| **SessionStart** | Sesión comienza/resume/limpia/compacta | Configuración de entorno, inicialización |
+| **InstructionsLoaded** | CLAUDE.md o archivo de reglas cargado | Validación, transformación, aumento |
+| **UserPromptSubmit** | Usuario envía prompt | Validación de entrada, filtrado de prompts |
+| **PreToolUse** | Antes de que cualquier herramienta se ejecute | Validación, puertas de aprobación, registro |
+| **PermissionRequest** | Diálogo de permiso mostrado | Flujos de auto-aprobación/denegación |
+| **PostToolUse** | Después de que la herramienta tenga éxito | Auto-formateo, notificaciones, limpieza |
+| **PostToolUseFailure** | Ejecución de herramienta falla | Manejo de errores, registro |
+| **Notification** | Notificación enviada | Alertas, integraciones externas |
+| **SubagentStart** | Subagent spawned | Inyección de contexto, inicialización |
+| **SubagentStop** | Subagent termina | Validación de resultados, registro |
+| **Stop** | Claude termina de responder | Generación de resumen, tareas de limpieza |
+| **StopFailure** | Error de API termina el turno | Recuperación de errores, registro |
+| **TeammateIdle** | Compañero de equipo de agente inactivo | Distribución de trabajo, coordinación |
+| **TaskCompleted** | Tarea marcada como completada | Procesamiento posterior a la tarea |
+| **TaskCreated** | Tarea creada vía TaskCreate | Seguimiento de tareas, registro |
+| **ConfigChange** | Archivo de configuración cambia | Validación, propagación |
+| **CwdChanged** | Cambios de directorio de trabajo | Configuración específica del directorio |
+| **FileChanged** | Cambios de archivo vigilado | Monitoreo de archivos, activadores de reconstrucción |
+| **PreCompact** | Antes de la compactación de contexto | Preservación de estado |
+| **PostCompact** | Después de que se completa la compactación | Acciones posteriores a la compactación |
+| **WorktreeCreate** | Worktree siendo creado | Configuración, inicialización de recursos |
+| **WorktreeRemove** | Worktree siendo eliminado | Limpieza, desasignación de recursos |
+| **Elicitation** | Servidor MCP solicita entrada del usuario | Validación de entrada |
+| **ElicitationResult** | Usuario responde a elicitation | Procesamiento de respuesta |
+| **SessionEnd** | Sesión termina | Limpieza, registro final |
 
-### Common Hooks
+### Hooks Comunes
 
-Hooks are configured in `~/.claude/settings.json` (user-level) or `.claude/settings.json` (project-level):
+Hooks están configurados en `~/.claude/settings.json` (nivel de usuario) o `.claude/settings.json` (nivel de proyecto):
 
 ```json
 {
@@ -2872,73 +2876,73 @@ Hooks are configured in `~/.claude/settings.json` (user-level) or `.claude/setti
 }
 ```
 
-### Hook Environment Variables
+### Variables de Entorno de Hook
 
-- `$CLAUDE_FILE_PATH` - Path to file being edited/written
-- `$CLAUDE_TOOL_NAME` - Name of tool being used
-- `$CLAUDE_SESSION_ID` - Current session identifier
-- `$CLAUDE_PROJECT_DIR` - Project directory path
+- `$CLAUDE_FILE_PATH` - Ruta al archivo siendo editado/escrito
+- `$CLAUDE_TOOL_NAME` - Nombre de la herramienta siendo usada
+- `$CLAUDE_SESSION_ID` - Identificador de sesión actual
+- `$CLAUDE_PROJECT_DIR` - Ruta del directorio del proyecto
 
-### Best Practices
+### Mejores Prácticas
 
-✅ **Do:**
-- Keep hooks fast (< 1 second)
-- Use hooks for validation and automation
-- Handle errors gracefully
-- Use absolute paths
+✅ **Hacer:**
+- Mantener hooks rápidos (< 1 segundo)
+- Usar hooks para validación y automatización
+- Manejar errores gracefulmente
+- Usar rutas absolutas
 
-❌ **Don't:**
-- Make hooks interactive
-- Use hooks for long-running tasks
-- Hardcode credentials
+❌ **No Hacer:**
+- Hacer hooks interactivos
+- Usar hooks para tareas de larga duración
+- Hardcodear credenciales
 
-**See**: [06-hooks/](06-hooks/) for detailed examples
+**Ver**: [06-hooks/](06-hooks/) para ejemplos detallados
 
 ---
 
 ## Checkpoints and Rewind
 
-### Overview
+### Visión General
 
-Checkpoints allow you to save conversation state and rewind to previous points, enabling safe experimentation and exploration of multiple approaches.
+Checkpoints permiten guardar el estado de la conversación y retroceder a puntos anteriores, permitiendo experimentación segura y exploración de múltiples enfoques.
 
-### Key Concepts
+### Conceptos Clave
 
-| Concept | Description |
+| Concepto | Descripción |
 |---------|-------------|
-| **Checkpoint** | Snapshot of conversation state including messages, files, and context |
-| **Rewind** | Return to a previous checkpoint, discarding subsequent changes |
-| **Branch Point** | Checkpoint from which multiple approaches are explored |
+| **Checkpoint** | Instantánea del estado de la conversación incluyendo mensajes, archivos y contexto |
+| **Rewind** | Volver a un checkpoint anterior, descartando cambios posteriores |
+| **Branch Point** | Checkpoint desde el cual se exploran múltiples enfoques |
 
-### Accessing Checkpoints
+### Accediendo a Checkpoints
 
-Checkpoints are created automatically with every user prompt. To rewind:
+Checkpoints se crean automáticamente con cada prompt de usuario. Para retroceder:
 
 ```bash
-# Press Esc twice to open the checkpoint browser
+# Presiona Esc dos veces para abrir el navegador de checkpoints
 Esc + Esc
 
-# Or use the /rewind command
+# O usa el command /rewind
 /rewind
 ```
 
-When you select a checkpoint, you choose from five options:
-1. **Restore code and conversation** -- Revert both to that point
-2. **Restore conversation** -- Rewind messages, keep current code
-3. **Restore code** -- Revert files, keep conversation
-4. **Summarize from here** -- Compress conversation into a summary
-5. **Never mind** -- Cancel
+Cuando seleccionas un checkpoint, eliges entre cinco opciones:
+1. **Restaurar código y conversación** -- Revertir ambos a ese punto
+2. **Restaurar conversación** -- Rebobinar mensajes, mantener código actual
+3. **Restaurar código** -- Revertir archivos, mantener conversación
+4. **Resumir desde aquí** -- Comprimir conversación en un resumen
+5. **Never mind** -- Cancelar
 
-### Use Cases
+### Casos de Uso
 
-| Scenario | Workflow |
+| Escenario | Flujo de Trabajo |
 |----------|----------|
-| **Exploring Approaches** | Save → Try A → Save → Rewind → Try B → Compare |
-| **Safe Refactoring** | Save → Refactor → Test → If fail: Rewind |
-| **A/B Testing** | Save → Design A → Save → Rewind → Design B → Compare |
-| **Mistake Recovery** | Notice issue → Rewind to last good state |
+| **Explorar Enfoques** | Guardar → Intentar A → Guardar → Rewind → Intentar B → Comparar |
+| **Refactorización Segura** | Guardar → Refactorizar → Probar → Si falla: Rewind |
+| **Pruebas A/B** | Guardar → Diseño A → Guardar → Rewind → Diseño B → Comparar |
+| **Recuperación de Errores** | Notar problema → Rewind al último buen estado |
 
-### Configuration
+### Configuración
 
 ```json
 {
@@ -2946,153 +2950,153 @@ When you select a checkpoint, you choose from five options:
 }
 ```
 
-**See**: [08-checkpoints/](08-checkpoints/) for detailed examples
+**Ver**: [08-checkpoints/](08-checkpoints/) para ejemplos detallados
 
 ---
 
-## Advanced Features
+## Características Avanzadas
 
 ### Planning Mode
 
-Create detailed implementation plans before coding.
+Crear planes de implementación detallados antes de codificar.
 
-**Activation:**
+**Activación:**
 ```bash
-/plan Implement user authentication system
+/plan Implementar sistema de autenticación de usuarios
 ```
 
-**Benefits:**
-- Clear roadmap with time estimates
-- Risk assessment
-- Systematic task breakdown
-- Opportunity for review and modification
+**Beneficios:**
+- Hoja de ruta clara con estimaciones de tiempo
+- Evaluación de riesgos
+- Desglose sistemático de tareas
+- Oportunidad para revisión y modificación
 
 ### Extended Thinking
 
-Deep reasoning for complex problems.
+Razonamiento profundo para problemas complejos.
 
-**Activation:**
-- Toggle with `Alt+T` (or `Option+T` on macOS) during a session
-- Set `MAX_THINKING_TOKENS` environment variable for programmatic control
+**Activación:**
+- Alternar con `Alt+T` (o `Option+T` en macOS) durante una sesión
+- Establecer variable de entorno `MAX_THINKING_TOKENS` para control programático
 
 ```bash
-# Enable extended thinking via environment variable
+# Habilitar extended thinking vía variable de entorno
 export MAX_THINKING_TOKENS=50000
-claude -p "Should we use microservices or monolith?"
+claude -p "¿Deberíamos usar microservicios o monolito?"
 ```
 
-**Benefits:**
-- Thorough analysis of trade-offs
-- Better architectural decisions
-- Consideration of edge cases
-- Systematic evaluation
+**Beneficios:**
+- Análisis exhaustivo de compensaciones
+- Mejores decisiones arquitectónicas
+- Consideración de casos extremos
+- Evaluación sistemática
 
 ### Background Tasks
 
-Run long operations without blocking the conversation.
+Ejecutar operaciones largas sin bloquear la conversación.
 
-**Usage:**
+**Uso:**
 ```bash
-User: Run tests in background
+User: Ejecutar pruebas en segundo plano
 
-Claude: Started task bg-1234
+Claude: Iniciada tarea bg-1234
 
-/task list           # Show all tasks
-/task status bg-1234 # Check progress
-/task show bg-1234   # View output
-/task cancel bg-1234 # Cancel task
+/task list           # Mostrar todas las tareas
+/task status bg-1234 # Verificar progreso
+/task show bg-1234   # Ver salida
+/task cancel bg-1234 # Cancelar tarea
 ```
 
 ### Permission Modes
 
-Control what Claude can do.
+Controlar qué puede hacer Claude.
 
-| Mode | Description | Use Case |
+| Modo | Descripción | Caso de Uso |
 |------|-------------|----------|
-| **default** | Standard permissions with prompts for sensitive actions | General development |
-| **acceptEdits** | Automatically accept file edits without confirmation | Trusted editing workflows |
-| **plan** | Analysis and planning only, no file modifications | Code review, architecture planning |
-| **auto** | Automatically approve safe actions, prompt only for risky ones | Balanced autonomy with safety |
-| **dontAsk** | Execute all actions without confirmation prompts | Experienced users, automation |
-| **bypassPermissions** | Full unrestricted access, no safety checks | CI/CD pipelines, trusted scripts |
+| **default** | Permisos estándar con prompts para acciones sensibles | Desarrollo general |
+| **acceptEdits** | Aceptar automáticamente ediciones de archivo sin confirmación | Flujos de trabajo de edición de confianza |
+| **plan** | Solo análisis y planificación, sin modificaciones de archivo | Revisión de código, planificación de arquitectura |
+| **auto** | Aprobar automáticamente acciones seguras, preguntar solo por acciones riesgosas | Autonomía equilibrada con seguridad |
+| **dontAsk** | Ejecutar todas las acciones sin prompts de confirmación | Usuarios experimentados, automatización |
+| **bypassPermissions** | Acceso completo sin restricciones, sin verificaciones de seguridad | Pipelines CI/CD, scripts de confianza |
 
-**Usage:**
+**Uso:**
 ```bash
-claude --permission-mode plan          # Read-only analysis
-claude --permission-mode acceptEdits   # Auto-accept edits
-claude --permission-mode auto          # Auto-approve safe actions
-claude --permission-mode dontAsk       # No confirmation prompts
+claude --permission-mode plan          # Análisis de solo lectura
+claude --permission-mode acceptEdits   # Auto-aceptar ediciones
+claude --permission-mode auto          # Auto-aprobar acciones seguras
+claude --permission-mode dontAsk       # Sin prompts de confirmación
 ```
 
 ### Headless Mode (Print Mode)
 
-Run Claude Code without interactive input for automation and CI/CD using the `-p` (print) flag.
+Ejecutar Claude Code sin entrada interactiva para automatización y CI/CD usando la bandera `-p` (print).
 
-**Usage:**
+**Uso:**
 ```bash
-# Run specific task
-claude -p "Run all tests"
+# Ejecutar tarea específica
+claude -p "Ejecutar todas las pruebas"
 
-# Pipe input for analysis
-cat error.log | claude -p "explain this error"
+# Canalizar entrada para análisis
+cat error.log | claude -p "explicar este error"
 
-# CI/CD integration (GitHub Actions)
+# Integración CI/CD (GitHub Actions)
 - name: AI Code Review
-  run: claude -p "Review PR changes and report issues"
+  run: claude -p "Revisar cambios de PR y reportar problemas"
 
-# JSON output for scripting
-claude -p --output-format json "list all functions in src/"
+# Salida JSON para scripting
+claude -p --output-format json "listar todas las funciones en src/"
 ```
 
 ### Scheduled Tasks
 
-Run tasks on a repeating schedule using the `/loop` command.
+Ejecutar tareas en un horario repetitivo usando el command `/loop`.
 
-**Usage:**
+**Uso:**
 ```bash
-/loop every 30m "Run tests and report failures"
-/loop every 2h "Check for dependency updates"
-/loop every 1d "Generate daily summary of code changes"
+/loop every 30m "Ejecutar pruebas y reportar fallos"
+/loop every 2h "Verificar actualizaciones de dependencias"
+/loop every 1d "Generar resumen diario de cambios de código"
 ```
 
-Scheduled tasks run in the background and report results when complete. They are useful for continuous monitoring, periodic checks, and automated maintenance workflows.
+Las tareas programadas se ejecutan en segundo plano y reportan resultados cuando se completan. Son útiles para monitoreo continuo, verificaciones periódicas y flujos de trabajo de mantenimiento automatizado.
 
 ### Chrome Integration
 
-Claude Code can integrate with the Chrome browser for web automation tasks. This enables capabilities like navigating web pages, filling forms, taking screenshots, and extracting data from websites directly within your development workflow.
+Claude Code puede integrarse con el navegador Chrome para tareas de automatización web. Esto permite capacidades como navegar páginas web, completar formularios, tomar capturas de pantalla y extraer datos de sitios web directamente dentro de tu flujo de trabajo de desarrollo.
 
 ### Session Management
 
-Manage multiple work sessions.
+Gestionar múltiples sesiones de trabajo.
 
 **Commands:**
 ```bash
-/resume                # Resume a previous conversation
-/rename "Feature"      # Name the current session
-/fork                  # Fork into a new session
-claude -c              # Continue most recent conversation
-claude -r "Feature"    # Resume session by name/ID
+/resume                # Reanudar una conversación anterior
+/rename "Función"      # Nombrar la sesión actual
+/fork                  # Bifurcar en una nueva sesión
+claude -c              # Continuar conversación más reciente
+claude -r "Función"    # Reanudar sesión por nombre/ID
 ```
 
 ### Interactive Features
 
-**Keyboard Shortcuts:**
-- `Ctrl + R` - Search command history
-- `Tab` - Autocomplete
-- `↑ / ↓` - Command history
-- `Ctrl + L` - Clear screen
+**Atajos de Teclado:**
+- `Ctrl + R` - Buscar historial de commands
+- `Tab` - Autocompletar
+- `↑ / ↓` - Historial de commands
+- `Ctrl + L` - Limpiar pantalla
 
-**Multi-line Input:**
+**Entrada Multilínea:**
 ```bash
 User: \
-> Long complex prompt
-> spanning multiple lines
+> Prompt largo y complejo
+> que abarca múltiples líneas
 > \end
 ```
 
-### Configuration
+### Configuración
 
-Complete configuration example:
+Ejemplo de configuración completa:
 
 ```json
 {
@@ -3114,19 +3118,19 @@ Complete configuration example:
 }
 ```
 
-**See**: [09-advanced-features/](09-advanced-features/) for comprehensive guide
+**Ver**: [09-advanced-features/](09-advanced-features/) para guía completa
 
 ---
 
-## Resources
+## Recursos
 
-- [Claude Code Documentation](https://code.claude.com/docs/en/overview)
-- [Anthropic Documentation](https://docs.anthropic.com)
-- [MCP GitHub Servers](https://github.com/modelcontextprotocol/servers)
+- [Documentación de Claude Code](https://code.claude.com/docs/en/overview)
+- [Documentación de Anthropic](https://docs.anthropic.com)
+- [Servidores MCP de GitHub](https://github.com/modelcontextprotocol/servers)
 - [Anthropic Cookbook](https://github.com/anthropics/anthropic-cookbook)
 
 ---
 
-*Last updated: March 2026*
-*For Claude Haiku 4.5, Sonnet 4.6, and Opus 4.6*
-*Now includes: Hooks, Checkpoints, Planning Mode, Extended Thinking, Background Tasks, Permission Modes (6 modes), Headless Mode, Session Management, Auto Memory, Agent Teams, Scheduled Tasks, Chrome Integration, Channels, Voice Dictation, and Bundled Skills*
+*Última actualización: Marzo 2026*
+*Para Claude Haiku 4.5, Sonnet 4.6, y Opus 4.6*
+*Ahora incluye: Hooks, Checkpoints, Planning Mode, Extended Thinking, Background Tasks, Permission Modes (6 modos), Headless Mode, Session Management, Auto Memory, Agent Teams, Scheduled Tasks, Chrome Integration, Channels, Voice Dictation, y Bundled Skills*

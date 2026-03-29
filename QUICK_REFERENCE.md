@@ -3,31 +3,31 @@
   <img alt="Claude How To" src="resources/logos/claude-howto-logo.svg">
 </picture>
 
-# Claude Code Examples - Quick Reference Card
+# Ejemplos de Claude Code - Tarjeta de Referencia Rápida
 
-## 🚀 Installation Quick Commands
+## 🚀 Comandos Rápidos de Instalación
 
 ### Slash Commands
 ```bash
-# Install all
+# Instalar todo
 cp 01-slash-commands/*.md .claude/commands/
 
-# Install specific
+# Instalar específico
 cp 01-slash-commands/optimize.md .claude/commands/
 ```
 
 ### Memory
 ```bash
-# Project memory
+# Memoria del proyecto
 cp 02-memory/project-CLAUDE.md ./CLAUDE.md
 
-# Personal memory
+# Memoria personal
 cp 02-memory/personal-CLAUDE.md ~/.claude/CLAUDE.md
 ```
 
 ### Skills
 ```bash
-# Personal skills
+# Skills personales
 cp -r 03-skills/code-review ~/.claude/skills/
 
 # Project skills
@@ -36,38 +36,38 @@ cp -r 03-skills/code-review .claude/skills/
 
 ### Subagents
 ```bash
-# Install all
+# Instalar todo
 cp 04-subagents/*.md .claude/agents/
 
-# Install specific
+# Instalar específico
 cp 04-subagents/code-reviewer.md .claude/agents/
 ```
 
 ### MCP
 ```bash
-# Set credentials
+# Configurar credenciales
 export GITHUB_TOKEN="your_token"
 export DATABASE_URL="postgresql://..."
 
-# Install config (project scope)
+# Instalar configuración (alcance del proyecto)
 cp 05-mcp/github-mcp.json .mcp.json
 
-# Or user scope: add to ~/.claude.json
+# O alcance de usuario: agregar a ~/.claude.json
 ```
 
 ### Hooks
 ```bash
-# Install hooks
+# Instalar hooks
 mkdir -p ~/.claude/hooks
 cp 06-hooks/*.sh ~/.claude/hooks/
 chmod +x ~/.claude/hooks/*.sh
 
-# Configure in settings (~/.claude/settings.json)
+# Configurar en settings (~/.claude/settings.json)
 ```
 
 ### Plugins
 ```bash
-# Install from examples (if published)
+# Instalar desde ejemplos (si están publicados)
 /plugin install pr-review
 /plugin install devops-automation
 /plugin install documentation
@@ -75,29 +75,29 @@ chmod +x ~/.claude/hooks/*.sh
 
 ### Checkpoints
 ```bash
-# Checkpoints are created automatically with every user prompt
-# To rewind, press Esc twice or use:
+# Los checkpoints se crean automáticamente with every user prompt
+# Para rebobinar, presiona Esc dos veces o usa:
 /rewind
 
-# Then choose: Restore code and conversation, Restore conversation,
-# Restore code, Summarize from here, or Never mind
+# Luego elige: Restaurar código y conversación, Restaurar conversación,
+# Restaurar código, Resumir desde aquí, o Cancelar
 ```
 
 ### Advanced Features
 ```bash
-# Configure in settings (.claude/settings.json)
+# Configurar en settings (.claude/settings.json)
 # See 09-advanced-features/config-examples.json
 
-# Planning mode
-/plan Task description
+# Modo Planning
+/plan Descripción de tarea
 
-# Permission modes (use --permission-mode flag)
-# default        - Ask for approval on risky actions
-# acceptEdits    - Auto-accept file edits, ask for others
-# plan           - Read-only analysis, no modifications
-# dontAsk        - Accept all actions except risky ones
-# auto           - Background classifier decides permissions automatically
-# bypassPermissions - Accept all actions (requires --dangerously-skip-permissions)
+# Modos de Permission (usa --permission-mode flag)
+# default        - Solicitar aprobación en acciones riesgosas
+# acceptEdits    - Auto-aceptar ediciones de archivos, preguntar por otros
+# plan           - Análisis solo lectura, sin modificaciones
+# dontAsk        - Aceptar todas las acciones excepto las riesgosas
+# auto           - El clasificador de fondo decide permisos automáticamente
+# bypassPermissions - Aceptar todas las acciones (requiere --dangerously-skip-permissions)
 
 # Session management
 /resume                # Resume a previous conversation
@@ -180,7 +180,7 @@ cp -r 03-skills/doc-generator ~/.claude/skills/
 
 ### Team Standards
 ```bash
-# Project memory
+# Memoria del proyecto
 cp 02-memory/project-CLAUDE.md ./CLAUDE.md
 
 # Edit for your team
@@ -189,7 +189,7 @@ vim CLAUDE.md
 
 ### Automation & Hooks
 ```bash
-# Install hooks (25 events, 4 types: command, http, prompt, agent)
+# Instalar hooks (25 events, 4 types: command, http, prompt, agent)
 mkdir -p ~/.claude/hooks
 cp 06-hooks/*.sh ~/.claude/hooks/
 chmod +x ~/.claude/hooks/*.sh
@@ -206,7 +206,7 @@ claude --enable-auto-mode -p "Refactor and test the auth module"
 
 ### Safe Refactoring
 ```bash
-# Checkpoints are created automatically before each prompt
+# Los checkpoints se crean automáticamente before each prompt
 # Try refactoring
 # If it works: continue
 # If it fails: press Esc+Esc or use /rewind to go back
@@ -278,7 +278,7 @@ Your Project/
 │   ├── skills/                # Project skills go here
 │   └── settings.json          # Project settings (hooks, etc.)
 ├── .mcp.json                  # MCP configuration (project scope)
-├── CLAUDE.md                  # Project memory
+├── CLAUDE.md                  # Memoria del proyecto
 └── src/
     └── api/
         └── CLAUDE.md          # Directory-specific memory
@@ -287,11 +287,11 @@ User Home/
 ├── .claude/
 │   ├── commands/              # Personal commands
 │   ├── agents/                # Personal agents
-│   ├── skills/                # Personal skills
+│   ├── skills/                # Skills personales
 │   ├── hooks/                 # Hook scripts
 │   ├── settings.json          # User settings
 │   ├── managed-settings.d/    # Managed settings (enterprise/org)
-│   └── CLAUDE.md              # Personal memory
+│   └── CLAUDE.md              # Memoria personal
 └── .claude.json               # Personal MCP config (user scope)
 ```
 

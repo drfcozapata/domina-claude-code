@@ -1,284 +1,284 @@
-# Refactoring Plan Template
+# Plantilla de Plan de Refactoring
 
-Use this template to document and track your refactoring effort.
+Usa esta plantilla para documentar y rastrear tu esfuerzo de refactoring.
 
 ---
 
-## Project Information
+## Información del Proyecto
 
-| Field | Value |
+| Campo | Valor |
 |-------|-------|
-| **Project/Module** | [Project name] |
-| **Target Files** | [List of files to refactor] |
-| **Date Created** | [Date] |
-| **Author** | [Name] |
-| **Status** | Draft / In Review / Approved / In Progress / Completed |
+| **Proyecto/Módulo** | [Nombre del proyecto] |
+| **Archivos Objetivo** | [Lista de archivos a refactorizar] |
+| **Fecha de Creación** | [Fecha] |
+| **Autor** | [Nombre] |
+| **Estado** | Borrador / En Revisión / Aprobado / En Progreso / Completado |
 
 ---
 
-## Executive Summary
+## Resumen Ejecutivo
 
-### Goals
-- [ ] [Primary goal: e.g., Improve readability of payment processing]
-- [ ] [Secondary goal: e.g., Reduce code duplication]
-- [ ] [Tertiary goal: e.g., Improve testability]
+### Objetivos
+- [ ] [Objetivo principal: ej. Mejorar legibilidad del procesamiento de pagos]
+- [ ] [Objetivo secundario: ej. Reducir duplicación de código]
+- [ ] [Objetivo terciario: ej. Mejorar testeabilidad]
 
-### Constraints
-- [ ] [Constraint 1: e.g., Cannot change public API]
-- [ ] [Constraint 2: e.g., Must maintain backward compatibility]
-- [ ] [Constraint 3: e.g., No changes to database schema]
+### Restricciones
+- [ ] [Restricción 1: ej. No se puede cambiar la API pública]
+- [ ] [Restricción 2: ej. Debe mantener compatibilidad hacia atrás]
+- [ ] [Restricción 3: ej. Sin cambios al esquema de base de datos]
 
-### Risk Level
-- [ ] Low - Minor changes, well-tested code
-- [ ] Medium - Moderate changes, some risk
-- [ ] High - Significant changes, careful attention needed
+### Nivel de Riesgo
+- [ ] Bajo - Cambios menores, código bien testeado
+- [ ] Medio - Cambios moderados, algo de riesgo
+- [ ] Alto - Cambios significativos, atención cuidadosa necesaria
 
 ---
 
-## Pre-Refactoring Checklist
+## Checklist Pre-Refactoring
 
-### Test Coverage Assessment
+### Evaluación de Cobertura de Tests
 
-| Metric | Current | Target | Status |
+| Métrica | Actual | Objetivo | Estado |
 |--------|---------|--------|--------|
-| Unit Test Coverage | __%  | ≥80% | |
-| Integration Tests | Yes/No | Yes | |
-| All Tests Passing | Yes/No | Yes | |
+| Cobertura de Tests Unitarios | __%  | ≥80% | |
+| Tests de Integración | Sí/No | Sí | |
+| Todos los Tests Pasando | Sí/No | Sí | |
 
-### Required Before Starting
-- [ ] All tests passing
-- [ ] Code reviewed and understood
-- [ ] Backup/version control in place
-- [ ] User approval obtained
+### Requeridos Antes de Comenzar
+- [ ] Todos los tests pasando
+- [ ] Código revisado y entendido
+- [ ] Backup/control de versiones en su lugar
+- [ ] Aprobación del usuario obtenida
 
 ---
 
-## Identified Code Smells
+## Code Smells Identificados
 
-### Summary
+### Resumen
 
-| # | Smell | Location | Severity | Priority |
+| # | Smell | Ubicación | Severidad | Prioridad |
 |---|-------|----------|----------|----------|
-| 1 | [e.g., Long Method] | [file:line] | High | P1 |
-| 2 | [e.g., Duplicate Code] | [file:line] | Medium | P2 |
-| 3 | [e.g., Feature Envy] | [file:line] | Low | P3 |
+| 1 | [ej. Método Largo] | [archivo:línea] | Alto | P1 |
+| 2 | [ej. Código Duplicado] | [archivo:línea] | Medio | P2 |
+| 3 | [ej. Envidia de Característica] | [archivo:línea] | Bajo | P3 |
 
-### Detailed Analysis
+### Análisis Detallado
 
-#### Smell #1: [Name]
+#### Smell #1: [Nombre]
 
-**Location**: `path/to/file.js:45-120`
+**Ubicación**: `ruta/al/archivo.js:45-120`
 
-**Description**: [Detailed description of the problem]
+**Descripción**: [Descripción detallada del problema]
 
-**Impact**:
-- [Impact 1]
-- [Impact 2]
+**Impacto**:
+- [Impacto 1]
+- [Impacto 2]
 
-**Proposed Solution**: [Brief overview of how to fix]
+**Solución Propuesta**: [Visión general breve de cómo arreglar]
 
 ---
 
-## Refactoring Phases
+## Fases de Refactoring
 
-### Phase A: Quick Wins (Low Risk)
+### Fase A: Victorias Rápidas (Bajo Riesgo)
 
-**Objective**: Simple improvements with immediate value
+**Objetivo**: Mejoras simples con valor inmediato
 
-**Estimated Changes**: [X files, Y methods]
+**Cambios Estimados**: [X archivos, Y métodos]
 
-**User Approval Required**: Yes / No
+**Aprobación de Usuario Requerida**: Sí / No
 
-| # | Task | File | Refactoring | Status |
+| # | Tarea | Archivo | Refactoring | Estado |
 |---|------|------|-------------|--------|
-| A1 | Rename variable `x` to `userCount` | utils.js:15 | Rename Variable | [ ] |
-| A2 | Remove unused `oldHandler()` | api.js:89 | Remove Dead Code | [ ] |
-| A3 | Extract duplicate validation | form.js:23,67 | Extract Method | [ ] |
+| A1 | Renombrar variable `x` a `userCount` | utils.js:15 | Renombrar Variable | [ ] |
+| A2 | Eliminar `oldHandler()` no usado | api.js:89 | Eliminar Código Muerto | [ ] |
+| A3 | Extraer validación duplicada | form.js:23,67 | Extract Method | [ ] |
 
-**Rollback Plan**: Revert commits A1-A3
+**Plan de Rollback**: Revertir commits A1-A3
 
 ---
 
-### Phase B: Structural Improvements (Medium Risk)
+### Fase B: Mejoras Estructurales (Riesgo Medio)
 
-**Objective**: Improve code organization and clarity
+**Objetivo**: Mejorar organización y claridad del código
 
-**Estimated Changes**: [X files, Y methods]
+**Cambios Estimados**: [X archivos, Y métodos]
 
-**User Approval Required**: Yes
+**Aprobación de Usuario Requerida**: Sí
 
-**Dependencies**: Phase A must be complete
+**Dependencias**: La Fase A debe estar completa
 
-| # | Task | File | Refactoring | Status |
+| # | Tarea | Archivo | Refactoring | Estado |
 |---|------|------|-------------|--------|
-| B1 | Extract `calculatePrice()` from long method | order.js:45 | Extract Method | [ ] |
-| B2 | Introduce `OrderDetails` parameter object | order.js:12 | Introduce Parameter Object | [ ] |
-| B3 | Move `formatAddress()` to Address class | customer.js:78 | Move Method | [ ] |
+| B1 | Extraer `calculatePrice()` de método largo | order.js:45 | Extract Method | [ ] |
+| B2 | Introducir objeto de parámetros `OrderDetails` | order.js:12 | Introduce Parameter Object | [ ] |
+| B3 | Mover `formatAddress()` a clase Address | customer.js:78 | Move Method | [ ] |
 
-**Rollback Plan**: Revert to post-Phase-A commit
+**Plan de Rollback**: Revertir al commit post-Fase-A
 
 ---
 
-### Phase C: Architectural Changes (Higher Risk)
+### Fase C: Cambios Arquitectónicos (Riesgo Más Alto)
 
-**Objective**: Address deeper structural issues
+**Objetivo**: Abordar problemas estructurales más profundos
 
-**Estimated Changes**: [X files, Y methods]
+**Cambios Estimados**: [X archivos, Y métodos]
 
-**User Approval Required**: Yes
+**Aprobación de Usuario Requerida**: Sí
 
-**Dependencies**: Phases A and B must be complete
+**Dependencias**: Fases A y B deben estar completas
 
-| # | Task | File | Refactoring | Status |
+| # | Tarea | Archivo | Refactoring | Estado |
 |---|------|------|-------------|--------|
-| C1 | Replace price switch with polymorphism | pricing.js:30 | Replace Conditional with Polymorphism | [ ] |
-| C2 | Extract `NotificationService` class | user.js:100 | Extract Class | [ ] |
+| C1 | Reemplazar switch de precio con polimorfismo | pricing.js:30 | Replace Conditional with Polymorphism | [ ] |
+| C2 | Extraer clase `NotificationService` | user.js:100 | Extract Class | [ ] |
 
-**Rollback Plan**: Revert to post-Phase-B commit
+**Plan de Rollback**: Revertir al commit post-Fase-B
 
 ---
 
-## Detailed Refactoring Steps
+## Pasos Detallados de Refactoring
 
-### Task [ID]: [Task Name]
+### Tarea [ID]: [Nombre de Tarea]
 
-**Smell Addressed**: [Smell name]
+**Smell Abordado**: [Nombre del smell]
 
-**Refactoring Technique**: [Technique name]
+**Técnica de Refactoring**: [Nombre de técnica]
 
-**Risk Level**: Low / Medium / High
+**Nivel de Riesgo**: Bajo / Medio / Alto
 
-#### Context
+#### Contexto
 
-**Before** (Current State):
+**Antes** (Estado Actual):
 ```javascript
-// Paste current code here
+// Pega el código actual aquí
 ```
 
-**After** (Expected State):
+**Después** (Estado Esperado):
 ```javascript
-// Paste expected code here
+// Pega el código esperado aquí
 ```
 
-#### Step-by-Step Mechanics
+#### Mecánicas Paso a Paso
 
-1. [ ] **Step 1**: [Description]
-   - Test: Run tests after this step
-   - Expected: All tests pass
+1. [ ] **Paso 1**: [Descripción]
+   - Test: Ejecuta tests después de este paso
+   - Esperado: Todos los tests pasan
 
-2. [ ] **Step 2**: [Description]
-   - Test: Run tests after this step
-   - Expected: All tests pass
+2. [ ] **Paso 2**: [Descripción]
+   - Test: Ejecuta tests después de este paso
+   - Esperado: Todos los tests pasan
 
-3. [ ] **Step 3**: [Description]
-   - Test: Run tests after this step
-   - Expected: All tests pass
+3. [ ] **Paso 3**: [Descripción]
+   - Test: Ejecuta tests después de este paso
+   - Esperado: Todos los tests pasan
 
-#### Verification
+#### Verificación
 
-- [ ] All tests passing
-- [ ] Behavior unchanged
-- [ ] Code compiles
-- [ ] No new warnings
+- [ ] Todos los tests pasando
+- [ ] Comportamiento sin cambios
+- [ ] Código compila
+- [ ] Sin nuevos warnings
 
-#### Commit Message
+#### Mensaje de Commit
 ```
-refactor: [Describe the refactoring]
+refactor: [Describe el refactoring]
 ```
 
 ---
 
-## Progress Tracking
+## Rastreo de Progreso
 
-### Phase Status
+### Estado de Fases
 
-| Phase | Status | Started | Completed | Tests Passing |
+| Fase | Estado | Iniciado | Completado | Tests Pasando |
 |-------|--------|---------|-----------|---------------|
-| A | Not Started / In Progress / Done | | | |
-| B | Not Started / In Progress / Done | | | |
-| C | Not Started / In Progress / Done | | | |
+| A | No Iniciado / En Progreso / Hecho | | | |
+| B | No Iniciado / En Progreso / Hecho | | | |
+| C | No Iniciado / En Progreso / Hecho | | | |
 
-### Issues Encountered
+### Issues Encontrados
 
-| # | Issue | Resolution | Status |
+| # | Issue | Resolución | Estado |
 |---|-------|------------|--------|
-| 1 | [Description] | [How resolved] | Open / Resolved |
+| 1 | [Descripción] | [Cómo se resolvió] | Abierto / Resuelto |
 
 ---
 
-## Metrics Comparison
+## Comparación de Métricas
 
-### Before Refactoring
+### Antes del Refactoring
 
-| Metric | File 1 | File 2 | Total |
+| Métrica | Archivo 1 | Archivo 2 | Total |
 |--------|--------|--------|-------|
-| Lines of Code | | | |
-| Cyclomatic Complexity | | | |
-| Maintainability Index | | | |
-| Number of Methods | | | |
-| Avg Method Length | | | |
+| Líneas de Código | | | |
+| Complejidad Ciclomática | | | |
+| Índice de Mantenibilidad | | | |
+| Número de Métodos | | | |
+| Longitud Promedio de Método | | | |
 
-### After Refactoring
+### Después del Refactoring
 
-| Metric | File 1 | File 2 | Total | Change |
+| Métrica | Archivo 1 | Archivo 2 | Total | Cambio |
 |--------|--------|--------|-------|--------|
-| Lines of Code | | | | |
-| Cyclomatic Complexity | | | | |
-| Maintainability Index | | | | |
-| Number of Methods | | | | |
-| Avg Method Length | | | | |
+| Líneas de Código | | | | |
+| Complejidad Ciclomática | | | | |
+| Índice de Mantenibilidad | | | | |
+| Número de Métodos | | | | |
+| Longitud Promedio de Método | | | | |
 
 ---
 
-## Post-Refactoring Checklist
+## Checklist Post-Refactoring
 
-- [ ] All tests passing
-- [ ] No new warnings or errors
-- [ ] Code compiles successfully
-- [ ] Manual verification completed
-- [ ] Documentation updated (if needed)
-- [ ] Code reviewed
-- [ ] Metrics improved
-- [ ] User sign-off obtained
-
----
-
-## Lessons Learned
-
-### What Went Well
-- [Item 1]
-- [Item 2]
-
-### What Could Be Improved
-- [Item 1]
-- [Item 2]
-
-### Recommendations for Future
-- [Item 1]
-- [Item 2]
+- [ ] Todos los tests pasando
+- [ ] Sin nuevos warnings o errores
+- [ ] Código compila exitosamente
+- [ ] Verificación manual completada
+- [ ] Documentación actualizada (si es necesario)
+- [ ] Código revisado
+- [ ] Métricas mejoradas
+- [ ] Aprobación del usuario obtenida
 
 ---
 
-## Approvals
+## Lecciones Aprendidas
 
-| Role | Name | Date | Signature |
+### Qué Salió Bien
+- [Ítem 1]
+- [Ítem 2]
+
+### Qué Podría Mejorarse
+- [Ítem 1]
+- [Ítem 2]
+
+### Recomendaciones para el Futuro
+- [Ítem 1]
+- [Ítem 2]
+
+---
+
+## Aprobaciones
+
+| Rol | Nombre | Fecha | Firma |
 |------|------|------|-----------|
-| Plan Author | | | |
-| Technical Lead | | | |
+| Autor del Plan | | | |
+| Líder Técnico | | | |
 | Product Owner | | | |
 
 ---
 
-## Appendix
+## Apéndice
 
-### A. Related Documentation
-- [Link to relevant docs]
+### A. Documentación Relacionada
+- [Link a docs relevantes]
 
-### B. Reference Materials
-- [Link to code smells catalog]
-- [Link to refactoring catalog]
+### B. Materiales de Referencia
+- [Link a catálogo de code smells]
+- [Link a catálogo de refactoring]
 
-### C. Tools Used
-- [Testing framework]
-- [Linting tools]
-- [Complexity analysis tools]
+### C. Herramientas Usadas
+- [Framework de testing]
+- [Herramientas de linting]
+- [Herramientas de análisis de complejidad]

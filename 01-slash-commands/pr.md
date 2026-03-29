@@ -1,26 +1,26 @@
 ---
-description: Clean up code, stage changes, and prepare a pull request
+description: Limpiar código, preparar cambios en stage y preparar un pull request
 allowed-tools: Bash(git add:*), Bash(git status:*), Bash(git diff:*), Bash(npm test:*), Bash(npm run lint:*)
 ---
 
-# Pull Request Preparation Checklist
+# Lista de Verificación de Preparación de Pull Request
 
-Before creating a PR, execute these steps:
+Antes de crear un PR, ejecuta estos pasos:
 
-1. Run linting: `prettier --write .`
-2. Run tests: `npm test`
-3. Review git diff: `git diff HEAD`
-4. Stage changes: `git add .`
-5. Create commit message following conventional commits:
-   - `fix:` for bug fixes
-   - `feat:` for new features
-   - `docs:` for documentation
-   - `refactor:` for code restructuring
-   - `test:` for test additions
-   - `chore:` for maintenance
+1. Ejecuta linting: `prettier --write .`
+2. Ejecuta tests: `npm test`
+3. Revisa git diff: `git diff HEAD`
+4. Prepara cambios en stage: `git add .`
+5. Crea mensaje de commit siguiendo conventional commits:
+   - `fix:` para correcciones de bugs
+   - `feat:` para nuevas características
+   - `docs:` para documentación
+   - `refactor:` para reestructuración de código
+   - `test:` para adición de tests
+   - `chore:` para mantenimiento
 
-6. Generate PR summary including:
-   - What changed
-   - Why it changed
-   - Testing performed
-   - Potential impacts
+6. Genera resumen de PR incluyendo:
+   - Qué cambió
+   - Por qué cambió
+   - Testing realizado
+   - Impactos potenciales

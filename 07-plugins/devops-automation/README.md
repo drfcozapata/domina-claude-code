@@ -3,57 +3,57 @@
   <img alt="Claude How To" src="../../resources/logos/claude-howto-logo.svg">
 </picture>
 
-# DevOps Automation Plugin
+# Plugin de Automatización DevOps
 
-Complete DevOps automation for deployment, monitoring, and incident response.
+Automatización DevOps completa para despliegue, monitoreo y respuesta a incidentes.
 
-## Features
+## Características
 
-✅ Automated deployments
-✅ Rollback procedures
-✅ System health monitoring
-✅ Incident response workflows
-✅ Kubernetes integration
+✅ Despliegues automatizados
+✅ Procedimientos de rollback
+✅ Monitoreo de salud del sistema
+✅ Flujos de trabajo de respuesta a incidentes
+✅ Integración con Kubernetes
 
-## Installation
+## Instalación
 
 ```bash
 /plugin install devops-automation
 ```
 
-## What's Included
+## Qué está Incluido
 
-### Slash Commands
-- `/deploy` - Deploy to production or staging
-- `/rollback` - Rollback to previous version
-- `/status` - Check system health
-- `/incident` - Handle production incidents
+### Comandos Slash
+- `/deploy` - Desplegar a producción o staging
+- `/rollback` - Rollback a versión anterior
+- `/status` - Verificar salud del sistema
+- `/incident` - Manejar incidentes de producción
 
-### Subagents
-- `deployment-specialist` - Deployment operations
-- `incident-commander` - Incident coordination
-- `alert-analyzer` - System health analysis
+### Subagentes
+- `deployment-specialist` - Operaciones de despliegue
+- `incident-commander` - Coordinación de incidentes
+- `alert-analyzer` - Análisis de salud del sistema
 
-### MCP Servers
-- Kubernetes integration
+### Servidores MCP
+- Integración con Kubernetes
 
 ### Scripts
-- `deploy.sh` - Deployment automation
-- `rollback.sh` - Rollback automation
-- `health-check.sh` - Health check utilities
+- `deploy.sh` - Automatización de despliegue
+- `rollback.sh` - Automatización de rollback
+- `health-check.sh` - Utilidades de verificación de salud
 
 ### Hooks
-- `pre-deploy.js` - Pre-deployment validation
-- `post-deploy.js` - Post-deployment tasks
+- `pre-deploy.js` - Validación pre-despliegue
+- `post-deploy.js` - Tareas post-despliegue
 
-## Usage
+## Uso
 
-### Deploy to Staging
+### Desplegar a Staging
 ```
 /deploy staging
 ```
 
-### Deploy to Production
+### Desplegar a Producción
 ```
 /deploy production
 ```
@@ -63,45 +63,45 @@ Complete DevOps automation for deployment, monitoring, and incident response.
 /rollback production
 ```
 
-### Check Status
+### Verificar Estado
 ```
 /status
 ```
 
-### Handle Incident
+### Manejar Incidente
 ```
 /incident
 ```
 
-## Requirements
+## Requisitos
 
 - Claude Code 1.0+
 - Kubernetes CLI (kubectl)
-- Cluster access configured
+- Acceso a cluster configurado
 
-## Configuration
+## Configuración
 
-Set up your Kubernetes config:
+Configura tu Kubernetes config:
 ```bash
 export KUBECONFIG=~/.kube/config
 ```
 
-## Example Workflow
+## Ejemplo de Flujo de Trabajo
 
 ```
-User: /deploy production
+Usuario: /deploy production
 
 Claude:
-1. Runs pre-deploy hook (validates kubectl, cluster connection)
-2. Delegates to deployment-specialist subagent
-3. Runs deploy.sh script
-4. Monitors deployment progress via Kubernetes MCP
-5. Runs post-deploy hook (waits for pods, smoke tests)
-6. Provides deployment summary
+1. Ejecuta hook pre-deploy (valida kubectl, conexión al cluster)
+2. Delega al subagente deployment-specialist
+3. Ejecuta script deploy.sh
+4. Monitorea progreso del despliegue vía Kubernetes MCP
+5. Ejecuta hook post-deploy (espera pods, smoke tests)
+6. Proporciona resumen del despliegue
 
-Result:
-✅ Deployment complete
-📦 Version: v2.1.0
-🚀 Pods: 3/3 ready
-⏱️  Time: 2m 34s
+Resultado:
+✅ Despliegue completado
+📦 Versión: v2.1.0
+🚀 Pods: 3/3 listos
+⏱️  Tiempo: 2m 34s
 ```

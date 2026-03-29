@@ -3,89 +3,89 @@
   <img alt="Claude How To" src="../../resources/logos/claude-howto-logo.svg">
 </picture>
 
-# PR Review Plugin
+# Plugin de Revisión de PR
 
-Complete PR review workflow with security, testing, and documentation checks.
+Flujo de trabajo completo de revisión de PR con verificaciones de seguridad, pruebas y documentación.
 
-## Features
+## Características
 
-✅ Security analysis
-✅ Test coverage checking
-✅ Documentation verification
-✅ Code quality assessment
-✅ Performance impact analysis
+✅ Análisis de seguridad
+✅ Verificación de cobertura de pruebas
+✅ Verificación de documentación
+✅ Evaluación de calidad de código
+✅ Análisis de impacto en el rendimiento
 
-## Installation
+## Instalación
 
 ```bash
 /plugin install pr-review
 ```
 
-## What's Included
+## Qué está Incluido
 
-### Slash Commands
-- `/review-pr` - Comprehensive PR review
-- `/check-security` - Security-focused review
-- `/check-tests` - Test coverage analysis
+### Comandos Slash
+- `/review-pr` - Revisión completa de PR
+- `/check-security` - Revisión enfocada en seguridad
+- `/check-tests` - Análisis de cobertura de pruebas
 
-### Subagents
-- `security-reviewer` - Security vulnerability detection
-- `test-checker` - Test coverage analysis
-- `performance-analyzer` - Performance impact evaluation
+### Subagentes
+- `security-reviewer` - Detección de vulnerabilidades de seguridad
+- `test-checker` - Análisis de cobertura de pruebas
+- `performance-analyzer` - Evaluación de impacto en el rendimiento
 
-### MCP Servers
-- GitHub integration for PR data
+### Servidores MCP
+- Integración con GitHub para datos de PR
 
 ### Hooks
-- `pre-review.js` - Pre-review validation
+- `pre-review.js` - Validación pre-revisión
 
-## Usage
+## Uso
 
-### Basic PR Review
+### Revisión Básica de PR
 ```
 /review-pr
 ```
 
-### Security Check Only
+### Solo Verificación de Seguridad
 ```
 /check-security
 ```
 
-### Test Coverage Check
+### Verificación de Cobertura de Pruebas
 ```
 /check-tests
 ```
 
-## Requirements
+## Requisitos
 
 - Claude Code 1.0+
-- GitHub access
-- Git repository
+- Acceso a GitHub
+- Repositorio Git
 
-## Configuration
+## Configuración
 
-Set up your GitHub token:
+Configura tu token de GitHub:
 ```bash
 export GITHUB_TOKEN="your_github_token"
 ```
 
-## Example Workflow
+## Ejemplo de Flujo de Trabajo
 
 ```
-User: /review-pr
+Usuario: /review-pr
 
 Claude:
-1. Runs pre-review hook (validates git repo)
-2. Fetches PR data via GitHub MCP
-3. Delegates security review to security-reviewer subagent
-4. Delegates testing to test-checker subagent
-5. Delegates performance to performance-analyzer subagent
-6. Synthesizes all findings
-7. Provides comprehensive review report
+1. Ejecuta hook pre-revisión (valida repositorio git)
+2. Obtiene datos de PR vía MCP de GitHub
+3. Delega revisión de seguridad al subagente security-reviewer
+4. Delega pruebas al subagente test-checker
+5. Delega rendimiento al subagente performance-analyzer
+6. Sintetiza todos los hallazgos
+7. Proporciona informe de revisión completo
 
-Result:
-✅ Security: No critical issues found
-⚠️  Testing: Coverage is 65%, recommend 80%+
-✅ Performance: No significant impact
-📝 Recommendations: Add tests for edge cases
+Resultado:
+✅ Seguridad: No se encontraron issues críticos
+⚠️  Pruebas: La cobertura es 65%, se recomienda 80%+
+✅ Rendimiento: Sin impacto significativo
+📝 Recomendaciones: Agregar pruebas para casos edge
 ```

@@ -1,67 +1,67 @@
-# [Blog Post Title]
+# [Título del Blog Post]
 
-*[Subtitle or tagline - optional]*
+*[Subtítulo o tagline - opcional]*
 
-**[Author Name]** | [Date]
-
----
-
-[Opening hook - grab attention immediately]
-
-[Context and background - why this matters]
-
-[Thesis statement - what this post will cover]
+**[Nombre del Autor]** | [Fecha]
 
 ---
 
-## [Section 1 Title]
+[Hook de apertura - captura atención inmediatamente]
 
-[Section content with clear, engaging prose]
+[Contexto y antecedentes - por qué esto importa]
 
-[Include evidence, examples, or data to support points]
-
-> "Relevant quote from research" - Source
-
-[Transition to next section]
+[Declaración de tesis - qué cubrirá este post]
 
 ---
 
-## [Section 2 Title]
+## [Título de Sección 1]
 
-[Continue with main content]
+[Contenido de sección con prosa clara y atractiva]
 
-**Key takeaway:** [Highlight important points in bold or callout boxes]
+[Incluye evidencia, ejemplos, o datos para apoyar puntos]
 
-[More supporting content]
+> "Cita relevante de la investigación" - Fuente
 
----
-
-## [Section 3 Title]
-
-[Additional sections as needed]
-
-### Subsection (if needed)
-
-[Subsection content]
+[Transición a la siguiente sección]
 
 ---
 
-## Conclusion
+## [Título de Sección 2]
 
-[Summarize the key points covered]
+[Continúa con el contenido principal]
 
-[Reinforce the main takeaway]
+**Punto clave:** [Resalta puntos importantes en negrita o cajas de llamada]
 
-[Call to action or thought-provoking final statement]
-
----
-
-## References
-
-1. [Source Title](#)
-2. [Source Title](#)
-3. [Source Title](#)
+[Más contenido de apoyo]
 
 ---
 
-*[Optional: Author bio or related posts suggestion]*
+## [Título de Sección 3]
+
+[Secciones adicionales según sea necesario]
+
+### Subsección (si es necesario)
+
+[Contenido de subsección]
+
+---
+
+## Conclusión
+
+[Resume los puntos clave cubiertos]
+
+[Refuerza el mensaje principal]
+
+[Call to action o declaración final provocativa]
+
+---
+
+## Referencias
+
+1. [Título de Fuente](#)
+2. [Título de Fuente](#)
+3. [Título de Fuente](#)
+
+---
+
+*[Bio del autor opcional o sugerencia de posts relacionados]*

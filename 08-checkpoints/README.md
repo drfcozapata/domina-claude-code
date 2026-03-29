@@ -3,92 +3,92 @@
   <img alt="Claude How To" src="../resources/logos/claude-howto-logo.svg">
 </picture>
 
-# Checkpoints and Rewind
+# Checkpoints y Rewind
 
-Checkpoints allow you to save conversation state and rewind to previous points in your Claude Code session. This is invaluable for exploring different approaches, recovering from mistakes, or comparing alternative solutions.
+Los Checkpoints permiten guardar el estado de la conversación y retroceder a puntos anteriores en tu sesión de Claude Code. Esto es invaluable para explorar diferentes enfoques, recuperarse de errores o comparar soluciones alternativas.
 
-## Overview
+## Descripción General
 
-Checkpoints allow you to save conversation state and rewind to previous points, enabling safe experimentation and exploration of multiple approaches. They are snapshots of your conversation state, including:
-- All messages exchanged
-- File modifications made
-- Tool usage history
-- Session context
+Los Checkpoints permiten guardar el estado de la conversación y retroceder a puntos anteriores, permitiendo una experimentación segura y la exploración de múltiples enfoques. Son instantáneas del estado de tu conversación, incluyendo:
+- Todos los mensajes intercambiados
+- Modificaciones de archivos realizadas
+- Historial de uso de herramientas
+- Contexto de la sesión
 
-Checkpoints are invaluable when exploring different approaches, recovering from mistakes, or comparing alternative solutions.
+Los Checkpoints son invaluables al explorar diferentes enfoques, recuperarse de errores o comparar soluciones alternativas.
 
-## Key Concepts
+## Conceptos Clave
 
-| Concept | Description |
+| Concepto | Descripción |
 |---------|-------------|
-| **Checkpoint** | Snapshot of conversation state including messages, files, and context |
-| **Rewind** | Return to a previous checkpoint, discarding subsequent changes |
-| **Branch Point** | Checkpoint from which multiple approaches are explored |
+| **Checkpoint** | Instantánea del estado de la conversación incluyendo mensajes, archivos y contexto |
+| **Rewind** | Volver a un checkpoint anterior, descartando cambios posteriores |
+| **Branch Point** | Checkpoint desde el cual se exploran múltiples enfoques |
 
-## Accessing Checkpoints
+## Accediendo a Checkpoints
 
-You can access and manage checkpoints in two primary ways:
+Puedes acceder y gestionar checkpoints de dos formas principales:
 
-### Using Keyboard Shortcut
-Press `Esc` twice (`Esc` + `Esc`) to open the checkpoint interface and browse saved checkpoints.
+### Usando Atajo de Teclado
+Presiona `Esc` dos veces (`Esc` + `Esc`) para abrir la interfaz de checkpoints y navegar por los checkpoints guardados.
 
-### Using Slash Command
-Use the `/rewind` command (alias: `/checkpoint`) for quick access:
+### Usando Slash Command
+Usa el comando `/rewind` (alias: `/checkpoint`) para acceso rápido:
 
 ```bash
-# Open rewind interface
+# Abrir interfaz de rewind
 /rewind
 
-# Or use the alias
+# O usar el alias
 /checkpoint
 ```
 
-## Rewind Options
+## Opciones de Rewind
 
-When you rewind, you are presented with a menu of five options:
+Cuando retrocedes, se te presenta un menú de cinco opciones:
 
-1. **Restore code and conversation** -- Revert both files and messages to that checkpoint
-2. **Restore conversation** -- Rewind messages only, keep your current code as-is
-3. **Restore code** -- Revert file changes only, keep the full conversation history
-4. **Summarize from here** -- Compress the conversation from this point forward into an AI-generated summary instead of discarding it. The original messages are preserved in the transcript. You can optionally provide instructions to focus the summary on specific topics.
-5. **Never mind** -- Cancel and return to the current state
+1. **Restore code and conversation** -- Revertir tanto archivos como mensajes a ese checkpoint
+2. **Restore conversation** -- Retroceder solo mensajes, mantener tu código actual tal como está
+3. **Restore code** -- Revertir solo cambios de archivos, mantener el historial completo de la conversación
+4. **Summarize from here** -- Comprimir la conversación desde ese punto en adelante en un resumen generado por IA en lugar de descartarlo. Los mensajes originales se conservan en la transcripción. Opcionalmente puedes proporcionar instrucciones para enfocar el resumen en temas específicos.
+5. **Never mind** -- Cancelar y volver al estado actual
 
-## Automatic Checkpoints
+## Checkpoints Automáticos
 
-Claude Code automatically creates checkpoints for you:
+Claude Code crea checkpoints automáticamente para ti:
 
-- **Every user prompt** - A new checkpoint is created with each user input
-- **Persistent** - Checkpoints persist across sessions
-- **Auto-cleaned** - Checkpoints are automatically cleaned up after 30 days
+- **Cada prompt del usuario** - Se crea un nuevo checkpoint con cada entrada del usuario
+- **Persistentes** - Los checkpoints persisten entre sesiones
+- **Auto-limpiados** - Los checkpoints se limpian automáticamente después de 30 días
 
-This means you can always rewind to any previous point in your conversation, from a few minutes ago to days before.
+Esto significa que siempre puedes retroceder a cualquier punto anterior en tu conversación, desde hace unos minutos hasta días antes.
 
-## Use Cases
+## Casos de Uso
 
-| Scenario | Workflow |
+| Escenario | Flujo de Trabajo |
 |----------|----------|
-| **Exploring Approaches** | Save → Try A → Save → Rewind → Try B → Compare |
-| **Safe Refactoring** | Save → Refactor → Test → If fail: Rewind |
-| **A/B Testing** | Save → Design A → Save → Rewind → Design B → Compare |
-| **Mistake Recovery** | Notice issue → Rewind to last good state |
+| **Explorar Enfoques** | Guardar → Probar A → Guardar → Rewind → Probar B → Comparar |
+| **Refactorización Segura** | Guardar → Refactorizar → Probar → Si falla: Rewind |
+| **Pruebas A/B** | Guardar → Diseño A → Guardar → Rewind → Diseño B → Comparar |
+| **Recuperación de Errores** | Notar problema → Rewind al último estado bueno |
 
-## Using Checkpoints
+## Usando Checkpoints
 
-### Viewing and Rewinding
+### Viendo y Retrocediendo
 
-Press `Esc` twice or use `/rewind` to open the checkpoint browser. You'll see a list of all available checkpoints with timestamps. Select any checkpoint to rewind to that state.
+Presiona `Esc` dos veces o usa `/rewind` para abrir el navegador de checkpoints. Verás una lista de todos los checkpoints disponibles con marcas de tiempo. Selecciona cualquier checkpoint para retroceder a ese estado.
 
-### Checkpoint Details
+### Detalles del Checkpoint
 
-Each checkpoint shows:
-- Timestamp of when it was created
-- Files that were modified
-- Number of messages in the conversation
-- Tools that were used
+Cada checkpoint muestra:
+- Marca de tiempo de cuándo fue creado
+- Archivos que fueron modificados
+- Número de mensajes en la conversación
+- Herramientas que fueron usadas
 
-## Practical Examples
+## Ejemplos Prácticos
 
-### Example 1: Exploring Different Approaches
+### Ejemplo 1: Explorando Diferentes Enfoques
 
 ```
 User: Let's add a caching layer to the API
@@ -105,7 +105,7 @@ Claude: I'll rewind to explore a different approach...
 User: Now I can compare both approaches
 ```
 
-### Example 2: Recovering from Mistakes
+### Ejemplo 2: Recuperándose de Errores
 
 ```
 User: Refactor the authentication module to use JWT
@@ -121,7 +121,7 @@ Claude: I'll help you rewind to before the refactoring...
 User: Let's try a more conservative approach this time
 ```
 
-### Example 3: Safe Experimentation
+### Ejemplo 3: Experimentación Segura
 
 ```
 User: Let's try rewriting this in a functional style
@@ -135,7 +135,7 @@ User: The tests are failing. Let's rewind.
 Claude: I've rewound the changes. Let's try a different approach.
 ```
 
-### Example 4: Branching Approaches
+### Ejemplo 4: Enfoques de Ramificación
 
 ```
 User: I want to compare two database designs
@@ -153,61 +153,61 @@ Claude: Now I'll implement Schema B...
 User: Great! Now I have both schemas to choose from
 ```
 
-## Checkpoint Retention
+## Retención de Checkpoints
 
-Claude Code automatically manages your checkpoints:
+Claude Code gestiona automáticamente tus checkpoints:
 
-- Checkpoints are created automatically with every user prompt
-- Old checkpoints are retained for up to 30 days
-- Checkpoints are cleaned up automatically to prevent unlimited storage growth
+- Los checkpoints se crean automáticamente con cada prompt del usuario
+- Los checkpoints antiguos se conservan hasta por 30 días
+- Los checkpoints se limpian automáticamente para prevenir crecimiento ilimitado de almacenamiento
 
-## Workflow Patterns
+## Patrones de Flujo de Trabajo
 
-### Branching Strategy for Exploration
+### Estrategia de Ramificación para Exploración
 
-When exploring multiple approaches:
-
-```
-1. Start with initial implementation → Checkpoint A
-2. Try Approach 1 → Checkpoint B
-3. Rewind to Checkpoint A
-4. Try Approach 2 → Checkpoint C
-5. Compare results from B and C
-6. Choose best approach and continue
-```
-
-### Safe Refactoring Pattern
-
-When making significant changes:
+Al explorar múltiples enfoques:
 
 ```
-1. Current state → Checkpoint (auto)
-2. Start refactoring
-3. Run tests
-4. If tests pass → Continue working
-5. If tests fail → Rewind and try different approach
+1. Comenzar con implementación inicial → Checkpoint A
+2. Probar Enfoque 1 → Checkpoint B
+3. Rewind al Checkpoint A
+4. Probar Enfoque 2 → Checkpoint C
+5. Comparar resultados de B y C
+6. Elegir el mejor enfoque y continuar
 ```
 
-## Best Practices
+### Patrón de Refactorización Segura
 
-Since checkpoints are created automatically, you can focus on your work without worrying about manually saving state. However, keep these practices in mind:
+Al hacer cambios significativos:
 
-### Using Checkpoints Effectively
+```
+1. Estado actual → Checkpoint (auto)
+2. Comenzar refactorización
+3. Ejecutar pruebas
+4. Si las pruebas pasan → Continuar trabajando
+5. Si las pruebas fallan → Rewind e intentar diferente enfoque
+```
 
-✅ **Do:**
-- Review available checkpoints before rewinding
-- Use rewind when you want to explore different directions
-- Keep checkpoints to compare different approaches
-- Understand what each rewind option does (restore code and conversation, restore conversation, restore code, or summarize)
+## Mejores Prácticas
 
-❌ **Don't:**
-- Rely on checkpoints alone for code preservation
-- Expect checkpoints to track external file system changes
-- Use checkpoints as a substitute for git commits
+Dado que los checkpoints se crean automáticamente, puedes enfocarte en tu trabajo sin preocuparte por guardar el estado manualmente. Sin embargo, ten en cuenta estas prácticas:
 
-## Configuration
+### Usando Checkpoints Efectivamente
 
-You can toggle automatic checkpoints in your settings:
+✅ **Haz:**
+- Revisar checkpoints disponibles antes de retroceder
+- Usar rewind cuando quieras explorar diferentes direcciones
+- Mantener checkpoints para comparar diferentes enfoques
+- Entender qué hace cada opción de rewind (restore code and conversation, restore conversation, restore code, o summarize)
+
+❌ **No hagas:**
+- Confiar solo en checkpoints para preservación de código
+- Esperar que los checkpoints rastreen cambios externos en el sistema de archivos
+- Usar checkpoints como sustituto de commits de git
+
+## Configuración
+
+Puedes activar/desactivar checkpoints automáticos en tu configuración:
 
 ```json
 {
@@ -215,91 +215,91 @@ You can toggle automatic checkpoints in your settings:
 }
 ```
 
-- `autoCheckpoint`: Enable or disable automatic checkpoint creation on every user prompt (default: `true`)
+- `autoCheckpoint`: Habilitar o deshabilitar la creación automática de checkpoints en cada prompt del usuario (predeterminado: `true`)
 
-## Limitations
+## Limitaciones
 
-Checkpoints have the following limitations:
+Los checkpoints tienen las siguientes limitaciones:
 
-- **Bash command changes NOT tracked** - Operations like `rm`, `mv`, `cp` on the filesystem are not captured in checkpoints
-- **External changes NOT tracked** - Changes made outside Claude Code (in your editor, terminal, etc.) are not captured
-- **Not a replacement for version control** - Use git for permanent, auditable changes to your codebase
+- **Cambios en comandos Bash NO rastreados** - Operaciones como `rm`, `mv`, `cp` en el sistema de archivos no se capturan en checkpoints
+- **Cambios externos NO rastreados** - Cambios realizados fuera de Claude Code (en tu editor, terminal, etc.) no se capturan
+- **No es un reemplazo para control de versiones** - Usa git para cambios permanentes y auditables en tu código
 
-## Troubleshooting
+## Solución de Problemas
 
-### Missing Checkpoints
+### Checkpoints Faltantes
 
-**Problem**: Expected checkpoint not found
+**Problema**: No se encuentra el checkpoint esperado
 
-**Solution**:
-- Check if checkpoints were cleared
-- Verify that `autoCheckpoint` is enabled in your settings
-- Check disk space
+**Solución**:
+- Verifica si los checkpoints fueron borrados
+- Verifica que `autoCheckpoint` esté habilitado en tu configuración
+- Verifica el espacio en disco
 
-### Rewind Failed
+### Rewind Falló
 
-**Problem**: Cannot rewind to checkpoint
+**Problema**: No se puede retroceder al checkpoint
 
-**Solution**:
-- Ensure no uncommitted changes conflict
-- Check if checkpoint is corrupted
-- Try rewinding to a different checkpoint
+**Solución**:
+- Asegúrate de que no haya cambios sin commit que conflictúen
+- Verifica si el checkpoint está corrupto
+- Intenta retroceder a un checkpoint diferente
 
-## Integration with Git
+## Integración con Git
 
-Checkpoints complement (but don't replace) git:
+Los checkpoints complementan (pero no reemplazan) a git:
 
-| Feature | Git | Checkpoints |
+| Característica | Git | Checkpoints |
 |---------|-----|-------------|
-| Scope | File system | Conversation + files |
-| Persistence | Permanent | Session-based |
-| Granularity | Commits | Any point |
-| Speed | Slower | Instant |
-| Sharing | Yes | Limited |
+| Alcance | Sistema de archivos | Conversación + archivos |
+| Persistencia | Permanente | Basado en sesión |
+| Granularidad | Commits | Cualquier punto |
+| Velocidad | Más lento | Instantáneo |
+| Compartir | Sí | Limitado |
 
-Use both together:
-1. Use checkpoints for rapid experimentation
-2. Use git commits for finalized changes
-3. Create checkpoint before git operations
-4. Commit successful checkpoint states to git
+Usa ambos juntos:
+1. Usa checkpoints para experimentación rápida
+2. Usa commits de git para cambios finalizados
+3. Crea checkpoint antes de operaciones de git
+4. Commit estados exitosos de checkpoints a git
 
-## Quick Start Guide
+## Guía de Inicio Rápido
 
-### Basic Workflow
+### Flujo de Trabajo Básico
 
-1. **Work normally** - Claude Code creates checkpoints automatically
-2. **Want to go back?** - Press `Esc` twice or use `/rewind`
-3. **Choose checkpoint** - Select from the list to rewind
-4. **Select what to restore** - Choose from restore code and conversation, restore conversation, restore code, summarize from here, or cancel
-5. **Continue working** - You're back at that point
+1. **Trabaja normalmente** - Claude Code crea checkpoints automáticamente
+2. **¿Quieres volver atrás?** - Presiona `Esc` dos veces o usa `/rewind`
+3. **Elige checkpoint** - Selecciona de la lista para retroceder
+4. **Selecciona qué restaurar** - Elige entre restore code and conversation, restore conversation, restore code, summarize from here, o cancelar
+5. **Continúa trabajando** - Estás de vuelta en ese punto
 
-### Keyboard Shortcuts
+### Atajos de Teclado
 
-- **`Esc` + `Esc`** - Open checkpoint browser
-- **`/rewind`** - Alternative way to access checkpoints
-- **`/checkpoint`** - Alias for `/rewind`
+- **`Esc` + `Esc`** - Abrir navegador de checkpoints
+- **`/rewind`** - Forma alternativa de acceder a checkpoints
+- **`/checkpoint`** - Alias para `/rewind`
 
-## Related Concepts
+## Conceptos Relacionados
 
-- **[Advanced Features](../09-advanced-features/)** - Planning mode and other advanced capabilities
-- **[Memory Management](../02-memory/)** - Managing conversation history and context
-- **[Slash Commands](../01-slash-commands/)** - User-invoked shortcuts
-- **[Hooks](../06-hooks/)** - Event-driven automation
-- **[Plugins](../07-plugins/)** - Bundled extension packages
+- **[Advanced Features](../09-advanced-features/)** - Modo de planificación y otras capacidades avanzadas
+- **[Memory Management](../02-memory/)** - Gestión del historial de conversaciones y contexto
+- **[Slash Commands](../01-slash-commands/)** - Atajos invocados por el usuario
+- **[Hooks](../06-hooks/)** - Automatización basada en eventos
+- **[Plugins](../07-plugins/)** - Paquetes de extensión incluidos
 
-## Additional Resources
+## Recursos Adicionales
 
-- [Official Checkpointing Documentation](https://code.claude.com/docs/en/checkpointing)
-- [Advanced Features Guide](../09-advanced-features/) - Extended thinking and other capabilities
+- [Documentación Oficial de Checkpointing](https://code.claude.com/docs/en/checkpointing)
+- [Guía de Advanced Features](../09-advanced-features/) - Pensamiento extendido y otras capacidades
 
-## Summary
+## Resumen
 
-Checkpoints are an automatic feature in Claude Code that lets you safely explore different approaches without fear of losing work. Every user prompt creates a new checkpoint automatically, so you can rewind to any previous point in your session.
+Los Checkpoints son una característica automática en Claude Code que te permite explorar diferentes enfoques de forma segura sin miedo a perder trabajo. Cada prompt del usuario crea automáticamente un nuevo checkpoint, por lo que puedes retroceder a cualquier punto anterior en tu sesión.
 
-Key benefits:
-- Experiment fearlessly with multiple approaches
-- Quickly recover from mistakes
-- Compare different solutions side-by-side
-- Integrate safely with version control systems
+Beneficios clave:
+- Experimenta sin miedo con múltiples enfoques
+- Recupérate rápidamente de errores
+- Compara diferentes soluciones lado a lado
+- Intégrate de forma segura con sistemas de control de versiones
 
-Remember: checkpoints are not a replacement for git. Use checkpoints for rapid experimentation and git for permanent code changes.
+Recuerda: los checkpoints no son un reemplazo para git. Usa checkpoints para experimentación rápida y git para cambios permanentes en el código.

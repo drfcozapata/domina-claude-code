@@ -1,13 +1,13 @@
 #!/bin/bash
-# Validate user prompts
+# Validar prompts de usuario
 # Hook: UserPromptSubmit
 
-# Read prompt from stdin
+# Leer prompt desde stdin
 PROMPT=$(cat)
 
-echo "🔍 Validating prompt..."
+echo "🔍 Validando prompt..."
 
-# Check for dangerous operations
+# Verificar operaciones peligrosas
 DANGEROUS_PATTERNS=(
   "rm -rf /"
   "delete database"
@@ -18,26 +18,26 @@ DANGEROUS_PATTERNS=(
 
 for pattern in "${DANGEROUS_PATTERNS[@]}"; do
   if echo "$PROMPT" | grep -qi "$pattern"; then
-    echo "❌ Blocked: Dangerous operation detected: $pattern"
+    echo "❌ Bloqueado: Operación peligrosa detectada: $pattern"
     exit 1
   fi
 done
 
-# Check for production deployments
+# Verificar despliegues a producción
 if echo "$PROMPT" | grep -qiE "(deploy|push).*production"; then
   if [ ! -f ".deployment-approved" ]; then
-    echo "❌ Blocked: Production deployment requires approval"
-    echo "Create .deployment-approved file to proceed"
+    echo "❌ Bloqueado: El despliegue a producción requiere aprobación"
+    echo "Crea el archivo .deployment-approved para proceder"
     exit 1
   fi
 fi
 
-# Check for required context in certain operations
+# Verificar contexto requerido en ciertas operaciones
 if echo "$PROMPT" | grep -qi "refactor"; then
   if [ ! -f "tests/" ] && [ ! -f "test/" ]; then
-    echo "⚠️  Warning: Refactoring without tests may be risky"
+    echo "⚠️  Advertencia: Refactorizar sin tests puede ser riesgoso"
   fi
 fi
 
-echo "✅ Prompt validation passed"
+echo "✅ Validación del prompt pasó"
 exit 0

@@ -1,25 +1,25 @@
 #!/bin/bash
 set -e
 
-echo "⏪ Starting rollback..."
+echo "⏪ Iniciando rollback..."
 
 ENV=${1:-staging}
-echo "📦 Target environment: $ENV"
+echo "📦 Entorno objetivo: $ENV"
 
-# Get previous deployment
+# Obtener despliegue anterior
 PREVIOUS=$(kubectl rollout history deployment/app -n $ENV | tail -2 | head -1 | awk '{print $1}')
-echo "🔄 Rolling back to revision: $PREVIOUS"
+echo "🔄 Retrocediendo a revisión: $PREVIOUS"
 
-# Execute rollback
+# Ejecutar rollback
 kubectl rollout undo deployment/app -n $ENV
 
-# Wait for rollback
-echo "⏳ Waiting for rollback to complete..."
+# Esperar rollback
+echo "⏳ Esperando a que el rollback se complete..."
 kubectl rollout status deployment/app -n $ENV
 
-# Health check
-echo "🏥 Running health checks..."
+# Verificación de salud
+echo "🏥 Ejecutando verificaciones de salud..."
 sleep 5
 curl -f http://api.$ENV.example.com/health
 
-echo "✅ Rollback complete!"
+echo "✅ ¡Rollback completado!"

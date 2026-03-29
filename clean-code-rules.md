@@ -1,108 +1,108 @@
-# Clean Code Rules for AI Code Generation
+# Reglas de Código Limpio para Generación de Código con IA
 
-These rules guide code generation to produce maintainable, professional-quality code.
+Estas reglas guían la generación de código para producir código de calidad profesional y mantenible.
 
-## Meaningful Names
-- Use intention-revealing names that explain why something exists
-- Avoid disinformation and meaningless distinctions (e.g., `data`, `info`, `manager`)
-- Use pronounceable, searchable names
-- Class names: nouns (e.g., `UserAccount`, `PaymentProcessor`)
-- Method names: verbs (e.g., `calculateTotal`, `sendEmail`)
-- Avoid mental mapping and encodings (Hungarian notation, prefixes)
+## Nombres Significativos
+- Usar nombres que revelen la intención y expliquen por qué algo existe
+- Evitar desinformación y distinciones sin significado (e.g., `data`, `info`, `manager`)
+- Usar nombres pronunciables y buscables
+- Nombres de clases: sustantivos (e.g., `UserAccount`, `PaymentProcessor`)
+- Nombres de métodos: verbos (e.g., `calculateTotal`, `sendEmail`)
+- Evitar mapeo mental y codificaciones (notación Húngara, prefijos)
 
-## Functions
-- Keep functions small (< 20 lines ideal)
-- Do one thing only - Single Responsibility Principle
-- One level of abstraction per function
-- Limit arguments: 0-2 ideal, 3 maximum, avoid flag arguments
-- No side effects - function should do what its name says
-- Separate commands (change state) from queries (return info)
-- Prefer exceptions over error codes
+## Funciones
+- Mantener las funciones pequeñas (< 20 líneas ideal)
+- Hacer una sola cosa - Principio de Responsabilidad Única
+- Un nivel de abstracción por función
+- Limitar argumentos: 0-2 ideal, 3 máximo, evitar argumentos bandera
+- Sin efectos secundarios - la función debe hacer lo que su nombre indica
+- Separar comandos (cambian estado) de consultas (retornan información)
+- Preferir excepciones sobre códigos de error
 
-## Comments
-- Code should be self-explanatory - avoid comments when possible
-- Good comments: legal info, warnings, TODOs, public API documentation
-- Bad comments: redundant, misleading, or explaining bad code
-- Never comment out code - delete it (version control preserves history)
-- If you need a comment, consider refactoring the code instead
+## Comentarios
+- El código debe ser autoexplicativo - evitar comentarios cuando sea posible
+- Buenos comentarios: información legal, advertencias, TODOs, documentación de API pública
+- Malos comentarios: redundantes, engañosos, o que explican código malo
+- Nunca comentar código - eliminarlo (el control de versiones preserva el historial)
+- Si necesitas un comentario, considera refactorizar el código en su lugar
 
-## Formatting
-- Keep files small and focused
-- Vertical formatting: related concepts close together, blank lines separate concepts
-- Horizontal formatting: limit line length (80-120 characters)
-- Use consistent indentation and team style
-- Group related functions together
+## Formato
+- Mantener archivos pequeños y enfocados
+- Formato vertical: conceptos relacionados cercanos, líneas en blanco separan conceptos
+- Formato horizontal: limitar longitud de línea (80-120 caracteres)
+- Usar indentación consistente y estilo del equipo
+- Agrupar funciones relacionadas juntas
 
-## Objects and Data Structures
-- Objects: hide data behind abstractions, expose behavior through methods
-- Data structures: expose data, have minimal behavior
-- Law of Demeter: only talk to immediate friends, avoid `a.getB().getC().doSomething()`
-- Don't expose internal structure through getters/setters blindly
+## Objetos y Estructuras de Datos
+- Objetos: ocultar datos detrás de abstracciones, exponer comportamiento mediante métodos
+- Estructuras de datos: exponer datos, tener comportamiento mínimo
+- Ley de Demeter: solo hablar con amigos inmediatos, evitar `a.getB().getC().doSomething()`
+- No exponer estructura interna mediante getters/setters ciegamente
 
-## Error Handling
-- Use exceptions, not return codes or error flags
-- Write `try-catch-finally` first when code might fail
-- Provide context in exception messages
-- Don't return `null` - return empty collections or use Optional/Maybe
-- Don't pass `null` as arguments
+## Manejo de Errores
+- Usar excepciones, no códigos de retorno o banderas de error
+- Escribir `try-catch-finally` primero cuando el código pueda fallar
+- Proveer contexto en mensajes de excepción
+- No retornar `null` - retornar colecciones vacías o usar Optional/Maybe
+- No pasar `null` como argumentos
 
-## Classes
-- Small classes: measured by responsibilities, not lines
-- Single Responsibility Principle: one reason to change
-- High cohesion: class variables used by many methods
-- Low coupling: minimal dependencies between classes
-- Open/Closed Principle: open for extension, closed for modification
+## Clases
+- Clases pequeñas: medidas por responsabilidades, no por líneas
+- Principio de Responsabilidad Única: una razón para cambiar
+- Alta cohesión: variables de clase usadas por muchos métodos
+- Bajo acoplamiento: dependencias mínimas entre clases
+- Principio Abierto/Cerrado: abierto para extensión, cerrado para modificación
 
-## Unit Tests
-- Fast, Independent, Repeatable, Self-validating, Timely (F.I.R.S.T.)
-- One assert per test (or one concept)
-- Test code quality equals production code quality
-- Readable test names that describe what's being tested
-- Arrange-Act-Assert pattern
+## Pruebas Unitarias
+- Rápidas, Independientes, Repetibles, Auto-validadas, Oportunas (F.I.R.S.T.)
+- Un assert por prueba (o un concepto)
+- Calidad del código de prueba igual a calidad del código de producción
+- Nombres de pruebas legibles que describan qué se está probando
+- Patrón Arrange-Act-Assert
 
-## Code Quality Principles
-- **DRY (Don't Repeat Yourself)**: No duplication
-- **YAGNI (You Aren't Gonna Need It)**: Don't build for hypothetical futures
-- **KISS (Keep It Simple)**: Avoid unnecessary complexity
-- **Boy Scout Rule**: Leave code cleaner than you found it
+## Principios de Calidad de Código
+- **DRY (Don't Repeat Yourself)**: Sin duplicación
+- **YAGNI (You Aren't Gonna Need It)**: No construir para futuros hipotéticos
+- **KISS (Keep It Simple)**: Evitar complejidad innecesaria
+- **Regla del Boy Scout**: Dejar el código más limpio de como lo encontraste
 
-## Code Smells to Avoid
-- Long functions or classes
-- Duplicate code
-- Dead code (unused variables, functions, parameters)
-- Feature envy (method more interested in other class)
-- Inappropriate intimacy (classes knowing too much about each other)
-- Long parameter lists
-- Primitive obsession (overusing primitives instead of small objects)
-- Switch/case statements (consider polymorphism)
-- Temporary fields (class variables only used sometimes)
+## Code Smells a Evitar
+- Funciones o clases largas
+- Código duplicado
+- Código muerto (variables, funciones, parámetros no usados)
+- Envidia de características (método más interesado en otra clase)
+- Intimidad inapropiada (clases sabiendo demasiado una de otra)
+- Listas largas de parámetros
+- Obsesión por primitivos (uso excesivo de primitivos en lugar de objetos pequeños)
+- Sentencias switch/case (considerar polimorfismo)
+- Campos temporales (variables de clase usadas solo a veces)
 
-## Concurrency
-- Keep concurrent code separate from other code
-- Limit scope of synchronized/locked data
-- Use thread-safe collections
-- Keep synchronized sections small
-- Know your execution models and primitives
+## Concurrencia
+- Mantener código concurrente separado de otro código
+- Limitar alcance de datos sincronizados/bloqueados
+- Usar colecciones thread-safe
+- Mantener secciones sincronizadas pequeñas
+- Conocer modelos de ejecución y primitivas
 
-## System Design
-- Separate construction from use (dependency injection)
-- Use factories, builders for complex object creation
-- Program to interfaces, not implementations
-- Favor composition over inheritance
-- Apply design patterns when they simplify, not to show off
+## Diseño del Sistema
+- Separar construcción de uso (inyección de dependencias)
+- Usar factories, builders para creación compleja de objetos
+- Programar a interfaces, no a implementaciones
+- Favorecer composición sobre herencia
+- Aplicar design patterns cuando simplifiquen, no para presumir
 
 ## Refactoring
-- Refactor continuously, not in big batches
-- Always have passing tests before and after
-- Small steps: one change at a time
-- Common refactorings: Extract Method, Rename, Move, Inline
+- Refactorizar continuamente, no en lotes grandes
+- Siempre tener pruebas pasando antes y después
+- Pasos pequeños: un cambio a la vez
+- Refactorizaciones comunes: Extract Method, Rename, Move, Inline
 
-## Documentation
-- Self-documenting code > comments > external docs
-- Public APIs need clear documentation
-- Include examples in documentation
-- Keep docs close to code (ideally in code)
+## Documentación
+- Código auto-documentado > comentarios > documentación externa
+- APIs públicas necesitan documentación clara
+- Incluir ejemplos en documentación
+- Mantener docs cerca del código (idealmente en el código)
 
 ---
 
-**Core Philosophy**: Code is read 10x more than written. Optimize for readability and maintainability, not cleverness.
+**Filosofía Central**: El código se lee 10x más de lo que se escribe. Optimizar para legibilidad y mantenibilidad, no para astucia.

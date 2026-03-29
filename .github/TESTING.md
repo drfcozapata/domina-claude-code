@@ -1,180 +1,180 @@
-# Testing Guide
+# Guía de Testing
 
-This document describes the testing infrastructure for Claude How To.
+Este documento describe la infraestructura de testing para Claude How To.
 
 ## Overview
 
-The project uses GitHub Actions to automatically run tests on every push and pull request. Tests cover:
+El proyecto usa GitHub Actions para ejecutar tests automáticamente en cada push y pull request. Los tests cubren:
 
-- **Unit Tests**: Python tests using pytest
-- **Code Quality**: Linting and formatting with Ruff
-- **Security**: Vulnerability scanning with Bandit
-- **Type Checking**: Static type analysis with mypy
-- **Build Verification**: EPUB generation test
+- **Unit Tests**: Tests de Python usando pytest
+- **Code Quality**: Linting y formateo con Ruff
+- **Security**: Escaneo de vulnerabilidades con Bandit
+- **Type Checking**: Análisis de tipos estático con mypy
+- **Build Verification**: Test de generación de EPUB
 
-## Running Tests Locally
+## Ejecutar Tests Localmente
 
 ### Prerequisites
 
 ```bash
-# Install uv (fast Python package manager)
+# Instalar uv (gestor de paquetes rápido para Python)
 pip install uv
 
-# Or on macOS with Homebrew
+# O en macOS con Homebrew
 brew install uv
 ```
 
 ### Setup Environment
 
 ```bash
-# Clone the repository
+# Clonar el repositorio
 git clone https://github.com/luongnv89/claude-howto.git
 cd claude-howto
 
-# Create virtual environment
+# Crear entorno virtual
 uv venv
 
-# Activate it
+# Activarlo
 source .venv/bin/activate  # macOS/Linux
-# or
+# o
 .venv\Scripts\activate     # Windows
 
-# Install development dependencies
+# Instalar dependencias de desarrollo
 uv pip install -r requirements-dev.txt
 ```
 
-### Run Tests
+### Ejecutar Tests
 
 ```bash
-# Run all unit tests
+# Ejecutar todos los unit tests
 pytest scripts/tests/ -v
 
-# Run tests with coverage
+# Ejecutar tests con coverage
 pytest scripts/tests/ -v --cov=scripts --cov-report=html
 
-# Run specific test file
+# Ejecutar un archivo de test específico
 pytest scripts/tests/test_build_epub.py -v
 
-# Run specific test function
+# Ejecutar una función de test específica
 pytest scripts/tests/test_build_epub.py::test_function_name -v
 
-# Run tests in watch mode (requires pytest-watch)
+# Ejecutar tests en modo watch (requiere pytest-watch)
 ptw scripts/tests/
 ```
 
-### Run Linting
+### Ejecutar Linting
 
 ```bash
-# Check code formatting
+# Verificar formateo de código
 ruff format --check scripts/
 
-# Auto-fix formatting issues
+# Auto-corregir problemas de formateo
 ruff format scripts/
 
-# Run linter
+# Ejecutar linter
 ruff check scripts/
 
-# Auto-fix linter issues
+# Auto-corregir problemas del linter
 ruff check --fix scripts/
 ```
 
-### Run Security Scan
+### Ejecutar Escaneo de Seguridad
 
 ```bash
-# Run Bandit security scan
+# Ejecutar escaneo de seguridad Bandit
 bandit -c pyproject.toml -r scripts/ --exclude scripts/tests/
 
-# Generate JSON report
+# Generar reporte en JSON
 bandit -c pyproject.toml -r scripts/ --exclude scripts/tests/ -f json -o bandit-report.json
 ```
 
-### Run Type Checking
+### Ejecutar Type Checking
 
 ```bash
-# Check types with mypy
+# Verificar tipos con mypy
 mypy scripts/ --ignore-missing-imports --no-implicit-optional
 ```
 
-## GitHub Actions Workflow
+## Workflow de GitHub Actions
 
-### Triggered On
+### Activado En
 
-- **Push** to `main` or `develop` branches (when scripts change)
-- **Pull Request** to `main` (when scripts change)
-- Manual workflow dispatch
+- **Push** a las ramas `main` o `develop` (cuando cambian los scripts)
+- **Pull Request** a `main` (cuando cambian los scripts)
+- Ejecución manual del workflow
 
 ### Jobs
 
 #### 1. Unit Tests (pytest)
 
-- **Runs on**: Ubuntu latest
-- **Python versions**: 3.10, 3.11, 3.12
-- **What it does**:
-  - Installs dependencies from `requirements-dev.txt`
-  - Runs pytest with coverage reporting
-  - Uploads coverage to Codecov
-  - Archives test results and coverage HTML
+- **Se ejecuta en**: Ubuntu latest
+- **Versiones de Python**: 3.10, 3.11, 3.12
+- **Qué hace**:
+  - Instala dependencias desde `requirements-dev.txt`
+  - Ejecuta pytest con reporte de coverage
+  - Sube coverage a Codecov
+  - Archiva resultados de tests y HTML de coverage
 
-**Outcome**: If any test fails, the workflow fails (critical)
+**Resultado**: Si algún test falla, el workflow falla (crítico)
 
 #### 2. Code Quality (Ruff)
 
-- **Runs on**: Ubuntu latest
-- **Python version**: 3.11
-- **What it does**:
-  - Checks code formatting with `ruff format`
-  - Runs linter with `ruff check`
-  - Reports issues but doesn't fail the workflow
+- **Se ejecuta en**: Ubuntu latest
+- **Versión de Python**: 3.11
+- **Qué hace**:
+  - Verifica formateo de código con `ruff format`
+  - Ejecuta linter con `ruff check`
+  - Reporta problemas pero no falla el workflow
 
-**Outcome**: Non-blocking (warning only)
+**Resultado**: No bloqueante (solo advertencia)
 
 #### 3. Security Scan (Bandit)
 
-- **Runs on**: Ubuntu latest
-- **Python version**: 3.11
-- **What it does**:
-  - Scans for security vulnerabilities
-  - Generates JSON report
-  - Uploads report as artifact
+- **Se ejecuta en**: Ubuntu latest
+- **Versión de Python**: 3.11
+- **Qué hace**:
+  - Escanea vulnerabilidades de seguridad
+  - Genera reporte en JSON
+  - Sube el reporte como artifact
 
-**Outcome**: Non-blocking (warning only)
+**Resultado**: No bloqueante (solo advertencia)
 
 #### 4. Type Checking (mypy)
 
-- **Runs on**: Ubuntu latest
-- **Python version**: 3.11
-- **What it does**:
-  - Performs static type analysis
-  - Reports type mismatches
-  - Helps catch bugs early
+- **Se ejecuta en**: Ubuntu latest
+- **Versión de Python**: 3.11
+- **Qué hace**:
+  - Realiza análisis de tipos estático
+  - Reporta inconsistencias de tipos
+  - Ayuda a detectar bugs temprano
 
-**Outcome**: Non-blocking (warning only)
+**Resultado**: No bloqueante (solo advertencia)
 
 #### 5. Build EPUB
 
-- **Runs on**: Ubuntu latest
-- **Depends on**: pytest, lint, security (all must pass)
-- **What it does**:
-  - Builds the EPUB file using `scripts/build_epub.py`
-  - Verifies the EPUB was created successfully
-  - Uploads EPUB as artifact
+- **Se ejecuta en**: Ubuntu latest
+- **Depende de**: pytest, lint, security (todos deben pasar)
+- **Qué hace**:
+  - Construye el archivo EPUB usando `scripts/build_epub.py`
+  - Verifica que el EPUB se creó exitosamente
+  - Sube EPUB como artifact
 
-**Outcome**: If build fails, the workflow fails (critical)
+**Resultado**: Si el build falla, el workflow falla (crítico)
 
 #### 6. Summary
 
-- **Runs on**: Ubuntu latest
-- **Depends on**: All other jobs
-- **What it does**:
-  - Generates workflow summary
-  - Lists all artifacts
-  - Reports overall status
+- **Se ejecuta en**: Ubuntu latest
+- **Depende de**: Todos los demás jobs
+- **Qué hace**:
+  - Genera resumen del workflow
+  - Lista todos los artifacts
+  - Reporta estado general
 
-## Writing Tests
+## Escribir Tests
 
-### Test Structure
+### Estructura de Tests
 
-Tests should be placed in `scripts/tests/` with names like `test_*.py`:
+Los tests deben colocarse en `scripts/tests/` con nombres como `test_*.py`:
 
 ```python
 # scripts/tests/test_example.py
@@ -198,22 +198,22 @@ async def test_async_function():
     assert result is not None
 ```
 
-### Test Best Practices
+### Mejores Prácticas para Tests
 
-- **Use descriptive names**: `test_function_returns_correct_value()`
-- **One assertion per test** (when possible): Easier to debug failures
-- **Use fixtures** for reusable setup: See `scripts/tests/conftest.py`
-- **Mock external services**: Use `unittest.mock` or `pytest-mock`
-- **Test edge cases**: Empty inputs, None values, errors
-- **Keep tests fast**: Avoid sleep() and external I/O
-- **Use pytest markers**: `@pytest.mark.slow` for slow tests
+- **Usar nombres descriptivos**: `test_function_returns_correct_value()`
+- **Una aserción por test** (cuando sea posible): Más fácil depurar fallos
+- **Usar fixtures** para setup reutilizable: Ver `scripts/tests/conftest.py`
+- **Mockear servicios externos**: Usar `unittest.mock` o `pytest-mock`
+- **Testear casos borde**: Inputs vacíos, valores None, errores
+- **Mantener tests rápidos**: Evitar sleep() e I/O externo
+- **Usar marcadores pytest**: `@pytest.mark.slow` para tests lentos
 
 ### Fixtures
 
-Common fixtures are defined in `scripts/tests/conftest.py`:
+Los fixtures comunes están definidos en `scripts/tests/conftest.py`:
 
 ```python
-# Use fixtures in your tests
+# Usar fixtures en tus tests
 def test_something(tmp_path):
     """tmp_path fixture provides temporary directory."""
     test_file = tmp_path / "test.txt"
@@ -221,99 +221,99 @@ def test_something(tmp_path):
     assert test_file.read_text() == "content"
 ```
 
-## Coverage Reports
+## Reportes de Coverage
 
-### Local Coverage
+### Coverage Local
 
 ```bash
-# Generate coverage report
+# Generar reporte de coverage
 pytest scripts/tests/ --cov=scripts --cov-report=html
 
-# Open the coverage report in your browser
+# Abrir el reporte de coverage en tu navegador
 open htmlcov/index.html
 ```
 
-### Coverage Goals
+### Objetivos de Coverage
 
-- **Minimum coverage**: 80%
-- **Branch coverage**: Enabled
-- **Focus areas**: Core functionality and error paths
+- **Coverage mínimo**: 80%
+- **Branch coverage**: Habilitado
+- **Áreas de enfoque**: Funcionalidad core y paths de error
 
 ## Pre-commit Hooks
 
-The project uses pre-commit hooks to run checks automatically before commits:
+El proyecto usa pre-commit hooks para ejecutar checks automáticamente antes de los commits:
 
 ```bash
-# Install pre-commit hooks
+# Instalar pre-commit hooks
 pre-commit install
 
-# Run hooks manually
+# Ejecutar hooks manualmente
 pre-commit run --all-files
 
-# Skip hooks for a commit (not recommended)
+# Saltar hooks para un commit (no recomendado)
 git commit --no-verify
 ```
 
-Configured hooks in `.pre-commit-config.yaml`:
+Hooks configurados en `.pre-commit-config.yaml`:
 - Ruff formatter
 - Ruff linter
 - Bandit security scanner
-- YAML validation
-- File size checks
-- Merge conflict detection
+- Validación YAML
+- Checks de tamaño de archivo
+- Detección de conflictos de merge
 
 ## Troubleshooting
 
-### Tests Pass Locally but Fail in CI
+### Tests Pasan Localmente pero Fallan en CI
 
-Common causes:
-1. **Python version difference**: CI uses 3.10, 3.11, 3.12
-2. **Missing dependencies**: Update `requirements-dev.txt`
-3. **Platform differences**: Path separators, environment variables
-4. **Flaky tests**: Tests that depend on timing or order
+Causas comunes:
+1. **Diferencia de versión de Python**: CI usa 3.10, 3.11, 3.12
+2. **Dependencias faltantes**: Actualizar `requirements-dev.txt`
+3. **Diferencias de plataforma**: Separadores de path, variables de entorno
+4. **Tests flaky**: Tests que dependen de timing u orden
 
-Solution:
+Solución:
 ```bash
-# Test with the same Python versions
+# Testear con las mismas versiones de Python
 uv python install 3.10 3.11 3.12
 
-# Test with clean environment
+# Testear con entorno limpio
 rm -rf .venv
 uv venv
 uv pip install -r requirements-dev.txt
 pytest scripts/tests/
 ```
 
-### Bandit Reports False Positives
+### Bandit Reporta Falsos Positivos
 
-Some security warnings may be false positives. Configure in `pyproject.toml`:
+Algunas advertencias de seguridad pueden ser falsos positivos. Configurar en `pyproject.toml`:
 
 ```toml
 [tool.bandit]
 exclude_dirs = ["scripts/tests"]
-skips = ["B101"]  # Skip assert_used warning
+skips = ["B101"]  # Saltar advertencia assert_used
 ```
 
-### Type Checking Too Strict
+### Type Checking Demasiado Estricto
 
-Relax type checking for specific files:
+Relajar type checking para archivos específicos:
 
 ```python
-# Add at the top of file
+# Agregar al inicio del archivo
 # type: ignore
 
-# Or for specific lines
+# O para líneas específicas
 some_dynamic_code()  # type: ignore
 ```
 
-## Continuous Integration Best Practices
+## Mejores Prácticas de Continuous Integration
 
-1. **Keep tests fast**: Each test should complete in <1 second
-2. **Don't test external APIs**: Mock external services
-3. **Test in isolation**: Each test should be independent
-4. **Use clear assertions**: `assert x == 5` not `assert x`
-5. **Handle async tests**: Use `@pytest.mark.asyncio`
-6. **Generate reports**: Coverage, security, type checking
+1. **Mantener tests rápidos**: Cada test debe completarse en <1 segundo
+2. **No testear APIs externas**: Mockear servicios externos
+3. **Testear en aislamiento**: Cada test debe ser independiente
+4. **Usar aserciones claras**: `assert x == 5` no `assert x`
+5. **Manejar tests async**: Usar `@pytest.mark.asyncio`
+6. **Generar reportes**: Coverage, seguridad, type checking
 
 ## Resources
 
@@ -323,19 +323,19 @@ some_dynamic_code()  # type: ignore
 - [mypy Documentation](https://mypy.readthedocs.io/)
 - [GitHub Actions Documentation](https://docs.github.com/en/actions)
 
-## Contributing Tests
+## Contribuir Tests
 
-When submitting a PR:
+Al enviar un PR:
 
-1. **Write tests** for new functionality
-2. **Run tests locally**: `pytest scripts/tests/ -v`
-3. **Check coverage**: `pytest scripts/tests/ --cov=scripts`
-4. **Run linting**: `ruff check scripts/`
-5. **Security scan**: `bandit -r scripts/ --exclude scripts/tests/`
-6. **Update documentation** if tests change
+1. **Escribir tests** para nueva funcionalidad
+2. **Ejecutar tests localmente**: `pytest scripts/tests/ -v`
+3. **Verificar coverage**: `pytest scripts/tests/ --cov=scripts`
+4. **Ejecutar linting**: `ruff check scripts/`
+5. **Escaneo de seguridad**: `bandit -r scripts/ --exclude scripts/tests/`
+6. **Actualizar documentación** si los tests cambian
 
-Tests are required for all PRs! 🧪
+¡Los tests son requeridos para todos los PRs! 🧪
 
 ---
 
-For questions or issues with testing, open a GitHub issue or discussion.
+Para preguntas o issues con testing, abre un GitHub issue o discusión.

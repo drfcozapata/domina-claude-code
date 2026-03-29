@@ -5,18 +5,18 @@
 
 # MCP (Model Context Protocol)
 
-This folder contains comprehensive documentation and examples for MCP server configurations and usage with Claude Code.
+Esta carpeta contiene documentación y ejemplos exhaustivos sobre configuraciones y uso de servidores MCP con Claude Code.
 
 ## Overview
 
-MCP (Model Context Protocol) is a standardized way for Claude to access external tools, APIs, and real-time data sources. Unlike Memory, MCP provides live access to changing data.
+MCP (Model Context Protocol) es una forma estandarizada para que Claude acceda a herramientas externas, APIs y fuentes de datos en tiempo real. A diferencia de Memory, MCP proporciona acceso en vivo a datos cambiantes.
 
-Key characteristics:
-- Real-time access to external services
-- Live data synchronization
-- Extensible architecture
-- Secure authentication
-- Tool-based interactions
+Características clave:
+- Acceso en tiempo real a servicios externos
+- Sincronización de datos en vivo
+- Arquitectura extensible
+- Autenticación segura
+- Interacciones basadas en herramientas
 
 ## MCP Architecture
 
@@ -72,7 +72,7 @@ graph TB
 
 ## MCP Installation Methods
 
-Claude Code supports multiple transport protocols for MCP server connections:
+Claude Code soporta múltiples protocolos de transporte para conexiones a servidores MCP:
 
 ### HTTP Transport (Recommended)
 
@@ -87,7 +87,7 @@ claude mcp add --transport http secure-api https://api.example.com/mcp \
 
 ### Stdio Transport (Local)
 
-For locally running MCP servers:
+Para servidores MCP que se ejecutan localmente:
 
 ```bash
 # Local Node.js server
@@ -99,7 +99,7 @@ claude mcp add --transport stdio myserver --env KEY=value -- npx server
 
 ### SSE Transport (Deprecated)
 
-Server-Sent Events transport is deprecated in favor of `http` but still supported:
+El transporte Server-Sent Events está obsoleto en favor de `http` pero aún se soporta:
 
 ```bash
 claude mcp add --transport sse legacy-server https://example.com/sse
@@ -107,7 +107,7 @@ claude mcp add --transport sse legacy-server https://example.com/sse
 
 ### WebSocket Transport
 
-WebSocket transport for persistent bidirectional connections:
+Transporte WebSocket para conexiones persistentes bidireccionales:
 
 ```bash
 claude mcp add --transport ws realtime-server wss://example.com/mcp
@@ -115,7 +115,7 @@ claude mcp add --transport ws realtime-server wss://example.com/mcp
 
 ### Windows-Specific Note
 
-On native Windows (not WSL), use `cmd /c` for npx commands:
+En Windows nativo (no WSL), usa `cmd /c` para comandos npx:
 
 ```bash
 claude mcp add --transport stdio my-server -- cmd /c npx -y @some/package
@@ -123,7 +123,7 @@ claude mcp add --transport stdio my-server -- cmd /c npx -y @some/package
 
 ### OAuth 2.0 Authentication
 
-Claude Code supports OAuth 2.0 for MCP servers that require it. When connecting to an OAuth-enabled server, Claude Code handles the entire authentication flow:
+Claude Code soporta OAuth 2.0 para servidores MCP que lo requieren. Al conectarse a un servidor habilitado para OAuth, Claude Code maneja todo el flujo de autenticación:
 
 ```bash
 # Connect to an OAuth-enabled MCP server (interactive flow)
@@ -138,17 +138,17 @@ claude mcp add --transport http my-service https://my-service.example.com/mcp \
 
 | Feature | Description |
 |---------|-------------|
-| **Interactive OAuth** | Use `/mcp` to trigger the browser-based OAuth flow |
-| **Pre-configured OAuth clients** | Built-in OAuth clients for common services like Notion, Stripe, and others (v2.1.30+) |
-| **Pre-configured credentials** | `--client-id`, `--client-secret`, `--callback-port` flags for automated setup |
-| **Token storage** | Tokens are stored securely in your system keychain |
-| **Step-up auth** | Supports step-up authentication for privileged operations |
-| **Discovery caching** | OAuth discovery metadata is cached for faster reconnections |
-| **Metadata override** | `oauth.authServerMetadataUrl` in `.mcp.json` to override default OAuth metadata discovery |
+| **Interactive OAuth** | Usa `/mcp` para activar el flujo de OAuth basado en navegador |
+| **Pre-configured OAuth clients** | Clientes OAuth integrados para servicios comunes como Notion, Stripe y otros (v2.1.30+) |
+| **Pre-configured credentials** | Flags `--client-id`, `--client-secret`, `--callback-port` para configuración automatizada |
+| **Token storage** | Los tokens se almacenan de forma segura en el llavero de tu sistema |
+| **Step-up auth** | Soporta autenticación escalonada para operaciones privilegiadas |
+| **Discovery caching** | Los metadatos de descubrimiento OAuth se almacenan en caché para reconexiones más rápidas |
+| **Metadata override** | `oauth.authServerMetadataUrl` en `.mcp.json` para anular el descubrimiento predeterminado de metadatos OAuth |
 
 #### Overriding OAuth Metadata Discovery
 
-If your MCP server returns errors on the standard OAuth metadata endpoint (`/.well-known/oauth-authorization-server`) but exposes a working OIDC endpoint, you can tell Claude Code to fetch OAuth metadata from a specific URL. Set `authServerMetadataUrl` in the `oauth` object of your server config:
+Si tu servidor MCP devuelve errores en el endpoint de metadatos OAuth estándar (`/.well-known/oauth-authorization-server`) pero expone un endpoint OIDC funcional, puedes indicarle a Claude Code que obtenga los metadatos OAuth desde una URL específica. Establece `authServerMetadataUrl` en el objeto `oauth` de tu configuración del servidor:
 
 ```json
 {
@@ -164,21 +164,21 @@ If your MCP server returns errors on the standard OAuth metadata endpoint (`/.we
 }
 ```
 
-The URL must use `https://`. This option requires Claude Code v2.1.64 or later.
+La URL debe usar `https://`. Esta opción requiere Claude Code v2.1.64 o posterior.
 
 ### Claude.ai MCP Connectors
 
-MCP servers configured in your Claude.ai account are automatically available in Claude Code. This means any MCP connections you set up through the Claude.ai web interface will be accessible without additional configuration.
+Los servidores MCP configurados en tu cuenta de Claude.ai están automáticamente disponibles en Claude Code. Esto significa que cualquier conexión MCP que configures a través de la interfaz web de Claude.ai será accesible sin configuración adicional.
 
-Claude.ai MCP connectors are also available in `--print` mode (v2.1.83+), enabling non-interactive and scripted usage.
+Los conectores MCP de Claude.ai también están disponibles en modo `--print` (v2.1.83+), lo que permite el uso no interactivo y mediante scripts.
 
-To disable Claude.ai MCP servers in Claude Code, set the `ENABLE_CLAUDEAI_MCP_SERVERS` environment variable to `false`:
+Para deshabilitar los servidores MCP de Claude.ai en Claude Code, establece la variable de entorno `ENABLE_CLAUDEAI_MCP_SERVERS` en `false`:
 
 ```bash
 ENABLE_CLAUDEAI_MCP_SERVERS=false claude
 ```
 
-> **Note:** This feature is only available for users logged in with Claude.ai accounts.
+> **Note:** Esta función solo está disponible para usuarios que han iniciado sesión con cuentas de Claude.ai.
 
 ## MCP Setup Process
 
@@ -202,72 +202,72 @@ sequenceDiagram
 
 ## MCP Tool Search
 
-When MCP tool descriptions exceed 10% of the context window, Claude Code automatically enables tool search to efficiently select the right tools without overwhelming the model context.
+Cuando las descripciones de herramientas MCP superan el 10% de la ventana de contexto, Claude Code habilita automáticamente la búsqueda de herramientas para seleccionar eficientemente las herramientas correctas sin abrumar el contexto del modelo.
 
 | Setting | Value | Description |
 |---------|-------|-------------|
-| `ENABLE_TOOL_SEARCH` | `auto` (default) | Automatically enables when tool descriptions exceed 10% of context |
-| `ENABLE_TOOL_SEARCH` | `auto:<N>` | Automatically enables at a custom threshold of `N` tools |
-| `ENABLE_TOOL_SEARCH` | `true` | Always enabled regardless of tool count |
-| `ENABLE_TOOL_SEARCH` | `false` | Disabled; all tool descriptions sent in full |
+| `ENABLE_TOOL_SEARCH` | `auto` (default) | Se habilita automáticamente cuando las descripciones de herramientas superan el 10% del contexto |
+| `ENABLE_TOOL_SEARCH` | `auto:<N>` | Se habilita automáticamente en un umbral personalizado de `N` herramientas |
+| `ENABLE_TOOL_SEARCH` | `true` | Siempre habilitado independientemente del número de herramientas |
+| `ENABLE_TOOL_SEARCH` | `false` | Deshabilitado; todas las descripciones de herramientas se envían completas |
 
-> **Note:** Tool search requires Sonnet 4 or later, or Opus 4 or later. Haiku models are not supported for tool search.
+> **Note:** La búsqueda de herramientas requiere Sonnet 4 o posterior, u Opus 4 o posterior. Los modelos Haiku no son compatibles con la búsqueda de herramientas.
 
 ## Dynamic Tool Updates
 
-Claude Code supports MCP `list_changed` notifications. When an MCP server dynamically adds, removes, or modifies its available tools, Claude Code receives the update and adjusts its tool list automatically -- no reconnection or restart required.
+Claude Code soporta notificaciones `list_changed` de MCP. Cuando un servidor MCP agrega, elimina o modifica dinámicamente sus herramientas disponibles, Claude Code recibe la actualización y ajusta su lista de herramientas automáticamente, sin necesidad de reconexión o reinicio.
 
 ## MCP Elicitation
 
-MCP servers can request structured input from the user via interactive dialogs (v2.1.49+). This allows an MCP server to ask for additional information mid-workflow -- for example, prompting for a confirmation, selecting from a list of options, or filling in required fields -- adding interactivity to MCP server interactions.
+Los servidores MCP pueden solicitar entrada estructurada del usuario mediante diálogos interactivos (v2.1.49+). Esto permite que un servidor MCP solicite información adicional a mitad del flujo de trabajo, por ejemplo, pedir una confirmación, seleccionar entre una lista de opciones o completar campos requeridos, agregando interactividad a las interacciones del servidor MCP.
 
 ## Tool Description and Instruction Cap
 
-As of v2.1.84, Claude Code enforces a **2 KB cap** on tool descriptions and instructions per MCP server. This prevents individual servers from consuming excessive context with overly verbose tool definitions, reducing context bloat and keeping interactions efficient.
+A partir de la v2.1.84, Claude Code aplica un límite de **2 KB** en descripciones e instrucciones de herramientas por servidor MCP. Esto evita que servidores individuales consuman contexto excesivo con definiciones de herramientas demasiado verbosas, reduciendo la hinchazón del contexto y manteniendo las interacciones eficientes.
 
 ## MCP Prompts as Slash Commands
 
-MCP servers can expose prompts that appear as slash commands in Claude Code. Prompts are accessible using the naming convention:
+Los servidores MCP pueden exponer prompts que aparecen como comandos de barra en Claude Code. Los prompts son accesibles usando la convención de nomenclatura:
 
 ```
 /mcp__<server>__<prompt>
 ```
 
-For example, if a server named `github` exposes a prompt called `review`, you can invoke it as `/mcp__github__review`.
+Por ejemplo, si un servidor llamado `github` expone un prompt llamado `review`, puedes invocarlo como `/mcp__github__review`.
 
 ## Server Deduplication
 
-When the same MCP server is defined at multiple scopes (local, project, user), the local configuration takes precedence. This allows you to override project-level or user-level MCP settings with local customizations without conflicts.
+Cuando el mismo servidor MCP está definido en múltiples ámbitos (local, project, user), la configuración local tiene prioridad. Esto te permite anular configuraciones de MCP a nivel de proyecto o usuario con personalizaciones locales sin conflictos.
 
 ## MCP Resources via @ Mentions
 
-You can reference MCP resources directly in your prompts using the `@` mention syntax:
+Puedes hacer referencia a recursos MCP directamente en tus prompts usando la sintaxis de mención `@`:
 
 ```
 @server-name:protocol://resource/path
 ```
 
-For example, to reference a specific database resource:
+Por ejemplo, para hacer referencia a un recurso de base de datos específico:
 
 ```
 @database:postgres://mydb/users
 ```
 
-This allows Claude to fetch and include MCP resource content inline as part of the conversation context.
+Esto permite que Claude obtenga e incluya contenido de recursos MCP en línea como parte del contexto de la conversación.
 
 ## MCP Scopes
 
-MCP configurations can be stored at different scopes with varying levels of sharing:
+Las configuraciones MCP se pueden almacenar en diferentes ámbitos con varios niveles de compartición:
 
 | Scope | Location | Description | Shared With | Requires Approval |
 |-------|----------|-------------|-------------|------------------|
-| **Local** (default) | `~/.claude.json` (under project path) | Private to current user, current project only (was called `project` in older versions) | Just you | No |
-| **Project** | `.mcp.json` | Checked into git repository | Team members | Yes (first use) |
-| **User** | `~/.claude.json` | Available across all projects (was called `global` in older versions) | Just you | No |
+| **Local** (default) | `~/.claude.json` (bajo la ruta del proyecto) | Privado para el usuario actual, solo para el proyecto actual (se llamaba `project` en versiones anteriores) | Solo tú | No |
+| **Project** | `.mcp.json` | Verificado en el repositorio git | Miembros del equipo | Sí (primer uso) |
+| **User** | `~/.claude.json` | Disponible en todos los proyectos (se llamaba `global` en versiones anteriores) | Solo tú | No |
 
 ### Using Project Scope
 
-Store project-specific MCP configurations in `.mcp.json`:
+Almacena configuraciones MCP específicas del proyecto en `.mcp.json`:
 
 ```json
 {
@@ -280,7 +280,7 @@ Store project-specific MCP configurations in `.mcp.json`:
 }
 ```
 
-Team members will see an approval prompt on first use of project MCPs.
+Los miembros del equipo verán un prompt de aprobación en el primer uso de MCPs del proyecto.
 
 ## MCP Configuration Management
 
@@ -345,12 +345,12 @@ claude mcp add-from-claude-desktop
 **Available GitHub MCP Tools:**
 
 #### Pull Request Management
-- `list_prs` - List all PRs in repository
-- `get_pr` - Get PR details including diff
-- `create_pr` - Create new PR
-- `update_pr` - Update PR description/title
-- `merge_pr` - Merge PR to main branch
-- `review_pr` - Add review comments
+- `list_prs` - Listar todos los PRs en el repositorio
+- `get_pr` - Obtener detalles del PR incluyendo diff
+- `create_pr` - Crear nuevo PR
+- `update_pr` - Actualizar descripción/título del PR
+- `merge_pr` - Fusionar PR a la rama main
+- `review_pr` - Agregar comentarios de revisión
 
 **Example request:**
 ```
@@ -365,22 +365,22 @@ Reviewers: @bob, @charlie
 ```
 
 #### Issue Management
-- `list_issues` - List all issues
-- `get_issue` - Get issue details
-- `create_issue` - Create new issue
-- `close_issue` - Close issue
-- `add_comment` - Add comment to issue
+- `list_issues` - Listar todos los issues
+- `get_issue` - Obtener detalles del issue
+- `create_issue` - Crear nuevo issue
+- `close_issue` - Cerrar issue
+- `add_comment` - Agregar comentario al issue
 
 #### Repository Information
-- `get_repo_info` - Repository details
-- `list_files` - File tree structure
-- `get_file_content` - Read file contents
-- `search_code` - Search across codebase
+- `get_repo_info` - Detalles del repositorio
+- `list_files` - Estructura del árbol de archivos
+- `get_file_content` - Leer contenidos de archivos
+- `search_code` - Buscar en todo el código base
 
 #### Commit Operations
-- `list_commits` - Commit history
-- `get_commit` - Specific commit details
-- `create_commit` - Create new commit
+- `list_commits` - Historial de commits
+- `get_commit` - Detalles de un commit específico
+- `create_commit` - Crear nuevo commit
 
 **Setup**:
 ```bash
@@ -391,7 +391,7 @@ claude mcp add --transport stdio github -- npx @modelcontextprotocol/server-gith
 
 ### Environment Variable Expansion in Configuration
 
-MCP configurations support environment variable expansion with fallback defaults. The `${VAR}` and `${VAR:-default}` syntax works in the following fields: `command`, `args`, `env`, `url`, and `headers`.
+Las configuraciones MCP soportan expansión de variables de entorno con valores predeterminados de respaldo. La sintaxis `${VAR}` y `${VAR:-default}` funciona en los siguientes campos: `command`, `args`, `env`, `url`, y `headers`.
 
 ```json
 {
@@ -415,9 +415,9 @@ MCP configurations support environment variable expansion with fallback defaults
 }
 ```
 
-Variables are expanded at runtime:
-- `${VAR}` - Uses environment variable, error if not set
-- `${VAR:-default}` - Uses environment variable, falls back to default if not set
+Las variables se expanden en tiempo de ejecución:
+- `${VAR}` - Usa la variable de entorno, error si no está establecida
+- `${VAR:-default}` - Usa la variable de entorno, usa el valor predeterminado si no está establecida
 
 ### Example 2: Database MCP Setup
 
@@ -593,7 +593,7 @@ sequenceDiagram
 
 ## Environment Variables
 
-Store sensitive credentials in environment variables:
+Almacena credenciales sensibles en variables de entorno:
 
 ```bash
 # ~/.bashrc or ~/.zshrc
@@ -602,7 +602,7 @@ export DATABASE_URL="postgresql://user:pass@localhost/mydb"
 export SLACK_TOKEN="xoxb-xxxxxxxxxxxxx"
 ```
 
-Then reference them in MCP config:
+Luego haz referencia a ellas en la configuración MCP:
 
 ```json
 {
@@ -614,24 +614,24 @@ Then reference them in MCP config:
 
 ## Claude as MCP Server (`claude mcp serve`)
 
-Claude Code itself can act as an MCP server for other applications. This enables external tools, editors, and automation systems to leverage Claude's capabilities through the standard MCP protocol.
+Claude Code mismo puede actuar como un servidor MCP para otras aplicaciones. Esto permite que herramientas externas, editores y sistemas de automatización aprovechen las capacidades de Claude a través del protocolo MCP estándar.
 
 ```bash
 # Start Claude Code as an MCP server on stdio
 claude mcp serve
 ```
 
-Other applications can then connect to this server as they would any stdio-based MCP server. For example, to add Claude Code as an MCP server in another Claude Code instance:
+Otras aplicaciones pueden conectarse luego a este servidor como lo harían con cualquier servidor MCP basado en stdio. Por ejemplo, para agregar Claude Code como un servidor MCP en otra instancia de Claude Code:
 
 ```bash
 claude mcp add --transport stdio claude-agent -- claude mcp serve
 ```
 
-This is useful for building multi-agent workflows where one Claude instance orchestrates another.
+Esto es útil para construir flujos de trabajo multi-agente donde una instancia de Claude orquesta a otra.
 
 ## Managed MCP Configuration (Enterprise)
 
-For enterprise deployments, IT administrators can enforce MCP server policies through the `managed-mcp.json` configuration file. This file provides exclusive control over which MCP servers are permitted or blocked organization-wide.
+Para despliegues empresariales, los administradores de TI pueden aplicar políticas de servidores MCP a través del archivo de configuración `managed-mcp.json`. Este archivo proporciona control exclusivo sobre qué servidores MCP están permitidos o bloqueados en toda la organización.
 
 **Location:**
 - macOS: `/Library/Application Support/ClaudeCode/managed-mcp.json`
@@ -639,11 +639,11 @@ For enterprise deployments, IT administrators can enforce MCP server policies th
 - Windows: `%APPDATA%\ClaudeCode\managed-mcp.json`
 
 **Features:**
-- `allowedMcpServers` -- whitelist of permitted servers
-- `deniedMcpServers` -- blocklist of prohibited servers
-- Supports matching by server name, command, and URL patterns
-- Organization-wide MCP policies enforced before user configuration
-- Prevents unauthorized server connections
+- `allowedMcpServers` -- lista blanca de servidores permitidos
+- `deniedMcpServers` -- lista negra de servidores prohibidos
+- Soporta coincidencia por nombre de servidor, comando y patrones de URL
+- Políticas de MCP en toda la organización aplicadas antes de la configuración del usuario
+- Previene conexiones de servidores no autorizados
 
 **Example configuration:**
 
@@ -670,16 +670,16 @@ For enterprise deployments, IT administrators can enforce MCP server policies th
 }
 ```
 
-> **Note:** When both `allowedMcpServers` and `deniedMcpServers` match a server, the deny rule takes precedence.
+> **Note:** Cuando tanto `allowedMcpServers` como `deniedMcpServers` coinciden con un servidor, la regla de denegación tiene prioridad.
 
 ## Plugin-Provided MCP Servers
 
-Plugins can bundle their own MCP servers, making them available automatically when the plugin is installed. Plugin-provided MCP servers can be defined in two ways:
+Los plugins pueden incluir sus propios servidores MCP, haciéndolos disponibles automáticamente cuando se instala el plugin. Los servidores MCP proporcionados por plugins se pueden definir de dos formas:
 
-1. **Standalone `.mcp.json`** -- Place a `.mcp.json` file in the plugin root directory
-2. **Inline in `plugin.json`** -- Define MCP servers directly within the plugin manifest
+1. **`.mcp.json` independiente** -- Coloca un archivo `.mcp.json` en el directorio raíz del plugin
+2. **En línea en `plugin.json`** -- Define servidores MCP directamente en el manifiesto del plugin
 
-Use the `${CLAUDE_PLUGIN_ROOT}` variable to reference paths relative to the plugin's installation directory:
+Usa la variable `${CLAUDE_PLUGIN_ROOT}` para hacer referencia a rutas relativas al directorio de instalación del plugin:
 
 ```json
 {
@@ -697,7 +697,7 @@ Use the `${CLAUDE_PLUGIN_ROOT}` variable to reference paths relative to the plug
 
 ## Subagent-Scoped MCP
 
-MCP servers can be defined inline within agent frontmatter using the `mcpServers:` key, scoping them to a specific subagent rather than the entire project. This is useful when an agent needs access to a particular MCP server that other agents in the workflow do not require.
+Los servidores MCP se pueden definir en línea dentro del frontmatter del agente usando la clave `mcpServers:`, limitándolos a un subagente específico en lugar de todo el proyecto. Esto es útil cuando un agente necesita acceso a un servidor MCP particular que otros agentes en el flujo de trabajo no requieren.
 
 ```yaml
 ---
@@ -710,19 +710,19 @@ mcpServers:
 You are an agent with access to my-tool for specialized operations.
 ```
 
-Subagent-scoped MCP servers are only available within that agent's execution context and are not shared with the parent or sibling agents.
+Los servidores MCP de ámbito de subagente solo están disponibles dentro del contexto de ejecución de ese agente y no se comparten con el agente padre o agentes hermanos.
 
 ## MCP Output Limits
 
-Claude Code enforces limits on MCP tool output to prevent context overflow:
+Claude Code aplica límites en la salida de herramientas MCP para prevenir desbordamiento del contexto:
 
 | Limit | Threshold | Behavior |
 |-------|-----------|----------|
-| **Warning** | 10,000 tokens | A warning is displayed that the output is large |
-| **Default max** | 25,000 tokens | Output is truncated beyond this limit |
-| **Disk persistence** | 50,000 characters | Tool results exceeding 50K characters are persisted to disk |
+| **Warning** | 10,000 tokens | Se muestra una advertencia de que la salida es grande |
+| **Default max** | 25,000 tokens | La salida se trunca más allá de este límite |
+| **Disk persistence** | 50,000 characters | Los resultados de herramientas que exceden 50K caracteres se persisten en disco |
 
-The maximum output limit is configurable via the `MAX_MCP_OUTPUT_TOKENS` environment variable:
+El límite máximo de salida es configurable a través de la variable de entorno `MAX_MCP_OUTPUT_TOKENS`:
 
 ```bash
 # Increase the max output to 50,000 tokens
@@ -731,7 +731,7 @@ export MAX_MCP_OUTPUT_TOKENS=50000
 
 ## Solving Context Bloat with Code Execution
 
-As MCP adoption scales, connecting to dozens of servers with hundreds or thousands of tools creates a significant challenge: **context bloat**. This is arguably the biggest problem with MCP at scale, and Anthropic's engineering team has proposed an elegant solution — using code execution instead of direct tool calls.
+A medida que la adopción de MCP escala, conectarse a docenas de servidores con cientos o miles de herramientas crea un desafío significativo: **hinchazón del contexto (context bloat)**. Este es probablemente el mayor problema con MCP a escala, y el equipo de ingeniería de Anthropic ha propuesto una solución elegante: usar ejecución de código en lugar de llamadas directas a herramientas.
 
 > **Source**: [Code Execution with MCP: Building More Efficient Agents](https://www.anthropic.com/engineering/code-execution-with-mcp) — Anthropic Engineering Blog
 
@@ -739,11 +739,11 @@ As MCP adoption scales, connecting to dozens of servers with hundreds or thousan
 
 **1. Tool definitions overload the context window**
 
-Most MCP clients load all tool definitions upfront. When connected to thousands of tools, the model must process hundreds of thousands of tokens before it even reads the user's request.
+La mayoría de los clientes MCP cargan todas las definiciones de herramientas por adelantado. Cuando se conecta a miles de herramientas, el modelo debe procesar cientos de miles de tokens antes de que siquiera lea la solicitud del usuario.
 
 **2. Intermediate results consume additional tokens**
 
-Every intermediate tool result passes through the model's context. Consider transferring a meeting transcript from Google Drive to Salesforce — the full transcript flows through context **twice**: once when reading it, and again when writing it to the destination. A 2-hour meeting transcript could mean 50,000+ extra tokens.
+Cada resultado intermedio de herramienta pasa a través del contexto del modelo. Considera transferir una transcripción de reunión de Google Drive a Salesforce: la transcripción completa fluye a través del contexto **dos veces**: una vez al leerla y nuevamente al escribirla en el destino. Una transcripción de reunión de 2 horas podría significar más de 50,000 tokens adicionales.
 
 ```mermaid
 graph LR
@@ -758,7 +758,7 @@ graph LR
 
 ### The Solution: MCP Tools as Code APIs
 
-Instead of passing tool definitions and results through the context window, the agent **writes code** that calls MCP tools as APIs. The code runs in a sandboxed execution environment, and only the final result returns to the model.
+En lugar de pasar definiciones de herramientas y resultados a través de la ventana de contexto, el agente **escribe código** que llama a las herramientas MCP como APIs. El código se ejecuta en un entorno de ejecución aislado (sandboxed), y solo el resultado final regresa al modelo.
 
 ```mermaid
 graph LR
@@ -774,7 +774,7 @@ graph LR
 
 #### How It Works
 
-MCP tools are presented as a file tree of typed functions:
+Las herramientas MCP se presentan como un árbol de archivos de funciones tipadas:
 
 ```
 servers/
@@ -787,7 +787,7 @@ servers/
 └── ...
 ```
 
-Each tool file contains a typed wrapper:
+Cada archivo de herramienta contiene un wrapper tipado:
 
 ```typescript
 // ./servers/google-drive/getDocument.ts
@@ -810,13 +810,13 @@ export async function getDocument(
 }
 ```
 
-The agent then writes code to orchestrate the tools:
+El agente luego escribe código para orquestar las herramientas:
 
 ```typescript
 import * as gdrive from './servers/google-drive';
 import * as salesforce from './servers/salesforce';
 
-// Data flows directly between tools — never through the model
+// Data fl... [truncated]
 const transcript = (
   await gdrive.getDocument({ documentId: 'abc123' })
 ).content;
@@ -834,11 +834,11 @@ await salesforce.updateRecord({
 
 | Benefit | Description |
 |---------|-------------|
-| **Progressive Disclosure** | Agent browses the filesystem to load only the tool definitions it needs, instead of all tools upfront |
-| **Context-Efficient Results** | Data is filtered/transformed in the execution environment before returning to the model |
-| **Powerful Control Flow** | Loops, conditionals, and error handling run in code without round-tripping through the model |
-| **Privacy Preservation** | Intermediate data (PII, sensitive records) stays in the execution environment; never enters the model context |
-| **State Persistence** | Agents can save intermediate results to files and build reusable skill functions |
+| **Progressive Disclosure** | El agente navega el sistema de archivos para cargar solo las definiciones de herramientas que necesita, en lugar de todas las herramientas por adelantado |
+| **Context-Efficient Results** | Los datos se filtran/transforman en el entorno de ejecución antes de regresar al modelo |
+| **Powerful Control Flow** | Bucles, condicionales y manejo de errores se ejecutan en código sin viajes de ida y vuelta a través del modelo |
+| **Privacy Preservation** | Los datos intermedios (PII, registros sensibles) permanecen en el entorno de ejecución; nunca entran al contexto del modelo |
+| **State Persistence** | Los agentes pueden guardar resultados intermedios en archivos y construir funciones de habilidad reutilizables |
 
 #### Example: Filtering Large Datasets
 
@@ -875,29 +875,29 @@ console.log('Deployment notification received');
 
 ### Trade-offs to Consider
 
-Code execution introduces its own complexity. Running agent-generated code requires:
+La ejecución de código introduce su propia complejidad. Ejecutar código generado por el agente requiere:
 
-- A **secure sandboxed execution environment** with appropriate resource limits
-- **Monitoring and logging** of executed code
-- Additional **infrastructure overhead** compared to direct tool calls
+- Un **entorno de ejecución aislado (sandboxed) seguro** con límites de recursos apropiados
+- **Monitoreo y registro** del código ejecutado
+- **Sobrecarga de infraestructura adicional** en comparación con llamadas directas a herramientas
 
-The benefits — reduced token costs, lower latency, improved tool composition — should be weighed against these implementation costs. For agents with only a few MCP servers, direct tool calls may be simpler. For agents at scale (dozens of servers, hundreds of tools), code execution is a significant improvement.
+Los beneficios: reducción de costos de tokens, menor latencia, mejor composición de herramientas, deben sopesarse contra estos costos de implementación. Para agentes con solo unos pocos servidores MCP, las llamadas directas a herramientas pueden ser más simples. Para agentes a escala (docenas de servidores, cientos de herramientas), la ejecución de código es una mejora significativa.
 
 ### MCPorter: A Runtime for MCP Tool Composition
 
-[MCPorter](https://github.com/steipete/mcporter) is a TypeScript runtime and CLI toolkit that makes calling MCP servers practical without boilerplate — and helps reduce context bloat through selective tool exposure and typed wrappers.
+[MCPorter](https://github.com/steipete/mcporter) es un runtime de TypeScript y conjunto de herramientas CLI que hace práctico llamar a servidores MCP sin boilerplate, y ayuda a reducir la hinchazón del contexto mediante exposición selectiva de herramientas y wrappers tipados.
 
-**What it solves:** Instead of loading all tool definitions from all MCP servers upfront, MCPorter lets you discover, inspect, and call specific tools on demand — keeping your context lean.
+**What it solves:** En lugar de cargar todas las definiciones de herramientas de todos los servidores MCP por adelantado, MCPorter te permite descubrir, inspeccionar y llamar a herramientas específicas bajo demanda, manteniendo tu contexto ágil.
 
 **Key features:**
 
 | Feature | Description |
 |---------|-------------|
-| **Zero-config discovery** | Auto-discovers MCP servers from Cursor, Claude, Codex, or local configs |
-| **Typed tool clients** | `mcporter emit-ts` generates `.d.ts` interfaces and ready-to-run wrappers |
-| **Composable API** | `createServerProxy()` exposes tools as camelCase methods with `.text()`, `.json()`, `.markdown()` helpers |
-| **CLI generation** | `mcporter generate-cli` converts any MCP server into a standalone CLI with `--include-tools` / `--exclude-tools` filtering |
-| **Parameter hiding** | Optional parameters stay hidden by default, reducing schema verbosity |
+| **Zero-config discovery** | Auto-descubre servidores MCP desde Cursor, Claude, Codex o configuraciones locales |
+| **Typed tool clients** | `mcporter emit-ts` genera interfaces `.d.ts` y wrappers listos para ejecutar |
+| **Composable API** | `createServerProxy()` expone herramientas como métodos camelCase con helpers `.text()`, `.json()`, `.markdown()` |
+| **CLI generation** | `mcporter generate-cli` convierte cualquier servidor MCP en un CLI independiente con filtrado `--include-tools` / `--exclude-tools` |
+| **Parameter hiding** | Los parámetros opcionales permanecen ocultos por defecto, reduciendo la verbosidad del esquema |
 
 **Installation:**
 
@@ -935,67 +935,67 @@ npx mcporter call linear.create_comment issueId:ENG-123 body:'Looks good!'
 npx mcporter list
 ```
 
-MCPorter complements the code-execution approach described above by providing the runtime infrastructure for calling MCP tools as typed APIs — making it straightforward to keep intermediate data out of the model context.
+MCPorter complementa el enfoque de ejecución de código descrito anteriormente al proporcionar la infraestructura de runtime para llamar a herramientas MCP como APIs tipadas, haciendo sencillo mantener datos intermedios fuera del contexto del modelo.
 
 ## Best Practices
 
 ### Security Considerations
 
 #### Do's ✅
-- Use environment variables for all credentials
-- Rotate tokens and API keys regularly (monthly recommended)
-- Use read-only tokens when possible
-- Limit MCP server access scope to minimum required
-- Monitor MCP server usage and access logs
-- Use OAuth for external services when available
-- Implement rate limiting on MCP requests
-- Test MCP connections before production use
-- Document all active MCP connections
-- Keep MCP server packages updated
+- Usa variables de entorno para todas las credenciales
+- Rota tokens y claves API regularmente (mensual recomendado)
+- Usa tokens de solo lectura cuando sea posible
+- Limita el alcance de acceso del servidor MCP al mínimo requerido
+- Monitorea el uso del servidor MCP y los registros de acceso
+- Usa OAuth para servicios externos cuando esté disponible
+- Implementa limitación de tasa en solicitudes MCP
+- Prueba las conexiones MCP antes del uso en producción
+- Documenta todas las conexiones MCP activas
+- Mantén los paquetes de servidores MCP actualizados
 
 #### Don'ts ❌
-- Don't hardcode credentials in config files
-- Don't commit tokens or secrets to git
-- Don't share tokens in team chats or emails
-- Don't use personal tokens for team projects
-- Don't grant unnecessary permissions
-- Don't ignore authentication errors
-- Don't expose MCP endpoints publicly
-- Don't run MCP servers with root/admin privileges
-- Don't cache sensitive data in logs
-- Don't disable authentication mechanisms
+- No codifiques credenciales directamente en archivos de configuración
+- No hagas commit de tokens o secretos a git
+- No compartas tokens en chats de equipo o correos electrónicos
+- No uses tokens personales para proyectos de equipo
+- No otorgues permisos innecesarios
+- No ignores errores de autenticación
+- No expongas endpoints MCP públicamente
+- No ejecutes servidores MCP con privilegios de root/admin
+- No almacenes en caché datos sensibles en registros
+- No deshabilites mecanismos de autenticación
 
 ### Configuration Best Practices
 
-1. **Version Control**: Keep `.mcp.json` in git but use environment variables for secrets
-2. **Least Privilege**: Grant minimum permissions needed for each MCP server
-3. **Isolation**: Run different MCP servers in separate processes when possible
-4. **Monitoring**: Log all MCP requests and errors for audit trails
-5. **Testing**: Test all MCP configurations before deploying to production
+1. **Version Control**: Mantén `.mcp.json` en git pero usa variables de entorno para secretos
+2. **Least Privilege**: Otorga los permisos mínimos necesarios para cada servidor MCP
+3. **Isolation**: Ejecuta diferentes servidores MCP en procesos separados cuando sea posible
+4. **Monitoring**: Registra todas las solicitudes y errores de MCP para auditorías
+5. **Testing**: Prueba todas las configuraciones MCP antes de desplegar a producción
 
 ### Performance Tips
 
-- Cache frequently accessed data at the application level
-- Use MCP queries that are specific to reduce data transfer
-- Monitor response times for MCP operations
-- Consider rate limiting for external APIs
-- Use batching when performing multiple operations
+- Almacena en caché datos accedidos frecuentemente a nivel de aplicación
+- Usa consultas MCP específicas para reducir la transferencia de datos
+- Monitorea los tiempos de respuesta de las operaciones MCP
+- Considera la limitación de tasa para APIs externas
+- Usa agrupación (batching) al realizar múltiples operaciones
 
 ## Installation Instructions
 
 ### Prerequisites
-- Node.js and npm installed
-- Claude Code CLI installed
-- API tokens/credentials for external services
+- Node.js y npm instalados
+- Claude Code CLI instalado
+- Tokens/credenciales de API para servicios externos
 
 ### Step-by-Step Setup
 
-1. **Add your first MCP server** using the CLI (example: GitHub):
+1. **Agrega tu primer servidor MCP** usando la CLI (ejemplo: GitHub):
 ```bash
 claude mcp add --transport stdio github -- npx @modelcontextprotocol/server-github
 ```
 
-   Or create a `.mcp.json` file in your project root:
+   O crea un archivo `.mcp.json` en la raíz de tu proyecto:
 ```json
 {
   "mcpServers": {
@@ -1010,17 +1010,17 @@ claude mcp add --transport stdio github -- npx @modelcontextprotocol/server-gith
 }
 ```
 
-2. **Set environment variables:**
+2. **Establece las variables de entorno:**
 ```bash
 export GITHUB_TOKEN="your_github_personal_access_token"
 ```
 
-3. **Test the connection:**
+3. **Prueba la conexión:**
 ```bash
 claude /mcp
 ```
 
-4. **Use MCP tools:**
+4. **Usa las herramientas MCP:**
 ```bash
 /mcp__github__list_prs
 /mcp__github__create_issue "Title" "Description"
@@ -1072,33 +1072,33 @@ export GITHUB_TOKEN="your_token"
 ```
 
 ### Connection Timeout
-- Check network connectivity: `ping api.github.com`
-- Verify API endpoint is accessible
-- Check rate limits on API
-- Try increasing timeout in config
-- Check for firewall or proxy issues
+- Verifica la conectividad de red: `ping api.github.com`
+- Verifica que el endpoint de la API sea accesible
+- Verifica los límites de tasa en la API
+- Intenta aumentar el tiempo de espera en la configuración
+- Verifica problemas de firewall o proxy
 
 ### MCP Server Crashes
-- Check MCP server logs: `~/.claude/logs/`
-- Verify all environment variables are set
-- Ensure proper file permissions
-- Try reinstalling the MCP server package
-- Check for conflicting processes on the same port
+- Verifica los registros del servidor MCP: `~/.claude/logs/`
+- Verifica que todas las variables de entorno estén establecidas
+- Asegura los permisos de archivo apropiados
+- Intenta reinstalar el paquete del servidor MCP
+- Verifica procesos conflictivos en el mismo puerto
 
 ## Related Concepts
 
 ### Memory vs MCP
-- **Memory**: Stores persistent, unchanging data (preferences, context, history)
-- **MCP**: Accesses live, changing data (APIs, databases, real-time services)
+- **Memory**: Almacena datos persistentes e inmutables (preferencias, contexto, historial)
+- **MCP**: Accede a datos cambiantes y en vivo (APIs, bases de datos, servicios en tiempo real)
 
 ### When to Use Each
-- **Use Memory** for: User preferences, conversation history, learned context
-- **Use MCP** for: Current GitHub issues, live database queries, real-time data
+- **Usa Memory** para: Preferencias de usuario, historial de conversación, contexto aprendido
+- **Usa MCP** para: Issues actuales de GitHub, consultas de base de datos en vivo, datos en tiempo real
 
 ### Integration with Other Claude Features
-- Combine MCP with Memory for rich context
-- Use MCP tools in prompts for better reasoning
-- Leverage multiple MCPs for complex workflows
+- Combina MCP con Memory para un contexto enriquecido
+- Usa herramientas MCP en prompts para mejor razonamiento
+- Aprovecha múltiples MCPs para flujos de trabajo complejos
 
 ## Additional Resources
 
@@ -1106,7 +1106,7 @@ export GITHUB_TOKEN="your_token"
 - [MCP Protocol Specification](https://modelcontextprotocol.io/specification)
 - [MCP GitHub Repository](https://github.com/modelcontextprotocol/servers)
 - [Available MCP Servers](https://github.com/modelcontextprotocol/servers)
-- [MCPorter](https://github.com/steipete/mcporter) — TypeScript runtime & CLI for calling MCP servers without boilerplate
-- [Code Execution with MCP](https://www.anthropic.com/engineering/code-execution-with-mcp) — Anthropic's engineering blog on solving context bloat
+- [MCPorter](https://github.com/steipete/mcporter) — Runtime de TypeScript y CLI para llamar a servidores MCP sin boilerplate
+- [Code Execution with MCP](https://www.anthropic.com/engineering/code-execution-with-mcp) — Blog de ingeniería de Anthropic sobre cómo resolver la hinchazón del contexto
 - [Claude Code CLI Reference](https://code.claude.com/docs/en/cli-reference)
 - [Claude API Documentation](https://docs.anthropic.com)

@@ -1,14 +1,14 @@
 ---
 name: Sync Documentation
-description: Sync documentation with code changes
+description: Sincronizar documentación con cambios de código
 ---
 
-# Documentation Sync
+# Sincronización de Documentación
 
-Synchronize documentation with codebase:
+Sincronizar documentación con el código:
 
-1. Detect code changes
-2. Identify outdated documentation
-3. Update affected docs
-4. Verify examples still work
-5. Update version numbers
+1. Detectar cambios de código
+2. Identificar documentación desactualizada
+3. Actualizar docs afectadas
+4. Verificar que los ejemplos aún funcionen
+5. Actualizar números de versión

@@ -5,28 +5,28 @@
 
 # Hooks
 
-Hooks are automated scripts that execute in response to specific events during Claude Code sessions. They enable automation, validation, permission management, and custom workflows.
+Los Hooks son scripts automatizados que se ejecutan en respuesta a eventos específicos durante las sesiones de Claude Code. Permiten automatización, validación, gestión de permisos y flujos de trabajo personalizados.
 
 ## Overview
 
-Hooks are automated actions (shell commands, HTTP webhooks, LLM prompts, or subagent evaluations) that execute automatically when specific events occur in Claude Code. They receive JSON input and communicate results via exit codes and JSON output.
+Los Hooks son acciones automatizadas (comandos de shell, webhooks HTTP, prompts LLM o evaluaciones de subagentes) que se ejecutan automáticamente cuando ocurren eventos específicos en Claude Code. Reciben entrada JSON y comunican resultados mediante códigos de salida y salida JSON.
 
-**Key features:**
-- Event-driven automation
-- JSON-based input/output
-- Support for command, prompt, HTTP, and agent hook types
-- Pattern matching for tool-specific hooks
+**Características clave:**
+- Automatización dirigida por eventos
+- Entrada/salida basada en JSON
+- Soporte para tipos de hook: command, prompt, HTTP y agent
+- Coincidencia de patrones para hooks específicos de herramientas
 
 ## Configuration
 
-Hooks are configured in settings files with a specific structure:
+Los Hooks se configuran en archivos de settings con una estructura específica:
 
-- `~/.claude/settings.json` - User settings (all projects)
-- `.claude/settings.json` - Project settings (shareable, committed)
-- `.claude/settings.local.json` - Local project settings (not committed)
-- Managed policy - Organization-wide settings
-- Plugin `hooks/hooks.json` - Plugin-scoped hooks
-- Skill/Agent frontmatter - Component lifetime hooks
+- `~/.claude/settings.json` - Configuración de usuario (todos los proyectos)
+- `.claude/settings.json` - Configuración de proyecto (compartible, se hace commit)
+- `.claude/settings.local.json` - Configuración local de proyecto (no se hace commit)
+- Managed policy - Configuración a nivel de organización
+- Plugin `hooks/hooks.json` - Hooks a nivel de plugin
+- Skill/Agent frontmatter - Hooks del ciclo de vida de componentes
 
 ### Basic Configuration Structure
 
@@ -49,33 +49,33 @@ Hooks are configured in settings files with a specific structure:
 }
 ```
 
-**Key fields:**
+**Campos clave:**
 
-| Field | Description | Example |
+| Campo | Descripción | Ejemplo |
 |-------|-------------|---------|
-| `matcher` | Pattern to match tool names (case-sensitive) | `"Write"`, `"Edit\|Write"`, `"*"` |
-| `hooks` | Array of hook definitions | `[{ "type": "command", ... }]` |
-| `type` | Hook type: `"command"` (bash), `"prompt"` (LLM), `"http"` (webhook), or `"agent"` (subagent) | `"command"` |
-| `command` | Shell command to execute | `"$CLAUDE_PROJECT_DIR/.claude/hooks/format.sh"` |
-| `timeout` | Optional timeout in seconds (default 60) | `30` |
-| `once` | If `true`, run the hook only once per session | `true` |
+| `matcher` | Patrón para coincidir con nombres de herramientas (sensible a mayúsculas) | `"Write"`, `"Edit\|Write"`, `"*"` |
+| `hooks` | Array de definiciones de hooks | `[{ "type": "command", ... }]` |
+| `type` | Tipo de hook: `"command"` (bash), `"prompt"` (LLM), `"http"` (webhook), o `"agent"` (subagent) | `"command"` |
+| `command` | Comando de shell a ejecutar | `"$CLAUDE_PROJECT_DIR/.claude/hooks/format.sh"` |
+| `timeout` | Timeout opcional en segundos (por defecto 60) | `30` |
+| `once` | Si es `true`, ejecuta el hook solo una vez por sesión | `true` |
 
 ### Matcher Patterns
 
-| Pattern | Description | Example |
+| Patrón | Descripción | Ejemplo |
 |---------|-------------|---------|
-| Exact string | Matches specific tool | `"Write"` |
-| Regex pattern | Matches multiple tools | `"Edit\|Write"` |
-| Wildcard | Matches all tools | `"*"` or `""` |
-| MCP tools | Server and tool pattern | `"mcp__memory__.*"` |
+| String exacto | Coincide con herramienta específica | `"Write"` |
+| Patrón regex | Coincide con múltiples herramientas | `"Edit\|Write"` |
+| Wildcard | Coincide con todas las herramientas | `"*"` o `""` |
+| Herramientas MCP | Servidor y patrón de herramienta | `"mcp__memory__.*"` |
 
 ## Hook Types
 
-Claude Code supports four hook types:
+Claude Code soporta cuatro tipos de hooks:
 
 ### Command Hooks
 
-The default hook type. Executes a shell command and communicates via JSON stdin/stdout and exit codes.
+El tipo de hook por defecto. Ejecuta un comando de shell y comunica mediante JSON stdin/stdout y códigos de salida.
 
 ```json
 {
@@ -87,9 +87,9 @@ The default hook type. Executes a shell command and communicates via JSON stdin/
 
 ### HTTP Hooks
 
-> Added in v2.1.63.
+> Agregado en v2.1.63.
 
-Remote webhook endpoints that receive the same JSON input as command hooks. HTTP hooks POST JSON to the URL and receive a JSON response. HTTP hooks are routed through the sandbox when sandboxing is enabled. Environment variable interpolation in URLs requires an explicit `allowedEnvVars` list for security.
+Endpoints de webhook remotos que reciben la misma entrada JSON que los command hooks. Los HTTP hooks hacen POST de JSON a la URL y reciben una respuesta JSON. Los HTTP hooks se enrutan a través del sandbox cuando el sandboxing está habilitado. La interpolación de variables de entorno en URLs requiere una lista explícita `allowedEnvVars` por seguridad.
 
 ```json
 {
@@ -103,81 +103,81 @@ Remote webhook endpoints that receive the same JSON input as command hooks. HTTP
 }
 ```
 
-**Key properties:**
-- `"type": "http"` -- identifies this as an HTTP hook
-- `"url"` -- the webhook endpoint URL
-- Routed through sandbox when sandbox is enabled
-- Requires explicit `allowedEnvVars` list for any environment variable interpolation in the URL
+**Propiedades clave:**
+- `"type": "http"` -- identifica esto como un hook HTTP
+- `"url"` -- la URL del endpoint del webhook
+- Se enruta a través del sandbox cuando el sandbox está habilitado
+- Requiere lista explícita `allowedEnvVars` para cualquier interpolación de variables de entorno en la URL
 
 ### Prompt Hooks
 
-LLM-evaluated prompts where the hook content is a prompt that Claude evaluates. Primarily used with `Stop` and `SubagentStop` events for intelligent task completion checking.
+Prompts evaluados por LLM donde el contenido del hook es un prompt que Claude evalúa. Se usa principalmente con eventos `Stop` y `SubagentStop` para verificación inteligente de finalización de tareas.
 
 ```json
 {
   "type": "prompt",
-  "prompt": "Evaluate if Claude completed all requested tasks.",
+  "prompt": "Evalúa si Claude completó todas las tareas solicitadas.",
   "timeout": 30
 }
 ```
 
-The LLM evaluates the prompt and returns a structured decision (see [Prompt-Based Hooks](#prompt-based-hooks) for details).
+El LLM evalúa el prompt y devuelve una decisión estructurada (ver [Prompt-Based Hooks](#prompt-based-hooks) para detalles).
 
 ### Agent Hooks
 
-Subagent-based verification hooks that spawn a dedicated agent to evaluate conditions or perform complex checks. Unlike prompt hooks (single-turn LLM evaluation), agent hooks can use tools and perform multi-step reasoning.
+Hooks de verificación basados en subagentes que generan un agente dedicado para evaluar condiciones o realizar verificaciones complejas. A diferencia de los prompt hooks (evaluación LLM de un solo turno), los agent hooks pueden usar herramientas y realizar razonamiento de múltiples pasos.
 
 ```json
 {
   "type": "agent",
-  "prompt": "Verify the code changes follow our architecture guidelines. Check the relevant design docs and compare.",
+  "prompt": "Verifica que los cambios de código sigan nuestras pautas de arquitectura. Revisa los docs de diseño relevantes y compara.",
   "timeout": 120
 }
 ```
 
-**Key properties:**
-- `"type": "agent"` -- identifies this as an agent hook
-- `"prompt"` -- the task description for the subagent
-- The agent can use tools (Read, Grep, Bash, etc.) to perform its evaluation
-- Returns a structured decision similar to prompt hooks
+**Propiedades clave:**
+- `"type": "agent"` -- identifica esto como un hook de agent
+- `"prompt"` -- la descripción de tarea para el subagente
+- El agent puede usar herramientas (Read, Grep, Bash, etc.) para realizar su evaluación
+- Devuelve una decisión estructurada similar a los prompt hooks
 
 ## Hook Events
 
-Claude Code supports **25 hook events**:
+Claude Code soporta **25 eventos de hooks**:
 
-| Event | When Triggered | Matcher Input | Can Block | Common Use |
+| Evento | Cuándo se Dispara | Entrada Matcher | Puede Bloquear | Uso Común |
 |-------|---------------|---------------|-----------|------------|
-| **SessionStart** | Session begins/resumes/clear/compact | startup/resume/clear/compact | No | Environment setup |
-| **InstructionsLoaded** | After CLAUDE.md or rules file loaded | (none) | No | Modify/filter instructions |
-| **UserPromptSubmit** | User submits prompt | (none) | Yes | Validate prompts |
-| **PreToolUse** | Before tool execution | Tool name | Yes (allow/deny/ask) | Validate, modify inputs |
-| **PermissionRequest** | Permission dialog shown | Tool name | Yes | Auto-approve/deny |
-| **PostToolUse** | After tool succeeds | Tool name | No | Add context, feedback |
-| **PostToolUseFailure** | Tool execution fails | Tool name | No | Error handling, logging |
-| **Notification** | Notification sent | Notification type | No | Custom notifications |
-| **SubagentStart** | Subagent spawned | Agent type name | No | Subagent setup |
-| **SubagentStop** | Subagent finishes | Agent type name | Yes | Subagent validation |
-| **Stop** | Claude finishes responding | (none) | Yes | Task completion check |
-| **StopFailure** | API error ends turn | (none) | No | Error recovery, logging |
-| **TeammateIdle** | Agent team teammate idle | (none) | Yes | Teammate coordination |
-| **TaskCompleted** | Task marked complete | (none) | Yes | Post-task actions |
-| **TaskCreated** | Task created via TaskCreate | (none) | No | Task tracking, logging |
-| **ConfigChange** | Config file changes | (none) | Yes (except policy) | React to config updates |
-| **CwdChanged** | Working directory changes | (none) | No | Directory-specific setup |
-| **FileChanged** | Watched file changes | (none) | No | File monitoring, rebuild |
-| **PreCompact** | Before context compaction | manual/auto | No | Pre-compact actions |
-| **PostCompact** | After compaction completes | (none) | No | Post-compact actions |
-| **WorktreeCreate** | Worktree being created | (none) | Yes (path return) | Worktree initialization |
-| **WorktreeRemove** | Worktree being removed | (none) | No | Worktree cleanup |
-| **Elicitation** | MCP server requests user input | (none) | Yes | Input validation |
-| **ElicitationResult** | User responds to elicitation | (none) | Yes | Response processing |
-| **SessionEnd** | Session terminates | (none) | No | Cleanup, final logging |
+| **SessionStart** | Inicio/resumen/limpieza/compactación de sesión | startup/resume/clear/compact | No | Configuración de entorno |
+| **InstructionsLoaded** | Después de cargar CLAUDE.md o archivo de reglas | (ninguno) | No | Modificar/filtrar instrucciones |
+| **UserPromptSubmit** | Usuario envía prompt | (ninguno) | Sí | Validar prompts |
+| **PreToolUse** | Antes de ejecución de herramienta | Nombre de herramienta | Sí (allow/deny/ask) | Validar, modificar entradas |
+| **PermissionRequest** | Diálogo de permiso mostrado | Nombre de herramienta | Sí | Auto-aprobar/denegar |
+| **PostToolUse** | Después de éxito de herramienta | Nombre de herramienta | No | Agregar contexto, feedback |
+| **PostToolUseFailure** | Ejecución de herramienta falla | Nombre de herramienta | No | Manejo de errores, logging |
+| **Notification** | Notificación enviada | Tipo de notificación | No | Notificaciones personalizadas |
+| **SubagentStart** | Subagente generado | Nombre de tipo de agente | No | Configuración de subagente |
+| **SubagentStop** | Subagente finaliza | Nombre de tipo de agente | Sí | Validación de subagente |
+| **Stop** | Claude finaliza respuesta | (ninguno) | Sí | Verificación de finalización de tarea |
+| **StopFailure** | Error de API finaliza turno | (ninguno) | No | Recuperación de errores, logging |
+| **TeammateIdle** | Compañero de equipo inactivo | (ninguno) | Sí | Coordinación de compañero de equipo |
+| **TaskCompleted** | Tarea marcada como completa | (ninguno) | Sí | Acciones post-tarea |
+| **TaskCreated** | Tarea creada vía TaskCreate | (ninguno) | No | Seguimiento de tareas, logging |
+| **ConfigChange** | Cambios en archivo de configuración | (ninguno) | Sí (excepto policy) | Reaccionar a actualizaciones de configuración |
+| **CwdChanged** | Cambios en directorio de trabajo | (ninguno) | No | Configuración específica de directorio |
+| **FileChanged** | Cambios en archivo vigilado | (ninguno) | No | Monitoreo de archivos, rebuild |
+| **PreCompact** | Antes de compactación de contexto | manual/auto | No | Acciones pre-compactación |
+| **PostCompact** | Después de completar compactación | (ninguno) | No | Acciones post-compactación |
+| **WorktreeCreate** | Worktree siendo creado | (ninguno) | Sí (retorno de ruta) | Inicialización de Worktree |
+| **WorktreeRemove** | Worktree siendo eliminado | (ninguno) | No | Limpieza de Worktree |
+| **Elicitation** | Servidor MCP solicita entrada de usuario | (ninguno) | Sí | Validación de entrada |
+| **ElicitationResult** | Usuario responde a elicitation | (ninguno) | Sí | Procesamiento de respuesta |
+| **SessionEnd** | Sesión termina | (ninguno) | No | Limpieza, logging final |
 
 ### PreToolUse
 
-Runs after Claude creates tool parameters and before processing. Use this to validate or modify tool inputs.
+Se ejecuta después de que Claude crea los parámetros de la herramienta y antes del procesamiento. Úsalo para validar o modificar entradas de herramientas.
 
-**Configuration:**
+**Configuración:**
 ```json
 {
   "hooks": {
@@ -196,18 +196,18 @@ Runs after Claude creates tool parameters and before processing. Use this to val
 }
 ```
 
-**Common matchers:** `Task`, `Bash`, `Glob`, `Grep`, `Read`, `Edit`, `Write`, `WebFetch`, `WebSearch`
+**Matchers comunes:** `Task`, `Bash`, `Glob`, `Grep`, `Read`, `Edit`, `Write`, `WebFetch`, `WebSearch`
 
-**Output control:**
-- `permissionDecision`: `"allow"`, `"deny"`, or `"ask"`
-- `permissionDecisionReason`: Explanation for decision
-- `updatedInput`: Modified tool input parameters
+**Control de salida:**
+- `permissionDecision`: `"allow"`, `"deny"` o `"ask"`
+- `permissionDecisionReason`: Explicación para la decisión
+- `updatedInput`: Parámetros de entrada de herramienta modificados
 
 ### PostToolUse
 
-Runs immediately after tool completion. Use for verification, logging, or providing context back to Claude.
+Se ejecuta inmediatamente después de que la herramienta completa. Úsalo para verificación, logging o proporcionar contexto de vuelta a Claude.
 
-**Configuration:**
+**Configuración:**
 ```json
 {
   "hooks": {
@@ -226,15 +226,15 @@ Runs immediately after tool completion. Use for verification, logging, or provid
 }
 ```
 
-**Output control:**
-- `"block"` decision prompts Claude with feedback
-- `additionalContext`: Context added for Claude
+**Control de salida:**
+- La decisión `"block"` prompatea a Claude con feedback
+- `additionalContext`: Contexto agregado para Claude
 
 ### UserPromptSubmit
 
-Runs when user submits a prompt, before Claude processes it.
+Se ejecuta cuando el usuario envía un prompt, antes de que Claude lo procese.
 
-**Configuration:**
+**Configuración:**
 ```json
 {
   "hooks": {
@@ -252,18 +252,18 @@ Runs when user submits a prompt, before Claude processes it.
 }
 ```
 
-**Output control:**
-- `decision`: `"block"` to prevent processing
-- `reason`: Explanation if blocked
-- `additionalContext`: Context added to prompt
+**Control de salida:**
+- `decision`: `"block"` para prevenir procesamiento
+- `reason`: Explicación si se bloquea
+- `additionalContext`: Contexto agregado al prompt
 
-### Stop and SubagentStop
+### Stop y SubagentStop
 
-Run when Claude finishes responding (Stop) or a subagent completes (SubagentStop). Supports prompt-based evaluation for intelligent task completion checking.
+Se ejecutan cuando Claude finaliza la respuesta (Stop) o un subagente completa (SubagentStop). Soporta evaluación basada en prompts para verificación inteligente de finalización de tareas.
 
-**Additional input field:** Both `Stop` and `SubagentStop` hooks receive a `last_assistant_message` field in their JSON input, containing the final message from Claude or the subagent before stopping. This is useful for evaluating task completion.
+**Campo de entrada adicional:** Tanto los hooks `Stop` como `SubagentStop` reciben un campo `last_assistant_message` en su entrada JSON, que contiene el mensaje final de Claude o del subagente antes de detenerse. Esto es útil para evaluar la finalización de tareas.
 
-**Configuration:**
+**Configuración:**
 ```json
 {
   "hooks": {
@@ -272,7 +272,7 @@ Run when Claude finishes responding (Stop) or a subagent completes (SubagentStop
         "hooks": [
           {
             "type": "prompt",
-            "prompt": "Evaluate if Claude completed all requested tasks.",
+            "prompt": "Evalúa si Claude completó todas las tareas solicitadas.",
             "timeout": 30
           }
         ]
@@ -284,9 +284,9 @@ Run when Claude finishes responding (Stop) or a subagent completes (SubagentStop
 
 ### SubagentStart
 
-Runs when a subagent begins execution. The matcher input is the agent type name, allowing hooks to target specific subagent types.
+Se ejecuta cuando un subagente comienza la ejecución. La entrada matcher es el nombre del tipo de agente, permitiendo que los hooks apunten a tipos específicos de subagentes.
 
-**Configuration:**
+**Configuración:**
 ```json
 {
   "hooks": {
@@ -307,11 +307,11 @@ Runs when a subagent begins execution. The matcher input is the agent type name,
 
 ### SessionStart
 
-Runs when session starts or resumes. Can persist environment variables.
+Se ejecuta cuando la sesión inicia o se reanuda. Puede persistir variables de entorno.
 
 **Matchers:** `startup`, `resume`, `clear`, `compact`
 
-**Special feature:** Use `CLAUDE_ENV_FILE` to persist environment variables (also available in `CwdChanged` and `FileChanged` hooks):
+**Característica especial:** Usa `CLAUDE_ENV_FILE` para persistir variables de entorno (también disponible en hooks `CwdChanged` y `FileChanged`):
 
 ```bash
 #!/bin/bash
@@ -323,15 +323,15 @@ exit 0
 
 ### SessionEnd
 
-Runs when session ends to perform cleanup or final logging. Cannot block termination.
+Se ejecuta cuando la sesión termina para realizar limpieza o logging final. No puede bloquear la terminación.
 
-**Reason field values:**
-- `clear` - User cleared the session
-- `logout` - User logged out
-- `prompt_input_exit` - User exited via prompt input
-- `other` - Other reason
+**Valores del campo reason:**
+- `clear` - Usuario limpió la sesión
+- `logout` - Usuario cerró sesión
+- `prompt_input_exit` - Usuario salió vía entrada de prompt
+- `other` - Otra razón
 
-**Configuration:**
+**Configuración:**
 ```json
 {
   "hooks": {
@@ -349,19 +349,19 @@ Runs when session ends to perform cleanup or final logging. Cannot block termina
 }
 ```
 
-### Notification Event
+### Evento Notification
 
-Updated matchers for notification events:
-- `permission_prompt` - Permission request notification
-- `idle_prompt` - Idle state notification
-- `auth_success` - Authentication success
-- `elicitation_dialog` - Dialog shown to user
+Matchers actualizados para eventos de notificación:
+- `permission_prompt` - Notificación de solicitud de permiso
+- `idle_prompt` - Notificación de estado inactivo
+- `auth_success` - Éxito de autenticación
+- `elicitation_dialog` - Diálogo mostrado al usuario
 
 ## Component-Scoped Hooks
 
-Hooks can be attached to specific components (skills, agents, commands) in their frontmatter:
+Los Hooks pueden adjuntarse a componentes específicos (skills, agents, commands) en su frontmatter:
 
-**In SKILL.md, agent.md, or command.md:**
+**En SKILL.md, agent.md, o command.md:**
 
 ```yaml
 ---
@@ -373,17 +373,17 @@ hooks:
       hooks:
         - type: command
           command: "./scripts/check.sh"
-          once: true  # Only run once per session
+          once: true  # Solo ejecutar una vez por sesión
 ---
 ```
 
-**Supported events for component hooks:** `PreToolUse`, `PostToolUse`, `Stop`
+**Eventos soportados para hooks de componentes:** `PreToolUse`, `PostToolUse`, `Stop`
 
-This allows defining hooks directly in the component that uses them, keeping related code together.
+Esto permite definir hooks directamente en el componente que los usa, manteniendo el código relacionado junto.
 
-### Hooks in Subagent Frontmatter
+### Hooks en Frontmatter de Subagentes
 
-When a `Stop` hook is defined in a subagent's frontmatter, it is automatically converted to a `SubagentStop` hook scoped to that subagent. This ensures that the stop hook only fires when that specific subagent completes, rather than when the main session stops.
+Cuando un hook `Stop` se define en el frontmatter de un subagente, se convierte automáticamente en un hook `SubagentStop` con scope para ese subagente. Esto asegura que el hook stop solo se dispare cuando ese subagente específico completa, en lugar de cuando la sesión principal se detiene.
 
 ```yaml
 ---
@@ -393,14 +393,14 @@ hooks:
   Stop:
     - hooks:
         - type: prompt
-          prompt: "Verify the code review is thorough and complete."
-  # The above Stop hook auto-converts to SubagentStop for this subagent
+          prompt: "Verifica que la revisión de código sea exhaustiva y completa."
+  # El hook Stop anterior se auto-convierte a SubagentStop para este subagente
 ---
 ```
 
-## PermissionRequest Event
+## Evento PermissionRequest
 
-Handles permission requests with custom output format:
+Maneja solicitudes de permiso con formato de salida personalizado:
 
 ```json
 {
@@ -409,7 +409,7 @@ Handles permission requests with custom output format:
     "decision": {
       "behavior": "allow|deny",
       "updatedInput": {},
-      "message": "Custom message",
+      "message": "Mensaje personalizado",
       "interrupt": false
     }
   }
@@ -418,9 +418,9 @@ Handles permission requests with custom output format:
 
 ## Hook Input and Output
 
-### JSON Input (via stdin)
+### JSON Input (vía stdin)
 
-All hooks receive JSON input via stdin:
+Todos los hooks reciben entrada JSON vía stdin:
 
 ```json
 {
@@ -441,38 +441,38 @@ All hooks receive JSON input via stdin:
 }
 ```
 
-**Common fields:**
+**Campos comunes:**
 
-| Field | Description |
+| Campo | Descripción |
 |-------|-------------|
-| `session_id` | Unique session identifier |
-| `transcript_path` | Path to the conversation transcript file |
-| `cwd` | Current working directory |
-| `hook_event_name` | Name of the event that triggered the hook |
-| `agent_id` | Identifier of the agent running this hook |
-| `agent_type` | Type of agent (`"main"`, subagent type name, etc.) |
-| `worktree` | Path to the git worktree, if the agent is running in one |
+| `session_id` | Identificador único de sesión |
+| `transcript_path` | Ruta al archivo de transcripción de conversación |
+| `cwd` | Directorio de trabajo actual |
+| `hook_event_name` | Nombre del evento que disparó el hook |
+| `agent_id` | Identificador del agente ejecutando este hook |
+| `agent_type` | Tipo de agente (`"main"`, nombre de tipo de subagente, etc.) |
+| `worktree` | Ruta al git worktree, si el agente está ejecutando en uno |
 
 ### Exit Codes
 
-| Exit Code | Meaning | Behavior |
+| Código de Salida | Significado | Comportamiento |
 |-----------|---------|----------|
-| **0** | Success | Continue, parse JSON stdout |
-| **2** | Blocking error | Block operation, stderr shown as error |
-| **Other** | Non-blocking error | Continue, stderr shown in verbose mode |
+| **0** | Éxito | Continuar, parsear JSON stdout |
+| **2** | Error de bloqueo | Bloquear operación, stderr mostrado como error |
+| **Otro** | Error no bloqueante | Continuar, stderr mostrado en modo verbose |
 
 ### JSON Output (stdout, exit code 0)
 
 ```json
 {
   "continue": true,
-  "stopReason": "Optional message if stopping",
+  "stopReason": "Mensaje opcional si se detiene",
   "suppressOutput": false,
-  "systemMessage": "Optional warning message",
+  "systemMessage": "Mensaje de advertencia opcional",
   "hookSpecificOutput": {
     "hookEventName": "PreToolUse",
     "permissionDecision": "allow",
-    "permissionDecisionReason": "File is in allowed directory",
+    "permissionDecisionReason": "El archivo está en directorio permitido",
     "updatedInput": {
       "file_path": "/modified/path.js"
     }
@@ -482,18 +482,18 @@ All hooks receive JSON input via stdin:
 
 ## Environment Variables
 
-| Variable | Availability | Description |
+| Variable | Disponibilidad | Descripción |
 |----------|-------------|-------------|
-| `CLAUDE_PROJECT_DIR` | All hooks | Absolute path to project root |
-| `CLAUDE_ENV_FILE` | SessionStart, CwdChanged, FileChanged | File path for persisting env vars |
-| `CLAUDE_CODE_REMOTE` | All hooks | `"true"` if running in remote environments |
-| `${CLAUDE_PLUGIN_ROOT}` | Plugin hooks | Path to plugin directory |
-| `${CLAUDE_PLUGIN_DATA}` | Plugin hooks | Path to plugin data directory |
-| `CLAUDE_CODE_SESSIONEND_HOOKS_TIMEOUT_MS` | SessionEnd hooks | Configurable timeout in milliseconds for SessionEnd hooks (overrides default) |
+| `CLAUDE_PROJECT_DIR` | Todos los hooks | Ruta absoluta al root del proyecto |
+| `CLAUDE_ENV_FILE` | SessionStart, CwdChanged, FileChanged | Ruta de archivo para persistir env vars |
+| `CLAUDE_CODE_REMOTE` | Todos los hooks | `"true"` si se ejecuta en entornos remotos |
+| `${CLAUDE_PLUGIN_ROOT}` | Hooks de plugin | Ruta al directorio del plugin |
+| `${CLAUDE_PLUGIN_DATA}` | Hooks de plugin | Ruta al directorio de datos del plugin |
+| `CLAUDE_CODE_SESSIONEND_HOOKS_TIMEOUT_MS` | Hooks SessionEnd | Timeout configurable en milisegundos para hooks SessionEnd (sobrescribe el valor por defecto) |
 
 ## Prompt-Based Hooks
 
-For `Stop` and `SubagentStop` events, you can use LLM-based evaluation:
+Para eventos `Stop` y `SubagentStop`, puedes usar evaluación basada en LLM:
 
 ```json
 {
@@ -503,7 +503,7 @@ For `Stop` and `SubagentStop` events, you can use LLM-based evaluation:
         "hooks": [
           {
             "type": "prompt",
-            "prompt": "Review if all tasks are complete. Return your decision.",
+            "prompt": "Revisa si todas las tareas están completas. Devuelve tu decisión.",
             "timeout": 30
           }
         ]
@@ -517,17 +517,17 @@ For `Stop` and `SubagentStop` events, you can use LLM-based evaluation:
 ```json
 {
   "decision": "approve",
-  "reason": "All tasks completed successfully",
+  "reason": "Todas las tareas completadas exitosamente",
   "continue": false,
-  "stopReason": "Task complete"
+  "stopReason": "Tarea completa"
 }
 ```
 
 ## Examples
 
-### Example 1: Bash Command Validator (PreToolUse)
+### Ejemplo 1: Validador de Comandos Bash (PreToolUse)
 
-**File:** `.claude/hooks/validate-bash.py`
+**Archivo:** `.claude/hooks/validate-bash.py`
 
 ```python
 #!/usr/bin/env python3
@@ -536,8 +536,8 @@ import sys
 import re
 
 BLOCKED_PATTERNS = [
-    (r"\brm\s+-rf\s+/", "Blocking dangerous rm -rf / command"),
-    (r"\bsudo\s+rm", "Blocking sudo rm command"),
+    (r"\brm\s+-rf\s+/", "Bloqueando comando peligroso rm -rf /"),
+    (r"\bsudo\s+rm", "Bloqueando comando sudo rm"),
 ]
 
 def main():
@@ -552,7 +552,7 @@ def main():
     for pattern, message in BLOCKED_PATTERNS:
         if re.search(pattern, command):
             print(message, file=sys.stderr)
-            sys.exit(2)  # Exit 2 = blocking error
+            sys.exit(2)  # Exit 2 = error de bloqueo
 
     sys.exit(0)
 
@@ -560,7 +560,7 @@ if __name__ == "__main__":
     main()
 ```
 
-**Configuration:**
+**Configuración:**
 ```json
 {
   "hooks": {
@@ -579,9 +579,9 @@ if __name__ == "__main__":
 }
 ```
 
-### Example 2: Security Scanner (PostToolUse)
+### Ejemplo 2: Escáner de Seguridad (PostToolUse)
 
-**File:** `.claude/hooks/security-scan.py`
+**Archivo:** `.claude/hooks/security-scan.py`
 
 ```python
 #!/usr/bin/env python3
@@ -590,8 +590,8 @@ import sys
 import re
 
 SECRET_PATTERNS = [
-    (r"password\s*=\s*['\"][^'\"]+['\"]", "Potential hardcoded password"),
-    (r"api[_-]?key\s*=\s*['\"][^'\"]+['\"]", "Potential hardcoded API key"),
+    (r"password\s*=\s*['\"][^'\"]+['\"]", "Posible contraseña hardcodeada"),
+    (r"api[_-]?key\s*=\s*['\"][^'\"]+['\"]", "Posible clave API hardcodeada"),
 ]
 
 def main():
@@ -614,7 +614,7 @@ def main():
         output = {
             "hookSpecificOutput": {
                 "hookEventName": "PostToolUse",
-                "additionalContext": f"Security warnings for {file_path}: " + "; ".join(warnings)
+                "additionalContext": f"Advertencias de seguridad para {file_path}: " + "; ".join(warnings)
             }
         }
         print(json.dumps(output))
@@ -625,14 +625,14 @@ if __name__ == "__main__":
     main()
 ```
 
-### Example 3: Auto-Format Code (PostToolUse)
+### Ejemplo 3: Auto-Formato de Código (PostToolUse)
 
-**File:** `.claude/hooks/format-code.sh`
+**Archivo:** `.claude/hooks/format-code.sh`
 
 ```bash
 #!/bin/bash
 
-# Read JSON from stdin
+# Leer JSON desde stdin
 INPUT=$(cat)
 TOOL_NAME=$(echo "$INPUT" | python3 -c "import sys, json; print(json.load(sys.stdin).get('tool_name', ''))")
 FILE_PATH=$(echo "$INPUT" | python3 -c "import sys, json; print(json.load(sys.stdin).get('tool_input', {}).get('file_path', ''))")
@@ -641,7 +641,7 @@ if [ "$TOOL_NAME" != "Write" ] && [ "$TOOL_NAME" != "Edit" ]; then
     exit 0
 fi
 
-# Format based on file extension
+# Formatear basado en extensión de archivo
 case "$FILE_PATH" in
     *.js|*.jsx|*.ts|*.tsx|*.json)
         command -v prettier &>/dev/null && prettier --write "$FILE_PATH" 2>/dev/null
@@ -657,9 +657,9 @@ esac
 exit 0
 ```
 
-### Example 4: Prompt Validator (UserPromptSubmit)
+### Ejemplo 4: Validador de Prompts (UserPromptSubmit)
 
-**File:** `.claude/hooks/validate-prompt.py`
+**Archivo:** `.claude/hooks/validate-prompt.py`
 
 ```python
 #!/usr/bin/env python3
@@ -668,8 +668,8 @@ import sys
 import re
 
 BLOCKED_PATTERNS = [
-    (r"delete\s+(all\s+)?database", "Dangerous: database deletion"),
-    (r"rm\s+-rf\s+/", "Dangerous: root deletion"),
+    (r"delete\s+(all\s+)?database", "Peligroso: eliminación de base de datos"),
+    (r"rm\s+-rf\s+/", "Peligroso: eliminación de root"),
 ]
 
 def main():
@@ -680,7 +680,7 @@ def main():
         if re.search(pattern, prompt, re.IGNORECASE):
             output = {
                 "decision": "block",
-                "reason": f"Blocked: {message}"
+                "reason": f"Bloqueado: {message}"
             }
             print(json.dumps(output))
             sys.exit(0)
@@ -691,7 +691,7 @@ if __name__ == "__main__":
     main()
 ```
 
-### Example 5: Intelligent Stop Hook (Prompt-Based)
+### Ejemplo 5: Hook Stop Inteligente (Basado en Prompt)
 
 ```json
 {
@@ -701,7 +701,7 @@ if __name__ == "__main__":
         "hooks": [
           {
             "type": "prompt",
-            "prompt": "Review if Claude completed all requested tasks. Check: 1) Were all files created/modified? 2) Were there unresolved errors? If incomplete, explain what's missing.",
+            "prompt": "Revisa si Claude completó todas las tareas solicitadas. Verifica: 1) ¿Se crearon/modificaron todos los archivos? 2) ¿Hubo errores no resueltos? Si está incompleto, explica qué falta.",
             "timeout": 30
           }
         ]
@@ -711,45 +711,45 @@ if __name__ == "__main__":
 }
 ```
 
-### Example 6: Context Usage Tracker (Hook Pairs)
+### Ejemplo 6: Rastreador de Uso de Contexto (Pares de Hooks)
 
-Track token consumption per request using `UserPromptSubmit` (pre-message) and `Stop` (post-response) hooks together.
+Rastrea el consumo de tokens por solicitud usando los hooks `UserPromptSubmit` (pre-mensaje) y `Stop` (post-respuesta) juntos.
 
-**File:** `.claude/hooks/context-tracker.py`
+**Archivo:** `.claude/hooks/context-tracker.py`
 
 ```python
 #!/usr/bin/env python3
 """
-Context Usage Tracker - Tracks token consumption per request.
+Context Usage Tracker - Rastrea el consumo de tokens por solicitud.
 
-Uses UserPromptSubmit as "pre-message" hook and Stop as "post-response" hook
-to calculate the delta in token usage for each request.
+Usa UserPromptSubmit como hook "pre-mensaje" y Stop como hook "post-respuesta"
+para calcular el delta en el uso de tokens para cada solicitud.
 
-Token Counting Methods:
-1. Character estimation (default): ~4 chars per token, no dependencies
-2. tiktoken (optional): More accurate (~90-95%), requires: pip install tiktoken
+Métodos de Conteo de Tokens:
+1. Estimación por caracteres (por defecto): ~4 caracteres por token, sin dependencias
+2. tiktoken (opcional): Más preciso (~90-95%), requiere: pip install tiktoken
 """
 import json
 import os
 import sys
 import tempfile
 
-# Configuration
-CONTEXT_LIMIT = 128000  # Claude's context window (adjust for your model)
-USE_TIKTOKEN = False    # Set True if tiktoken is installed for better accuracy
+# Configuración
+CONTEXT_LIMIT = 128000  # Ventana de contexto de Claude (ajustar para tu modelo)
+USE_TIKTOKEN = False    # Establecer True si tiktoken está instalado para mejor precisión
 
 
 def get_state_file(session_id: str) -> str:
-    """Get temp file path for storing pre-message token count, isolated by session."""
+    """Obtener ruta de archivo temporal para almacenar conteo de tokens pre-mensaje, aislado por sesión."""
     return os.path.join(tempfile.gettempdir(), f"claude-context-{session_id}.json")
 
 
 def count_tokens(text: str) -> int:
     """
-    Count tokens in text.
+    Contar tokens en texto.
 
-    Uses tiktoken with p50k_base encoding if available (~90-95% accuracy),
-    otherwise falls back to character estimation (~80-90% accuracy).
+    Usa tiktoken con codificación p50k_base si está disponible (~90-95% precisión),
+    de lo contrario usa estimación por caracteres (~80-90% precisión).
     """
     if USE_TIKTOKEN:
         try:
@@ -757,14 +757,14 @@ def count_tokens(text: str) -> int:
             enc = tiktoken.get_encoding("p50k_base")
             return len(enc.encode(text))
         except ImportError:
-            pass  # Fall back to estimation
+            pass  # Usar estimación
 
-    # Character-based estimation: ~4 characters per token for English
+    # Estimación basada en caracteres: ~4 caracteres por token para inglés
     return len(text) // 4
 
 
 def read_transcript(transcript_path: str) -> str:
-    """Read and concatenate all content from transcript file."""
+    """Leer y concatenar todo el contenido del archivo de transcripción."""
     if not transcript_path or not os.path.exists(transcript_path):
         return ""
 
@@ -773,7 +773,7 @@ def read_transcript(transcript_path: str) -> str:
         for line in f:
             try:
                 entry = json.loads(line.strip())
-                # Extract text content from various message formats
+                # Extraer contenido de texto de varios formatos de mensaje
                 if "message" in entry:
                     msg = entry["message"]
                     if isinstance(msg.get("content"), str):
@@ -789,28 +789,28 @@ def read_transcript(transcript_path: str) -> str:
 
 
 def handle_user_prompt_submit(data: dict) -> None:
-    """Pre-message hook: Save current token count before request."""
+    """Hook pre-mensaje: Guardar conteo actual de tokens antes de la solicitud."""
     session_id = data.get("session_id", "unknown")
     transcript_path = data.get("transcript_path", "")
 
     transcript_content = read_transcript(transcript_path)
     current_tokens = count_tokens(transcript_content)
 
-    # Save to temp file for later comparison
+    # Guardar en archivo temporal para comparación posterior
     state_file = get_state_file(session_id)
     with open(state_file, "w") as f:
         json.dump({"pre_tokens": current_tokens}, f)
 
 
 def handle_stop(data: dict) -> None:
-    """Post-response hook: Calculate and report token delta."""
+    """Hook post-respuesta: Calcular y reportar delta de tokens."""
     session_id = data.get("session_id", "unknown")
     transcript_path = data.get("transcript_path", "")
 
     transcript_content = read_transcript(transcript_path)
     current_tokens = count_tokens(transcript_content)
 
-    # Load pre-message count
+    # Cargar conteo pre-mensaje
     state_file = get_state_file(session_id)
     pre_tokens = 0
     if os.path.exists(state_file):
@@ -821,16 +821,16 @@ def handle_stop(data: dict) -> None:
         except (json.JSONDecodeError, IOError):
             pass
 
-    # Calculate delta
+    # Calcular delta
     delta_tokens = current_tokens - pre_tokens
     remaining = CONTEXT_LIMIT - current_tokens
     percentage = (current_tokens / CONTEXT_LIMIT) * 100
 
-    # Report usage
+    # Reportar uso
     method = "tiktoken" if USE_TIKTOKEN else "estimated"
-    print(f"Context ({method}): ~{current_tokens:,} tokens ({percentage:.1f}% used, ~{remaining:,} remaining)", file=sys.stderr)
+    print(f"Contexto ({method}): ~{current_tokens:,} tokens ({percentage:.1f}% usado, ~{remaining:,} restante)", file=sys.stderr)
     if delta_tokens > 0:
-        print(f"This request: ~{delta_tokens:,} tokens", file=sys.stderr)
+        print(f"Esta solicitud: ~{delta_tokens:,} tokens", file=sys.stderr)
 
 
 def main():
@@ -849,7 +849,7 @@ if __name__ == "__main__":
     main()
 ```
 
-**Configuration:**
+**Configuración:**
 ```json
 {
   "hooks": {
@@ -877,418 +877,5 @@ if __name__ == "__main__":
 }
 ```
 
-**How it works:**
-1. `UserPromptSubmit` fires before your prompt is processed - saves current token count
-2. `Stop` fires after Claude responds - calculates delta and reports usage
-3. Each session is isolated via `session_id` in the temp filename
-
-**Token Counting Methods:**
-
-| Method | Accuracy | Dependencies | Speed |
-|--------|----------|--------------|-------|
-| Character estimation | ~80-90% | None | <1ms |
-| tiktoken (p50k_base) | ~90-95% | `pip install tiktoken` | <10ms |
-
-> **Note:** Anthropic hasn't released an official offline tokenizer. Both methods are approximations. The transcript includes user prompts, Claude's responses, and tool outputs, but NOT system prompts or internal context.
-
-### Example 7: Auto-Adapt Mode (PostToolUse)
-
-Automatically learns from your tool approvals and updates `~/.claude/settings.json` permissions. Every time you accept a tool execution, the hook generalizes the command into a reusable permission rule — so you never have to approve the same type of command twice. Dangerous/destructive commands are **never** remembered.
-
-On first run, it seeds your config with auto-mode-equivalent baseline permissions (read/write files, git operations, package managers, common CLI tools).
-
-**File:** `.claude/hooks/auto-adapt-mode.py`
-
-```python
-#!/usr/bin/env python3
-"""
-auto-adapt-mode: Learn from user's tool approvals and update Claude config.
-
-Hook Type: PostToolUse
-Event: Fires after a tool is successfully executed (meaning user approved it)
-"""
-
-import json
-import os
-import sys
-import re
-from pathlib import Path
-
-SETTINGS_PATH = Path.home() / ".claude" / "settings.json"
-LOG_PATH = Path.home() / ".claude" / "auto-adapt-mode.log"
-
-# Auto-mode baseline: safe, local, reversible operations
-AUTO_MODE_BASELINE = [
-    "Read(*)", "Edit(*)", "Write(*)", "Glob(*)", "Grep(*)",
-    "Bash(git status:*)", "Bash(git log:*)", "Bash(git diff:*)",
-    "Bash(git add:*)", "Bash(git commit:*)", "Bash(git checkout:*)",
-    "Bash(npm install:*)", "Bash(npm test:*)", "Bash(npm run:*)",
-    "Bash(pip install:*)", "Bash(pytest:*)",
-    "Bash(ls:*)", "Bash(cat:*)", "Bash(find:*)", "Bash(mkdir:*)",
-    "Bash(cp:*)", "Bash(mv:*)", "Bash(chmod:*)",
-    "Bash(gh pr view:*)", "Bash(gh issue list:*)",
-    "Agent(*)", "Skill(*)", "WebSearch(*)", "WebFetch(*)",
-    # ... (full list includes 70+ safe patterns)
-]
-
-# Commands that are NEVER auto-remembered
-DANGEROUS_PATTERNS = [
-    r"rm\s+(-[a-zA-Z]*r[a-zA-Z]*|--recursive)",   # rm -rf
-    r"git\s+push\s+(-[a-zA-Z]*f|--force)",          # force push
-    r"git\s+reset\s+--hard",                         # hard reset
-    r"DROP\s+(TABLE|DATABASE)",                       # SQL destructive
-    r"curl\s+.*\|\s*(bash|sh)",                       # pipe to shell
-    r"sudo\b",                                        # privilege escalation
-    r"docker\s+(rm|rmi|system\s+prune)",              # container destructive
-    r"kubectl\s+delete",                              # k8s destructive
-    r"terraform\s+destroy",                           # infra destructive
-    r"npm\s+publish",                                 # irreversible publish
-    r"deploy\s+.*prod",                               # production deploy
-    # ... (full list includes 25+ patterns)
-]
-
-
-def is_dangerous_command(command: str) -> bool:
-    """Check if a bash command matches any dangerous pattern."""
-    return any(re.search(p, command, re.IGNORECASE) for p in DANGEROUS_PATTERNS)
-
-
-def generalize_tool_permission(tool_name: str, tool_input: dict) -> str | None:
-    """Convert a specific tool invocation into a generalized permission rule."""
-    if tool_name == "Bash":
-        command = tool_input.get("command", "")
-        if not command or is_dangerous_command(command):
-            return None
-        parts = command.strip().split()
-        base = parts[0]
-        # Compound commands: "git push" -> "Bash(git push:*)"
-        compound = ["git", "npm", "npx", "pip", "cargo", "go", "gh", "python3"]
-        if base in compound and len(parts) > 1:
-            sub = parts[1]
-            if sub.lower() in {"rm", "delete", "destroy", "publish"}:
-                return None
-            return f"Bash({base} {sub}:*)"
-        return f"Bash({base}:*)"
-    elif tool_name == "Bash":  # Never allow generic Bash(*)
-        return None
-    else:
-        return f"{tool_name}(*)"
-
-
-def main():
-    try:
-        hook_input = json.load(sys.stdin)
-    except (json.JSONDecodeError, EOFError):
-        sys.exit(0)
-
-    tool_name = hook_input.get("tool_name", "")
-    tool_input = hook_input.get("tool_input", {})
-    if not tool_name:
-        sys.exit(0)
-
-    # Load settings, ensure baseline, add new rule if safe
-    settings = json.load(open(SETTINGS_PATH)) if SETTINGS_PATH.exists() else {}
-    allow = settings.setdefault("permissions", {}).setdefault("allow", [])
-
-    # Seed baseline on first run
-    marker = Path.home() / ".claude" / ".auto-adapt-mode-initialized"
-    if not marker.exists():
-        existing = set(allow)
-        for rule in AUTO_MODE_BASELINE:
-            if rule not in existing:
-                allow.append(rule)
-        marker.touch()
-
-    # Generalize and add the new rule
-    rule = generalize_tool_permission(tool_name, tool_input)
-    if rule and rule not in allow:
-        allow.append(rule)
-        with open(SETTINGS_PATH, "w") as f:
-            json.dump(settings, f, indent=2)
-            f.write("\n")
-
-    sys.exit(0)
-
-if __name__ == "__main__":
-    main()
-```
-
-**Configuration:**
-```json
-{
-  "hooks": {
-    "PostToolUse": [
-      {
-        "matcher": "*",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "python3 \"$CLAUDE_PROJECT_DIR/.claude/hooks/auto-adapt-mode.py\"",
-            "timeout": 10
-          }
-        ]
-      }
-    ]
-  }
-}
-```
-
-**How it works:**
-1. `PostToolUse` fires after **every** successful tool execution (meaning you already approved it)
-2. The hook extracts the tool name and input, then generalizes it into a permission rule
-3. Compound commands like `git push origin main` become `Bash(git push:*)` — matching any `git push` variant
-4. The rule is added to `~/.claude/settings.json` → `permissions.allow` if not already present
-5. On first run, seeds ~70 auto-mode-equivalent baseline permissions
-
-**Safety guarantees:**
-- Dangerous commands (force push, rm -rf, sudo, DROP TABLE, etc.) are **never** remembered
-- Irreversible operations (npm publish, terraform destroy, prod deploys) are **always** blocked
-- Commands in the `deny` list are never overridden
-- The hook never blocks tool execution (always exits 0)
-- A log file at `~/.claude/auto-adapt-mode.log` tracks all decisions for auditing
-
-**Generalization examples:**
-
-| You approve | Rule added | Covers |
-|-------------|-----------|--------|
-| `git push origin main` | `Bash(git push:*)` | All git push variants |
-| `npm run build` | `Bash(npm run:*)` | All npm scripts |
-| `ls -la src/` | `Bash(ls:*)` | All ls invocations |
-| `rm -rf /tmp/test` | *(blocked)* | Never remembered |
-| `git push --force` | *(blocked)* | Never remembered |
-| `Write` tool | `Write(*)` | All file writes |
-
-> **Tip:** Delete `~/.claude/.auto-adapt-mode-initialized` to re-seed baseline permissions. Check `~/.claude/auto-adapt-mode.log` to audit what rules were added and which were blocked.
-
-## Plugin Hooks
-
-Plugins can include hooks in their `hooks/hooks.json` file:
-
-**File:** `plugins/hooks/hooks.json`
-
-```json
-{
-  "hooks": {
-    "PreToolUse": [
-      {
-        "matcher": "Bash",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "${CLAUDE_PLUGIN_ROOT}/scripts/validate.sh"
-          }
-        ]
-      }
-    ]
-  }
-}
-```
-
-**Environment Variables in Plugin Hooks:**
-- `${CLAUDE_PLUGIN_ROOT}` - Path to the plugin directory
-- `${CLAUDE_PLUGIN_DATA}` - Path to the plugin data directory
-
-This allows plugins to include custom validation and automation hooks.
-
-## MCP Tool Hooks
-
-MCP tools follow the pattern `mcp__<server>__<tool>`:
-
-```json
-{
-  "hooks": {
-    "PreToolUse": [
-      {
-        "matcher": "mcp__memory__.*",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "echo '{\"systemMessage\": \"Memory operation logged\"}'"
-          }
-        ]
-      }
-    ]
-  }
-}
-```
-
-## Security Considerations
-
-### Disclaimer
-
-**USE AT YOUR OWN RISK**: Hooks execute arbitrary shell commands. You are solely responsible for:
-- Commands you configure
-- File access/modification permissions
-- Potential data loss or system damage
-- Testing hooks in safe environments before production use
-
-### Security Notes
-
-- **Workspace trust required:** The `statusLine` and `fileSuggestion` hook output commands now require workspace trust acceptance before they take effect.
-- **HTTP hooks and environment variables:** HTTP hooks require an explicit `allowedEnvVars` list to use environment variable interpolation in URLs. This prevents accidental leakage of sensitive environment variables to remote endpoints.
-- **Managed settings hierarchy:** The `disableAllHooks` setting now respects the managed settings hierarchy, meaning organization-level settings can enforce hook disablement that individual users cannot override.
-
-### Best Practices
-
-| Do | Don't |
-|-----|-------|
-| Validate and sanitize all inputs | Trust input data blindly |
-| Quote shell variables: `"$VAR"` | Use unquoted: `$VAR` |
-| Block path traversal (`..`) | Allow arbitrary paths |
-| Use absolute paths with `$CLAUDE_PROJECT_DIR` | Hardcode paths |
-| Skip sensitive files (`.env`, `.git/`, keys) | Process all files |
-| Test hooks in isolation first | Deploy untested hooks |
-| Use explicit `allowedEnvVars` for HTTP hooks | Expose all env vars to webhooks |
-
-## Debugging
-
-### Enable Debug Mode
-
-Run Claude with debug flag for detailed hook logs:
-
-```bash
-claude --debug
-```
-
-### Verbose Mode
-
-Use `Ctrl+O` in Claude Code to enable verbose mode and see hook execution progress.
-
-### Test Hooks Independently
-
-```bash
-# Test with sample JSON input
-echo '{"tool_name": "Bash", "tool_input": {"command": "ls -la"}}' | python3 .claude/hooks/validate-bash.py
-
-# Check exit code
-echo $?
-```
-
-## Complete Configuration Example
-
-```json
-{
-  "hooks": {
-    "PreToolUse": [
-      {
-        "matcher": "Bash",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "python3 \"$CLAUDE_PROJECT_DIR/.claude/hooks/validate-bash.py\"",
-            "timeout": 10
-          }
-        ]
-      }
-    ],
-    "PostToolUse": [
-      {
-        "matcher": "Write|Edit",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "\"$CLAUDE_PROJECT_DIR/.claude/hooks/format-code.sh\"",
-            "timeout": 30
-          },
-          {
-            "type": "command",
-            "command": "python3 \"$CLAUDE_PROJECT_DIR/.claude/hooks/security-scan.py\"",
-            "timeout": 10
-          }
-        ]
-      }
-    ],
-    "UserPromptSubmit": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "python3 \"$CLAUDE_PROJECT_DIR/.claude/hooks/validate-prompt.py\""
-          }
-        ]
-      }
-    ],
-    "SessionStart": [
-      {
-        "matcher": "startup",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "\"$CLAUDE_PROJECT_DIR/.claude/hooks/session-init.sh\""
-          }
-        ]
-      }
-    ],
-    "Stop": [
-      {
-        "hooks": [
-          {
-            "type": "prompt",
-            "prompt": "Verify all tasks are complete before stopping.",
-            "timeout": 30
-          }
-        ]
-      }
-    ]
-  }
-}
-```
-
-## Hook Execution Details
-
-| Aspect | Behavior |
-|--------|----------|
-| **Timeout** | 60 seconds default, configurable per command |
-| **Parallelization** | All matching hooks run in parallel |
-| **Deduplication** | Identical hook commands deduplicated |
-| **Environment** | Runs in current directory with Claude Code's environment |
-
-## Troubleshooting
-
-### Hook Not Executing
-- Verify JSON configuration syntax is correct
-- Check matcher pattern matches the tool name
-- Ensure script exists and is executable: `chmod +x script.sh`
-- Run `claude --debug` to see hook execution logs
-- Verify hook reads JSON from stdin (not command args)
-
-### Hook Blocks Unexpectedly
-- Test hook with sample JSON: `echo '{"tool_name": "Write", ...}' | ./hook.py`
-- Check exit code: should be 0 for allow, 2 for block
-- Check stderr output (shown on exit code 2)
-
-### JSON Parsing Errors
-- Always read from stdin, not command arguments
-- Use proper JSON parsing (not string manipulation)
-- Handle missing fields gracefully
-
-## Installation
-
-### Step 1: Create Hooks Directory
-```bash
-mkdir -p ~/.claude/hooks
-```
-
-### Step 2: Copy Example Hooks
-```bash
-cp 06-hooks/*.sh ~/.claude/hooks/
-chmod +x ~/.claude/hooks/*.sh
-```
-
-### Step 3: Configure in Settings
-Edit `~/.claude/settings.json` or `.claude/settings.json` with the hook configuration shown above.
-
-## Related Concepts
-
-- **[Checkpoints and Rewind](../08-checkpoints/)** - Save and restore conversation state
-- **[Slash Commands](../01-slash-commands/)** - Create custom slash commands
-- **[Skills](../03-skills/)** - Reusable autonomous capabilities
-- **[Subagents](../04-subagents/)** - Delegated task execution
-- **[Plugins](../07-plugins/)** - Bundled extension packages
-- **[Advanced Features](../09-advanced-features/)** - Explore advanced Claude Code capabilities
-
-## Additional Resources
-
-- **[Official Hooks Documentation](https://code.claude.com/docs/en/hooks)** - Complete hooks reference
-- **[CLI Reference](https://code.claude.com/docs/en/cli-reference)** - Command-line interface documentation
-- **[Memory Guide](../02-memory/)** - Persistent context configuration
+**Cómo funciona:**
+1. `UserPromptSubmit` se dispara antes de que tu prompt sea procesado - guarda el conteo actual de tokens... [truncado]

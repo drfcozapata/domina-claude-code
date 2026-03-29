@@ -1,5 +1,5 @@
 #!/bin/bash
-# Security scan on file write
+# Escaneo de seguridad al escribir archivo
 # Hook: PostToolUse:Write
 
 FILE=$1
@@ -9,53 +9,53 @@ if [ -z "$FILE" ]; then
   exit 0
 fi
 
-echo "🔒 Running security scan on: $FILE"
+echo "🔒 Ejecutando escaneo de seguridad en: $FILE"
 
 ISSUES_FOUND=0
 
-# Check for hardcoded passwords
+# Verificar contraseñas hardcodeadas
 if grep -qE "(password|passwd|pwd)\s*=\s*['\"][^'\"]+['\"]" "$FILE"; then
-  echo "⚠️  WARNING: Potential hardcoded password detected in $FILE"
+  echo "⚠️  ADVERTENCIA: Posible contraseña hardcodeada detectada en $FILE"
   ISSUES_FOUND=1
 fi
 
-# Check for hardcoded API keys
+# Verificar claves API hardcodeadas
 if grep -qE "(api[_-]?key|apikey|access[_-]?token)\s*=\s*['\"][^'\"]+['\"]" "$FILE"; then
-  echo "⚠️  WARNING: Potential hardcoded API key detected in $FILE"
+  echo "⚠️  ADVERTENCIA: Posible clave API hardcodeada detectada en $FILE"
   ISSUES_FOUND=1
 fi
 
-# Check for hardcoded secrets
+# Verificar secretos hardcodeados
 if grep -qE "(secret|token)\s*=\s*['\"][^'\"]+['\"]" "$FILE"; then
-  echo "⚠️  WARNING: Potential hardcoded secret detected in $FILE"
+  echo "⚠️  ADVERTENCIA: Posible secreto hardcodeado detectado en $FILE"
   ISSUES_FOUND=1
 fi
 
-# Check for private keys
+# Verificar claves privadas
 if grep -q "BEGIN.*PRIVATE KEY" "$FILE"; then
-  echo "⚠️  WARNING: Private key detected in $FILE"
+  echo "⚠️  ADVERTENCIA: Clave privada detectada en $FILE"
   ISSUES_FOUND=1
 fi
 
-# Check for AWS keys
+# Verificar claves AWS
 if grep -qE "AKIA[0-9A-Z]{16}" "$FILE"; then
-  echo "⚠️  WARNING: AWS access key detected in $FILE"
+  echo "⚠️  ADVERTENCIA: Clave de acceso AWS detectada en $FILE"
   ISSUES_FOUND=1
 fi
 
-# Scan with semgrep if available
+# Escanear con semgrep si está disponible
 if command -v semgrep &> /dev/null; then
   semgrep --config=auto "$FILE" --quiet 2>/dev/null
 fi
 
-# Scan with trufflehog if available
+# Escanear con trufflehog si está disponible
 if command -v trufflehog &> /dev/null; then
   trufflehog filesystem "$FILE" --only-verified --quiet 2>/dev/null
 fi
 
 if [ $ISSUES_FOUND -eq 0 ]; then
-  echo "✅ No security issues found"
+  echo "✅ No se encontraron problemas de seguridad"
 fi
 
-# Don't block the operation, just warn
+# No bloquear la operación, solo advertir
 exit 0

@@ -1,14 +1,14 @@
 ---
 name: code-commentator
-description: Code comment and inline documentation specialist
+description: Especialista en comentarios y documentación en línea de código
 tools: read, write, edit
 ---
 
-# Code Commentator
+# Comentador de Código
 
-Improves code documentation:
-- JSDoc/docstring comments
-- Inline explanations
-- Parameter descriptions
-- Return type documentation
-- Usage examples
+Mejora la documentación del código:
+- Comentarios JSDoc/docstring
+- Explicaciones en línea
+- Descripciones de parámetros
+- Documentación de tipo de retorno
+- Ejemplos de uso

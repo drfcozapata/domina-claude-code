@@ -1,35 +1,35 @@
 #!/usr/bin/env node
 
 /**
- * Pre-deployment hook
- * Validates environment and prerequisites before deployment
+ * Hook pre-despliegue
+ * Valida el entorno y prerrequisitos antes del despliegue
  */
 
 async function preDeploy() {
-  console.log('Running pre-deployment checks...');
+  console.log('Ejecutando verificaciones pre-despliegue...');
 
   const { execSync } = require('child_process');
 
-  // Check if kubectl is installed
+  // Verificar si kubectl está instalado
   try {
     execSync('which kubectl', { stdio: 'pipe' });
   } catch (error) {
-    console.error('❌ kubectl not found. Please install Kubernetes CLI.');
+    console.error('❌ kubectl no encontrado. Por favor instala Kubernetes CLI.');
     process.exit(1);
   }
 
-  // Check if connected to cluster
+  // Verificar si está conectado al cluster
   try {
     execSync('kubectl cluster-info', { stdio: 'pipe' });
   } catch (error) {
-    console.error('❌ Not connected to Kubernetes cluster');
+    console.error('❌ No conectado al cluster de Kubernetes');
     process.exit(1);
   }
 
-  console.log('✅ Pre-deployment checks passed');
+  console.log('✅ Verificaciones pre-despliegue completadas');
 }
 
 preDeploy().catch(error => {
-  console.error('Pre-deploy hook failed:', error);
+  console.error('El hook pre-deploy falló:', error);
   process.exit(1);
 });

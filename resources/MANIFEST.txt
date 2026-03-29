@@ -1,234 +1,235 @@
 ╔════════════════════════════════════════════════════════════════════════════╗
-║                  CLAUDE HOW TO - COMPLETE ASSET MANIFEST                   ║
-║                      All Files Ready for Use                              ║
+║                  CLAUDE HOW TO - MANIFIESTO COMPLETO DE ACTIVOS            ║
+║                      Todos los Archivos Listos para Usar                  ║
 ╚════════════════════════════════════════════════════════════════════════════╝
 
-📦 FULL DIRECTORY MANIFEST
+📦 MANIFIESTO COMPLETO DEL DIRECTORIO
 ═════════════════════════════════════════════════════════════════════════════
 
 resources/
 │
-├─ 📄 README.md                          (6.0K) Complete documentation
-├─ 📄 QUICK-START.md                     (2.5K) Copy & paste setup
-├─ 📄 DESIGN-SYSTEM.md                   (7.7K) Brand guidelines
-├─ 📄 INDEX.txt                          (12K)  Visual reference
-├─ 📄 MANIFEST.txt                       (this) File listing
+├─ 📄 README.md                          (6.0K) Documentación completa
+├─ 📄 QUICK-START.md                     (2.5K) Configuración copiar y pegar
+├─ 📄 DESIGN-SYSTEM.md                   (7.7K) Directrices de marca
+├─ 📄 INDEX.txt                          (12K)  Referencia visual
+├─ 📄 MANIFEST.txt                       (este) Listado de archivos
 │
 ├─ 📁 logos/                             (8.0K total)
-│  └─ 📊 claude-howto-logo.svg          (8.0K) 800×200px main logo
+│  └─ 📊 claude-howto-logo.svg          (8.0K) 800×200px logotipo principal
 │
 ├─ 📁 icons/                             (8.0K total)
-│  └─ 🔷 claude-howto-icon.svg          (8.0K) 256×256px app icon
+│  └─ 🔷 claude-howto-icon.svg          (8.0K) 256×256px icono de app
 │
 └─ 📁 favicons/                          (20K total)
-   ├─ 🔹 favicon-16.svg                 (3.2K) 16×16px browser tab
-   ├─ 🔹 favicon-32.svg                 (3.8K) 32×32px standard
-   ├─ 🔹 favicon-64.svg                 (4.1K) 64×64px high-DPI
-   ├─ 🔹 favicon-128.svg                (4.5K) 128×128px apple touch
-   └─ 🔹 favicon-256.svg                (4.9K) 256×256px modern
+   ├─ 🔹 favicon-16.svg                 (3.2K) 16×16px pestaña de navegador
+   ├─ 🔹 favicon-32.svg                 (3.8K) 32×32px estándar
+   ├─ 🔹 favicon-64.svg                 (4.1K) 64×64px alta densidad
+   ├─ 🔹 favicon-128.svg                (4.5K) 128×128px toque de Apple
+   └─ 🔹 favicon-256.svg                (4.9K) 256×256px moderno
 
 ═════════════════════════════════════════════════════════════════════════════
 
-📊 ASSET SUMMARY
+📊 RESUMEN DE ACTIVOS
 ═════════════════════════════════════════════════════════════════════════════
 
-CATEGORY        COUNT   PURPOSE
+CATEGORÍA       CANT.   PROPÓSITO
 ────────────────────────────────────────────────────────────────────────────
-Logos           1       Main horizontal logo for headers/marketing
-Icons           1       App icon for avatars/thumbnails
-Favicons        5       Browser tabs, bookmarks, mobile icons
-Documentation   5       Setup guides, design system, reference
+Logotipos       1       Logotipo horizontal principal para encabezados/marketing
+Iconos          1       Icono de app para avatares/miniaturas
+Favicons        5       Pestañas de navegador, marcadores, iconos móviles
+Documentación   5       Guías de configuración, sistema de diseño, referencia
 ────────────────────────────────────────────────────────────────────────────
-TOTAL           12      Complete brand asset package
+TOTAL           12      Paquete completo de activos de marca
 
 ═════════════════════════════════════════════════════════════════════════════
 
-📄 DOCUMENTATION FILES - WHAT TO READ
+📄 ARCHIVOS DE DOCUMENTACIÓN - QUÉ LEER
 
-1️⃣  START HERE: QUICK-START.md
-    • Copy & paste HTML code
-    • Recommended sizes by use case
-    • CSS color variables
-    • Quick integration examples
-    ⏱️  5 minute read
+1️⃣  COMIENZA AQUÍ: QUICK-START.md
+    • Código HTML copiar y pegar
+    • Tamaños recomendados por caso de uso
+    • Variables CSS de color
+    • Ejemplos de integración rápida
+    ⏱️  Lectura de 5 minutos
 
-2️⃣  FULL DETAILS: README.md
-    • Complete asset descriptions
-    • HTML/CSS integration guide
-    • Favicon setup instructions
-    • Accessibility & optimization
-    ⏱️  15 minute read
+2️⃣  DETALLES COMPLETOS: README.md
+    • Descripciones completas de activos
+    • Guía de integración HTML/CSS
+    • Instrucciones de configuración de favicon
+    • Accesibilidad y optimización
+    ⏱️  Lectura de 15 minutos
 
-3️⃣  BRAND GUIDELINES: DESIGN-SYSTEM.md
-    • Visual identity principles
-    • Complete color system specs
-    • Icon geometry details
-    • Effects and filters
-    • Customization instructions
-    ⏱️  20 minute read
+3️⃣  DIRECTRICES DE MARCA: DESIGN-SYSTEM.md
+    • Principios de identidad visual
+    • Especificaciones completas del sistema de color
+    • Detalles de geometría de icono
+    • Efectos y filtros
+    • Instrucciones de personalización
+    ⏱️  Lectura de 20 minutos
 
-4️⃣  VISUAL REFERENCE: INDEX.txt
-    • Directory structure diagram
-    • File quick reference table
-    • Design concept visualization
-    • Integration examples
-    ⏱️  10 minute read
+4️⃣  REFERENCIA VISUAL: INDEX.txt
+    • Diagrama de estructura de directorio
+    • Tabla de referencia rápida de archivos
+    • Visualización del concepto de diseño
+    • Ejemplos de integración
+    ⏱️  Lectura de 10 minutos
 
 ═════════════════════════════════════════════════════════════════════════════
 
-🎯 QUICK USAGE GUIDE
+🎯 GUÍA DE USO RÁPIDO
 
-FOR WEBSITES (HTML):
+PARA SITIOS WEB (HTML):
   <link rel="icon" type="image/svg+xml" href="/resources/favicons/favicon-32.svg">
   <link rel="apple-touch-icon" href="/resources/favicons/favicon-128.svg">
 
-FOR MARKDOWN:
+PARA MARKDOWN:
   ![Claude How To](resources/icons/claude-howto-icon.svg)
 
-FOR REACT/NEXT.JS:
+PARA REACT/NEXT.JS:
   import icon from './resources/icons/claude-howto-icon.svg';
 
-FOR CSS BACKGROUND:
+PARA FONDO CSS:
   background-image: url('resources/icons/claude-howto-icon.svg');
 
 ═════════════════════════════════════════════════════════════════════════════
 
-🎨 FILE SELECTION BY USE CASE
+🎨 SELECCIÓN DE ARCHIVOS POR CASO DE USO
 
-USE CASE                    FILE                        SIZE
+CASO DE USO                 ARCHIVO                        TAMAÑO
 ─────────────────────────────────────────────────────────────────────────────
-Website header              logos/claude-howto-logo.svg     800×200px
-Browser tab                 favicons/favicon-32.svg         32×32px
-Mobile home screen          favicons/favicon-128.svg        128×128px
-App icon                    icons/claude-howto-icon.svg     256×256px
-Social media thumbnail      icons/claude-howto-icon.svg     256×256px
-Bookmark/favorite icon      favicons/favicon-64.svg         64×64px
-Apple touch icon            favicons/favicon-128.svg        128×128px
-PWA/Android app             favicons/favicon-256.svg        256×256px
-Old browsers (fallback)     favicons/favicon-16.svg         16×16px
+Encabezado de sitio web     logos/claude-howto-logo.svg     800×200px
+Pestaña de navegador        favicons/favicon-32.svg         32×32px
+Pantalla de inicio móvil    favicons/favicon-128.svg        128×128px
+Icono de app                icons/claude-howto-icon.svg     256×256px
+Miniatura de redes sociales icons/claude-howto-icon.svg     256×256px
+Icono de marcador/favorito   favicons/favicon-64.svg         64×64px
+Icono táctil de Apple       favicons/favicon-128.svg        128×128px
+PWA/App de Android          favicons/favicon-256.svg        256×256px
+Navegadores antiguos        favicons/favicon-16.svg         16×16px
+(alternativa)
 
 ═════════════════════════════════════════════════════════════════════════════
 
-✅ VERIFICATION CHECKLIST
+✅ LISTA DE VERIFICACIÓN
 
-SVG Assets:
-  ✓ logos/claude-howto-logo.svg       Main logo
-  ✓ icons/claude-howto-icon.svg       App icon
-  ✓ favicons/favicon-16.svg           16px favicon
-  ✓ favicons/favicon-32.svg           32px favicon
-  ✓ favicons/favicon-64.svg           64px favicon
-  ✓ favicons/favicon-128.svg          128px favicon
-  ✓ favicons/favicon-256.svg          256px favicon
+Activos SVG:
+  ✓ logos/claude-howto-logo.svg       Logotipo principal
+  ✓ icons/claude-howto-icon.svg       Icono de app
+  ✓ favicons/favicon-16.svg           Favicon 16px
+  ✓ favicons/favicon-32.svg           Favicon 32px
+  ✓ favicons/favicon-64.svg           Favicon 64px
+  ✓ favicons/favicon-128.svg          Favicon 128px
+  ✓ favicons/favicon-256.svg          Favicon 256px
 
-Documentation:
-  ✓ README.md                         Complete guide
-  ✓ QUICK-START.md                    Setup guide
-  ✓ DESIGN-SYSTEM.md                  Brand guidelines
-  ✓ INDEX.txt                         Visual reference
-  ✓ MANIFEST.txt                      This file
-
-═════════════════════════════════════════════════════════════════════════════
-
-🎨 DESIGN CONCEPT
-
-The icon represents the Claude How To learning journey with ascending hexagons:
-
-              🔶 MINT
-        Advanced Features
-        Levels 7-10
-
-          🔶 EMERALD
-    Intermediate Skills
-    Levels 4-6
-
-      🔶 DARK EMERALD
-  Beginner Fundamentals
-  Levels 1-3
-
-COLOR PALETTE:
-  • Deep Forest    #0d1f0d    Background
-  • Emerald        #10b981    Primary accent
-  • Dark Emerald   #059669    Secondary accent
-  • Forest         #047857    Tertiary accent
-  • Mint           #6ee7b7    Highlight
-  • Light Mint     #34d399    Secondary highlight
-
-All colors: WCAG AAA accessible (8.2:1+ contrast)
+Documentación:
+  ✓ README.md                         Guía completa
+  ✓ QUICK-START.md                    Guía de configuración
+  ✓ DESIGN-SYSTEM.md                  Directrices de marca
+  ✓ INDEX.txt                         Referencia visual
+  ✓ MANIFEST.txt                      Este archivo
 
 ═════════════════════════════════════════════════════════════════════════════
 
-📥 HOW TO INTEGRATE
+🎨 CONCEPTO DE DISEÑO
 
-STEP 1: Copy files
+El icono representa el viaje de aprendizaje de Claude How To con hexágonos ascendentes:
+
+              🔶 MENTA
+        Características Avanzadas
+        Niveles 7-10
+
+          🔶 ESMERALDA
+    Habilidades Intermedias
+    Niveles 4-6
+
+      🔶 ESMERALDA OSCURO
+  Fundamentos Principiantes
+  Niveles 1-3
+
+PALETA DE COLORES:
+  • Bosque Profundo    #0d1f0d    Fondo
+  • Esmeralda          #10b981    Acento principal
+  • Esmeralda Oscuro   #059669    Acento secundario
+  • Bosque             #047857    Acento terciario
+  • Menta              #6ee7b7    Resaltado
+  • Menta Claro        #34d399    Resaltado secundario
+
+Todos los colores: Accesibles WCAG AAA (contraste 8.2:1+)
+
+═════════════════════════════════════════════════════════════════════════════
+
+📥 CÓMO INTEGRAR
+
+PASO 1: Copiar archivos
   cp -r resources/ /path/to/your/project/
 
-STEP 2: Read documentation
-  Start with resources/QUICK-START.md
+PASO 2: Leer documentación
+  Comienza con resources/QUICK-START.md
 
-STEP 3: Add to HTML
-  Copy provided code snippets (see QUICK-START.md)
+PASO 3: Agregar a HTML
+  Copia los fragmentos de código proporcionados (ver QUICK-START.md)
 
-STEP 4: Customize (optional)
-  Reference DESIGN-SYSTEM.md for color changes
-
-═════════════════════════════════════════════════════════════════════════════
-
-📋 FILE SPECIFICATIONS
-
-Format:             SVG (Scalable Vector Graphics)
-Scalability:        Any size, no pixelation
-Browser Support:    All modern browsers
-Accessibility:      WCAG AAA compliant
-Color Mode:         RGB/RGBA with gradients
-Effects:            Gradients, shadows, glows
-Customizable:       Yes, see DESIGN-SYSTEM.md
-Animated:           Static (can be animated with CSS/JS)
+PASO 4: Personalizar (opcional)
+  Consulta DESIGN-SYSTEM.md para cambios de color
 
 ═════════════════════════════════════════════════════════════════════════════
 
-🚀 NEXT STEPS
+📋 ESPECIFICACIONES DE ARCHIVO
 
-IMMEDIATE:
-  1. Read resources/QUICK-START.md
-  2. Copy favicons to your project
-  3. Add favicon link to your HTML
-
-SHORT TERM:
-  1. Integrate logo into website
-  2. Use icon for social media
-  3. Review DESIGN-SYSTEM.md
-
-LONG TERM:
-  1. Maintain color palette consistency
-  2. Use brand assets across all materials
-  3. Reference guidelines for any customizations
+Formato:            SVG (Gráficos Vectoriales Escalables)
+Escalabilidad:      Cualquier tamaño, sin pixelación
+Soporte de Naveg.:  Todos los navegadores modernos
+Accesibilidad:      Cumple WCAG AAA
+Modo de Color:      RGB/RGBA con gradientes
+Efectos:            Gradientes, sombras, brillos
+Personalizable:     Sí, ver DESIGN-SYSTEM.md
+Animado:            Estático (puede animarse con CSS/JS)
 
 ═════════════════════════════════════════════════════════════════════════════
 
-💡 PRO TIPS
+🚀 SIGUIENTES PASOS
 
-• Use favicon-32.svg as primary favicon (works on all modern browsers)
-• Use icons/claude-howto-icon.svg for avatars at 64-256px
-• Use logos/claude-howto-logo.svg for website headers (scale to fit)
-• Keep the ascending hexagon concept for any custom variants
-• Always maintain the established color palette
-• SVG files are editable - see DESIGN-SYSTEM.md for color customization
-• No PNG conversion needed - SVG works everywhere
+INMEDIATO:
+  1. Leer resources/QUICK-START.md
+  2. Copiar favicons a tu proyecto
+  3. Agregar enlace de favicon a tu HTML
 
-═════════════════════════════════════════════════════════════════════════════
+A CORTO PLAZO:
+  1. Integrar logotipo en el sitio web
+  2. Usar icono para redes sociales
+  3. Revisar DESIGN-SYSTEM.md
 
-📞 NEED HELP?
-
-1. Quick setup?          → Read QUICK-START.md
-2. Full reference?       → Read README.md
-3. Brand guidelines?     → Read DESIGN-SYSTEM.md
-4. Visual overview?      → Read INDEX.txt
-5. Find a specific file? → Read this MANIFEST.txt
+A LARGO PLAZO:
+  1. Mantener consistencia de paleta de colores
+  2. Usar activos de marca en todos los materiales
+  3. Consultar directrices para cualquier personalización
 
 ═════════════════════════════════════════════════════════════════════════════
 
-Generated: January 2026
-Design System: v1.0
-All files production-ready ✅
+💡 CONSEJOS PROFESIONALES
+
+• Usar favicon-32.svg como favicon principal (funciona en todos los navegadores modernos)
+• Usar icons/claude-howto-icon.svg para avatares a 64-256px
+• Usar logos/claude-howto-logo.svg para encabezados de sitio web (escalar para ajustar)
+• Mantener el concepto de hexágono ascendente para cualquier variante personalizada
+• Siempre mantener la paleta de colores establecida
+• Los archivos SVG son editables - ver DESIGN-SYSTEM.md para personalización de color
+• No se necesita conversión a PNG - SVG funciona en todas partes
+
+═════════════════════════════════════════════════════════════════════════════
+
+📞 ¿NECESITAS AYUDA?
+
+1. ¿Configuración rápida?       → Lee QUICK-START.md
+2. ¿Referencia completa?        → Lee README.md
+3. ¿Directrices de marca?       → Lee DESIGN-SYSTEM.md
+4. ¿Resumen visual?             → Lee INDEX.txt
+5. ¿Encontrar un archivo específico? → Lee este MANIFEST.txt
+
+═════════════════════════════════════════════════════════════════════════════
+
+Generado: Enero 2026
+Sistema de Diseño: v1.0
+Todos los archivos listos para producción ✅
 
 ═════════════════════════════════════════════════════════════════════════════

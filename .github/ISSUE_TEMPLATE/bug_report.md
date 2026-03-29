@@ -1,43 +1,43 @@
 ---
-name: Bug Report
-about: Report an issue with an example, guide, or documentation
+name: Reporte de Bug
+about: Reportar un issue con un ejemplo, guide o documentación
 title: "[BUG] "
 labels: bug
 assignees: ''
 
 ---
 
-## Description
-Brief description of the issue.
+## Descripción
+Descripción breve del issue.
 
-## Steps to Reproduce
-1. Step 1
-2. Step 2
-3. Step 3
+## Pasos para Reproducir
+1. Paso 1
+2. Paso 2
+3. Paso 3
 
-## Expected Behavior
-What should happen?
+## Comportamiento Esperado
+¿Qué debería pasar?
 
-## Actual Behavior
-What actually happened?
+## Comportamiento Actual
+¿Qué pasó realmente?
 
 ## Environment
-- **Claude Code Version**: (e.g., 1.0.5)
-- **Operating System**: (e.g., macOS 14.1, Ubuntu 22.04, Windows 11)
-- **Python Version**: (if relevant, e.g., 3.11)
-- **Affected Component**: (e.g., 01-slash-commands, 03-skills, etc.)
+- **Versión de Claude Code**: (ej. 1.0.5)
+- **Sistema Operativo**: (ej. macOS 14.1, Ubuntu 22.04, Windows 11)
+- **Versión de Python**: (si es relevante, ej. 3.11)
+- **Componente Afectado**: (ej. 01-slash-commands, 03-skills, etc.)
 
-## Example Code
-If applicable, provide the example code that's not working:
+## Código de Ejemplo
+Si es aplicable, proporciona el código de ejemplo que no está funcionando:
 ```
-[Insert code here]
+[Insertar código aquí]
 ```
 
-## Screenshots
-If applicable, add screenshots showing the issue.
+## Capturas de Pantalla
+Si es aplicable, agrega capturas de pantalla mostrando el issue.
 
-## Additional Context
-Any other context that might help us understand the issue?
+## Contexto Adicional
+¿Algún otro contexto que pueda ayudarnos a entender el issue?
 
-## Possible Solution
-If you have a suggestion for fixing this, share it here.
+## Solución Posible
+Si tienes una sugerencia para arreglar esto, compártela aquí.

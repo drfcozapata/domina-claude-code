@@ -1,87 +1,87 @@
 ---
 name: code-refactor
-description: Systematic code refactoring based on Martin Fowler's methodology. Use when users ask to refactor code, improve code structure, reduce technical debt, clean up legacy code, eliminate code smells, or improve code maintainability. This skill guides through a phased approach with research, planning, and safe incremental implementation.
+description: Refactoring sistemático de código basado en la metodología de Martin Fowler. Usa cuando los usuarios pidan refactorizar código, mejorar estructura de código, reducir deuda técnica, limpiar código legacy, eliminar code smells, o mejorar mantenibilidad de código. Este skill guía a través de un enfoque por fases con investigación, planificación e implementación incremental segura.
 ---
 
-# Code Refactoring Skill
+# Skill de Refactoring de Código
 
-A systematic approach to refactoring code based on Martin Fowler's *Refactoring: Improving the Design of Existing Code* (2nd Edition). This skill emphasizes safe, incremental changes backed by tests.
+Un enfoque sistemático para refactorizar código basado en *Refactoring: Improving the Design of Existing Code* (2da Edición) de Martin Fowler. Este skill enfatiza cambios incrementales seguros respaldados por tests.
 
-> "Refactoring is the process of changing a software system in such a way that it does not alter the external behavior of the code yet improves its internal structure." — Martin Fowler
+> "El refactoring es el proceso de cambiar un sistema de software de tal manera que no altere el comportamiento externo del código pero mejore su estructura interna." — Martin Fowler
 
-## Core Principles
+## Principios Fundamentales
 
-1. **Behavior Preservation**: External behavior must remain unchanged
-2. **Small Steps**: Make tiny, testable changes
-3. **Test-Driven**: Tests are the safety net
-4. **Continuous**: Refactoring is ongoing, not a one-time event
-5. **Collaborative**: User approval required at each phase
+1. **Preservación de Comportamiento**: El comportamiento externo debe permanecer sin cambios
+2. **Pasos Pequeños**: Haz cambios pequeños y testeables
+3. **Test-Driven**: Los tests son la red de seguridad
+4. **Continuo**: El refactoring es continuo, no un evento único
+5. **Colaborativo**: Aprobación del usuario requerida en cada fase
 
-## Workflow Overview
+## Visión General del Flujo de Trabajo
 
 ```
-Phase 1: Research & Analysis
+Fase 1: Investigación y Análisis
     ↓
-Phase 2: Test Coverage Assessment
+Fase 2: Evaluación de Cobertura de Tests
     ↓
-Phase 3: Code Smell Identification
+Fase 3: Identificación de Code Smells
     ↓
-Phase 4: Refactoring Plan Creation
+Fase 4: Creación de Plan de Refactoring
     ↓
-Phase 5: Incremental Implementation
+Fase 5: Implementación Incremental
     ↓
-Phase 6: Review & Iteration
+Fase 6: Revisión e Iteración
 ```
 
 ---
 
-## Phase 1: Research & Analysis
+## Fase 1: Investigación y Análisis
 
-### Objectives
-- Understand the codebase structure and purpose
-- Identify the scope of refactoring
-- Gather context about business requirements
+### Objetivos
+- Entender la estructura y propósito del codebase
+- Identificar el scope del refactoring
+- Recopilar contexto sobre requisitos de negocio
 
-### Questions to Ask User
-Before starting, clarify:
+### Preguntas para Hacer al Usuario
+Antes de comenzar, clarifica:
 
-1. **Scope**: Which files/modules/functions need refactoring?
-2. **Goals**: What problems are you trying to solve? (readability, performance, maintainability)
-3. **Constraints**: Are there any areas that should NOT be changed?
-4. **Timeline pressure**: Is this blocking other work?
-5. **Test status**: Do tests exist? Are they passing?
+1. **Scope**: ¿Qué archivos/módulos/funciones necesitan refactoring?
+2. **Objetivos**: ¿Qué problemas estás tratando de resolver? (legibilidad, rendimiento, mantenibilidad)
+3. **Restricciones**: ¿Hay alguna área que NO debería cambiarse?
+4. **Presión de tiempo**: ¿Esto está bloqueando otro trabajo?
+5. **Estado de tests**: ¿Existen tests? ¿Están pasando?
 
-### Actions
-- [ ] Read and understand the target code
-- [ ] Identify dependencies and integrations
-- [ ] Document current architecture
-- [ ] Note any existing technical debt markers (TODOs, FIXMEs)
+### Acciones
+- [ ] Lee y entiende el código objetivo
+- [ ] Identifica dependencias e integraciones
+- [ ] Documenta la arquitectura actual
+- [ ] Nota cualquier marcador de deuda técnica existente (TODOs, FIXMEs)
 
-### Output
-Present findings to user:
-- Code structure summary
-- Identified problem areas
-- Initial recommendations
-- **Request approval to proceed**
+### Salida
+Presenta hallazgos al usuario:
+- Resumen de estructura de código
+- Áreas problemáticas identificadas
+- Recomendaciones iniciales
+- **Solicita aprobación para proceder**
 
 ---
 
-## Phase 2: Test Coverage Assessment
+## Fase 2: Evaluación de Cobertura de Tests
 
-### Why Tests Matter
-> "Refactoring without tests is like driving without a seatbelt." — Martin Fowler
+### Por Qué Importan los Tests
+> "Refactoring sin tests es como conducir sin cinturón de seguridad." — Martin Fowler
 
-Tests are the **key enabler** of safe refactoring. Without them, you risk introducing bugs.
+Los tests son el **habilitador clave** del refactoring seguro. Sin ellos, arriesgas introducir bugs.
 
-### Assessment Steps
+### Pasos de Evaluación
 
-1. **Check for existing tests**
+1. **Verifica tests existentes**
    ```bash
-   # Look for test files
+   # Busca archivos de test
    find . -name "*test*" -o -name "*spec*" | head -20
    ```
 
-2. **Run existing tests**
+2. **Ejecuta tests existentes**
    ```bash
    # JavaScript/TypeScript
    npm test
@@ -93,7 +93,7 @@ Tests are the **key enabler** of safe refactoring. Without them, you risk introd
    mvn test
    ```
 
-3. **Check coverage (if available)**
+3. **Verifica cobertura (si está disponible)**
    ```bash
    # JavaScript
    npm run test:coverage
@@ -102,303 +102,303 @@ Tests are the **key enabler** of safe refactoring. Without them, you risk introd
    pytest --cov=.
    ```
 
-### Decision Point: Ask User
+### Punto de Decisión: Pregunta al Usuario
 
-**If tests exist and pass:**
-- Proceed to Phase 3
+**Si los tests existen y pasan:**
+- Procede a Fase 3
 
-**If tests are missing or incomplete:**
-Present options:
-1. Write tests first (recommended)
-2. Add tests incrementally during refactoring
-3. Proceed without tests (risky - requires user acknowledgment)
+**Si los tests faltan o están incompletos:**
+Presenta opciones:
+1. Escribe tests primero (recomendado)
+2. Añade tests incrementalmente durante el refactoring
+3. Procede sin tests (riesgoso - requiere reconocimiento del usuario)
 
-**If tests are failing:**
-- STOP. Fix failing tests before refactoring
-- Ask user: Should we fix tests first?
+**Si los tests están fallando:**
+- DETENTE. Arregla tests fallando antes de refactorizar
+- Pregunta al usuario: ¿Deberíamos arreglar los tests primero?
 
-### Test Writing Guidelines (if needed)
+### Guías de Escritura de Tests (si es necesario)
 
-For each function being refactored, ensure tests cover:
-- Happy path (normal operation)
-- Edge cases (empty inputs, null, boundaries)
-- Error scenarios (invalid inputs, exceptions)
+Para cada función siendo refactorizada, asegura que los tests cubran:
+- Camino feliz (operación normal)
+- Casos edge (inputs vacíos, null, boundaries)
+- Escenarios de error (inputs inválidos, excepciones)
 
-Use the "red-green-refactor" cycle:
-1. Write failing test (red)
-2. Make it pass (green)
-3. Refactor
+Usa el ciclo "red-green-refactor":
+1. Escribe test fallando (red)
+2. Haz que pase (green)
+3. Refactoriza
 
 ---
 
-## Phase 3: Code Smell Identification
+## Fase 3: Identificación de Code Smells
 
-### What Are Code Smells?
-Symptoms of deeper problems in code. They're not bugs, but indicators that the code could be improved.
+### Qué Son los Code Smells
+Síntomas de problemas más profundos en el código. No son bugs, pero indicadores de que el código podría mejorarse.
 
-### Common Code Smells to Check
+### Code Smells Comunes a Verificar
 
-See [references/code-smells.md](references/code-smells.md) for the complete catalog.
+Ver [references/code-smells.md](references/code-smells.md) para el catálogo completo.
 
-#### Quick Reference
+#### Referencia Rápida
 
-| Smell | Signs | Impact |
+| Smell | Signos | Impacto |
 |-------|-------|--------|
-| **Long Method** | Methods > 30-50 lines | Hard to understand, test, maintain |
-| **Duplicated Code** | Same logic in multiple places | Bug fixes needed in multiple places |
-| **Large Class** | Class with too many responsibilities | Violates Single Responsibility |
-| **Feature Envy** | Method uses another class's data more | Poor encapsulation |
-| **Primitive Obsession** | Overuse of primitives instead of objects | Missing domain concepts |
-| **Long Parameter List** | Methods with 4+ parameters | Hard to call correctly |
-| **Data Clumps** | Same data items appearing together | Missing abstraction |
-| **Switch Statements** | Complex switch/if-else chains | Hard to extend |
-| **Speculative Generality** | Code "just in case" | Unnecessary complexity |
-| **Dead Code** | Unused code | Confusion, maintenance burden |
+| **Método Largo** | Métodos > 30-50 líneas | Difícil de entender, testear, mantener |
+| **Código Duplicado** | Misma lógica en múltiples lugares | Fixes de bugs necesarios en múltiples lugares |
+| **Clase Grande** | Clase con demasiadas responsabilidades | Viola Principio de Responsabilidad Única |
+| **Envidia de Característica** | Método usa datos de otra clase más | Pobre encapsulamiento |
+| **Obsesión Primitiva** | Sobrecuso de primitivos en lugar de objetos | Faltan conceptos de dominio |
+| **Lista de Parámetros Larga** | Métodos con 4+ parámetros | Difícil de llamar correctamente |
+| **Grupos de Datos** | Mismos ítems de datos apareciendo juntos | Falta abstracción |
+| **Switch Statements** | Cadenas complejas de switch/if-else | Difícil de extender |
+| **Generalidad Especulativa** | Código "por si acaso" | Complejidad innecesaria |
+| **Código Muerto** | Código no usado | Confusión, carga de mantenimiento |
 
-### Analysis Steps
+### Pasos de Análisis
 
-1. **Automated Analysis** (if scripts available)
+1. **Análisis Automatizado** (si los scripts están disponibles)
    ```bash
-   python scripts/detect-smells.py <file>
+   python scripts/detect-smells.py <archivo>
    ```
 
-2. **Manual Review**
-   - Walk through code systematically
-   - Note each smell with location and severity
-   - Categorize by impact (Critical/High/Medium/Low)
+2. **Revisión Manual**
+   - Recorre el código sistemáticamente
+   - Nota cada smell con ubicación y severidad
+   - Categoriza por impacto (Crítico/Alto/Medio/Bajo)
 
-3. **Prioritization**
-   Focus on smells that:
-   - Block current development
-   - Cause bugs or confusion
-   - Affect most-changed code paths
+3. **Priorización**
+   Enfócate en smells que:
+   - Bloquean desarrollo actual
+   - Causan bugs o confusión
+   - Afectan rutas de código más cambiadas
 
-### Output: Smell Report
+### Salida: Reporte de Smells
 
-Present to user:
-- List of identified smells with locations
-- Severity assessment for each
-- Recommended priority order
-- **Request approval on priorities**
+Presenta al usuario:
+- Lista de smells identificados con ubicaciones
+- Evaluación de severidad para cada uno
+- Orden de prioridad recomendado
+- **Solicita aprobación en prioridades**
 
 ---
 
-## Phase 4: Refactoring Plan Creation
+## Fase 4: Creación de Plan de Refactoring
 
-### Selecting Refactorings
+### Seleccionando Refactorings
 
-For each smell, select an appropriate refactoring from the catalog.
+Para cada smell, selecciona un refactoring apropiado del catálogo.
 
-See [references/refactoring-catalog.md](references/refactoring-catalog.md) for the complete list.
+Ver [references/refactoring-catalog.md](references/refactoring-catalog.md) para la lista completa.
 
-#### Smell-to-Refactoring Mapping
+#### Mapeo de Smell-a-Refactoring
 
-| Code Smell | Recommended Refactoring(s) |
+| Code Smell | Refactoring(s) Recomendado(s) |
 |------------|---------------------------|
-| Long Method | Extract Method, Replace Temp with Query |
-| Duplicated Code | Extract Method, Pull Up Method, Form Template Method |
-| Large Class | Extract Class, Extract Subclass |
-| Feature Envy | Move Method, Move Field |
-| Primitive Obsession | Replace Primitive with Object, Replace Type Code with Class |
-| Long Parameter List | Introduce Parameter Object, Preserve Whole Object |
-| Data Clumps | Extract Class, Introduce Parameter Object |
+| Método Largo | Extract Method, Replace Temp with Query |
+| Código Duplicado | Extract Method, Pull Up Method, Form Template Method |
+| Clase Grande | Extract Class, Extract Subclass |
+| Envidia de Característica | Move Method, Move Field |
+| Obsesión Primitiva | Replace Primitive with Object, Replace Type Code with Class |
+| Lista de Parámetros Larga | Introduce Parameter Object, Preserve Whole Object |
+| Grupos de Datos | Extract Class, Introduce Parameter Object |
 | Switch Statements | Replace Conditional with Polymorphism |
-| Speculative Generality | Collapse Hierarchy, Inline Class, Remove Dead Code |
-| Dead Code | Remove Dead Code |
+| Generalidad Especulativa | Collapse Hierarchy, Inline Class, Remove Dead Code |
+| Código Muerto | Remove Dead Code |
 
-### Plan Structure
+### Estructura del Plan
 
-Use the template at [templates/refactoring-plan.md](templates/refactoring-plan.md).
+Usa la plantilla en [templates/refactoring-plan.md](templates/refactoring-plan.md).
 
-For each refactoring:
-1. **Target**: What code will change
-2. **Smell**: What problem it addresses
-3. **Refactoring**: Which technique to apply
-4. **Steps**: Detailed micro-steps
-5. **Risks**: What could go wrong
-6. **Rollback**: How to undo if needed
+Para cada refactoring:
+1. **Objetivo**: Qué código cambiará
+2. **Smell**: Qué problema aborda
+3. **Refactoring**: Qué técnica aplicar
+4. **Pasos**: Micro-pasos detallados
+5. **Riesgos**: Qué podría salir mal
+6. **Rollback**: Cómo deshacer si es necesario
 
-### Phased Approach
+### Enfoque por Fases
 
-**CRITICAL**: Introduce refactoring gradually in phases.
+**CRÍTICO**: Introduce el refactoring gradualmente en fases.
 
-**Phase A: Quick Wins** (Low risk, high value)
-- Rename variables for clarity
-- Extract obvious duplicate code
-- Remove dead code
+**Fase A: Victorias Rápidas** (Bajo riesgo, alto valor)
+- Renombra variables por claridad
+- Extrae código duplicado obvio
+- Elimina código muerto
 
-**Phase B: Structural Improvements** (Medium risk)
-- Extract methods from long functions
-- Introduce parameter objects
-- Move methods to appropriate classes
+**Fase B: Mejoras Estructurales** (Riesgo medio)
+- Extrae métodos de funciones largas
+- Introduce objetos de parámetros
+- Mueve métodos a clases apropiadas
 
-**Phase C: Architectural Changes** (Higher risk)
-- Replace conditionals with polymorphism
-- Extract classes
-- Introduce design patterns
+**Fase C: Cambios Arquitectónicos** (Riesgo más alto)
+- Reemplaza condicionales con polimorfismo
+- Extrae clases
+- Introduce patrones de diseño
 
-### Decision Point: Present Plan to User
+### Punto de Decisión: Presenta el Plan al Usuario
 
-Before implementation:
-- Show complete refactoring plan
-- Explain each phase and its risks
-- Get explicit approval for each phase
-- **Ask**: "Should I proceed with Phase A?"
+Antes de la implementación:
+- Muestra el plan de refactoring completo
+- Explica cada fase y sus riesgos
+- Obten aprobación explícita para cada fase
+- **Pregunta**: "¿Debería proceder con la Fase A?"
 
 ---
 
-## Phase 5: Incremental Implementation
+## Fase 5: Implementación Incremental
 
-### The Golden Rule
-> "Change → Test → Green? → Commit → Next step"
+### La Regla de Oro
+> "Cambio → Test → ¿Verde? → Commit → Siguiente paso"
 
-### Implementation Rhythm
+### Ritmo de Implementación
 
-For each refactoring step:
+Para cada paso de refactoring:
 
 1. **Pre-check**
-   - Tests are passing (green)
-   - Code compiles
+   - Los tests están pasando (green)
+   - El código compila
 
-2. **Make ONE small change**
-   - Follow the mechanics from the catalog
-   - Keep changes minimal
+2. **Haz UN cambio pequeño**
+   - Sigue las mecánicas del catálogo
+   - Mantén los cambios mínimos
 
-3. **Verify**
-   - Run tests immediately
-   - Check for compilation errors
+3. **Verifica**
+   - Ejecuta tests inmediatamente
+   - Verifica errores de compilación
 
-4. **If tests pass (green)**
-   - Commit with descriptive message
-   - Move to next step
+4. **Si los tests pasan (green)**
+   - Haz commit con mensaje descriptivo
+   - Mueve al siguiente paso
 
-5. **If tests fail (red)**
-   - STOP immediately
-   - Undo the change
-   - Analyze what went wrong
-   - Ask user if unclear
+5. **Si los tests fallan (red)**
+   - DETENTE inmediatamente
+   - Deshaz el cambio
+   - Analiza qué salió mal
+   - Pregunta al usuario si no estás seguro
 
-### Commit Strategy
+### Estrategia de Commits
 
-Each commit should be:
-- **Atomic**: One logical change
-- **Reversible**: Easy to revert
-- **Descriptive**: Clear commit message
+Cada commit debería ser:
+- **Atómico**: Un cambio lógico
+- **Reversible**: Fácil de revertir
+- **Descriptivo**: Mensaje de commit claro
 
-Example commit messages:
+Ejemplo de mensajes de commit:
 ```
-refactor: Extract calculateTotal() from processOrder()
-refactor: Rename 'x' to 'customerCount' for clarity
-refactor: Remove unused validateOldFormat() method
+refactor: Extraer calculateTotal() de processOrder()
+refactor: Renombrar 'x' a 'customerCount' por claridad
+refactor: Eliminar método unused validateOldFormat()
 ```
 
-### Progress Reporting
+### Reporte de Progreso
 
-After each sub-phase, report to user:
-- Changes made
-- Tests still passing?
-- Any issues encountered
-- **Ask**: "Continue with next batch?"
+Después de cada sub-fase, reporta al usuario:
+- Cambios realizados
+- ¿Tests aún pasando?
+- ¿Algunos issues encontrados?
+- **Pregunta**: "¿Continuar con el siguiente lote?"
 
 ---
 
-## Phase 6: Review & Iteration
+## Fase 6: Revisión e Iteración
 
-### Post-Refactoring Checklist
+### Checklist Post-Refactoring
 
-- [ ] All tests passing
-- [ ] No new warnings/errors
-- [ ] Code compiles successfully
-- [ ] Behavior unchanged (manual verification)
-- [ ] Documentation updated if needed
-- [ ] Commit history is clean
+- [ ] Todos los tests pasando
+- [ ] Sin nuevos warnings/errores
+- [ ] Código compila exitosamente
+- [ ] Comportamiento sin cambios (verificación manual)
+- [ ] Documentación actualizada si es necesario
+- [ ] Historial de commits limpio
 
-### Metrics Comparison
+### Comparación de Métricas
 
-Run complexity analysis before and after:
+Ejecuta análisis de complejidad antes y después:
 ```bash
-python scripts/analyze-complexity.py <file>
+python scripts/analyze-complexity.py <archivo>
 ```
 
-Present improvements:
-- Lines of code change
-- Cyclomatic complexity change
-- Maintainability index change
+Presenta mejoras:
+- Cambio en líneas de código
+- Cambio en complejidad ciclomática
+- Cambio en índice de mantenibilidad
 
-### User Review
+### Revisión del Usuario
 
-Present final results:
-- Summary of all changes
-- Before/after code comparison
-- Metrics improvements
-- Remaining technical debt
-- **Ask**: "Are you satisfied with these changes?"
+Presenta resultados finales:
+- Resumen de todos los cambios
+- Comparación de código antes/después
+- Mejoras de métricas
+- Deuda técnica restante
+- **Pregunta**: "¿Estás satisfecho con estos cambios?"
 
-### Next Steps
+### Próximos Pasos
 
-Discuss with user:
-- Additional smells to address?
-- Schedule follow-up refactoring?
-- Apply similar changes elsewhere?
-
----
-
-## Important Guidelines
-
-### When to STOP and Ask
-
-Always pause and consult user when:
-- Unsure about business logic
-- Change might affect external APIs
-- Test coverage is inadequate
-- Significant architectural decision needed
-- Risk level increases
-- You encounter unexpected complexity
-
-### Safety Rules
-
-1. **Never refactor without tests** (unless user explicitly acknowledges risk)
-2. **Never make big changes** - break into tiny steps
-3. **Never skip the test run** after each change
-4. **Never continue if tests fail** - fix or rollback first
-5. **Never assume** - when in doubt, ask
-
-### What NOT to Do
-
-- Don't combine refactoring with feature additions
-- Don't refactor during production emergencies
-- Don't refactor code you don't understand
-- Don't over-engineer - keep it simple
-- Don't refactor everything at once
+Discute con el usuario:
+- ¿Smells adicionales para abordar?
+- ¿Programar refactoring de seguimiento?
+- ¿Aplicar cambios similares en otro lugar?
 
 ---
 
-## Quick Start Example
+## Guías Importantes
 
-### Scenario: Long Method with Duplication
+### Cuándo DETENERSE y Preguntar
 
-**Before:**
+Siempre pausa y consulta al usuario cuando:
+- No estés seguro sobre lógica de negocio
+- El cambio pueda afectar APIs externas
+- La cobertura de tests sea inadecuada
+- Se necesite decisión arquitectónica significativa
+- El nivel de riesgo aumente
+- Encuentres complejidad inesperada
+
+### Reglas de Seguridad
+
+1. **Nunca refactorices sin tests** (a menos que el usuario explícitamente reconozca el riesgo)
+2. **Nunca hagas cambios grandes** - divídelos en pasos pequeños
+3. **Nunca saltes la ejecución de tests** después de cada cambio
+4. **Nunca continúes si los tests fallan** - arregla o haz rollback primero
+5. **Nunca asumas** - cuando dudes, pregunta
+
+### Qué NO Hacer
+
+- No combines refactoring con adición de features
+- No refactorices durante emergencias de producción
+- No refactorices código que no entiendes
+- No sobre-ingenierices - manténlo simple
+- No refactorices todo a la vez
+
+---
+
+## Ejemplo de Inicio Rápido
+
+### Escenario: Método Largo con Duplicación
+
+**Antes:**
 ```javascript
 function processOrder(order) {
-  // 150 lines of code with:
-  // - Duplicated validation logic
-  // - Inline calculations
-  // - Mixed responsibilities
+  // 150 líneas de código con:
+  // - Lógica de validación duplicada
+  // - Cálculos inline
+  // - Responsabilidades mezcladas
 }
 ```
 
-**Refactoring Steps:**
+**Pasos de Refactoring:**
 
-1. **Ensure tests exist** for processOrder()
-2. **Extract** validation into validateOrder()
-3. **Test** - should pass
-4. **Extract** calculation into calculateOrderTotal()
-5. **Test** - should pass
-6. **Extract** notification into notifyCustomer()
-7. **Test** - should pass
-8. **Review** - processOrder() now orchestrates 3 clear functions
+1. **Asegura que existan tests** para processOrder()
+2. **Extrae** validación en validateOrder()
+3. **Test** - debería pasar
+4. **Extrae** cálculo en calculateOrderTotal()
+5. **Test** - debería pasar
+6. **Extrae** notificación en notifyCustomer()
+7. **Test** - debería pasar
+8. **Revisa** - processOrder() ahora orquesta 3 funciones claras
 
-**After:**
+**Después:**
 ```javascript
 function processOrder(order) {
   validateOrder(order);
@@ -410,17 +410,17 @@ function processOrder(order) {
 
 ---
 
-## References
+## Referencias
 
-- [Code Smells Catalog](references/code-smells.md) - Complete list of code smells
-- [Refactoring Catalog](references/refactoring-catalog.md) - Refactoring techniques
-- [Refactoring Plan Template](templates/refactoring-plan.md) - Planning template
+- [Catálogo de Code Smells](references/code-smells.md) - Lista completa de code smells
+- [Catálogo de Refactoring](references/refactoring-catalog.md) - Técnicas de refactoring
+- [Plantilla de Plan de Refactoring](templates/refactoring-plan.md) - Plantilla de planificación
 
 ## Scripts
 
-- `scripts/analyze-complexity.py` - Analyze code complexity metrics
-- `scripts/detect-smells.py` - Automated smell detection
+- `scripts/analyze-complexity.py` - Analiza métricas de complejidad de código
+- `scripts/detect-smells.py` - Detección automatizada de smells
 
-## Version History
+## Historial de Versiones
 
-- v1.0.0 (2025-01-15): Initial release with Fowler methodology, phased approach, user consultation points
+- v1.0.0 (2025-01-15): Lanzamiento inicial con metodología Fowler, enfoque por fases, puntos de consulta al usuario

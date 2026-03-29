@@ -3,222 +3,222 @@
   <img alt="Claude How To" src="resources/logos/claude-howto-logo.svg">
 </picture>
 
-# Claude Code Examples - Complete Index
+# Ejemplos de Claude Code - Índice Completo
 
-This document provides a complete index of all example files organized by feature type.
+Este documento proporciona un índice completo de todos los archivos de ejemplo organizados por tipo de funcionalidad.
 
-## Summary Statistics
+## Estadísticas Resumen
 
-- **Total Files**: 100+ files
-- **Categories**: 10 feature categories
-- **Plugins**: 3 complete plugins
-- **Skills**: 6 complete skills
-- **Hooks**: 8 example hooks
-- **Ready to Use**: All examples
+- **Total de Archivos**: 100+ archivos
+- **Categorías**: 10 categorías de funcionalidades
+- **Plugins**: 3 plugins completos
+- **Skills**: 6 skills completos
+- **Hooks**: 8 hooks de ejemplo
+- **Listo para Usar**: Todos los ejemplos
 
 ---
 
-## 01. Slash Commands (10 files)
+## 01. Slash Commands (10 archivos)
 
-User-invoked shortcuts for common workflows.
+Atajos invocados por el usuario para flujos de trabajo comunes.
 
-| File | Description | Use Case |
+| Archivo | Descripción | Caso de Uso |
 |------|-------------|----------|
-| `optimize.md` | Code optimization analyzer | Find performance issues |
-| `pr.md` | Pull request preparation | PR workflow automation |
-| `generate-api-docs.md` | API documentation generator | Generate API docs |
-| `commit.md` | Commit message helper | Standardized commits |
-| `setup-ci-cd.md` | CI/CD pipeline setup | DevOps automation |
-| `push-all.md` | Push all changes | Quick push workflow |
-| `unit-test-expand.md` | Expand unit test coverage | Test automation |
-| `doc-refactor.md` | Documentation refactoring | Doc improvements |
-| `pr-slash-command.png` | Screenshot example | Visual reference |
-| `README.md` | Documentation | Setup and usage guide |
+| `optimize.md` | Analizador de optimización de código | Encontrar problemas de rendimiento |
+| `pr.md` | Preparación de pull request | Automatización de flujo de trabajo de PR |
+| `generate-api-docs.md` | Generador de documentación de API | Generar docs de API |
+| `commit.md` | Asistente de mensajes de commit | Commits estandarizados |
+| `setup-ci-cd.md` | Configuración de pipeline CI/CD | Automatización DevOps |
+| `push-all.md` | Push de todos los cambios | Flujo de trabajo de push rápido |
+| `unit-test-expand.md` | Expandir cobertura de pruebas unitarias | Automatización de pruebas |
+| `doc-refactor.md` | Refactorización de documentación | Mejoras de documentación |
+| `pr-slash-command.png` | Ejemplo de captura de pantalla | Referencia visual |
+| `README.md` | Documentación | Guía de configuración y uso |
 
-**Installation Path**: `.claude/commands/`
+**Ruta de Instalación**: `.claude/commands/`
 
-**Usage**: `/optimize`, `/pr`, `/generate-api-docs`, `/commit`, `/setup-ci-cd`, `/push-all`, `/unit-test-expand`, `/doc-refactor`
+**Uso**: `/optimize`, `/pr`, `/generate-api-docs`, `/commit`, `/setup-ci-cd`, `/push-all`, `/unit-test-expand`, `/doc-refactor`
 
 ---
 
-## 02. Memory (6 files)
+## 02. Memory (6 archivos)
 
-Persistent context and project standards.
+Contexto persistente y estándares del proyecto.
 
-| File | Description | Scope | Location |
+| Archivo | Descripción | Alcance | Ubicación |
 |------|-------------|-------|----------|
-| `project-CLAUDE.md` | Team project standards | Project-wide | `./CLAUDE.md` |
-| `directory-api-CLAUDE.md` | API-specific rules | Directory | `./src/api/CLAUDE.md` |
-| `personal-CLAUDE.md` | Personal preferences | User | `~/.claude/CLAUDE.md` |
-| `memory-saved.png` | Screenshot: memory saved | - | Visual reference |
-| `memory-ask-claude.png` | Screenshot: ask Claude | - | Visual reference |
-| `README.md` | Documentation | - | Reference |
+| `project-CLAUDE.md` | Estándares del equipo del proyecto | Todo el proyecto | `./CLAUDE.md` |
+| `directory-api-CLAUDE.md` | Reglas específicas de API | Directorio | `./src/api/CLAUDE.md` |
+| `personal-CLAUDE.md` | Preferencias personales | Usuario | `~/.claude/CLAUDE.md` |
+| `memory-saved.png` | Captura: memoria guardada | - | Referencia visual |
+| `memory-ask-claude.png` | Captura: preguntar a Claude | - | Referencia visual |
+| `README.md` | Documentación | - | Referencia |
 
-**Installation**: Copy to appropriate location
+**Instalación**: Copiar a la ubicación apropiada
 
-**Usage**: Automatically loaded by Claude
+**Uso**: Cargado automáticamente por Claude
 
 ---
 
-## 03. Skills (28 files)
+## 03. Skills (28 archivos)
 
-Auto-invoked capabilities with scripts and templates.
+Capacidades auto-invocadas con scripts y plantillas.
 
-### Code Review Skill (5 files)
+### Code Review Skill (5 archivos)
 ```
 code-review/
-├── SKILL.md                          # Skill definition
+├── SKILL.md                          # Definición del skill
 ├── scripts/
-│   ├── analyze-metrics.py            # Code metrics analyzer
-│   └── compare-complexity.py         # Complexity comparison
+│   ├── analyze-metrics.py            # Analizador de métricas de código
+│   └── compare-complexity.py         # Comparación de complejidad
 └── templates/
-    ├── review-checklist.md           # Review checklist
-    └── finding-template.md           # Finding documentation
+    ├── review-checklist.md           # Lista de verificación de revisión
+    └── finding-template.md           # Documentación de hallazgos
 ```
 
-**Purpose**: Comprehensive code review with security, performance, and quality analysis
+**Propósito**: Revisión completa de código con análisis de seguridad, rendimiento y calidad
 
-**Auto-invoked**: When reviewing code
+**Auto-invocado**: Al revisar código
 
 ---
 
-### Brand Voice Skill (4 files)
+### Brand Voice Skill (4 archivos)
 ```
 brand-voice/
-├── SKILL.md                          # Skill definition
+├── SKILL.md                          # Definición del skill
 ├── templates/
-│   ├── email-template.txt            # Email format
-│   └── social-post-template.txt      # Social media format
-└── tone-examples.md                  # Example messages
+│   ├── email-template.txt            # Formato de correo electrónico
+│   └── social-post-template.txt      # Formato de redes sociales
+└── tone-examples.md                  # Ejemplos de mensajes
 ```
 
-**Purpose**: Ensure consistent brand voice in communications
+**Propósito**: Asegurar una voz de marca consistente en las comunicaciones
 
-**Auto-invoked**: When creating marketing copy
+**Auto-invocado**: Al crear contenido de marketing
 
 ---
 
-### Documentation Generator Skill (2 files)
+### Documentation Generator Skill (2 archivos)
 ```
 doc-generator/
-├── SKILL.md                          # Skill definition
-└── generate-docs.py                  # Python doc extractor
+├── SKILL.md                          # Definición del skill
+└── generate-docs.py                  # Extractor de docs en Python
 ```
 
-**Purpose**: Generate comprehensive API documentation from source code
+**Propósito**: Generar documentación de API completa desde el código fuente
 
-**Auto-invoked**: When creating/updating API documentation
+**Auto-invocado**: Al crear/actualizar documentación de API
 
 ---
 
-### Refactor Skill (5 files)
+### Refactor Skill (5 archivos)
 ```
 refactor/
-├── SKILL.md                          # Skill definition
+├── SKILL.md                          # Definición del skill
 ├── scripts/
-│   ├── analyze-complexity.py         # Complexity analyzer
-│   └── detect-smells.py              # Code smell detector
+│   ├── analyze-complexity.py         # Analizador de complejidad
+│   └── detect-smells.py              # Detector de code smells
 ├── references/
-│   ├── code-smells.md                # Code smells catalog
-│   └── refactoring-catalog.md        # Refactoring patterns
+│   ├── code-smells.md                # Catálogo de code smells
+│   └── refactoring-catalog.md        # Patrones de refactorización
 └── templates/
-    └── refactoring-plan.md           # Refactoring plan template
+    └── refactoring-plan.md           # Plantilla de plan de refactorización
 ```
 
-**Purpose**: Systematic code refactoring with complexity analysis
+**Propósito**: Refactorización sistemática de código con análisis de complejidad
 
-**Auto-invoked**: When refactoring code
+**Auto-invocado**: Al refactorizar código
 
 ---
 
-### Claude MD Skill (1 file)
+### Claude MD Skill (1 archivo)
 ```
 claude-md/
-└── SKILL.md                          # Skill definition
+└── SKILL.md                          # Definición del skill
 ```
 
-**Purpose**: Manage and optimize CLAUDE.md files
+**Propósito**: Gestionar y optimizar archivos CLAUDE.md
 
 ---
 
-### Blog Draft Skill (3 files)
+### Blog Draft Skill (3 archivos)
 ```
 blog-draft/
-├── SKILL.md                          # Skill definition
+├── SKILL.md                          # Definición del skill
 └── templates/
-    ├── draft-template.md             # Blog draft template
-    └── outline-template.md           # Blog outline template
+    ├── draft-template.md             # Plantilla de borrador de blog
+    └── outline-template.md           # Plantilla de esquema de blog
 ```
 
-**Purpose**: Draft blog posts with consistent structure
+**Propósito**: Redactar publicaciones de blog con estructura consistente
 
-**Plus**: `README.md` - Skills overview and usage guide
+**Además**: `README.md` - Visión general y guía de uso de Skills
 
-**Installation Path**: `~/.claude/skills/` or `.claude/skills/`
+**Ruta de Instalación**: `~/.claude/skills/` o `.claude/skills/`
 
 ---
 
-## 04. Subagents (9 files)
+## 04. Subagents (9 archivos)
 
-Specialized AI assistants with custom capabilities.
+Asistentes de IA especializados con capacidades personalizadas.
 
-| File | Description | Tools | Use Case |
+| Archivo | Descripción | Herramientas | Caso de Uso |
 |------|-------------|-------|----------|
-| `code-reviewer.md` | Code quality analysis | read, grep, diff, lint_runner | Comprehensive reviews |
-| `test-engineer.md` | Test coverage analysis | read, write, bash, grep | Test automation |
-| `documentation-writer.md` | Documentation creation | read, write, grep | Doc generation |
-| `secure-reviewer.md` | Security review (read-only) | read, grep | Security audits |
-| `implementation-agent.md` | Full implementation | read, write, bash, grep, edit, glob | Feature development |
-| `debugger.md` | Debugging specialist | read, bash, grep | Bug investigation |
-| `data-scientist.md` | Data analysis specialist | read, write, bash | Data workflows |
-| `clean-code-reviewer.md` | Clean code standards | read, grep | Code quality |
-| `README.md` | Documentation | - | Setup and usage guide |
+| `code-reviewer.md` | Análisis de calidad de código | read, grep, diff, lint_runner | Revisiones completas |
+| `test-engineer.md` | Análisis de cobertura de pruebas | read, write, bash, grep | Automatización de pruebas |
+| `documentation-writer.md` | Creación de documentación | read, write, grep | Generación de docs |
+| `secure-reviewer.md` | Revisión de seguridad (solo lectura) | read, grep | Auditorías de seguridad |
+| `implementation-agent.md` | Implementación completa | read, write, bash, grep, edit, glob | Desarrollo de funcionalidades |
+| `debugger.md` | Especialista en depuración | read, bash, grep | Investigación de bugs |
+| `data-scientist.md` | Especialista en análisis de datos | read, write, bash | Flujos de trabajo de datos |
+| `clean-code-reviewer.md` | Estándares de código limpio | read, grep | Calidad de código |
+| `README.md` | Documentación | - | Guía de configuración y uso |
 
-**Installation Path**: `.claude/agents/`
+**Ruta de Instalación**: `.claude/agents/`
 
-**Usage**: Automatically delegated by main agent
+**Uso**: Delegado automáticamente por el agente principal
 
 ---
 
-## 05. MCP Protocol (5 files)
+## 05. MCP Protocol (5 archivos)
 
-External tool and API integrations.
+Integraciones de herramientas y APIs externas.
 
-| File | Description | Integrates With | Use Case |
+| Archivo | Descripción | Se Integra Con | Caso de Uso |
 |------|-------------|-----------------|----------|
-| `github-mcp.json` | GitHub integration | GitHub API | PR/issue management |
-| `database-mcp.json` | Database queries | PostgreSQL/MySQL | Live data queries |
-| `filesystem-mcp.json` | File operations | Local filesystem | File management |
-| `multi-mcp.json` | Multiple servers | GitHub + DB + Slack | Complete integration |
-| `README.md` | Documentation | - | Setup and usage guide |
+| `github-mcp.json` | Integración de GitHub | API de GitHub | Gestión de PR/issues |
+| `database-mcp.json` | Consultas de base de datos | PostgreSQL/MySQL | Consultas de datos en vivo |
+| `filesystem-mcp.json` | Operaciones de archivos | Sistema de archivos local | Gestión de archivos |
+| `multi-mcp.json` | Múltiples servidores | GitHub + DB + Slack | Integración completa |
+| `README.md` | Documentación | - | Guía de configuración y uso |
 
-**Installation Path**: `.mcp.json` (project scope) or `~/.claude.json` (user scope)
+**Ruta de Instalación**: `.mcp.json` (alcance del proyecto) o `~/.claude.json` (alcance del usuario)
 
-**Usage**: `/mcp__github__list_prs`, etc.
+**Uso**: `/mcp__github__list_prs`, etc.
 
 ---
 
-## 06. Hooks (9 files)
+## 06. Hooks (9 archivos)
 
-Event-driven automation scripts that execute automatically.
+Scripts de automatización impulsados por eventos que se ejecutan automáticamente.
 
-| File | Description | Event | Use Case |
+| Archivo | Descripción | Evento | Caso de Uso |
 |------|-------------|-------|----------|
-| `format-code.sh` | Auto-format code | PreToolUse:Write | Code formatting |
-| `pre-commit.sh` | Run tests before commit | PreToolUse:Bash | Test automation |
-| `security-scan.sh` | Security scanning | PostToolUse:Write | Security checks |
-| `log-bash.sh` | Log bash commands | PostToolUse:Bash | Command logging |
-| `validate-prompt.sh` | Validate prompts | PreToolUse | Input validation |
-| `notify-team.sh` | Send notifications | Notification | Team notifications |
-| `context-tracker.py` | Track context window usage | PostToolUse | Context monitoring |
-| `context-tracker-tiktoken.py` | Token-based context tracking | PostToolUse | Precise token counting |
-| `README.md` | Documentation | - | Setup and usage guide |
+| `format-code.sh` | Auto-formateo de código | PreToolUse:Write | Formateo de código |
+| `pre-commit.sh` | Ejecutar pruebas antes del commit | PreToolUse:Bash | Automatización de pruebas |
+| `security-scan.sh` | Escaneo de seguridad | PostToolUse:Write | Verificaciones de seguridad |
+| `log-bash.sh` | Registrar comandos bash | PostToolUse:Bash | Registro de comandos |
+| `validate-prompt.sh` | Validar prompts | PreToolUse | Validación de entrada |
+| `notify-team.sh` | Enviar notificaciones | Notification | Notificaciones al equipo |
+| `context-tracker.py` | Rastrear uso de ventana de contexto | PostToolUse | Monitoreo de contexto |
+| `context-tracker-tiktoken.py` | Rastreo de contexto basado en tokens | PostToolUse | Conteo preciso de tokens |
+| `README.md` | Documentación | - | Guía de configuración y uso |
 
-**Installation Path**: Configure in `~/.claude/settings.json`
+**Ruta de Instalación**: Configurar en `~/.claude/settings.json`
 
-**Usage**: Configured in settings, executed automatically
+**Uso**: Configurado en settings, ejecutado automáticamente
 
-**Hook Types** (4 types, 25 events):
+**Tipos de Hooks** (4 tipos, 25 eventos):
 - Tool Hooks: PreToolUse, PostToolUse, PostToolUseFailure, PermissionRequest
 - Session Hooks: SessionStart, SessionEnd, Stop, StopFailure, SubagentStart, SubagentStop
 - Task Hooks: UserPromptSubmit, TaskCompleted, TaskCreated, TeammateIdle
@@ -226,273 +226,273 @@ Event-driven automation scripts that execute automatically.
 
 ---
 
-## 07. Plugins (3 complete plugins, 40 files)
+## 07. Plugins (3 plugins completos, 40 archivos)
 
-Bundled collections of features.
+Colecciones empaquetadas de funcionalidades.
 
-### PR Review Plugin (10 files)
+### PR Review Plugin (10 archivos)
 ```
 pr-review/
 ├── .claude-plugin/
-│   └── plugin.json                   # Plugin manifest
+│   └── plugin.json                   # Manifiesto del plugin
 ├── commands/
-│   ├── review-pr.md                  # Comprehensive review
-│   ├── check-security.md             # Security check
-│   └── check-tests.md                # Test coverage check
+│   ├── review-pr.md                  # Revisión completa
+│   ├── check-security.md             # Verificación de seguridad
+│   └── check-tests.md                # Verificación de cobertura de pruebas
 ├── agents/
-│   ├── security-reviewer.md          # Security specialist
-│   ├── test-checker.md               # Test specialist
-│   └── performance-analyzer.md       # Performance specialist
+│   ├── security-reviewer.md          # Especialista en seguridad
+│   ├── test-checker.md               # Especialista en pruebas
+│   └── performance-analyzer.md       # Especialista en rendimiento
 ├── mcp/
-│   └── github-config.json            # GitHub integration
+│   └── github-config.json            # Integración de GitHub
 ├── hooks/
-│   └── pre-review.js                 # Pre-review validation
-└── README.md                         # Plugin documentation
+│   └── pre-review.js                 # Validación previa a la revisión
+└── README.md                         # Documentación del plugin
 ```
 
-**Features**: Security analysis, test coverage, performance impact
+**Funcionalidades**: Análisis de seguridad, cobertura de pruebas, impacto en el rendimiento
 
 **Commands**: `/review-pr`, `/check-security`, `/check-tests`
 
-**Installation**: `/plugin install pr-review`
+**Instalación**: `/plugin install pr-review`
 
 ---
 
-### DevOps Automation Plugin (15 files)
+### DevOps Automation Plugin (15 archivos)
 ```
 devops-automation/
 ├── .claude-plugin/
-│   └── plugin.json                   # Plugin manifest
+│   └── plugin.json                   # Manifiesto del plugin
 ├── commands/
-│   ├── deploy.md                     # Deployment
+│   ├── deploy.md                     # Despliegue
 │   ├── rollback.md                   # Rollback
-│   ├── status.md                     # System status
-│   └── incident.md                   # Incident response
+│   ├── status.md                     # Estado del sistema
+│   └── incident.md                   # Respuesta a incidentes
 ├── agents/
-│   ├── deployment-specialist.md      # Deployment expert
-│   ├── incident-commander.md         # Incident coordinator
-│   └── alert-analyzer.md             # Alert analyzer
+│   ├── deployment-specialist.md      # Experto en despliegue
+│   ├── incident-commander.md         # Coordinador de incidentes
+│   └── alert-analyzer.md             # Analizador de alertas
 ├── mcp/
-│   └── kubernetes-config.json        # Kubernetes integration
+│   └── kubernetes-config.json        # Integración de Kubernetes
 ├── hooks/
-│   ├── pre-deploy.js                 # Pre-deployment checks
-│   └── post-deploy.js                # Post-deployment tasks
+│   ├── pre-deploy.js                 # Verificaciones previas al despliegue
+│   └── post-deploy.js                # Tareas posteriores al despliegue
 ├── scripts/
-│   ├── deploy.sh                     # Deployment automation
-│   ├── rollback.sh                   # Rollback automation
-│   └── health-check.sh               # Health checks
-└── README.md                         # Plugin documentation
+│   ├── deploy.sh                     # Automatización de despliegue
+│   ├── rollback.sh                   # Automatización de rollback
+│   └── health-check.sh               # Verificaciones de salud
+└── README.md                         # Documentación del plugin
 ```
 
-**Features**: Kubernetes deployment, rollback, monitoring, incident response
+**Funcionalidades**: Despliegue en Kubernetes, rollback, monitoreo, respuesta a incidentes
 
 **Commands**: `/deploy`, `/rollback`, `/status`, `/incident`
 
-**Installation**: `/plugin install devops-automation`
+**Instalación**: `/plugin install devops-automation`
 
 ---
 
-### Documentation Plugin (14 files)
+### Documentation Plugin (14 archivos)
 ```
 documentation/
 ├── .claude-plugin/
-│   └── plugin.json                   # Plugin manifest
+│   └── plugin.json                   # Manifiesto del plugin
 ├── commands/
-│   ├── generate-api-docs.md          # API docs generation
-│   ├── generate-readme.md            # README creation
-│   ├── sync-docs.md                  # Doc synchronization
-│   └── validate-docs.md              # Doc validation
+│   ├── generate-api-docs.md          # Generación de docs de API
+│   ├── generate-readme.md            # Creación de README
+│   ├── sync-docs.md                  # Sincronización de docs
+│   └── validate-docs.md              # Validación de docs
 ├── agents/
-│   ├── api-documenter.md             # API doc specialist
-│   ├── code-commentator.md           # Code comment specialist
-│   └── example-generator.md          # Example creator
+│   ├── api-documenter.md             # Especialista en docs de API
+│   ├── code-commentator.md           # Especialista en comentarios de código
+│   └── example-generator.md          # Creador de ejemplos
 ├── mcp/
-│   └── github-docs-config.json       # GitHub integration
+│   └── github-docs-config.json       # Integración de GitHub
 ├── templates/
-│   ├── api-endpoint.md               # API endpoint template
-│   ├── function-docs.md              # Function doc template
-│   └── adr-template.md               # ADR template
-└── README.md                         # Plugin documentation
+│   ├── api-endpoint.md               # Plantilla de endpoint de API
+│   ├── function-docs.md              # Plantilla de docs de función
+│   └── adr-template.md               # Plantilla de ADR
+└── README.md                         # Documentación del plugin
 ```
 
-**Features**: API docs, README generation, doc sync, validation
+**Funcionalidades**: Docs de API, generación de README, sincronización de docs, validación
 
 **Commands**: `/generate-api-docs`, `/generate-readme`, `/sync-docs`, `/validate-docs`
 
-**Installation**: `/plugin install documentation`
+**Instalación**: `/plugin install documentation`
 
-**Plus**: `README.md` - Plugins overview and usage guide
+**Además**: `README.md` - Visión general y guía de uso de Plugins
 
 ---
 
-## 08. Checkpoints and Rewind (2 files)
+## 08. Checkpoints and Rewind (2 archivos)
 
-Save conversation state and explore alternative approaches.
+Guardar estado de la conversación y explorar enfoques alternativos.
 
-| File | Description | Content |
+| Archivo | Descripción | Contenido |
 |------|-------------|---------|
-| `README.md` | Documentation | Comprehensive checkpoint guide |
-| `checkpoint-examples.md` | Real-world examples | Database migration, performance optimization, UI iteration, debugging |
+| `README.md` | Documentación | Guía completa de checkpoints |
+| `checkpoint-examples.md` | Ejemplos del mundo real | Migración de base de datos, optimización de rendimiento, iteración de UI, depuración |
 | | | |
 
-**Key Concepts**:
-- **Checkpoint**: Snapshot of conversation state
-- **Rewind**: Return to previous checkpoint
-- **Branch Point**: Explore multiple approaches
+**Conceptos Clave**:
+- **Checkpoint**: Instantánea del estado de la conversación
+- **Rewind**: Volver a un checkpoint anterior
+- **Branch Point**: Explorar múltiples enfoques
 
-**Usage**:
+**Uso**:
 ```
-# Checkpoints are created automatically with every user prompt
-# To rewind, press Esc twice or use:
+# Los checkpoints se crean automáticamente con cada prompt del usuario
+# Para rewinding, presiona Esc dos veces o usa:
 /rewind
-# Then choose: Restore code and conversation, Restore conversation,
-# Restore code, Summarize from here, or Never mind
+# Luego elige: Restaurar código y conversación, Restaurar conversación,
+# Restaurar código, Resumir desde aquí, o No importa
 ```
 
-**Use Cases**:
-- Try different implementations
-- Recover from mistakes
-- Safe experimentation
-- Compare solutions
-- A/B testing
+**Casos de Uso**:
+- Probar diferentes implementaciones
+- Recuperarse de errores
+- Experimentación segura
+- Comparar soluciones
+- Pruebas A/B
 
 ---
 
-## 09. Advanced Features (3 files)
+## 09. Advanced Features (3 archivos)
 
-Advanced capabilities for complex workflows.
+Capacidades avanzadas para flujos de trabajo complejos.
 
-| File | Description | Features |
+| Archivo | Descripción | Funcionalidades |
 |------|-------------|----------|
-| `README.md` | Complete guide | All advanced features documentation |
-| `config-examples.json` | Configuration examples | 10+ use-case-specific configurations |
-| `planning-mode-examples.md` | Planning examples | REST API, database migration, refactoring |
-| Scheduled Tasks | Recurring tasks with `/loop` and cron tools | Automated recurring workflows |
-| Chrome Integration | Browser automation via headless Chromium | Web testing and scraping |
-| Remote Control (expanded) | Connection methods, security, comparison table | Remote session management |
-| Keyboard Customization | Custom keybindings, chord support, contexts | Personalized shortcuts |
-| Desktop App (expanded) | Connectors, launch.json, enterprise features | Desktop integration |
+| `README.md` | Guía completa | Documentación de todas las funcionalidades avanzadas |
+| `config-examples.json` | Ejemplos de configuración | 10+ configuraciones específicas para casos de uso |
+| `planning-mode-examples.md` | Ejemplos de Planning | API REST, migración de base de datos, refactorización |
+| Tareas Programadas | Tareas recurrentes con `/loop` y herramientas cron | Flujos de trabajo recurrentes automatizados |
+| Integración con Chrome | Automatización del navegador vía Chromium headless | Pruebas web y scraping |
+| Control Remoto (expandido) | Métodos de conexión, seguridad, tabla comparativa | Gestión de sesiones remotas |
+| Personalización de Teclado | Atajos de teclado personalizados, soporte de acordes, contextos | Atajos personalizados |
+| Aplicación de Escritorio (expandida) | Conectores, launch.json, funcionalidades empresariales | Integración con escritorio |
 | | | |
 
-**Advanced Features Covered**:
+**Funcionalidades Avanzadas Cubiertas**:
 
 ### Planning Mode
-- Create detailed implementation plans
-- Time estimates and risk assessment
-- Systematic task breakdown
+- Crear planes de implementación detallados
+- Estimaciones de tiempo y evaluación de riesgos
+- Desglose sistemático de tareas
 
 ### Extended Thinking
-- Deep reasoning for complex problems
-- Architectural decision analysis
-- Trade-off evaluation
+- Razonamiento profundo para problemas complejos
+- Análisis de decisiones arquitectónicas
+- Evaluación de compensaciones
 
 ### Background Tasks
-- Long-running operations without blocking
-- Parallel development workflows
-- Task management and monitoring
+- Operaciones de larga duración sin bloqueo
+- Flujos de trabajo de desarrollo en paralelo
+- Gestión y monitoreo de tareas
 
 ### Permission Modes
-- **default**: Ask for approval on risky actions
-- **acceptEdits**: Auto-accept file edits, ask for others
-- **plan**: Read-only analysis, no modifications
-- **auto**: Automatically approve safe actions, prompt for risky ones
-- **dontAsk**: Accept all actions except risky ones
-- **bypassPermissions**: Accept all (requires `--dangerously-skip-permissions`)
+- **default**: Preguntar aprobación en acciones riesgosas
+- **acceptEdits**: Auto-aceptar ediciones de archivos, preguntar por otros
+- **plan**: Análisis de solo lectura, sin modificaciones
+- **auto**: Aprobar automáticamente acciones seguras, preguntar por riesgosas
+- **dontAsk**: Aceptar todas las acciones excepto las riesgosas
+- **bypassPermissions**: Aceptar todo (requiere `--dangerously-skip-permissions`)
 
 ### Headless Mode (`claude -p`)
-- CI/CD integration
-- Automated task execution
-- Batch processing
+- Integración CI/CD
+- Ejecución automatizada de tareas
+- Procesamiento por lotes
 
 ### Session Management
-- Multiple work sessions
-- Session switching and saving
-- Session persistence
+- Múltiples sesiones de trabajo
+- Cambio y guardado de sesiones
+- Persistencia de sesiones
 
-### Interactive Features
-- Keyboard shortcuts
-- Command history
-- Tab completion
-- Multi-line input
+### Funcionalidades Interactivas
+- Atajos de teclado
+- Historial de comandos
+- Autocompletado con Tab
+- Entrada multilínea
 
 ### Configuration
-- Comprehensive settings management
-- Environment-specific configs
-- Per-project customization
+- Gestión completa de configuración
+- Configuraciones específicas por entorno
+- Personalización por proyecto
 
 ### Scheduled Tasks
-- Recurring tasks with `/loop` command
-- Cron tools: CronCreate, CronList, CronDelete
-- Automated recurring workflows
+- Tareas recurrentes con el comando `/loop`
+- Herramientas Cron: CronCreate, CronList, CronDelete
+- Flujos de trabajo recurrentes automatizados
 
 ### Chrome Integration
-- Browser automation via headless Chromium
-- Web testing and scraping capabilities
-- Page interaction and data extraction
+- Automatización del navegador vía Chromium headless
+- Capacidades de pruebas web y scraping
+- Interacción con páginas y extracción de datos
 
-### Remote Control (expanded)
-- Connection methods and protocols
-- Security considerations and best practices
-- Comparison table of remote access options
+### Remote Control (expandido)
+- Métodos y protocolos de conexión
+- Consideraciones de seguridad y mejores prácticas
+- Tabla comparativa de opciones de acceso remoto
 
 ### Keyboard Customization
-- Custom keybindings configuration
-- Chord support for multi-key shortcuts
-- Context-aware keybinding activation
+- Configuración de atajos de teclado personalizados
+- Soporte de acordes para atajos de múltiples teclas
+- Activación de atajos consciente del contexto
 
-### Desktop App (expanded)
-- Connectors for IDE integration
-- launch.json configuration
-- Enterprise features and deployment
+### Desktop App (expandida)
+- Conectores para integración con IDE
+- Configuración de launch.json
+- Funcionalidades empresariales y despliegue
 
 ---
 
-## 10. CLI Usage (1 file)
+## 10. CLI Usage (1 archivo)
 
-Command-line interface usage patterns and reference.
+Patrones de uso y referencia de la interfaz de línea de comandos.
 
-| File | Description | Content |
+| Archivo | Descripción | Contenido |
 |------|-------------|---------|
-| `README.md` | CLI documentation | Flags, options, and usage patterns |
+| `README.md` | Documentación de CLI | Banderas, opciones y patrones de uso |
 
-**Key CLI Features**:
-- `claude` - Start interactive session
-- `claude -p "prompt"` - Headless/non-interactive mode
-- `claude web` - Launch web session
-- `claude --model` - Select model (Sonnet 4.6, Opus 4.6)
-- `claude --permission-mode` - Set permission mode
-- `claude --remote` - Enable remote control via WebSocket
+**Funcionalidades Clave de CLI**:
+- `claude` - Iniciar sesión interactiva
+- `claude -p "prompt"` - Modo headless/no interactivo
+- `claude web` - Lanzar sesión web
+- `claude --model` - Seleccionar modelo (Sonnet 4.6, Opus 4.6)
+- `claude --permission-mode` - Establecer modo de permisos
+- `claude --remote` - Habilitar control remoto vía WebSocket
 
 ---
 
-## Documentation Files (13 files)
+## Archivos de Documentación (13 archivos)
 
-| File | Location | Description |
+| Archivo | Ubicación | Descripción |
 |------|----------|-------------|
-| `README.md` | `/` | Main examples overview |
-| `INDEX.md` | `/` | This complete index |
-| `QUICK_REFERENCE.md` | `/` | Quick reference card |
-| `README.md` | `/01-slash-commands/` | Slash commands guide |
-| `README.md` | `/02-memory/` | Memory guide |
-| `README.md` | `/03-skills/` | Skills guide |
-| `README.md` | `/04-subagents/` | Subagents guide |
-| `README.md` | `/05-mcp/` | MCP guide |
-| `README.md` | `/06-hooks/` | Hooks guide |
-| `README.md` | `/07-plugins/` | Plugins guide |
-| `README.md` | `/08-checkpoints/` | Checkpoints guide |
-| `README.md` | `/09-advanced-features/` | Advanced features guide |
-| `README.md` | `/10-cli/` | CLI guide |
+| `README.md` | `/` | Visión general principal de ejemplos |
+| `INDEX.md` | `/` | Este índice completo |
+| `QUICK_REFERENCE.md` | `/` | Tarjeta de referencia rápida |
+| `README.md` | `/01-slash-commands/` | Guía de Slash Commands |
+| `README.md` | `/02-memory/` | Guía de Memory |
+| `README.md` | `/03-skills/` | Guía de Skills |
+| `README.md` | `/04-subagents/` | Guía de Subagents |
+| `README.md` | `/05-mcp/` | Guía de MCP |
+| `README.md` | `/06-hooks/` | Guía de Hooks |
+| `README.md` | `/07-plugins/` | Guía de Plugins |
+| `README.md` | `/08-checkpoints/` | Guía de Checkpoints |
+| `README.md` | `/09-advanced-features/` | Guía de funcionalidades avanzadas |
+| `README.md` | `/10-cli/` | Guía de CLI |
 
 ---
 
-## Complete File Tree
+## Árbol de Archivos Completo
 
 ```
 claude-howto/
-├── README.md                                    # Main overview
-├── INDEX.md                                     # This file
-├── QUICK_REFERENCE.md                           # Quick reference card
-├── claude_concepts_guide.md                     # Original guide
+├── README.md                                    # Visión general principal
+├── INDEX.md                                     # Este archivo
+├── QUICK_REFERENCE.md                           # Tarjeta de referencia rápida
+├── claude_concepts_guide.md                     # Guía original
 │
 ├── 01-slash-commands/                           # Slash Commands
 │   ├── optimize.md
@@ -655,109 +655,109 @@ claude-howto/
 
 ---
 
-## Quick Start by Use Case
+## Inicio Rápido por Caso de Uso
 
-### Code Quality & Reviews
+### Calidad de Código y Revisiones
 ```bash
-# Install slash command
+# Instalar slash command
 cp 01-slash-commands/optimize.md .claude/commands/
 
-# Install subagent
+# Instalar subagent
 cp 04-subagents/code-reviewer.md .claude/agents/
 
-# Install skill
+# Instalar skill
 cp -r 03-skills/code-review ~/.claude/skills/
 
-# Or install complete plugin
+# O instalar plugin completo
 /plugin install pr-review
 ```
 
-### DevOps & Deployment
+### DevOps y Despliegue
 ```bash
-# Install plugin (includes everything)
+# Instalar plugin (incluye todo)
 /plugin install devops-automation
 ```
 
-### Documentation
+### Documentación
 ```bash
-# Install slash command
+# Instalar slash command
 cp 01-slash-commands/generate-api-docs.md .claude/commands/
 
-# Install subagent
+# Instalar subagent
 cp 04-subagents/documentation-writer.md .claude/agents/
 
-# Install skill
+# Instalar skill
 cp -r 03-skills/doc-generator ~/.claude/skills/
 
-# Or install complete plugin
+# O instalar plugin completo
 /plugin install documentation
 ```
 
-### Team Standards
+### Estándares del Equipo
 ```bash
-# Set up project memory
+# Configurar memoria del proyecto
 cp 02-memory/project-CLAUDE.md ./CLAUDE.md
 
-# Edit to match your team's standards
+# Editar para coincidir con los estándares de tu equipo
 ```
 
-### External Integrations
+### Integraciones Externas
 ```bash
-# Set environment variables
+# Establecer variables de entorno
 export GITHUB_TOKEN="your_token"
 export DATABASE_URL="postgresql://..."
 
-# Install MCP config (project scope)
+# Instalar configuración MCP (alcance del proyecto)
 cp 05-mcp/multi-mcp.json .mcp.json
 ```
 
-### Automation & Validation
+### Automatización y Validación
 ```bash
-# Install hooks
+# Instalar hooks
 mkdir -p ~/.claude/hooks
 cp 06-hooks/*.sh ~/.claude/hooks/
 chmod +x ~/.claude/hooks/*.sh
 
-# Configure hooks in settings (~/.claude/settings.json)
-# See 06-hooks/README.md
+# Configurar hooks en settings (~/.claude/settings.json)
+# Ver 06-hooks/README.md
 ```
 
-### Safe Experimentation
+### Experimentación Segura
 ```bash
-# Checkpoints are created automatically with every user prompt
-# To rewind: press Esc+Esc or use /rewind
-# Then choose what to restore from the rewind menu
+# Los checkpoints se crean automáticamente con cada prompt del usuario
+# Para rewinding: presiona Esc+Esc o usa /rewind
+# Luego elige qué restaurar desde el menú de rewind
 
-# See 08-checkpoints/README.md for examples
+# Ver 08-checkpoints/README.md para ejemplos
 ```
 
-### Advanced Workflows
+### Flujos de Trabajo Avanzados
 ```bash
-# Configure advanced features
-# See 09-advanced-features/config-examples.json
+# Configurar funcionalidades avanzadas
+# Ver 09-advanced-features/config-examples.json
 
-# Use planning mode
-/plan Implement feature X
+# Usar planning mode
+/plan Implementar funcionalidad X
 
-# Use permission modes
-claude --permission-mode plan          # For code review (read-only)
-claude --permission-mode acceptEdits   # Auto-accept edits
-claude --permission-mode auto          # Auto-approve safe actions
+# Usar permission modes
+claude --permission-mode plan          # Para revisión de código (solo lectura)
+claude --permission-mode acceptEdits   # Auto-aceptar ediciones
+claude --permission-mode auto          # Auto-aprobar acciones seguras
 
-# Run in headless mode for CI/CD
-claude -p "Run tests and report results"
+# Ejecutar en headless mode para CI/CD
+claude -p "Ejecutar pruebas y reportar resultados"
 
-# Run background tasks
+# Ejecutar tareas en segundo plano
 Run tests in background
 
-# See 09-advanced-features/README.md for complete guide
+# Ver 09-advanced-features/README.md para guía completa
 ```
 
 ---
 
-## Feature Coverage Matrix
+## Matriz de Cobertura de Funcionalidades
 
-| Category | Commands | Agents | MCP | Hooks | Scripts | Templates | Docs | Images | Total |
+| Categoría | Commands | Agents | MCP | Hooks | Scripts | Templates | Docs | Imágenes | Total |
 |----------|----------|--------|-----|-------|---------|-----------|------|--------|-------|
 | **01 Slash Commands** | 8 | - | - | - | - | - | 1 | 1 | **10** |
 | **02 Memory** | - | - | - | - | - | 3 | 1 | 2 | **6** |
@@ -772,111 +772,112 @@ Run tests in background
 
 ---
 
-## Learning Path
+## Ruta de Aprendizaje
 
-### Beginner (Week 1)
-1. ✅ Read `README.md`
-2. ✅ Install 1-2 slash commands
-3. ✅ Create project memory file
-4. ✅ Try basic commands
+### Principiante (Semana 1)
+1. ✅ Leer `README.md`
+2. ✅ Instalar 1-2 slash commands
+3. ✅ Crear archivo de memoria del proyecto
+4. ✅ Probar comandos básicos
 
-### Intermediate (Week 2-3)
-1. ✅ Set up GitHub MCP
-2. ✅ Install a subagent
-3. ✅ Try delegating tasks
-4. ✅ Install a skill
+### Intermedio (Semana 2-3)
+1. ✅ Configurar GitHub MCP
+2. ✅ Instalar un subagent
+3. ✅ Probar delegación de tareas
+4. ✅ Instalar un skill
 
-### Advanced (Week 4+)
-1. ✅ Install complete plugin
-2. ✅ Create custom slash commands
-3. ✅ Create custom subagent
-4. ✅ Create custom skill
-5. ✅ Build your own plugin
+### Avanzado (Semana 4+)
+1. ✅ Instalar plugin completo
+2. ✅ Crear slash commands personalizados
+3. ✅ Crear subagent personalizado
+4. ✅ Crear skill personalizado
+5. ✅ Construir tu propio plugin
 
-### Expert (Week 5+)
-1. ✅ Set up hooks for automation
-2. ✅ Use checkpoints for experimentation
-3. ✅ Configure planning mode
-4. ✅ Use permission modes effectively
-5. ✅ Set up headless mode for CI/CD
-6. ✅ Master session management
+### Experto (Semana 5+)
+1. ✅ Configurar hooks para automatización
+2. ✅ Usar checkpoints para experimentación
+3. ✅ Configurar planning mode
+4. ✅ Usar permission modes efectivamente
+5. ✅ Configurar headless mode para CI/CD
+6. ✅ Dominar session management
 
 ---
 
-## Search by Keyword
+## Búsqueda por Palabra Clave
 
-### Performance
-- `01-slash-commands/optimize.md` - Performance analysis
-- `04-subagents/code-reviewer.md` - Performance review
-- `03-skills/code-review/` - Performance metrics
-- `07-plugins/pr-review/agents/performance-analyzer.md` - Performance specialist
+### Rendimiento
+- `01-slash-commands/optimize.md` - Análisis de rendimiento
+- `04-subagents/code-reviewer.md` - Revisión de rendimiento
+- `03-skills/code-review/` - Métricas de rendimiento
+- `07-plugins/pr-review/agents/performance-analyzer.md` - Especialista en rendimiento
 
-### Security
-- `04-subagents/secure-reviewer.md` - Security review
-- `03-skills/code-review/` - Security analysis
-- `07-plugins/pr-review/` - Security checks
+### Seguridad
+- `04-subagents/secure-reviewer.md` - Revisión de seguridad
+- `03-skills/code-review/` - Análisis de seguridad
+- `07-plugins/pr-review/commands/check-security.md` - Verificación de seguridad
+- `06-hooks/security-scan.sh` - Escaneo de seguridad
 
-### Testing
-- `04-subagents/test-engineer.md` - Test engineer
-- `07-plugins/pr-review/commands/check-tests.md` - Test coverage
+### Pruebas
+- `04-subagents/test-engineer.md` - Ingeniero de pruebas
+- `07-plugins/pr-review/commands/check-tests.md` - Cobertura de pruebas
 
-### Documentation
-- `01-slash-commands/generate-api-docs.md` - API docs command
-- `04-subagents/documentation-writer.md` - Doc writer agent
-- `03-skills/doc-generator/` - Doc generator skill
-- `07-plugins/documentation/` - Complete doc plugin
+### Documentación
+- `01-slash-commands/generate-api-docs.md` - Comando de docs de API
+- `04-subagents/documentation-writer.md` - Agente escritor de docs
+- `03-skills/doc-generator/` - Skill generador de docs
+- `07-plugins/documentation/` - Plugin completo de docs
 
-### Deployment
-- `07-plugins/devops-automation/` - Complete DevOps solution
+### Despliegue
+- `07-plugins/devops-automation/` - Solución completa de DevOps
 
-### Automation
-- `06-hooks/` - Event-driven automation
-- `06-hooks/pre-commit.sh` - Pre-commit automation
-- `06-hooks/format-code.sh` - Auto-formatting
-- `09-advanced-features/` - Headless mode for CI/CD
+### Automatización
+- `06-hooks/` - Automatización impulsada por eventos
+- `06-hooks/pre-commit.sh` - Automatización pre-commit
+- `06-hooks/format-code.sh` - Auto-formateo
+- `09-advanced-features/` - Headless mode para CI/CD
 
-### Validation
-- `06-hooks/security-scan.sh` - Security validation
-- `06-hooks/validate-prompt.sh` - Prompt validation
+### Validación
+- `06-hooks/security-scan.sh` - Validación de seguridad
+- `06-hooks/validate-prompt.sh` - Validación de prompts
 
-### Experimentation
-- `08-checkpoints/` - Safe experimentation with rewind
-- `08-checkpoints/checkpoint-examples.md` - Real-world examples
+### Experimentación
+- `08-checkpoints/` - Experimentación segura con rewind
+- `08-checkpoints/checkpoint-examples.md` - Ejemplos del mundo real
 
 ### Planning
-- `09-advanced-features/planning-mode-examples.md` - Planning mode examples
+- `09-advanced-features/planning-mode-examples.md` - Ejemplos de planning mode
 - `09-advanced-features/README.md` - Extended thinking
 
 ### Configuration
-- `09-advanced-features/config-examples.json` - Configuration examples
+- `09-advanced-features/config-examples.json` - Ejemplos de configuración
 
 ---
 
-## Notes
+## Notas
 
-- All examples are ready to use
-- Modify to fit your specific needs
-- Examples follow Claude Code best practices
-- Each category has its own README with detailed instructions
-- Scripts include proper error handling
-- Templates are customizable
-
----
-
-## Contributing
-
-Want to add more examples? Follow the structure:
-1. Create appropriate subdirectory
-2. Include README.md with usage
-3. Follow naming conventions
-4. Test thoroughly
-5. Update this index
+- Todos los ejemplos están listos para usar
+- Modificar para ajustarse a tus necesidades específicas
+- Los ejemplos siguen las mejores prácticas de Claude Code
+- Cada categoría tiene su propio README con instrucciones detalladas
+- Los scripts incluyen manejo de errores apropiado
+- Las plantillas son personalizables
 
 ---
 
-**Last Updated**: March 2026
-**Total Examples**: 100+ files
-**Categories**: 10 features
-**Hooks**: 8 automation scripts
-**Configuration Examples**: 10+ scenarios
-**Ready to Use**: All examples
+## Contribuciones
+
+¿Quieres agregar más ejemplos? Sigue la estructura:
+1. Crear el subdirectorio apropiado
+2. Incluir README.md con el uso
+3. Seguir las convenciones de nomenclatura
+4. Probar exhaustivamente
+5. Actualizar este índice
+
+---
+
+**Última Actualización**: Marzo 2026
+**Total de Ejemplos**: 100+ archivos
+**Categorías**: 10 funcionalidades
+**Hooks**: 8 scripts de automatización
+**Ejemplos de Configuración**: 10+ escenarios
+**Listo para Usar**: Todos los ejemplos

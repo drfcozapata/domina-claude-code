@@ -1,23 +1,23 @@
 ---
-name: Question
-about: Ask a question about Claude Code or this guide
+name: Pregunta
+about: Hacer una pregunta sobre Claude Code o esta guía
 title: "[QUESTION] "
 labels: question
 assignees: ''
 
 ---
 
-## Question
-What would you like to know?
+## Pregunta
+¿Qué te gustaría saber?
 
-## Context
-Provide some background or context for your question:
-- What are you trying to do?
-- What have you already tried?
-- What examples or guides have you looked at?
+## Contexto
+Proporciona algo de background o contexto para tu pregunta:
+- ¿Qué estás tratando de hacer?
+- ¿Qué has intentado ya?
+- ¿Qué ejemplos o guides has mirado?
 
-## Relevant Topic
-Which topic is this related to?
+## Tema Relevante
+¿A qué tema está relacionado esto?
 - [ ] Slash Commands
 - [ ] Memory
 - [ ] Skills
@@ -28,13 +28,13 @@ Which topic is this related to?
 - [ ] Checkpoints
 - [ ] Advanced Features
 - [ ] CLI Reference
-- [ ] Other
+- [ ] Otro
 
-## What You've Tried
-Have you already tried anything? What was the result?
+## Lo que Has Intentado
+¿Ya has intentado algo? ¿Cuál fue el resultado?
 
-## Expected Outcome
-What would help you solve this?
+## Resultado Esperado
+¿Qué te ayudaría a resolver esto?
 
-## Additional Resources
-Any links or resources that might be relevant?
+## Recursos Adicionales
+¿Algunos enlaces o recursos que puedan ser relevantes?

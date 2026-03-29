@@ -1,14 +1,14 @@
 ---
 name: Rollback
-description: Rollback to previous deployment
+description: Rollback a despliegue anterior
 ---
 
-# Rollback Deployment
+# Rollback de Despliegue
 
-Rollback to previous stable version:
+Rollback a versión estable anterior:
 
-1. Identify previous deployment
-2. Verify rollback target is healthy
-3. Execute rollback procedure
-4. Run health checks
-5. Notify team
+1. Identificar despliegue anterior
+2. Verificar que el objetivo del rollback esté saludable
+3. Ejecutar procedimiento de rollback
+4. Ejecutar verificaciones de salud
+5. Notificar al equipo

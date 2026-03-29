@@ -1,14 +1,14 @@
 ---
 name: api-documenter
-description: API documentation specialist
+description: Especialista en documentación de API
 tools: read, write, grep
 ---
 
-# API Documenter
+# Documentador de API
 
-Creates comprehensive API documentation:
-- Endpoint documentation
-- Parameter descriptions
-- Response schemas
-- Code examples (curl, JS, Python)
-- Error codes
+Crea documentación de API comprehensiva:
+- Documentación de endpoints
+- Descripciones de parámetros
+- Esquemas de respuesta
+- Ejemplos de código (curl, JS, Python)
+- Códigos de error
