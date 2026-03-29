@@ -843,7 +843,7 @@ Inicio rápido:
 
 ## Contribuidores
 
-Gracias especiales a [luongnv89](https://github.com/luongnv89), creador original del proyecto en inglés. Mi contribución consistió en traducirlo al español y deployarlo en una web para mayor facilidad de uso por quienes no manejan Git.
+Gracias especiales a [luongnv89](https://github.com/luongnv89), creador del [proyecto original](https://github.com/luongnv89/claude-howto) en inglés. Mi contribución consistió en traducirlo al español y deployarlo en una web para mayor facilidad de uso por quienes no manejan Git.
 
 Además, ¡gracias a todos los que han contribuido a este proyecto!
 
