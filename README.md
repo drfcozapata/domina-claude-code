@@ -843,7 +843,9 @@ Inicio rápido:
 
 ## Contribuidores
 
-¡Gracias a todos los que han contribuido a este proyecto!
+Gracias especiales a [luongnv89](https://github.com/luongnv89), creador original del proyecto en inglés. Mi contribución consistió en traducirlo al español y deployarlo en una web para mayor facilidad de uso por quienes no manejan Git.
+
+Además, ¡gracias a todos los que han contribuido a este proyecto!
 
 | Contribuidor | PRs |
 |-------------|-----|
