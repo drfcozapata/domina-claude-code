@@ -172,9 +172,9 @@ jobs:
 
       - name: Verify EPUB Created
         run: |
-          if [ -f claude-howto-guide.epub ]; then
+          if [ -f domina-claude-code-guide.epub ]; then
             echo "✅ EPUB built successfully"
-            ls -lh claude-howto-guide.epub
+            ls -lh domina-claude-code-guide.epub
           else
             echo "❌ EPUB file not found!"
             exit 1
@@ -183,8 +183,8 @@ jobs:
       - name: Upload EPUB Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: claude-howto-guide-epub
-          path: claude-howto-guide.epub
+          name: domina-claude-code-guide-epub
+          path: domina-claude-code-guide.epub
           retention-days: 7
           compression-level: 0
 
@@ -212,7 +212,7 @@ jobs:
           echo "## Artifacts" >> $GITHUB_STEP_SUMMARY
           echo "- pytest-results-* (coverage and test results)" >> $GITHUB_STEP_SUMMARY
           echo "- bandit-security-report (security scan JSON)" >> $GITHUB_STEP_SUMMARY
-          echo "- claude-howto-guide-epub (built EPUB file)" >> $GITHUB_STEP_SUMMARY
+          echo "- domina-claude-code-guide-epub (built EPUB file)" >> $GITHUB_STEP_SUMMARY
 
       - name: Check if all tests passed
         if: |

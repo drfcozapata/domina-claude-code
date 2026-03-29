@@ -1,6 +1,6 @@
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="resources/logos/claude-howto-logo-dark.svg">
-  <img alt="Claude How To" src="resources/logos/claude-howto-logo.svg">
+  <source media="(prefers-color-scheme: dark)" srcset="resources/logos/domina-claude-code-logo-dark.svg">
+  <img alt="Claude How To" src="resources/logos/domina-claude-code-logo.svg">
 </picture>
 
 # Contribuir a Claude How To
@@ -54,8 +54,8 @@ Ayuda a mejorar la guía:
 
 ### 1. Bifurcar y Clonar
 ```bash
-git clone https://github.com/luongnv89/claude-howto.git
-cd claude-howto
+git clone https://github.com/luongnv89/domina-claude-code.git
+cd domina-claude-code
 ```
 
 ### 2. Crear una Rama

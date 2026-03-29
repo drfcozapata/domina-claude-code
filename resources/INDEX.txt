@@ -18,12 +18,12 @@ resources/
 │   └─ Identidad visual, sistema de color, tipografía, efectos
 │
 ├── 📁 logos/
-│   └─ 📊 claude-howto-logo.svg (800×200px)
+│   └─ 📊 domina-claude-code-logo.svg (800×200px)
 │       → Logotipo horizontal principal con icono de terminal
 │       → Perfecto para: Encabezados, marketing, impresión
 │
 ├── 📁 icons/
-│   └─ 🔷 claude-howto-icon.svg (256×256px)
+│   └─ 🔷 domina-claude-code-icon.svg (256×256px)
 │       → Icono de app con hexágonos ascendentes
 │       → Perfecto para: Apps, avatares, miniaturas
 │
@@ -41,8 +41,8 @@ resources/
 
 ARCHIVO                         TAMAÑO      CASO DE USO
 ────────────────────────────────────────────────────────────────────────────
-logos/claude-howto-logo.svg   800×200px   Encabezados de sitio web, marketing
-icons/claude-howto-icon.svg   256×256px   Iconos de app, avatares, social
+logos/domina-claude-code-logo.svg   800×200px   Encabezados de sitio web, marketing
+icons/domina-claude-code-icon.svg   256×256px   Iconos de app, avatares, social
 favicons/favicon-32.svg       32×32px     Favicon de navegador (principal)
 favicons/favicon-16.svg       16×16px     Pestaña de navegador (navegadores antiguos)
 favicons/favicon-64.svg       64×64px     Marcadores, alta densidad (High-DPI)
@@ -125,8 +125,8 @@ Todos los colores mantienen contraste WCAG AAA sobre fondos oscuros (8.2:1+)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 PASO 1: Elige Tu Caso de Uso
-   • ¿Sitio web? → Usa logos/claude-howto-logo.svg
-   • ¿App/Avatar? → Usa icons/claude-howto-icon.svg
+   • ¿Sitio web? → Usa logos/domina-claude-code-logo.svg
+   • ¿App/Avatar? → Usa icons/domina-claude-code-icon.svg
    • ¿Navegador? → Usa favicons/favicon-32.svg
 
 PASO 2: Lee la Guía Correcta
@@ -145,10 +145,10 @@ PASO 3: Copia y Usa
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Logotipos:
-  ✓ claude-howto-logo.svg (logotipo principal)
+  ✓ domina-claude-code-logo.svg (logotipo principal)
 
 Iconos:
-  ✓ claude-howto-icon.svg (icono de app)
+  ✓ domina-claude-code-icon.svg (icono de app)
 
 Favicons (todos los tamaños):
   ✓ favicon-16.svg
@@ -183,16 +183,16 @@ Todos los activos están en formato SVG:
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 HTML (Web):
-  <img src="resources/icons/claude-howto-icon.svg" alt="Claude How To">
+  <img src="resources/icons/domina-claude-code-icon.svg" alt="Claude How To">
 
 Markdown:
-  ![Claude How To](resources/icons/claude-howto-icon.svg)
+  ![Claude How To](resources/icons/domina-claude-code-icon.svg)
 
 Fondo CSS:
-  background-image: url('resources/icons/claude-howto-icon.svg');
+  background-image: url('resources/icons/domina-claude-code-icon.svg');
 
 React/JSX:
-  import logo from './resources/icons/claude-howto-icon.svg';
+  import logo from './resources/icons/domina-claude-code-icon.svg';
   <img src={logo} alt="Claude How To" />
 
 Next.js/Marco de Trabajo Web:

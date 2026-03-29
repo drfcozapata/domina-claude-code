@@ -1,6 +1,6 @@
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="resources/logos/claude-howto-logo-dark.svg">
-  <img alt="Claude How To" src="resources/logos/claude-howto-logo.svg">
+  <source media="(prefers-color-scheme: dark)" srcset="resources/logos/domina-claude-code-logo-dark.svg">
+  <img alt="Claude How To" src="resources/logos/domina-claude-code-logo.svg">
 </picture>
 
 # Guía de Estilo
@@ -55,7 +55,7 @@ El número refleja el orden de la ruta de aprendizaje de principiante a avanzado
 | **Archivo de configuración** | Nombres estándar | `.mcp.json`, `settings.json` |
 | **Archivo de memoria** | Prefijo de alcance | `project-CLAUDE.md`, `personal-CLAUDE.md` |
 | **Documentos de nivel superior** | UPPER_CASE `.md` | `CATALOG.md`, `QUICK_REFERENCE.md`, `CONTRIBUTING.md` |
-| **Recursos de imagen** | Kebab-case | `pr-slash-command.png`, `claude-howto-logo.svg` |
+| **Recursos de imagen** | Kebab-case | `pr-slash-command.png`, `domina-claude-code-logo.svg` |
 
 ### Reglas
 
@@ -509,8 +509,8 @@ Todos los documentos que comienzan con un logo usan el elemento `<picture>` para
 
 ```html
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="resources/logos/claude-howto-logo-dark.svg">
-  <img alt="Claude How To" src="resources/logos/claude-howto-logo.svg">
+  <source media="(prefers-color-scheme: dark)" srcset="resources/logos/domina-claude-code-logo-dark.svg">
+  <img alt="Claude How To" src="resources/logos/domina-claude-code-logo.svg">
 </picture>
 ```
 

@@ -15,10 +15,10 @@ resources/
 ├─ 📄 MANIFEST.txt                       (este) Listado de archivos
 │
 ├─ 📁 logos/                             (8.0K total)
-│  └─ 📊 claude-howto-logo.svg          (8.0K) 800×200px logotipo principal
+│  └─ 📊 domina-claude-code-logo.svg          (8.0K) 800×200px logotipo principal
 │
 ├─ 📁 icons/                             (8.0K total)
-│  └─ 🔷 claude-howto-icon.svg          (8.0K) 256×256px icono de app
+│  └─ 🔷 domina-claude-code-icon.svg          (8.0K) 256×256px icono de app
 │
 └─ 📁 favicons/                          (20K total)
    ├─ 🔹 favicon-16.svg                 (3.2K) 16×16px pestaña de navegador
@@ -83,13 +83,13 @@ PARA SITIOS WEB (HTML):
   <link rel="apple-touch-icon" href="/resources/favicons/favicon-128.svg">
 
 PARA MARKDOWN:
-  ![Claude How To](resources/icons/claude-howto-icon.svg)
+  ![Claude How To](resources/icons/domina-claude-code-icon.svg)
 
 PARA REACT/NEXT.JS:
-  import icon from './resources/icons/claude-howto-icon.svg';
+  import icon from './resources/icons/domina-claude-code-icon.svg';
 
 PARA FONDO CSS:
-  background-image: url('resources/icons/claude-howto-icon.svg');
+  background-image: url('resources/icons/domina-claude-code-icon.svg');
 
 ═════════════════════════════════════════════════════════════════════════════
 
@@ -97,11 +97,11 @@ PARA FONDO CSS:
 
 CASO DE USO                 ARCHIVO                        TAMAÑO
 ─────────────────────────────────────────────────────────────────────────────
-Encabezado de sitio web     logos/claude-howto-logo.svg     800×200px
+Encabezado de sitio web     logos/domina-claude-code-logo.svg     800×200px
 Pestaña de navegador        favicons/favicon-32.svg         32×32px
 Pantalla de inicio móvil    favicons/favicon-128.svg        128×128px
-Icono de app                icons/claude-howto-icon.svg     256×256px
-Miniatura de redes sociales icons/claude-howto-icon.svg     256×256px
+Icono de app                icons/domina-claude-code-icon.svg     256×256px
+Miniatura de redes sociales icons/domina-claude-code-icon.svg     256×256px
 Icono de marcador/favorito   favicons/favicon-64.svg         64×64px
 Icono táctil de Apple       favicons/favicon-128.svg        128×128px
 PWA/App de Android          favicons/favicon-256.svg        256×256px
@@ -113,8 +113,8 @@ Navegadores antiguos        favicons/favicon-16.svg         16×16px
 ✅ LISTA DE VERIFICACIÓN
 
 Activos SVG:
-  ✓ logos/claude-howto-logo.svg       Logotipo principal
-  ✓ icons/claude-howto-icon.svg       Icono de app
+  ✓ logos/domina-claude-code-logo.svg       Logotipo principal
+  ✓ icons/domina-claude-code-icon.svg       Icono de app
   ✓ favicons/favicon-16.svg           Favicon 16px
   ✓ favicons/favicon-32.svg           Favicon 32px
   ✓ favicons/favicon-64.svg           Favicon 64px
@@ -209,8 +209,8 @@ A LARGO PLAZO:
 💡 CONSEJOS PROFESIONALES
 
 • Usar favicon-32.svg como favicon principal (funciona en todos los navegadores modernos)
-• Usar icons/claude-howto-icon.svg para avatares a 64-256px
-• Usar logos/claude-howto-logo.svg para encabezados de sitio web (escalar para ajustar)
+• Usar icons/domina-claude-code-icon.svg para avatares a 64-256px
+• Usar logos/domina-claude-code-logo.svg para encabezados de sitio web (escalar para ajustar)
 • Mantener el concepto de hexágono ascendente para cualquier variante personalizada
 • Siempre mantener la paleta de colores establecida
 • Los archivos SVG son editables - ver DESIGN-SYSTEM.md para personalización de color

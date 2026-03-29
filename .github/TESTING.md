@@ -28,8 +28,8 @@ brew install uv
 
 ```bash
 # Clonar el repositorio
-git clone https://github.com/luongnv89/claude-howto.git
-cd claude-howto
+git clone https://github.com/luongnv89/domina-claude-code.git
+cd domina-claude-code
 
 # Crear entorno virtual
 uv venv

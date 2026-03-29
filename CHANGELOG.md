@@ -19,7 +19,7 @@
 - Agregar palabras cSpell faltantes y secciones README para cumplimiento de CI (93f9d51) @luongnv89
 - Agregar `Sandboxing` al diccionario cSpell (b80ce6f) @luongnv89
 
-**Registro completo de cambios**: https://github.com/luongnv89/claude-howto/compare/v2.1.1...v2.2.0
+**Registro completo de cambios**: https://github.com/luongnv89/domina-claude-code/compare/v2.1.1...v2.2.0
 
 ---
 
@@ -30,7 +30,7 @@
 - Eliminar enlace de marketplace muerto que fallaba en las verificaciones de enlaces de CI (3fdf0d6) @luongnv89
 - Agregar `sandboxed` y `pycache` al diccionario cSpell (dc64618) @luongnv89
 
-**Registro completo de cambios**: https://github.com/luongnv89/claude-howto/compare/v2.1.0...v2.1.1
+**Registro completo de cambios**: https://github.com/luongnv89/domina-claude-code/compare/v2.1.0...v2.1.1
 
 ---
 
@@ -64,7 +64,7 @@
 
 - @VikalpP hizo su primera contribución en #7
 
-**Registro completo de cambios**: https://github.com/luongnv89/claude-howto/compare/v2.0.0...v2.1.0
+**Registro completo de cambios**: https://github.com/luongnv89/domina-claude-code/compare/v2.0.0...v2.1.0
 
 ---
 
@@ -106,4 +106,4 @@
 - Eliminar campos de configuración ficticios en múltiples archivos
 - Actualizar todas las fechas de "Last Updated" a febrero 2026
 
-**Registro completo de cambios**: https://github.com/luongnv89/claude-howto/compare/20779db...v2.0.0
+**Registro completo de cambios**: https://github.com/luongnv89/domina-claude-code/compare/20779db...v2.0.0

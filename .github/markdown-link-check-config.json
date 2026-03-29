@@ -25,7 +25,7 @@
       "comment": "X (Twitter) links require authentication"
     },
     {
-      "pattern": "^https://github.com/[^/]+/claude-howto",
+      "pattern": "^https://github.com/[^/]+/domina-claude-code",
       "comment": "Self-referencing links"
     },
     {
@@ -76,7 +76,7 @@
   "replacementPatterns": [
     {
       "pattern": "^/",
-      "replacement": "https://github.com/luongnv89/claude-howto/blob/main/"
+      "replacement": "https://github.com/luongnv89/domina-claude-code/blob/main/"
     }
   ],
   "timeout": 10000,

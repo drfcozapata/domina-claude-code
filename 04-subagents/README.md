@@ -1,6 +1,6 @@
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="../resources/logos/claude-howto-logo-dark.svg">
-  <img alt="Claude How To" src="../resources/logos/claude-howto-logo.svg">
+  <source media="(prefers-color-scheme: dark)" srcset="../resources/logos/domina-claude-code-logo-dark.svg">
+  <img alt="Claude How To" src="../resources/logos/domina-claude-code-logo.svg">
 </picture>
 
 # Subagents - Guía de Referencia Completa
@@ -867,6 +867,6 @@ ln -s $(pwd)/04-subagents/*.md ~/.claude/agents/
 
 <div align="center">
 
-**¿Encontraste útil esta guía?** ⭐ [Danos una estrella en GitHub](https://github.com/ajinabraham/claude-howto)
+**¿Encontraste útil esta guía?** ⭐ [Danos una estrella en GitHub](https://github.com/ajinabraham/domina-claude-code)
 
 </div>

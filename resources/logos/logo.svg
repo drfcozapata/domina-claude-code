@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="484"
+   height="178.504"
+   viewBox="0 0 484 178.504"
+   version="1.1"
+   id="svg5"
+   sodipodi:docname="logo.svg"
+   inkscape:version="1.4.3 (fcd0343856, 2026-01-01)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview5"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showguides="true"
+     inkscape:zoom="2.5102291"
+     inkscape:cx="246.59104"
+     inkscape:cy="137.23847"
+     inkscape:window-width="1920"
+     inkscape:window-height="1044"
+     inkscape:window-x="1600"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg5">
+    <sodipodi:guide
+       position="176.07955,168.61027"
+       orientation="1,0"
+       id="guide8"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="466.88966,106.46455"
+       orientation="1,0"
+       id="guide9"
+       inkscape:locked="false" />
+  </sodipodi:namedview>
+  <!-- Fondo oscuro con bordes redondeados (para que se vea bien como logo) -->
+  <!-- Contenedor del icono: cuadrado redondeado con borde cian (estilo tech/IA) -->
+  <!-- Icono de código: corchetes { } grandes (representa "Code" y programación con Claude) -->
+  <!-- Corchete izquierdo { -->
+  <!-- Corchete derecho } -->
+  <!-- Gradiente para "DOMINA" (cian brillante a cian más profundo – estilo moderno IA/tech) -->
+  <defs
+     id="defs4">
+    <linearGradient
+       id="dominaGradient"
+       x1="165"
+       y1="38"
+       x2="435"
+       y2="82"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(-1.8116008,11.120708)">
+      <stop
+         offset="0%"
+         stop-color="#67e8f9"
+         id="stop3" />
+      <stop
+         offset="100%"
+         stop-color="#22d3ee"
+         id="stop4" />
+    </linearGradient>
+  </defs>
+  <!-- Texto principal: DOMINA (grande, bold, con outline para que resalte) -->
+  <!-- Texto secundario: CLAUDE CODE (más pequeño, espaciado y elegante) -->
+  <rect
+     x="0"
+     y="-0.0001602"
+     width="484"
+     height="178.50432"
+     rx="35"
+     ry="30.62574"
+     fill="#0f172a"
+     id="rect1"
+     style="stroke-width:0.935426" />
+  <rect
+     x="26.388252"
+     y="31.751999"
+     width="115"
+     height="115"
+     rx="23"
+     ry="23"
+     fill="#1e2937"
+     stroke="#67e8f9"
+     stroke-width="7"
+     id="rect2" />
+  <text
+     x="54.593693"
+     y="107.284"
+     text-anchor="middle"
+     font-family="'Courier New', monospace"
+     font-size="75.7529px"
+     font-weight="700"
+     fill="#67e8f9"
+     id="text2"
+     style="stroke-width:1.30614">{</text>
+  <text
+     x="113.36775"
+     y="107.284"
+     text-anchor="middle"
+     font-family="'Courier New', monospace"
+     font-size="75.7529px"
+     font-weight="700"
+     fill="#67e8f9"
+     id="text3"
+     style="stroke-width:1.30614">}</text>
+  <text
+     x="163.1884"
+     y="92.120712"
+     text-anchor="start"
+     font-family="'Arial Black', sans-serif"
+     font-size="67px"
+     font-weight="900"
+     letter-spacing="-1.8px"
+     fill="url(#dominaGradient)"
+     stroke="#0f172a"
+     stroke-width="4.5"
+     paint-order="stroke fill"
+     id="text4"
+     style="fill:url(#dominaGradient)">DOMINA</text>
+  <text
+     x="166.79675"
+     y="136.99911"
+     text-anchor="start"
+     font-family="'Arial Black', sans-serif"
+     font-size="32.4535px"
+     font-weight="700"
+     letter-spacing="3.5px"
+     fill="#e2e8f0"
+     id="text5"
+     style="stroke-width:1.1387">CLAUDE CODE</text>
+</svg>

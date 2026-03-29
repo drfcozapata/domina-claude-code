@@ -1,6 +1,6 @@
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="../resources/logos/claude-howto-logo-dark.svg">
-  <img alt="Claude How To" src="../resources/logos/claude-howto-logo.svg">
+  <source media="(prefers-color-scheme: dark)" srcset="../resources/logos/domina-claude-code-logo-dark.svg">
+  <img alt="Claude How To" src="../resources/logos/domina-claude-code-logo.svg">
 </picture>
 
 # Script de Construcción de EPUB
@@ -55,7 +55,7 @@ usage: build_epub.py [-h] [--root ROOT] [--output OUTPUT] [--verbose]
 options:
   -h, --help            show this help message and exit
   --root, -r ROOT       Root directory (default: repo root)
-  --output, -o OUTPUT   Output path (default: claude-howto-guide.epub)
+  --output, -o OUTPUT   Output path (default: domina-claude-code-guide.epub)
   --verbose, -v         Enable verbose logging
   --timeout TIMEOUT     API timeout in seconds (default: 30)
   --max-concurrent N    Max concurrent requests (default: 10)
@@ -76,7 +76,7 @@ uv run scripts/build_epub.py --max-concurrent 5
 
 ## Salida
 
-Crea `claude-howto-guide.epub` en el directorio raíz del repositorio.
+Crea `domina-claude-code-guide.epub` en el directorio raíz del repositorio.
 
 El EPUB incluye:
 - Imagen de portada con el logotipo del proyecto
@@ -117,4 +117,4 @@ Gestionadas mediante metadatos en línea de script PEP 723:
 
 **Limitación de tasa**: Reduce las solicitudes concurrentes con `--max-concurrent 3`.
 
-**Logotipo faltante**: El script genera una portada solo con texto si no se encuentra `claude-howto-logo.png`.
+**Logotipo faltante**: El script genera una portada solo con texto si no se encuentra `domina-claude-code-logo.png`.

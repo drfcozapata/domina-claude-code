@@ -26,17 +26,17 @@ cp resources/favicons/* /path/to/your/website/public/
 ```markdown
 # Claude How To
 
-![Logotipo de Claude How To](resources/logos/claude-howto-logo.svg)
+![Logotipo de Claude How To](resources/logos/domina-claude-code-logo.svg)
 
-![Icono](resources/icons/claude-howto-icon.svg)
+![Icono](resources/icons/domina-claude-code-icon.svg)
 ```
 
 ## Tamaños Recomendados
 
 | Propósito | Tamaño | Archivo |
 |---------|------|------|
-| Encabezado de sitio web | 520×120 | `logos/claude-howto-logo.svg` |
-| Icono de app | 256×256 | `icons/claude-howto-icon.svg` |
+| Encabezado de sitio web | 520×120 | `logos/domina-claude-code-logo.svg` |
+| Icono de app | 256×256 | `icons/domina-claude-code-icon.svg` |
 | Pestaña de navegador | 32×32 | `favicons/favicon-32.svg` |
 | Pantalla de inicio móvil | 128×128 | `favicons/favicon-128.svg` |
 | App de escritorio | 256×256 | `favicons/favicon-256.svg` |
@@ -67,17 +67,17 @@ Esto simboliza "encontrar tu camino a través del código con guía clara."
 ## Qué Usar y Dónde
 
 ### Sitio Web
-- **Encabezado**: Logotipo (`logos/claude-howto-logo.svg`)
+- **Encabezado**: Logotipo (`logos/domina-claude-code-logo.svg`)
 - **Favicon**: 32px (`favicons/favicon-32.svg`)
-- **Vista previa social**: Icono (`icons/claude-howto-icon.svg`)
+- **Vista previa social**: Icono (`icons/domina-claude-code-icon.svg`)
 
 ### GitHub
-- **Badge de README**: Icono (`icons/claude-howto-icon.svg`) a 64-128px
-- **Avatar de repositorio**: Icono (`icons/claude-howto-icon.svg`)
+- **Badge de README**: Icono (`icons/domina-claude-code-icon.svg`) a 64-128px
+- **Avatar de repositorio**: Icono (`icons/domina-claude-code-icon.svg`)
 
 ### Redes Sociales
-- **Imagen de perfil**: Icono (`icons/claude-howto-icon.svg`)
-- **Banner**: Logotipo (`logos/claude-howto-logo.svg`)
+- **Imagen de perfil**: Icono (`icons/domina-claude-code-icon.svg`)
+- **Banner**: Logotipo (`logos/domina-claude-code-logo.svg`)
 - **Miniatura**: Icono a 256×256px
 
 ### Documentación

@@ -1,15 +1,14 @@
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="resources/logos/claude-howto-logo-dark.svg">
-  <img alt="Claude How To" src="resources/logos/claude-howto-logo.svg">
+  <img alt="Claude How To" src="resources/logos/logo.svg">
 </picture>
 
-[![GitHub Stars](https://img.shields.io/github/stars/luongnv89/claude-howto?style=flat&color=gold)](https://github.com/luongnv89/claude-howto/stargazers)
-[![GitHub Forks](https://img.shields.io/github/forks/luongnv89/claude-howto?style=flat)](https://github.com/luongnv89/claude-howto/network/members)
+[![GitHub Stars](https://img.shields.io/github/stars/drfcozapata/domina-claude-code?style=flat&color=gold)](https://github.com/drfcozapata/domina-claude-code/stargazers)
+[![GitHub Forks](https://img.shields.io/github/forks/drfcozapata/domina-claude-code?style=flat)](https://github.com/drfcozapata/domina-claude-code/network/members)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Version](https://img.shields.io/badge/version-2.2.0-brightgreen)](CHANGELOG.md)
-[![Claude Code](https://img.shields.io/badge/Claude_Code-2.1+-purple)](https://code.claude.com)
+[![Claude Code](https://img.shields.io/badge/Claude_Code-2.1.86-purple)](https://code.claude.com)
 
-# Domina Claude Code en un Fin de Semana
+# Domina Claude Code
 
 Pasa de escribir `claude` a orquestar agentes, hooks (ganchos), skills (habilidades) y servidores MCP — con tutoriales visuales, plantillas para copiar y pegar, y una ruta de aprendizaje guiada.
 
@@ -90,17 +89,6 @@ Ejecuta `/lesson-quiz [tema]` después de cada módulo. El cuestionario identifi
 
 ---
 
-## Utilizado por 3,900+ Desarrolladores
-
-- **3,900+ estrellas en GitHub** de desarrolladores que usan Claude Code diariamente
-- **460+ forks** — equipos adaptando esta guía para sus propios flujos de trabajo
-- **Mantenimiento activo** — sincronizado con cada lanzamiento de Claude Code (último: v2.2.0, marzo 2026)
-- **Impulsado por la comunidad** — contribuciones de desarrolladores que comparten sus configuraciones del mundo real
-
-[![Star History Chart](https://api.star-history.com/svg?repos=luongnv89/claude-howto&type=Date)](https://star-history.com/#luongnv89/claude-howto&Date)
-
----
-
 ## ¿No Estás Seguro Dónde Comenzar?
 
 Realiza la autoevaluación o elige tu nivel:
@@ -134,8 +122,8 @@ Realiza la autoevaluación o elige tu nivel:
 
 ```bash
 # 1. Clona la guía
-git clone https://github.com/luongnv89/claude-howto.git
-cd claude-howto
+git clone https://github.com/drfcozapata/domina-claude-code.git
+cd domina-claude-code
 
 # 2. Copia tu primer slash command
 mkdir -p /path/to/your-project/.claude/commands
@@ -236,7 +224,7 @@ Licencia MIT. Gratuito para siempre. Clónalo, haz un fork, hazlo tuyo.
 | **Checkpoints** | Instantáneas de sesión y rewind | [08-checkpoints/](08-checkpoints/) |
 | **Funcionalidades Avanzadas** | Planificación, pensamiento, tareas en segundo plano | [09-advanced-features/](09-advanced-features/) |
 | **Referencia CLI** | Comandos, banderas y opciones | [10-cli/](10-cli/) |
-| **Blog Posts** | Ejemplos de uso del mundo real | [Blog Posts](https://medium.com/@luongnv89) |
+| **Blog Posts** | Ejemplos de uso del mundo real | [Blog Posts](https://medium.com/@drfcozapata) |
 
 </details>
 
@@ -323,7 +311,7 @@ cp 01-slash-commands/*.md /path/to/project/.claude/commands/
 /generate-api-docs
 ```
 
-**Más Información**: [Discovering Claude Code Slash Commands](https://medium.com/@luongnv89/discovering-claude-code-slash-commands-cdc17f0dfb29)
+**Más Información**: [Discovering Claude Code Slash Commands](https://medium.com/@drfcozapata/discovering-claude-code-slash-commands-cdc17f0dfb29)
 
 </details>
 
@@ -796,7 +784,7 @@ Las pruebas se ejecutan automáticamente en cada push a `main`/`develop` y cada 
 uv run scripts/build_epub.py
 ```
 
-Esto crea `claude-howto-guide.epub` con todo el contenido, incluyendo diagramas Mermaid renderizados.
+Esto crea `domina-claude-code-guide.epub` con todo el contenido, incluyendo diagramas Mermaid renderizados.
 
 Consulta [scripts/README.md](scripts/README.md) para más opciones.
 
@@ -822,7 +810,7 @@ Consulta [scripts/README.md](scripts/README.md) para más opciones.
 
 Si descubres una vulnerabilidad de seguridad, por favor repórtala responsablemente:
 
-1. **Usa GitHub Private Vulnerability Reporting**: https://github.com/luongnv89/claude-howto/security/advisories
+1. **Usa GitHub Private Vulnerability Reporting**: https://github.com/drfcozapata/domina-claude-code/security/advisories
 2. **O lee** [.github/SECURITY_REPORTING.md](.github/SECURITY_REPORTING.md) para instrucciones detalladas
 3. **NO** abras un issue público para vulnerabilidades de seguridad
 
@@ -841,7 +829,7 @@ Inicio rápido:
 
 - [Documentación de Claude Code](https://code.claude.com/docs/en/overview)
 - [Especificación del Protocolo MCP](https://modelcontextprotocol.io)
-- [Repositorio de Skills](https://github.com/luongnv89/skills) - Colección de skills listas para usar
+- [Repositorio de Skills](https://github.com/drfcozapata/skills) - Colección de skills listas para usar
 - [Anthropic Cookbook](https://github.com/anthropics/anthropic-cookbook)
 - [Flujo de Trabajo de Claude Code de Boris Cherny](https://x.com/bcherny/status/2007179832300581177) - El creador de Claude Code comparte su flujo de trabajo sistematizado: agentes paralelos, CLAUDE.md compartido, modo Plan, slash commands, subagents y hooks de verificación para sesiones autónomas de larga duración.
 
@@ -859,8 +847,8 @@ Inicio rápido:
 
 | Contribuidor | PRs |
 |-------------|-----|
-| [wjhrdy](https://github.com/wjhrdy) | [#1 - agregar herramienta para crear un epub](https://github.com/luongnv89/claude-howto/pull/1) |
-| [VikalpP](https://github.com/VikalpP) | [#7 - fix(docs): Usar tildes para bloques de código anidados en la guía de conceptos](https://github.com/luongnv89/claude-howto/pull/7) |
+| [wjhrdy](https://github.com/wjhrdy) | [#1 - agregar herramienta para crear un epub](https://github.com/drfcozapata/domina-claude-code/pull/1) |
+| [VikalpP](https://github.com/VikalpP) | [#7 - fix(docs): Usar tildes para bloques de código anidados en la guía de conceptos](https://github.com/drfcozapata/domina-claude-code/pull/7) |
 
 ---
 
@@ -871,5 +859,5 @@ Licencia MIT - consulta [LICENSE](LICENSE). Libre para usar, modificar y distrib
 ---
 
 **Última Actualización**: Marzo 2026
-**Versión de Claude Code**: 2.1+
+**Versión de Claude Code**: 2.1.86
 **Modelos Compatibles**: Claude Sonnet 4.6, Claude Opus 4.6, Claude Haiku 4.5

@@ -1,6 +1,6 @@
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="logos/claude-howto-logo-dark.svg">
-  <img alt="Claude How To" src="logos/claude-howto-logo.svg">
+  <source media="(prefers-color-scheme: dark)" srcset="logos/domina-claude-code-logo-dark.svg">
+  <img alt="Claude How To" src="logos/domina-claude-code-logo.svg">
 </picture>
 
 # Claude How To - Activos de Marca
@@ -12,11 +12,11 @@ Colección completa de logotipos, iconos y favicons para el proyecto Claude How 
 ```
 resources/
 ├── logos/
-│   ├── claude-howto-logo.svg       # Logotipo principal - Modo claro (520×120px)
-│   └── claude-howto-logo-dark.svg  # Logotipo principal - Modo oscuro (520×120px)
+│   ├── domina-claude-code-logo.svg       # Logotipo principal - Modo claro (520×120px)
+│   └── domina-claude-code-logo-dark.svg  # Logotipo principal - Modo oscuro (520×120px)
 ├── icons/
-│   ├── claude-howto-icon.svg       # Icono de app - Modo claro (256×256px)
-│   └── claude-howto-icon-dark.svg  # Icono de app - Modo oscuro (256×256px)
+│   ├── domina-claude-code-icon.svg       # Icono de app - Modo claro (256×256px)
+│   └── domina-claude-code-icon-dark.svg  # Icono de app - Modo oscuro (256×256px)
 └── favicons/
     ├── favicon-16.svg              # Favicon - 16×16px
     ├── favicon-32.svg              # Favicon - 32×32px (principal)
@@ -51,8 +51,8 @@ assets/logo/
 ### Logotipos
 
 **Archivos**:
-- `logos/claude-howto-logo.svg` (Modo claro)
-- `logos/claude-howto-logo-dark.svg` (Modo oscuro)
+- `logos/domina-claude-code-logo.svg` (Modo claro)
+- `logos/domina-claude-code-logo-dark.svg` (Modo oscuro)
 
 **Especificaciones**:
 - **Tamaño**: 520×120 px
@@ -68,8 +68,8 @@ assets/logo/
 ### Iconos
 
 **Archivos**:
-- `icons/claude-howto-icon.svg` (Modo claro)
-- `icons/claude-howto-icon-dark.svg` (Modo oscuro)
+- `icons/domina-claude-code-icon.svg` (Modo claro)
+- `icons/domina-claude-code-icon-dark.svg` (Modo oscuro)
 
 **Especificaciones**:
 - **Tamaño**: 256×256 px

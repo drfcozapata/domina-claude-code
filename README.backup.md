@@ -1,6 +1,6 @@
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="resources/logos/claude-howto-logo-dark.svg">
-  <img alt="Claude How To" src="resources/logos/claude-howto-logo.svg">
+  <source media="(prefers-color-scheme: dark)" srcset="resources/logos/domina-claude-code-logo-dark.svg">
+  <img alt="Claude How To" src="resources/logos/domina-claude-code-logo.svg">
 </picture>
 
 # Claude How To
@@ -879,7 +879,7 @@ Found an issue or want to contribute an example? We'd love your help!
 
 If you discover a security vulnerability, please report it responsibly:
 
-1. **Use GitHub Private Vulnerability Reporting**: https://github.com/luongnv89/claude-howto/security/advisories
+1. **Use GitHub Private Vulnerability Reporting**: https://github.com/luongnv89/domina-claude-code/security/advisories
 2. **Or read** [.github/SECURITY_REPORTING.md](.github/SECURITY_REPORTING.md) for detailed instructions
 3. **Do NOT** open a public issue for security vulnerabilities
 
@@ -917,7 +917,7 @@ Want to read this guide offline? Generate an EPUB ebook:
 uv run scripts/build_epub.py
 ```
 
-This creates `claude-howto-guide.epub` with all content, including rendered Mermaid diagrams.
+This creates `domina-claude-code-guide.epub` with all content, including rendered Mermaid diagrams.
 
 See [scripts/README.md](scripts/README.md) for more options.
 
@@ -929,14 +929,14 @@ Thanks to everyone who has contributed to this project!
 
 | Contributor | PRs |
 |-------------|-----|
-| [wjhrdy](https://github.com/wjhrdy) | [#1 - add a tool to create an epub](https://github.com/luongnv89/claude-howto/pull/1) |
-| [VikalpP](https://github.com/VikalpP) | [#7 - fix(docs): Use tilde fences for nested code blocks in concepts guide](https://github.com/luongnv89/claude-howto/pull/7) |
+| [wjhrdy](https://github.com/wjhrdy) | [#1 - add a tool to create an epub](https://github.com/luongnv89/domina-claude-code/pull/1) |
+| [VikalpP](https://github.com/VikalpP) | [#7 - fix(docs): Use tilde fences for nested code blocks in concepts guide](https://github.com/luongnv89/domina-claude-code/pull/7) |
 
 ---
 
 ## Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=luongnv89/claude-howto&type=Date)](https://star-history.com/#luongnv89/claude-howto&Date)
+[![Star History Chart](https://api.star-history.com/svg?repos=luongnv89/domina-claude-code&type=Date)](https://star-history.com/#luongnv89/domina-claude-code&Date)
 
 ---
 

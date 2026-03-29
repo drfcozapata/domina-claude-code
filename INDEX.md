@@ -1,6 +1,6 @@
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="resources/logos/claude-howto-logo-dark.svg">
-  <img alt="Claude How To" src="resources/logos/claude-howto-logo.svg">
+  <source media="(prefers-color-scheme: dark)" srcset="resources/logos/domina-claude-code-logo-dark.svg">
+  <img alt="Claude How To" src="resources/logos/domina-claude-code-logo.svg">
 </picture>
 
 # Ejemplos de Claude Code - Índice Completo
@@ -488,7 +488,7 @@ Patrones de uso y referencia de la interfaz de línea de comandos.
 ## Árbol de Archivos Completo
 
 ```
-claude-howto/
+domina-claude-code/
 ├── README.md                                    # Visión general principal
 ├── INDEX.md                                     # Este archivo
 ├── QUICK_REFERENCE.md                           # Tarjeta de referencia rápida

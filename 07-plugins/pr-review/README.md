@@ -1,6 +1,6 @@
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="../../resources/logos/claude-howto-logo-dark.svg">
-  <img alt="Claude How To" src="../../resources/logos/claude-howto-logo.svg">
+  <source media="(prefers-color-scheme: dark)" srcset="../../resources/logos/domina-claude-code-logo-dark.svg">
+  <img alt="Claude How To" src="../../resources/logos/domina-claude-code-logo.svg">
 </picture>
 
 # Plugin de Revisión de PR

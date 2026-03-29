@@ -15,7 +15,7 @@ Usage:
 
     Command-line options:
         --root, -r      Root directory containing markdown files (default: repo root)
-        --output, -o    Output EPUB file path (default: <root>/claude-howto-guide.epub)
+        --output, -o    Output EPUB file path (default: <root>/domina-claude-code-guide.epub)
         --verbose, -v   Enable verbose logging
         --timeout       Timeout for API requests in seconds (default: 30)
         --max-concurrent Maximum concurrent API requests (default: 10)
@@ -24,7 +24,7 @@ Usage:
     automatically install required packages in an isolated environment.
 
 Output:
-    Creates 'claude-howto-guide.epub' in the repository root directory.
+    Creates 'domina-claude-code-guide.epub' in the repository root directory.
 
 Features:
     - Organizes chapters by folder structure (01-slash-commands, etc.)
@@ -37,7 +37,7 @@ Features:
 Requirements:
     - uv (recommended) or Python 3.10+ with dependencies installed
     - Internet connection for Mermaid diagram rendering
-    - Repository structure with markdown files and claude-howto-logo.png
+    - Repository structure with markdown files and domina-claude-code-logo.png
 """
 
 from __future__ import annotations
@@ -111,7 +111,7 @@ class EPUBConfig:
     logo_path: Path | None = None
 
     # EPUB Metadata
-    identifier: str = "claude-howto-guide"
+    identifier: str = "domina-claude-code-guide"
     title: str = "Claude Code How-To Guide"
     language: str = "en"
     author: str = "Claude Code Community"
@@ -216,7 +216,7 @@ def validate_inputs(config: EPUBConfig, logger: logging.Logger) -> None:
         errors.append(f"Output directory is not writable: {output_dir}")
 
     # Check logo if specified
-    logo_path = config.logo_path or (config.root_path / "claude-howto-logo.png")
+    logo_path = config.logo_path or (config.root_path / "domina-claude-code-logo.png")
     if not logo_path.exists():
         logger.warning(
             f"Logo file not found: {logo_path}. Cover will be generated without logo."
@@ -597,7 +597,7 @@ def create_cover_image(
         subtitle_font = load_font(config.subtitle_font_paths, 24, logger)
 
         # Add logo if available
-        logo_path = config.logo_path or (config.root_path / "claude-howto-logo.png")
+        logo_path = config.logo_path or (config.root_path / "domina-claude-code-logo.png")
         if logo_path.exists():
             _add_logo_to_cover(cover, logo_path, config, logger)
         else:
@@ -1012,7 +1012,7 @@ def main() -> int:
         "-o",
         type=Path,
         default=None,
-        help="Output EPUB file path (default: <root>/claude-howto-guide.epub)",
+        help="Output EPUB file path (default: <root>/domina-claude-code-guide.epub)",
     )
     parser.add_argument(
         "--verbose", "-v", action="store_true", help="Enable verbose logging"
@@ -1039,7 +1039,7 @@ def main() -> int:
         root = Path(__file__).parent.parent
 
     root = root.resolve()
-    output = args.output or (root / "claude-howto-guide.epub")
+    output = args.output or (root / "domina-claude-code-guide.epub")
     output = output.resolve()
 
     logger = setup_logging(args.verbose)

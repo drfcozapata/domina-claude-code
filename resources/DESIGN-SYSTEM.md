@@ -161,13 +161,13 @@ Todos los iconos se centran en el punto medio de su lienzo:
 
 ### Encabezado Web
 - Tamaño: logotipo de 520×120px
-- Archivo: `logos/claude-howto-logo.svg`
+- Archivo: `logos/domina-claude-code-logo.svg`
 - Fondo: Blanco u oscuro (#0A0A0A)
 - Relleno: 20px mínimo
 
 ### Icono de App
 - Tamaño: 256×256px
-- Archivo: `icons/claude-howto-icon.svg`
+- Archivo: `icons/domina-claude-code-icon.svg`
 - Fondo: Blanco u oscuro
 - Uso: Accesos directos de apps, avatares
 

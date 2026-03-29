@@ -4,7 +4,7 @@ Este archivo explica cómo reportar vulnerabilidades de seguridad al proyecto Cl
 
 ## Enlaces Rápidos
 
-- **Reporte Privado**: https://github.com/luongnv89/claude-howto/security/advisories
+- **Reporte Privado**: https://github.com/luongnv89/domina-claude-code/security/advisories
 - **Política de Seguridad**: [SECURITY.md](../SECURITY.md)
 - **Plantilla de Reporte**: Ver abajo
 
@@ -15,7 +15,7 @@ Este archivo explica cómo reportar vulnerabilidades de seguridad al proyecto Cl
 Este es el método preferido para reportar vulnerabilidades de seguridad.
 
 **Pasos:**
-1. Ir a: https://github.com/luongnv89/claude-howto/security/advisories
+1. Ir a: https://github.com/luongnv89/domina-claude-code/security/advisories
 2. Hacer clic en "Report a vulnerability"
 3. Completar los detalles (usar plantilla abajo)
 4. Enviar
@@ -30,7 +30,7 @@ Este es el método preferido para reportar vulnerabilidades de seguridad.
 
 Si descubres una vulnerabilidad en una dependencia:
 
-1. Ir a: https://github.com/luongnv89/claude-howto/security/dependabot/alerts
+1. Ir a: https://github.com/luongnv89/domina-claude-code/security/dependabot/alerts
 2. Revisar la alerta
 3. Crear un pull request con el fix
 4. Etiquetar con label `security`

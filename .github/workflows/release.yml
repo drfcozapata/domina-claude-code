@@ -23,5 +23,5 @@ jobs:
       - name: Create Release
         uses: softprops/action-gh-release@v2
         with:
-          files: claude-howto-guide.epub
+          files: domina-claude-code-guide.epub
           generate_release_notes: true

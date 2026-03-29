@@ -101,7 +101,7 @@ Estos están fuera del alcance de este proyecto:
 
 **Para problemas de seguridad sensibles, por favor use el reporte privado de vulnerabilidades de GitHub:**
 
-1. Visite: https://github.com/luongnv89/claude-howto/security/advisories
+1. Visite: https://github.com/luongnv89/domina-claude-code/security/advisories
 2. Haga clic en "Report a vulnerability"
 3. Complete los detalles de la vulnerabilidad
 4. Incluya:
@@ -304,7 +304,7 @@ pip-audit
 
 ## Archivo de Security Advisories
 
-Los security advisories pasados están disponibles en la pestaña [GitHub Security Advisories](https://github.com/luongnv89/claude-howto/security/advisories).
+Los security advisories pasados están disponibles en la pestaña [GitHub Security Advisories](https://github.com/luongnv89/domina-claude-code/security/advisories).
 
 ## Contacto
 
