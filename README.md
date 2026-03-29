@@ -42,7 +42,7 @@ Te estás perdiendo el 90% del poder de Claude Code — y no sabes lo que no sab
 
 ---
 
-## Cómo Claude How To Soluciona Esto
+## Cómo Domina Claude Code Soluciona Esto
 
 Esta no es otra referencia de funcionalidades. Es una **guía estructurada, visual y basada en ejemplos** que te enseña a usar cada funcionalidad de Claude Code con plantillas del mundo real que puedes copiar en tu proyecto hoy.
 
